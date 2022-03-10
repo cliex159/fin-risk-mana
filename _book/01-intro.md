@@ -328,9 +328,9 @@ hist(n)
 
 ```r
 print(c(skewness(n),mean(n),median(n)))
-#> [1]  0.06388929  0.01285283 -0.03621029
+#> [1] -0.002996684  0.030448303  0.028356301
 ```
-Since $skewness=0.06$ approximately equal $0$, the distribution is not skew and $mean=0.01$ approximately equal $median=-0.04$.
+Since $skewness=0$ approximately equal $0$, the distribution is not skew and $mean=0.03$ approximately equal $median=0.03$.
 
 <h4>t distribution</h4>
 
@@ -344,9 +344,9 @@ hist(t)
 
 ```r
 print(c(skewness(t),mean(t),median(t)))
-#> [1] -0.146215776 -0.001674336  0.002075995
+#> [1] -0.05030769  0.06426735  0.09464295
 ```
-Since $skewness=-0.15$ approximately equal $0$, the distribution is not skew and $mean=0$ approximately equal $median=0$.
+Since $skewness=-0.05$ approximately equal $0$, the distribution is not skew and $mean=0.06$ approximately equal $median=0.09$.
 
 ### Right-skewed
 
@@ -363,9 +363,9 @@ hist(sr)
 
 ```r
 print(c(skewness(sr),mean(sr),median(sr)))
-#> [1]  0.95665409 -0.04261234 -0.23009272
+#> [1]  1.09018385 -0.04906634 -0.25371749
 ```
-Since $skewness=0.96$ is greater than $0$, the distribution is right-skew and $mean=-0.04$ is greater than $median=-0.23$.
+Since $skewness=1.09$ is greater than $0$, the distribution is right-skew and $mean=-0.05$ is greater than $median=-0.25$.
 
 ### Left-skewed
 
@@ -382,9 +382,9 @@ hist(sl)
 
 ```r
 print(c(skewness(sl),mean(sl),median(sl)))
-#> [1] -0.61754231  0.01004147  0.13284948
+#> [1] -0.81600033 -0.06140931  0.08971670
 ```
-Since $skewness=-0.62$ is less than $0$, the distribution is left-skew and $mean=0.01$ is less than $median=0.13$.
+Since $skewness=-0.82$ is less than $0$, the distribution is left-skew and $mean=-0.06$ is less than $median=0.09$.
 
 
 ## Kurtosis
@@ -427,7 +427,7 @@ hist(n)
 
 ```r
 kurtosis(n)
-#> [1] 0.02085865
+#> [1] 0.004107793
 #> attr(,"method")
 #> [1] "excess"
 ```
@@ -449,7 +449,7 @@ hist(t)
 
 ```r
 kurtosis(t)
-#> [1] 59.42366
+#> [1] 105.6037
 #> attr(,"method")
 #> [1] "excess"
 ```

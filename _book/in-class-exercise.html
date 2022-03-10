@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 7 In-class exercise | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="7.1 Dailly log-return Suppose that the daily log-return on a stock are independent and normally distributed with mean \(0.001\) and standard deviation \(0.015\). Suppose you buy \(1000\$\) worth...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 7 In-class exercise | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Dailly log-return Suppose that the daily log-return on a stock are independent and normally distributed with mean \(0.001\) and standard deviation \(0.015\). Suppose you buy \(1000\$\) worth...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 7 In-class exercise | FRM2">
+<meta name="twitter:description" content="7.1 Dailly log-return Suppose that the daily log-return on a stock are independent and normally distributed with mean \(0.001\) and standard deviation \(0.015\). Suppose you buy \(1000\$\) worth...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12.1/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">FRM2</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="active" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="in-class-exercise" class="section level1" number="7">
+<h1>
+<span class="header-section-number">7</span> In-class exercise<a class="anchor" aria-label="anchor" href="#in-class-exercise"><i class="fas fa-link"></i></a>
+</h1>
+<div id="dailly-log-return" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Dailly log-return<a class="anchor" aria-label="anchor" href="#dailly-log-return"><i class="fas fa-link"></i></a>
+</h2>
+<p>Suppose that the daily log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001\)</span> and standard deviation <span class="math inline">\(0.015\)</span>. Suppose you buy <span class="math inline">\(1000\$\)</span> worth of this stock.</p>
+<ol style="list-style-type: lower-alpha">
+<li>What is the prbability that after one trading day your investment is worth less than <span class="math inline">\(990\$\)</span>?</li>
+</ol>
+<blockquote>
+<p>Let <span class="math inline">\(\mathcal{P}_1\)</span> be the probability that after one trading day the investment is worth and <span class="math inline">\(X\)</span> be standard normal random variable.</p>
+</blockquote>
+<blockquote>
+<p>The daily log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001\)</span> and standard deviation <span class="math inline">\(0.015\)</span>: <span class="math inline">\(r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001,0.015)\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\mathcal{P}_1&amp;=\mathcal{P}(1000P_t \leq 990 P_{t-1}) \\
+&amp;=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
+&amp;=\mathcal{P} \left(\frac{r_t-0.001}{0.015}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001}{0.015} \right) \\
+&amp;=\mathcal{P} \left(X  \leq -0.7366 \right) \\
+&amp;=0.23066
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The probability that after one trading day the investment is worth less than 990$ is <span class="math inline">\(23.066\%\)</span>.</p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>What is the probability that after five trading days your investment is worth less than <span class="math inline">\(990\$\)</span>?</li>
+</ol>
+<blockquote>
+<p>Let <span class="math inline">\(\mathcal{P}_5\)</span> be the probability that after five trading day the investment is worth.</p>
+</blockquote>
+<blockquote>
+<p>The five day log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001 \times 5\)</span> and standard deviation <span class="math inline">\(0.015 \times \sqrt{5}\)</span>: <span class="math inline">\(r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})\)</span>.</p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\mathcal{P}_5&amp;=\mathcal{P}(1000P_t \leq 990 P_{t-5}) \\
+&amp;=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
+&amp;=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
+&amp;=\mathcal{P} \left(X  \leq -0.4487 \right) \\
+&amp;=0.32682
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The probability that after five trading day the investment is worth less than <span class="math inline">\(990\$\)</span> is <span class="math inline">\(32.68\%\)</span>.</p>
+</blockquote>
+</div>
+<div id="skewness-kurtosis-1" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Skewness &amp; Kurtosis<a class="anchor" aria-label="anchor" href="#skewness-kurtosis-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Calculate skewness and kurtosis of the following density function</p>
+<blockquote>
+<p><span class="math display">\[f(x) =\begin{cases}
+\frac{3}{8}x^2 &amp; \text{for } 0&lt;x&lt;2\\
+0 &amp; \text{otherwise}
+\end{cases}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\mu_1&amp;=\mathbb{E}[X] \\
+&amp;=\int_{0}^{2}x \times \frac{3}{8}x^2\,dx \\
+&amp;=\frac{3}{2} \\
+\\
+\mu_2&amp;=\mathbb{E}[X^2] \\
+&amp;=\int_{0}^{2}x^2 \times \frac{3}{8}x^2\,dx \\
+&amp;=\frac{12}{5}
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+Sk&amp;=\frac{\mathbb{E}[(X-\mu_1)^3]}{\sigma^3} \\
+&amp;=\frac{\int_{0}^{2}(x-\mu_1)^3 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{3/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^3 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{3/2}} \\
+&amp;=-0.86 \\
+\\
+Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
+&amp;=\frac{\int_{0}^{2}(x-\mu_1)^4 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{4/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^4 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{4/2}} \\
+&amp;=3.10
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: skewness is <span class="math inline">\(-0.86\)</span> and kurtosis is <span class="math inline">\(3.10\)</span>.</p>
+</blockquote>
+<div id="python" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Calculate skewness and kurtosis of the log return of the exchange rate of EURO to USD.</li>
+</ol>
+<div class="sourceCode" id="cb30"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="in-class-exercise.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb30-2"><a href="in-class-exercise.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb30-3"><a href="in-class-exercise.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Import and calculate log return    </span></span>
+<span id="cb30-4"><a href="in-class-exercise.html#cb30-4" aria-hidden="true" tabindex="-1"></a>eurusd_url<span class="op">=</span><span class="st">'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=0&amp;single=true&amp;output=csv'</span></span>
+<span id="cb30-5"><a href="in-class-exercise.html#cb30-5" aria-hidden="true" tabindex="-1"></a>eurusd<span class="op">=</span>pd.read_csv(eurusd_url)</span>
+<span id="cb30-6"><a href="in-class-exercise.html#cb30-6" aria-hidden="true" tabindex="-1"></a>eurusd.head()</span>
+<span id="cb30-7"><a href="in-class-exercise.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Date  USD per euro</span></span>
+<span id="cb30-8"><a href="in-class-exercise.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0  27/07/2005        1.1990</span></span>
+<span id="cb30-9"><a href="in-class-exercise.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  28/07/2005        1.2100</span></span>
+<span id="cb30-10"><a href="in-class-exercise.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  29/07/2005        1.2093</span></span>
+<span id="cb30-11"><a href="in-class-exercise.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  01/08/2005        1.2219</span></span>
+<span id="cb30-12"><a href="in-class-exercise.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  02/08/2005        1.2217</span></span>
+<span id="cb30-13"><a href="in-class-exercise.html#cb30-13" aria-hidden="true" tabindex="-1"></a>eurusd_logret <span class="op">=</span> np.log(eurusd[<span class="st">'USD per euro'</span>]) <span class="op">-</span> np.log(eurusd[<span class="st">'USD per euro'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb30-14"><a href="in-class-exercise.html#cb30-14" aria-hidden="true" tabindex="-1"></a>eurusd_logret[:<span class="dv">6</span>]</span>
+<span id="cb30-15"><a href="in-class-exercise.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0         NaN</span></span>
+<span id="cb30-16"><a href="in-class-exercise.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    0.009132</span></span>
+<span id="cb30-17"><a href="in-class-exercise.html#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   -0.000579</span></span>
+<span id="cb30-18"><a href="in-class-exercise.html#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    0.010365</span></span>
+<span id="cb30-19"><a href="in-class-exercise.html#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   -0.000164</span></span>
+<span id="cb30-20"><a href="in-class-exercise.html#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    0.007421</span></span>
+<span id="cb30-21"><a href="in-class-exercise.html#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: USD per euro, dtype: float64</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="in-class-exercise.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb31-2"><a href="in-class-exercise.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploratory</span></span>
+<span id="cb31-3"><a href="in-class-exercise.html#cb31-3" aria-hidden="true" tabindex="-1"></a>eurusd_logret.plot()</span>
+<span id="cb31-4"><a href="in-class-exercise.html#cb31-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb31-5"><a href="in-class-exercise.html#cb31-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log-Return'"</span>)</span>
+<span id="cb31-6"><a href="in-class-exercise.html#cb31-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Log-Return of Exchange Rate over time'"</span>)</span>
+<span id="cb31-7"><a href="in-class-exercise.html#cb31-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="in-class-exercise.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb32-2"><a href="in-class-exercise.html#cb32-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb32-3"><a href="in-class-exercise.html#cb32-3" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_axes([<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.8</span>,<span class="fl">0.8</span>])</span>
+<span id="cb32-4"><a href="in-class-exercise.html#cb32-4" aria-hidden="true" tabindex="-1"></a>eurusd_logret.plot.hist(bins <span class="op">=</span> <span class="dv">60</span>)</span>
+<span id="cb32-5"><a href="in-class-exercise.html#cb32-5" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Log Return"</span>)</span>
+<span id="cb32-6"><a href="in-class-exercise.html#cb32-6" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Percent"</span>)</span>
+<span id="cb32-7"><a href="in-class-exercise.html#cb32-7" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Histogram of Log return"</span>)</span>
+<span id="cb32-8"><a href="in-class-exercise.html#cb32-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-24-3.png" width="672"></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="in-class-exercise.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb33-2"><a href="in-class-exercise.html#cb33-2" aria-hidden="true" tabindex="-1"></a>eurusd_logret.skew()</span>
+<span id="cb33-3"><a href="in-class-exercise.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -0.07336059594162114</span></span>
+<span id="cb33-4"><a href="in-class-exercise.html#cb33-4" aria-hidden="true" tabindex="-1"></a>eurusd_logret.kurtosis()</span>
+<span id="cb33-5"><a href="in-class-exercise.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4.66844649461392</span></span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate skewness and kurtosis of the log return of the exchange rate of S&amp;P500.</li>
+</ol>
+<div class="sourceCode" id="cb34"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb34-1"><a href="in-class-exercise.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb34-2"><a href="in-class-exercise.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb34-3"><a href="in-class-exercise.html#cb34-3" aria-hidden="true" tabindex="-1"></a>sp500_url<span class="op">=</span><span class="st">'https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv'</span></span>
+<span id="cb34-4"><a href="in-class-exercise.html#cb34-4" aria-hidden="true" tabindex="-1"></a>sp500<span class="op">=</span>pd.read_csv(sp500_url)</span>
+<span id="cb34-5"><a href="in-class-exercise.html#cb34-5" aria-hidden="true" tabindex="-1"></a>sp500.head()</span>
+<span id="cb34-6"><a href="in-class-exercise.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;          Date    Open    High     Low   Close    Volume  Adj Close</span></span>
+<span id="cb34-7"><a href="in-class-exercise.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0  01/03/1985  165.37  166.11  164.38  164.57  88880000     164.57</span></span>
+<span id="cb34-8"><a href="in-class-exercise.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  01/04/1985  164.55  164.55  163.36  163.68  77480000     163.68</span></span>
+<span id="cb34-9"><a href="in-class-exercise.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  01/07/1985  163.68  164.71  163.68  164.24  86190000     164.24</span></span>
+<span id="cb34-10"><a href="in-class-exercise.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  01/08/1985  164.24  164.59  163.91  163.99  92110000     163.99</span></span>
+<span id="cb34-11"><a href="in-class-exercise.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  01/09/1985  163.99  165.57  163.99  165.18  99230000     165.18</span></span>
+<span id="cb34-12"><a href="in-class-exercise.html#cb34-12" aria-hidden="true" tabindex="-1"></a>sp500_logret <span class="op">=</span> np.log(sp500[<span class="st">'Close'</span>]) <span class="op">-</span> np.log(sp500[<span class="st">'Close'</span>].shift(<span class="dv">1</span>))</span>
+<span id="cb34-13"><a href="in-class-exercise.html#cb34-13" aria-hidden="true" tabindex="-1"></a>sp500_logret[:<span class="dv">6</span>]</span>
+<span id="cb34-14"><a href="in-class-exercise.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0         NaN</span></span>
+<span id="cb34-15"><a href="in-class-exercise.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   -0.005423</span></span>
+<span id="cb34-16"><a href="in-class-exercise.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    0.003415</span></span>
+<span id="cb34-17"><a href="in-class-exercise.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   -0.001523</span></span>
+<span id="cb34-18"><a href="in-class-exercise.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    0.007230</span></span>
+<span id="cb34-19"><a href="in-class-exercise.html#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    0.018772</span></span>
+<span id="cb34-20"><a href="in-class-exercise.html#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Name: Close, dtype: float64</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb35-1"><a href="in-class-exercise.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb35-2"><a href="in-class-exercise.html#cb35-2" aria-hidden="true" tabindex="-1"></a>sp500_logret.plot()</span>
+<span id="cb35-3"><a href="in-class-exercise.html#cb35-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
+<span id="cb35-4"><a href="in-class-exercise.html#cb35-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Log-Return'"</span>)</span>
+<span id="cb35-5"><a href="in-class-exercise.html#cb35-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Log-Return of S&amp;P500 over time'"</span>)</span>
+<span id="cb35-6"><a href="in-class-exercise.html#cb35-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-27-5.png" width="672"></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb36-1"><a href="in-class-exercise.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb36-2"><a href="in-class-exercise.html#cb36-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure()</span>
+<span id="cb36-3"><a href="in-class-exercise.html#cb36-3" aria-hidden="true" tabindex="-1"></a>ax1 <span class="op">=</span> fig.add_axes([<span class="fl">0.1</span>,<span class="fl">0.1</span>,<span class="fl">0.8</span>,<span class="fl">0.8</span>])</span>
+<span id="cb36-4"><a href="in-class-exercise.html#cb36-4" aria-hidden="true" tabindex="-1"></a>sp500_logret.plot.hist(bins <span class="op">=</span> <span class="dv">60</span>)</span>
+<span id="cb36-5"><a href="in-class-exercise.html#cb36-5" aria-hidden="true" tabindex="-1"></a>ax1.set_xlabel(<span class="st">"Log Return"</span>)</span>
+<span id="cb36-6"><a href="in-class-exercise.html#cb36-6" aria-hidden="true" tabindex="-1"></a>ax1.set_ylabel(<span class="st">"Percent"</span>)</span>
+<span id="cb36-7"><a href="in-class-exercise.html#cb36-7" aria-hidden="true" tabindex="-1"></a>ax1.set_title(<span class="st">"Histogram of Log return"</span>)</span>
+<span id="cb36-8"><a href="in-class-exercise.html#cb36-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-28-7.png" width="672"></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb37-1"><a href="in-class-exercise.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb37-2"><a href="in-class-exercise.html#cb37-2" aria-hidden="true" tabindex="-1"></a>sp500_logret.skew()</span>
+<span id="cb37-3"><a href="in-class-exercise.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; -1.2989867430563735</span></span>
+<span id="cb37-4"><a href="in-class-exercise.html#cb37-4" aria-hidden="true" tabindex="-1"></a>sp500_logret.kurtosis()</span>
+<span id="cb37-5"><a href="in-class-exercise.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 28.28091194470013</span></span></code></pre></div>
+</div>
+<div id="r" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Calculate skewness and kurtosis of the log return of the exchange rate of EURO to USD.</li>
+</ol>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
+<span class="co"># Import and calculate log return</span>
+<span class="va">eurusd_url</span><span class="op">=</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=0&amp;single=true&amp;output=csv"</span>
+<span class="va">eurusd</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">eurusd_url</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">eurusd</span><span class="op">)</span>
+<span class="co">#&gt;         Date USD.per.euro</span>
+<span class="co">#&gt; 1 27/07/2005       1.1990</span>
+<span class="co">#&gt; 2 28/07/2005       1.2100</span>
+<span class="co">#&gt; 3 29/07/2005       1.2093</span>
+<span class="co">#&gt; 4 01/08/2005       1.2219</span>
+<span class="co">#&gt; 5 02/08/2005       1.2217</span>
+<span class="co">#&gt; 6 03/08/2005       1.2308</span>
+<span class="va">eurusd_logret</span><span class="op">=</span><span class="va">eurusd</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1]  0.0091324836 -0.0005786798  0.0103653445 -0.0001636929</span>
+<span class="co">#&gt; [5]  0.0074210330  0.0008933285</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">eurusd_logret</span>,type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-31-1.png" width="672"></div>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">eurusd_logret</span>,breaks<span class="op">=</span><span class="fl">60</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-32-1.png" width="672"></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.07318848</span>
+<span class="fu"><a href="https://rdrr.io/pkg/e1071/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1] 4.633551</span></code></pre></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Calculate skewness and kurtosis of the log return of the exchange rate of S&amp;P500.</li>
+</ol>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
+<span class="co"># Import and calculate log return</span>
+<span class="va">sp500_url</span><span class="op">=</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv"</span>
+<span class="va">sp500</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">sp500_url</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sp500</span><span class="op">)</span>
+<span class="co">#&gt;         Date   Open   High    Low  Close    Volume</span>
+<span class="co">#&gt; 1 01/03/1985 165.37 166.11 164.38 164.57  88880000</span>
+<span class="co">#&gt; 2 01/04/1985 164.55 164.55 163.36 163.68  77480000</span>
+<span class="co">#&gt; 3 01/07/1985 163.68 164.71 163.68 164.24  86190000</span>
+<span class="co">#&gt; 4 01/08/1985 164.24 164.59 163.91 163.99  92110000</span>
+<span class="co">#&gt; 5 01/09/1985 163.99 165.57 163.99 165.18  99230000</span>
+<span class="co">#&gt; 6  1/10/1985 165.18 168.31 164.99 168.31 124700000</span>
+<span class="co">#&gt;   Adj.Close</span>
+<span class="co">#&gt; 1    164.57</span>
+<span class="co">#&gt; 2    163.68</span>
+<span class="co">#&gt; 3    164.24</span>
+<span class="co">#&gt; 4    163.99</span>
+<span class="co">#&gt; 5    165.18</span>
+<span class="co">#&gt; 6    168.31</span>
+<span class="va">sp500_logret</span><span class="op">=</span> <span class="va">sp500</span><span class="op">$</span><span class="va">Adj.Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.005422709  0.003415471 -0.001523322  0.007230338</span>
+<span class="co">#&gt; [5]  0.018771729 -0.002379396</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">sp500_logret</span>,type<span class="op">=</span><span class="st">"l"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-35-1.png" width="672"></div>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sp500_logret</span>,breaks<span class="op">=</span><span class="fl">60</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-36-1.png" width="672"></div>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/e1071/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1] -1.298466</span>
+<span class="fu"><a href="https://rdrr.io/pkg/e1071/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span>
+<span class="co">#&gt; [1] 28.25285</span></code></pre></div>
+</div>
+</div>
+<div id="the-jarque-bera-jb-tests" class="section level2" number="7.3">
+<h2>
+<span class="header-section-number">7.3</span> The Jarque-Bera (JB) tests<a class="anchor" aria-label="anchor" href="#the-jarque-bera-jb-tests"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-1" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Check if the data of the log return of the exchange rate of Euro to USD follow the normal distribution.</li>
+</ol>
+<div class="sourceCode" id="cb46"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="in-class-exercise.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb46-2"><a href="in-class-exercise.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.jarque_bera(eurusd_logret[<span class="dv">1</span>:]),stats.kstest(eurusd_logret[<span class="dv">1</span>:],<span class="st">'norm'</span>))</span>
+<span id="cb46-3"><a href="in-class-exercise.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Jarque_beraResult(statistic=1150.3195976112938, pvalue=0.0) KstestResult(statistic=0.48876441843556134, pvalue=5.961875332718074e-282)</span></span></code></pre></div>
+<p><span class="math inline">\(p-value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0: Sk=0 \text{ and } Kur=3\)</span> meaning that the log return of exchange rate of EURUSD do not follow the normal distribution.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Check if the data of the log return of exchange rate of S&amp;P500 follow the normal distribution.</li>
+</ol>
+<div class="sourceCode" id="cb47"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="in-class-exercise.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.stats <span class="im">as</span> stats</span>
+<span id="cb47-2"><a href="in-class-exercise.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats.jarque_bera(sp500_logret[<span class="dv">1</span>:]),stats.kstest(sp500_logret[<span class="dv">1</span>:],<span class="st">'norm'</span>))</span>
+<span id="cb47-3"><a href="in-class-exercise.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Jarque_beraResult(statistic=250996.03457721754, pvalue=0.0) KstestResult(statistic=0.4800295652866924, pvalue=0.0)</span></span></code></pre></div>
+<p><span class="math inline">\(p-value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0: Sk=0 \text{ and } Kur=3\)</span> meaning that the log return of exchange rate of S&amp;P500 do not follow the normal distribution.</p>
+</div>
+<div id="r-1" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-1"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Check if the data of the log return of the exchange rate of Euro to USD follow the normal distribution.</li>
+</ol>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/jarque.test.html">jarque.test</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Jarque-Bera Normality Test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  eurusd_logret</span>
+<span class="co">#&gt; JB = 1150.3, p-value &lt; 2.2e-16</span>
+<span class="co">#&gt; alternative hypothesis: greater</span></code></pre></div>
+<p><span class="math inline">\(p-value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0: Sk=0 \text{ and } Kur=3\)</span> meaning that the log return of exchange rate of EURUSD do not follow the normal distribution.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Check if the data of the log return of exchange rate of S&amp;P500 follow the normal distribution.</li>
+</ol>
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/jarque.test.html">jarque.test</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Jarque-Bera Normality Test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  sp500_logret</span>
+<span class="co">#&gt; JB = 250996, p-value &lt; 2.2e-16</span>
+<span class="co">#&gt; alternative hypothesis: greater</span></code></pre></div>
+<p><span class="math inline">\(p-value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0: Sk=0 \text{ and } Kur=3\)</span> meaning that the log return of exchange rate of S&amp;P500 do not follow the normal distribution.</p>
+</div>
+</div>
+<div id="q-q-plot-1" class="section level2" number="7.4">
+<h2>
+<span class="header-section-number">7.4</span> Q-Q plot<a class="anchor" aria-label="anchor" href="#q-q-plot-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-2" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-2"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Q-Q plot of the log return of the exchange rate of Euro to USD</li>
+</ol>
+<div class="sourceCode" id="cb50"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="in-class-exercise.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb50-2"><a href="in-class-exercise.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pylab <span class="im">as</span> py</span>
+<span id="cb50-3"><a href="in-class-exercise.html#cb50-3" aria-hidden="true" tabindex="-1"></a>sm.qqplot(eurusd_logret, line <span class="op">=</span><span class="st">'q'</span>)</span>
+<span id="cb50-4"><a href="in-class-exercise.html#cb50-4" aria-hidden="true" tabindex="-1"></a>py.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-42-1.png" width="672"></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Q-Q plot of the log return of S&amp;P500</li>
+</ol>
+<div class="sourceCode" id="cb51"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="in-class-exercise.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb51-2"><a href="in-class-exercise.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pylab <span class="im">as</span> py</span>
+<span id="cb51-3"><a href="in-class-exercise.html#cb51-3" aria-hidden="true" tabindex="-1"></a>sm.qqplot(sp500_logret, line <span class="op">=</span><span class="st">'q'</span>)</span>
+<span id="cb51-4"><a href="in-class-exercise.html#cb51-4" aria-hidden="true" tabindex="-1"></a>py.show()</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-43-3.png" width="672"></div>
+</div>
+<div id="r-2" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-2"><i class="fas fa-link"></i></a>
+</h3>
+<ol style="list-style-type: decimal">
+<li>Q-Q plot of the log return of the exchange rate of Euro to USD</li>
+</ol>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">eurusd_logret</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-44-5.png" width="672"></div>
+<ol start="2" style="list-style-type: decimal">
+<li>Q-Q plot of the log return of S&amp;P500</li>
+</ol>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">sp500_logret</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-45-1.png" width="672"></div>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></div>
+<div class="next"><a href="homework.html"><span class="header-section-number">8</span> Homework</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#in-class-exercise"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="nav-link" href="#dailly-log-return"><span class="header-section-number">7.1</span> Dailly log-return</a></li>
+<li>
+<a class="nav-link" href="#skewness-kurtosis-1"><span class="header-section-number">7.2</span> Skewness &amp; Kurtosis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python">Python</a></li>
+<li><a class="nav-link" href="#r">R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#the-jarque-bera-jb-tests"><span class="header-section-number">7.3</span> The Jarque-Bera (JB) tests</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-1">Python</a></li>
+<li><a class="nav-link" href="#r-1">R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#q-q-plot-1"><span class="header-section-number">7.4</span> Q-Q plot</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-2">Python</a></li>
+<li><a class="nav-link" href="#r-2">R</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

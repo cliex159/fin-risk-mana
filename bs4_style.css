@@ -1,0 +1,37 @@
+html,body {
+  background-color: #white;
+}
+
+h1,h2,h3,h4,h5,h6,h {
+  font-family: Georgia;
+  color:#9b2226;
+}
+
+body {
+  font-family: "Georgia";
+  text-align: justify;
+}
+
+p {
+  font-family: "Georgia";
+  text-indent: 30px;
+  color: black;
+  font-style: normal;
+}
+
+p.caption {
+  color: #777;
+  margin-top: 10px;
+}
+p code {
+  white-space: inherit;
+}
+pre {
+  word-break: normal;
+  word-wrap: normal;
+}
+pre code {
+  white-space: inherit;
+}
+
+

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Stationary processes | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Stationary processes | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Stationary processes | FRM2">
+<meta name="twitter:description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12.1/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">FRM2</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="active" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stationary-processes" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Stationary processes<a class="anchor" aria-label="anchor" href="#stationary-processes"><i class="fas fa-link"></i></a>
+</h1>
+<p>The volatility plays a crucial role in financial risk management, it is
+the main measure of risk. On the other hands, the volatility is the
+key factor in, e.g., Investment decisions, Portfolio construction
+(Markowitz model) and Derivative pricing (Black-Scholes model).</p>
+<ul>
+<li>In this Chapter we focus on the estimation and forecasting of
+volatility for a single asset (univariate).</li>
+<li>The volatility plays a crucial role in financial risk management, it is
+the main measure of risk. On the other hands, the volatility is the
+key factor in, e.g., Investment decisions, Portfolio construction
+(Markowitz model) and Derivative pricing (Black-Scholes model).</li>
+<li>In this Chapter we focus on the estimation and forecasting of
+volatility for a single asset (univariate).</li>
+</ul>
+<div id="time-series" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Time series<a class="anchor" aria-label="anchor" href="#time-series"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>A time series is a sequence of observations in chronological order. For example: daily log returns on a stock or monthly values of the Consumer Price Index (CPI).</li>
+<li>A stochastic process is a sequence of random variables and can be viewed as the “theoretical” or “population” analog of a time series, conversely, a time series can be considered a sample from a stochastic process.</li>
+<li>Denote <span class="math inline">\(\{X_t, t \in I\}\)</span> the time series, where I is a time index. For example: <span class="math inline">\(I = \{1, 2, 3, ...\}\)</span> or <span class="math inline">\(I = \{2000, 2001, 2002...2021\}\)</span>. Equally spaced time series are the most common in practice. This is the case of
+<span class="math inline">\(I = \{t_1, t_2, ..., t_n\}\)</span>, where
+<span class="math inline">\((\Delta = t_{i+1} − t)_i\)</span> with <span class="math inline">\(\Delta\)</span> is a constant.</li>
+</ul>
+<div id="remark-1" class="section level3" number="9.1.1">
+<h3>
+<span class="header-section-number">9.1.1</span> Remark<a class="anchor" aria-label="anchor" href="#remark-1"><i class="fas fa-link"></i></a>
+</h3>
+<p><strong>Difference from traditional Statistical Inference</strong></p>
+<ul>
+<li>In traditional statistic inference, the data is assumed to be an i.i.d
+process (random sample).</li>
+<li>In time series, we do not need this assumption and wish to model the dependency among observations which leads to the concept of autocorrelation.</li>
+</ul>
+<p><strong>Some main problems in time series</strong></p>
+<ul>
+<li>Formulate and estimate a parametric model for <span class="math inline">\(X_t\)</span> (need to propose methods of estimation and model diagnostics).</li>
+<li>This point is related to the estimation of autoregressive (AR) or ARMA models.</li>
+<li>Estimation of Missing values (fill“gaps”).</li>
+<li>Prediction or Forecasting (“would like to know what a future value is”). For example our data is <span class="math inline">\(x_1, x_2, ..., x_{100}\)</span>, we wish to forecast the next 10 values, <span class="math inline">\(x_{101}, ..., x_{110}\)</span>. In this case, our forecasting horizon is 10.</li>
+<li>Plotting time series to observe fluctuations of time series, e.g., to find stationarity or non-stationarity, cycles, trends, outliers or interventions. Assisting in the formulation of a parametric model.</li>
+</ul>
+</div>
+<div id="example-4" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-4"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider Financial Index SP500. The data consists of excess returns <span class="math inline">\(X_t = \log(S_t) −\log(S_{t−1})\)</span>. From the plot we see the following properties of <span class="math inline">\(X_t\)</span>:</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sp500</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">sp500</span><span class="op">$</span><span class="va">Close</span><span class="op">)</span><span class="op">)</span>,type<span class="op">=</span><span class="st">"l"</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
+<ul>
+<li>The mean level of the process seems constant.</li>
+<li>There are sections of the data with explosive behavior (high volatility).</li>
+<li>The data corresponds to a non-stationary process (will define more detailed).</li>
+<li>The variance (or volatility) is not constant in time.</li>
+<li>No linear time series model will be available for this data.</li>
+</ul>
+</div>
+</div>
+<div id="autocovariance" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Autocovariance<a class="anchor" aria-label="anchor" href="#autocovariance"><i class="fas fa-link"></i></a>
+</h2>
+<div id="definition-3" class="section level3" number="9.2.1">
+<h3>
+<span class="header-section-number">9.2.1</span> Definition<a class="anchor" aria-label="anchor" href="#definition-3"><i class="fas fa-link"></i></a>
+</h3>
+<p>The autocovariance function a stochastic process <span class="math inline">\(X\)</span> is defined as
+<span class="math display">\[\gamma(t,\tau)=\mathbb{E}(X_t −\mu_t)(X_{t−\tau} −\mu_{t−\tau})\]</span>
+for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class="math inline">\(\mu_t = E(X_t)\)</span>.</p>
+<ul>
+<li>The autocovariance function is symmetric, i.e., <span class="math inline">\(\gamma(t,\tau) = \gamma(t − \tau,−\tau)\)</span>. For special case <span class="math inline">\(\tau = 0\)</span> then <span class="math inline">\(\gamma(t, 0) = Var(X_t)\)</span>.</li>
+<li>In general <span class="math inline">\(\gamma(t,\tau)\)</span> is depend on t as well as <span class="math inline">\(\tau\)</span>.</li>
+</ul>
+</div>
+<div id="example-5" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-5"><i class="fas fa-link"></i></a>
+</h3>
+<p>Find the autocovariance function of Brownian motion?</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+&amp;B_t \sim \mathcal{N}(0,t) \\
+&amp;\rightarrow E[B_t^2] =Var(B_t)=t
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+&amp;B_t-B_{t-\tau} \sim \mathcal{N}(0,t-\tau) \\
+&amp;\rightarrow E[(B_t-B_{t-\tau})^2]=Var(B_t-B_{t-\tau})=t-\tau
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\gamma(t,\tau)&amp;=E[(B_t-\mu_t)(B_{t-\tau}-\mu_{t-\tau})] \\
+&amp;=E[B_tB_{t-\tau}] \\
+&amp;=-\frac{1}{2}E[(B_t-B_{t-\tau})^2-B_t^2-B_{t-\tau}^2] \\
+&amp;=-\frac{1}{2}\{E[(B_t-B_{t-\tau})^2] -E[B_t^2]-E[B_{t-\tau}^2]\} \\
+&amp;=-\frac{1}{2} [(\tau)-(t)-(t-\tau)]=t-\tau
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The autocovariance function of Brownian motion is <span class="math inline">\(t-\tau\)</span>.</p>
+</blockquote>
+</div>
+</div>
+<div id="stationary" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Stationary<a class="anchor" aria-label="anchor" href="#stationary"><i class="fas fa-link"></i></a>
+</h2>
+<div id="strictly-stationary" class="section level3" number="9.3.1">
+<h3>
+<span class="header-section-number">9.3.1</span> Strictly Stationary<a class="anchor" aria-label="anchor" href="#strictly-stationary"><i class="fas fa-link"></i></a>
+</h3>
+<p>A process is said to be strictly stationary if all aspects of its behavior are unchanged by shifts in time. Mathematically, stationarity is defined as the requirement that for every <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> the distribution of
+<span class="math inline">\((X_1, X_2, ..., X_n)\)</span> and <span class="math inline">\((X_{1+m}, X_{2+m}, ..., X_{n+m})\)</span> are the same.</p>
+</div>
+<div id="weakly-stationary" class="section level3" number="9.3.2">
+<h3>
+<span class="header-section-number">9.3.2</span> Weakly Stationary<a class="anchor" aria-label="anchor" href="#weakly-stationary"><i class="fas fa-link"></i></a>
+</h3>
+<p>A process is weakly stationary if its mean, variance, and covariance are unchanged by time shifts. More precisely, <span class="math inline">\(X_1, X_2, ...,\)</span> is a weakly stationary process if</p>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{E}(X_t)=\mu, \forall t\)</span></li>
+<li>
+<span class="math inline">\(Var(X_t) = \sigma_2\)</span> (a positive finite constant) for all <span class="math inline">\(t\)</span>.</li>
+<li>
+<span class="math inline">\(Cov(X_t, X_s) = \gamma(|t − s|), \forall t, s\)</span> and some function <span class="math inline">\(\gamma\)</span>.</li>
+</ol>
+<p>We see that, the mean and variance do not change with time and the covariance between two observations depends only on the lag, the time distance <span class="math inline">\(|t − s|\)</span>.</p>
+<ul>
+<li>The function <span class="math inline">\(\gamma\)</span> is the autocovariance function of the process and has symmetric property <span class="math inline">\(\gamma(h) = \gamma(−h)\)</span>.</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\gamma(h)=cov(X_t,X_{t+h}) \\
+\rightarrow \gamma(-h)=cov(X_{t},X_{t-h})
+\end{align*}\]</span></p>
+<p>Let <span class="math inline">\(s=t-h\)</span> then <span class="math inline">\(t=s+h\)</span>
+<span class="math display">\[\gamma(-h)=cov(X_{s+h},X_{s})=\gamma(h) \]</span></p>
+<ul>
+<li>The correlation between <span class="math inline">\(X_t\)</span> and <span class="math inline">\(X_{t+h}\)</span> is denoted by <span class="math inline">\(\rho(h)\)</span>. Function <span class="math inline">\(\rho\)</span> is called autocorrelation function (ACF). We have <span class="math inline">\(\gamma(0) = \sigma^2\)</span> and, hence
+<span class="math inline">\(\gamma(h) = \sigma^2 \rho(h)\)</span> hence <span class="math inline">\(\rho(h) = \frac{\gamma(h)}{\gamma(0)}\)</span>.</li>
+</ul>
+<p>The ACF is normalized on <span class="math inline">\([−1, 1]\)</span>. Since the process is required to be covariance stationary, the ACF depends only on one parameter, lag <span class="math inline">\(h\)</span>.</p>
+</div>
+<div id="example-6" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-6"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider the random walk <span class="math inline">\(X: X_t = c + X_{t−1} + \epsilon_t\)</span>, with c is constant and white noise <span class="math inline">\(\epsilon_t\)</span>. We see that if <span class="math inline">\(c \neq 0\)</span>, then <span class="math inline">\(Z_t := X_t −X_{t−1} = c+ \epsilon_t\)</span> have a non-zero mean. We call it a random walk with drift. Note that since <span class="math inline">\(\epsilon_t\)</span> is independent then we call <span class="math inline">\(X_t\)</span> a random walk with independent increments. For more convenience, assume that <span class="math inline">\(c\)</span> and <span class="math inline">\(X_0\)</span> are set to zero. We have</p>
+<p><span class="math display">\[\begin{align*}
+&amp;X_t =\epsilon_t + \epsilon_{t−1} +...+\epsilon_1 \\
+\\
+&amp;\mu_t =E(X_t)=0 \\
+\\
+&amp;Var(X_t) = t\sigma
+\end{align*}\]</span></p>
+<p><span class="math inline">\(Var(X_t)\)</span> is not stationary but rather increases linearly with time and makes the random walk “wander”, i.e., <span class="math inline">\(X_t\)</span> takes increasingly longer excursions away from its conditional mean of <span class="math inline">\(0\)</span>, and therefore is not mean-reverting.</p>
+<p>If <span class="math inline">\(s&lt;t\)</span> then</p>
+<p><span class="math display">\[ \rho(t,s)=\sqrt{1-\frac{s}{t}} \]</span></p>
+<p>which against <span class="math inline">\(\rho\)</span> depending on <span class="math inline">\(t\)</span> as well as on <span class="math inline">\(s\)</span>, thus the random walk is not covariance stationary. The following figure shows the relationship among different processes: Stationary processes are the largest set, followed by white noise, martingale difference (MD), and i.i.d. processes.</p>
+<center>
+<img src="Frisk/21.png">
+</center>
+</div>
+</div>
+<div id="estimating-parameters" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Estimating Parameters<a class="anchor" aria-label="anchor" href="#estimating-parameters"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let <span class="math inline">\(X_1, X_2, ..., X_n\)</span> be observations from weakly stationary process. To estimate the autocovariance function, we use the sample autocovariance function defined by</p>
+<p><span class="math display">\[ \hat{\gamma}(h)=\frac{1}{n} \sum_{t=1}^{n-h}(X_{t+h}-\bar X)(X-t-\bar X) \]</span></p>
+<p>To estimate function <span class="math inline">\(\rho\)</span>, we use the sample autocorrelation function
+(sample ACF) defined as</p>
+<p><span class="math display">\[\hat \rho(h) =\frac{\hat \gamma(h)}{\hat \gamma(h)}\]</span></p>
+<ul>
+<li>To visualize the dependencies of <span class="math inline">\(x_t\)</span> for different lags h, we use the Correlogram.</li>
+<li>A correlogram is a plot of <span class="math inline">\(h\)</span> (x-axis) versus its corresponding value of <span class="math inline">\(\hat \rho(h)\)</span> (y-axis).</li>
+<li>The correlogram may exhibit patterns and different degrees of dependency in a time series.</li>
+<li>A “band” of size <span class="math inline">\(\frac{2}{\sqrt{n}}\)</span> is added to the correlogram because asymptotically <span class="math inline">\(\hat \rho(h) \sim \mathcal{N} \left(0, \frac{1}{n} \right)\)</span> if the data is close to a white noise process.</li>
+<li>This band is used to detect significant autocorrelations, i.e. autocorelations that are different from zero.</li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/tidyquant">tidyquant</a></span><span class="op">)</span>
+<span class="va">msft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
+               to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-01-01"</span><span class="op">)</span>,
+               get <span class="op">=</span> <span class="st">"stock.prices"</span><span class="op">)</span>
+
+<span class="va">msft_logret</span><span class="op">=</span><span class="va">msft</span><span class="op">$</span><span class="va">adjusted</span> <span class="op"><a href="https://rdrr.io/pkg/tidyquant/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/tidyquant/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">msft_logret</span>,lag.max<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-2-1.png" width="672"></div>
+</div>
+<div id="the-adf-test" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> The ADF Test<a class="anchor" aria-label="anchor" href="#the-adf-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>ADF Test is also called Unit Root Test. The test uses the following null and alternative hypotheses:</p>
+<ul>
+<li>
+<span class="math inline">\(H_0\)</span> : The time series contains a unit root. This means that the time series is non-stationary, i.e., it has some time-dependent structure and does not have constant variance over time.</li>
+<li>
+<span class="math inline">\(H_1\)</span> : The time series is stationary.</li>
+</ul>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tseries/man/adf.test.html">adf.test</a></span><span class="op">(</span><span class="va">msft_logret</span><span class="op">)</span>
+<span class="co">#&gt; Warning in adf.test(msft_logret): p-value smaller than</span>
+<span class="co">#&gt; printed p-value</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Augmented Dickey-Fuller Test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  msft_logret</span>
+<span class="co">#&gt; Dickey-Fuller = -9.7881, Lag order = 10, p-value =</span>
+<span class="co">#&gt; 0.01</span>
+<span class="co">#&gt; alternative hypothesis: stationary</span></code></pre></div>
+</div>
+<div id="kpss-test" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> KPSS test<a class="anchor" aria-label="anchor" href="#kpss-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>The ideas of KPSS test comes from the regression model with time
+trend</p>
+<p><span class="math inline">\(X_t =c+ \mu_t+k \sum_{i=1}^{t} \xi_i +\eta_t\)</span></p>
+<p>with stationary <span class="math inline">\(\eta_t\)</span> and i.i.d <span class="math inline">\(\xi\)</span> with mean <span class="math inline">\(0\)</span> and variance <span class="math inline">\(1\)</span>. Note that the third term is a random walk. So we set the null hypothesis: the data is stationary and.</p>
+<p><span class="math display">\[ H_0 : k = 0 \\
+H_1 : k \neq 0 \]</span></p>
+<p>Test results for Microsoft data</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tseries/man/kpss.test.html">kpss.test</a></span><span class="op">(</span><span class="va">msft_logret</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  KPSS Test for Level Stationarity</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  msft_logret</span>
+<span class="co">#&gt; KPSS Level = 0.20346, Truncation lag parameter = 7,</span>
+<span class="co">#&gt; p-value = 0.1</span></code></pre></div>
+</div>
+<div id="ljungbox-test" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Ljung–Box Test<a class="anchor" aria-label="anchor" href="#ljungbox-test"><i class="fas fa-link"></i></a>
+</h2>
+<p>Sample ACF with test bounds.</p>
+<ul>
+<li>These bounds are used to test the null hypothesis that an autocorrelation coefficient is <span class="math inline">\(0\)</span>.</li>
+<li>The null hypothesis is rejected if the sample autocorrelation is outside the bounds.</li>
+<li>The usual level of the test is <span class="math inline">\(0.05\)</span>.</li>
+</ul>
+<div id="example-7" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-7"><i class="fas fa-link"></i></a>
+</h3>
+<p>(The First-order Autoregression Model (AR(1))) The time series <span class="math inline">\(X = (X_t)\)</span> is called AR(1) if the value of X at time t is a linear function of the value of <span class="math inline">\(X\)</span> at time <span class="math inline">\(t − 1\)</span> as follows</p>
+<p><span class="math display">\[X_t=\delta+\phi_1 X_{t-1}+w_t=\delta+\sum_{h=0}^\infty \phi_1^h w_{t-h} \]</span></p>
+<ol style="list-style-type: decimal">
+<li>The errors <span class="math inline">\(w_t \sim \mathcal{N}(0,\sigma_w^2)\)</span> are i.i.d.</li>
+<li>
+<span class="math inline">\(w_t\)</span> is independent of <span class="math inline">\(X_t\)</span>.</li>
+<li>
+<span class="math inline">\(\phi_1&lt;1\)</span>. This condition guarantees that <span class="math inline">\(X_t\)</span> is weakly stationary.</li>
+</ol>
+<p><span class="math display">\[\begin{align*}
+&amp;\mu=\mathbb{E}(X_t)=\frac{\delta}{1-\phi_1} \\
+\\
+&amp;Var(X_t)=\frac{\sigma_w^2}{1-\phi_1^2} \\
+\\
+&amp;Cov(X_t,X_{t+h})=\gamma(h)=\phi_1^h \times \frac{\sigma_w^2}{1-\phi_1^2} \\
+\\
+&amp;\rho(h)=\phi_1^h
+\end{align*}\]</span></p>
+<p>Note that the magnitude of its ACF decays geometrically to zero, either slowly as when <span class="math inline">\(\phi_1 = 0.95\)</span>, moderately slowly as when <span class="math inline">\(\phi_1 = 0.75\)</span>, or rapidly as when <span class="math inline">\(\phi_1 = 0.25\)</span>. We now simulate AR(1) and plot the ACF with <span class="math inline">\(\phi_1 =0.64\)</span> and <span class="math inline">\(\sigma_w^2 =1\)</span>.</p>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
+<span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">ts.sim</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672"></div>
+<p>The null hypothesis of the Ljung–Box test is
+<span class="math display">\[H_0 :\rho(1)=\rho(2)=...\rho(m)=0\]</span>
+for some m. If the Ljung–Box test rejects, then we conclude that one or more of <span class="math inline">\(\rho(1), \rho(2), ..., \rho(m)\)</span> is nonzero. The Ljung–Box test is sometimes called simply the Box test.
+<span class="math display">\[Q(m)=n(n+2) \sum_{i=j}^m \frac{\hat p^2 (j)}{n-j} \sim \chi^2(m)\]</span></p>
+</div>
+<div id="example-8" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-8"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider AR(1) with <span class="math inline">\(\phi_1 = 0.64\)</span> and <span class="math inline">\(\sigma_w^2 = 1\)</span>, we have the results of Box test in R</p>
+<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
+<span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/box.test.html">Box.test</a></span><span class="op">(</span><span class="va">ts.sim</span>, lag <span class="op">=</span> <span class="fl">10</span>, type <span class="op">=</span> <span class="st">"Ljung-Box"</span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;  Box-Ljung test</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; data:  ts.sim</span>
+<span class="co">#&gt; X-squared = 64.938, df = 10, p-value = 4.165e-10</span></code></pre></div>
+<p>If <span class="math inline">\(|\phi_1| \geq 1\)</span> then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.</p>
+</div>
+</div>
+<div id="pacf" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> PACF<a class="anchor" aria-label="anchor" href="#pacf"><i class="fas fa-link"></i></a>
+</h2>
+<p>A partial correlation is a conditional correlation. It is the correlation between two variables under the assumption that we know and take into account the values of some other set of variables.</p>
+<div id="example-9" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-9"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider regression model in which <span class="math inline">\(y\)</span> is the response variable, <span class="math inline">\(x_1, x_2, x_3\)</span> are predictor variables. The partial correlation between y and <span class="math inline">\(x_3\)</span> is the correlation between the variables determined taking into account how both <span class="math inline">\(y\)</span> and <span class="math inline">\(x_3\)</span> are related to <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</p>
+<p>In regression, this partial correlation could be found by correlating the residuals from two different regressions:</p>
+<ol style="list-style-type: decimal">
+<li>Regression in which we predict <span class="math inline">\(y\)</span> from <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</li>
+<li>Regression in which we predict <span class="math inline">\(x_3\)</span> from <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>.</li>
+</ol>
+<p>We correlate the “parts” of <span class="math inline">\(y\)</span> and <span class="math inline">\(x_3\)</span> that are not predicted by <span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span>. We can define the partial correlation just described as
+<span class="math display">\[\frac{Cov(y, x_3 | x_1, x_2)}{\sqrt{Var(y | x_1, x_2)Var(x_3 | x_1, x_2)}}\]</span></p>
+<p>For a time series, the partial autocorrelation between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t−h}\)</span> is defined as the conditional correlation between <span class="math inline">\(x_t\)</span> and <span class="math inline">\(x_{t−h}\)</span> conditional on <span class="math inline">\(x_{t−h+1}, ..., x_{t−1}\)</span>, the set of observations that come between the time points <span class="math inline">\(t\)</span> and <span class="math inline">\(t − h\)</span>.</p>
+<p><span class="math display">\[\frac{Cov(y, x_3 | x_1, x_2)}{\sqrt{Var(y | x_1, x_2)Var(x_3 | x_1, x_2)}}\]</span></p>
+</div>
+<div id="example-10" class="section level3 unnumbered">
+<h3>Example<a class="anchor" aria-label="anchor" href="#example-10"><i class="fas fa-link"></i></a>
+</h3>
+<p>The 3rd order (lag) partial autocorrelation is:</p>
+<p><span class="math display">\[\frac{Cov(x_t, x_{t-3} | x_{t-1}, x_{t-2})}{\sqrt{Var(x_t | x_t, x_{t-3})Var(x_{t-3} | x_t, x_{t-3})}}\]</span></p>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="homework.html"><span class="header-section-number">8</span> Homework</a></div>
+<div class="next"><a href="ewma.html"><span class="header-section-number">10</span> EWMA</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#stationary-processes"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li>
+<a class="nav-link" href="#time-series"><span class="header-section-number">9.1</span> Time series</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#remark-1"><span class="header-section-number">9.1.1</span> Remark</a></li>
+<li><a class="nav-link" href="#example-4">Example</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#autocovariance"><span class="header-section-number">9.2</span> Autocovariance</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#definition-3"><span class="header-section-number">9.2.1</span> Definition</a></li>
+<li><a class="nav-link" href="#example-5">Example</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#stationary"><span class="header-section-number">9.3</span> Stationary</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#strictly-stationary"><span class="header-section-number">9.3.1</span> Strictly Stationary</a></li>
+<li><a class="nav-link" href="#weakly-stationary"><span class="header-section-number">9.3.2</span> Weakly Stationary</a></li>
+<li><a class="nav-link" href="#example-6">Example</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#estimating-parameters"><span class="header-section-number">9.4</span> Estimating Parameters</a></li>
+<li><a class="nav-link" href="#the-adf-test"><span class="header-section-number">9.5</span> The ADF Test</a></li>
+<li><a class="nav-link" href="#kpss-test"><span class="header-section-number">9.6</span> KPSS test</a></li>
+<li>
+<a class="nav-link" href="#ljungbox-test"><span class="header-section-number">9.7</span> Ljung–Box Test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#example-7">Example</a></li>
+<li><a class="nav-link" href="#example-8">Example</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#pacf"><span class="header-section-number">9.8</span> PACF</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#example-9">Example</a></li>
+<li><a class="nav-link" href="#example-10">Example</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/02-cross-refs.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/02-cross-refs.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

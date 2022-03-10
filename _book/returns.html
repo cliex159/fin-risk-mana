@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Returns | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="Let \(P_t\) denote the price of a stock at time \(t\). The return is the relative change in the price of a financial asset over a given time interval, often represented as a percentage.  1.1...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Returns | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Let \(P_t\) denote the price of a stock at time \(t\). The return is the relative change in the price of a financial asset over a given time interval, often represented as a percentage.  1.1...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Returns | FRM2">
+<meta name="twitter:description" content="Let \(P_t\) denote the price of a stock at time \(t\). The return is the relative change in the price of a financial asset over a given time interval, often represented as a percentage.  1.1...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12.1/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">FRM2</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="active" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="returns" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Returns<a class="anchor" aria-label="anchor" href="#returns"><i class="fas fa-link"></i></a>
+</h1>
+<p>Let <span class="math inline">\(P_t\)</span> denote the price of a stock at time <span class="math inline">\(t\)</span>. The return is the relative change in the price of a financial asset over a given time interval, often represented as a percentage.</p>
+<div id="simple-return" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Simple return<a class="anchor" aria-label="anchor" href="#simple-return"><i class="fas fa-link"></i></a>
+</h2>
+<p>A simple return is the percentage change in prices indicated by R
+<span class="math display">\[ R_t=\frac{P_t-P_{t-1}}{P_{t-1}}=\frac{\Delta P_t}{P_{t-1}} \]</span></p>
+<p>A n-period return is given by
+<span class="math display">\[\begin{align*} R_t(n)&amp;=\frac{P_t}{P_{t-n}}-1\\
+&amp;=\frac{P_t}{P_{t-1}} \times \frac{P_{t-1}}{P_{t-2}} \times ... \times \frac{P_{t-n+1}}{P_{t-n+2}}-1\\
+&amp;=(1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})-1
+\end{align*}\]</span></p>
+</div>
+<div id="logarithm-return" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Logarithm return<a class="anchor" aria-label="anchor" href="#logarithm-return"><i class="fas fa-link"></i></a>
+</h2>
+<p>The logarithm of gross return is called continuously compounded return</p>
+<p><span class="math display">\[ Y_t(1)=\log(1+R_t)=\log \left( \frac{P_t}{P_{t-1}} \right)=\log(P_t)-\log(P_{t-1}) \]</span></p>
+<p>An <span class="math inline">\(n-period\)</span> return is given by
+<span class="math display">\[\begin{align*}
+Y_t(n)&amp;=\log(1+R_t(n)) \\
+&amp;=\log((1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})) \\
+&amp;=\log(1+R_t)+\log(1+R_{t-1})+\log(1+R_{t-2})...+\log(1+R_{t-n+1})) \\
+&amp;=Y_t+Y_{t-1}+Y_{t-2}+...+Y_{t-n+1}
+\end{align*}\]</span></p>
+</div>
+<div id="remark" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Remark<a class="anchor" aria-label="anchor" href="#remark"><i class="fas fa-link"></i></a>
+</h2>
+<div id="approximation" class="section level3" number="1.3.1">
+<h3>
+<span class="header-section-number">1.3.1</span> Approximation<a class="anchor" aria-label="anchor" href="#approximation"><i class="fas fa-link"></i></a>
+</h3>
+<p>For small price changes the difference of simple return and log return is small (negligible). Indeed, from Taylor approximation we have
+<span class="math display">\[ \log(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+... \approx x \]</span></p>
+<p>Simple or log-return is approximately equal with returns under 10% since there is not large difference between <span class="math inline">\(R_t\)</span> and <span class="math inline">\(Y_t\)</span> as the time between observations goes to zero <span class="math inline">\(\lim_{\Delta t \to 0} Y_t = R_t\)</span>.</p>
+<p><span class="math display">\[\log(1000) − \log(995) = 0.005012 \approx \frac{1000}{995} − 1 = 0.005025 \\
+\log(1000) − \log(885) = 0.12216 \neq \frac{1000}{885} − 1 = 0.12994\]</span></p>
+</div>
+<div id="symmetry-property" class="section level3" number="1.3.2">
+<h3>
+<span class="header-section-number">1.3.2</span> Symmetry property<a class="anchor" aria-label="anchor" href="#symmetry-property"><i class="fas fa-link"></i></a>
+</h3>
+<p>Continuous compounded return is symmetry, but Simple return is not. For example</p>
+<p><span class="math display">\[\begin{align*}
+\log \left( \frac{1000}{500} \right) &amp;=-\log \left( \frac{500}{1000} \right) \\
+\frac{1000}{500}-1 &amp;\neq - \left( \frac{500}{1000}-1 \right)
+\end{align*}\]</span></p>
+</div>
+<div id="portfolio-return" class="section level3" number="1.3.3">
+<h3>
+<span class="header-section-number">1.3.3</span> Portfolio Return<a class="anchor" aria-label="anchor" href="#portfolio-return"><i class="fas fa-link"></i></a>
+</h3>
+<p>Consider a portfolio of <span class="math inline">\(N\)</span> stocks with simple returns <span class="math inline">\(R_t\)</span>,<span class="math inline">\(i\)</span> at time <span class="math inline">\(t\)</span>, respectively. Denote <span class="math inline">\(R_{t,p}\)</span> the return of portfolio at time <span class="math inline">\(t\)</span>, <span class="math inline">\(Y_t\)</span>,<span class="math inline">\(p\)</span> the continuously compounded return of the portfolio at time <span class="math inline">\(t\)</span>.</p>
+<ol style="list-style-type: decimal">
+<li>We have the simple return of the portfolio is (proof!!!)</li>
+</ol>
+<p><span class="math display">\[ R_{i,p}=\sum_{i=1}^{N} \omega_i R_{t,i} \]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>For continuously compounded returns we do not have equality</li>
+</ol>
+<p><span class="math display">\[
+Y_{t,p}= \log \left( \frac{P_{t,p}}{P_{t-1,p}} \right) \neq \sum_{i=1}^{n} \omega_i \left( \frac{P_{t,i}}{P_{t-1,i}} \right) =\sum_{i=1}^{n} \omega_i Y_{t,i}
+\]</span></p>
+<p>However, the difference between compounded and simple returns may not be very significant for small returns, e.g., daily return
+<span class="math display">\[Y_p=\sum_{i=1}^N \omega_i R_i \]</span>
+when time between observations goes to 0, then we have
+<span class="math display">\[\lim_{\Delta t \to 0} Y_{t,p} = R_{t,p}\]</span></p>
+<p>So, in practice we note that</p>
+<ul>
+<li>Simple returns are
+<ul>
+<li>
+Used for accounting purposes.
+</li>
+<li>
+Investors are usually concerned with simple returns.
+</li>
+</ul>
+</li>
+<li>Continuously compounded returns have some advantages
+<ul>
+<li>
+Mathematics is easier, we will see later.
+</li>
+<li>
+Used in derivatives pricing, e.g. the Black–Scholes model.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="index.html">Course Descripition</a></div>
+<div class="next"><a href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#returns"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="nav-link" href="#simple-return"><span class="header-section-number">1.1</span> Simple return</a></li>
+<li><a class="nav-link" href="#logarithm-return"><span class="header-section-number">1.2</span> Logarithm return</a></li>
+<li>
+<a class="nav-link" href="#remark"><span class="header-section-number">1.3</span> Remark</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#approximation"><span class="header-section-number">1.3.1</span> Approximation</a></li>
+<li><a class="nav-link" href="#symmetry-property"><span class="header-section-number">1.3.2</span> Symmetry property</a></li>
+<li><a class="nav-link" href="#portfolio-return"><span class="header-section-number">1.3.3</span> Portfolio Return</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-10.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

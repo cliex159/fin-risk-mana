@@ -16,9 +16,7 @@ csl: chicago-fullnote-bibliography.csl
 ---
 
 
-```r
-library(reticulate)
-```
+
 
 # Course Descripition {.unnumbered}
 

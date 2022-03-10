@@ -94,7 +94,7 @@ Let series $(S_t)_{t \geq 0}$ be a random walk
 $$S_t=S_0+X_1+X_2+...+X_t $$
 If the steps are either $1$ or $-1$ with a $50\%$ probability for either value, and set $S_{0}=0$ then the random walk is called a simple random walk.
 
-```{r,message=FALSE,warning=FALSE}
+```{r,message=FALSE,warning=FALSE, out.width="50%"}
 library(tidyverse)
 simple=map(1:9,
               ~sample(c(1,-1), 

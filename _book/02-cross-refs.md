@@ -193,13 +193,16 @@ ADF Test is also called Unit Root Test. The test uses the following null and alt
 ```r
 library(tseries)
 adf.test(msft_logret)
-#> Warning in adf.test(msft_logret): p-value smaller than
-#> printed p-value
+#> Warning in
+#> adf.test(msft_logret): p-value
+#> smaller than printed p-value
 #> 
-#> 	Augmented Dickey-Fuller Test
+#> 	Augmented Dickey-Fuller
+#> 	Test
 #> 
 #> data:  msft_logret
-#> Dickey-Fuller = -9.7881, Lag order = 10, p-value =
+#> Dickey-Fuller = -9.7881,
+#> Lag order = 10, p-value =
 #> 0.01
 #> alternative hypothesis: stationary
 ```
@@ -223,11 +226,13 @@ Test results for Microsoft data
 library(tseries)
 kpss.test(msft_logret)
 #> 
-#> 	KPSS Test for Level Stationarity
+#> 	KPSS Test for Level
+#> 	Stationarity
 #> 
 #> data:  msft_logret
-#> KPSS Level = 0.20346, Truncation lag parameter = 7,
-#> p-value = 0.1
+#> KPSS Level = 0.20346,
+#> Truncation lag parameter =
+#> 7, p-value = 0.1
 ```
 
 ##  Ljung–Box Test
@@ -299,7 +304,8 @@ Box.test(ts.sim, lag = 10, type = "Ljung-Box")
 #> 	Box-Ljung test
 #> 
 #> data:  ts.sim
-#> X-squared = 83.38, df = 10, p-value = 1.089e-13
+#> X-squared = 101.62, df =
+#> 10, p-value < 2.2e-16
 ```
 
 If $|\phi_1| \geq 1$ then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.
@@ -780,8 +786,12 @@ mcd_logret= mcd$Adj.Close %>%
   log() %>% 
   diff()
 head(mcd_logret)
-#> [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848
-#> [5]  0.0076786593  0.0053958639
+#> [1] -0.0076229801
+#> [2] -0.0137181518
+#> [3]  0.0073522812
+#> [4] -0.0009395848
+#> [5]  0.0076786593
+#> [6]  0.0053958639
 ```
 
 
@@ -814,10 +824,12 @@ There are presence of outliers, i.e. the log returns seems not normally distribu
 # Carry out a Jarque-Bera test
 jarque.test(mcd_logret)
 #> 
-#> 	Jarque-Bera Normality Test
+#> 	Jarque-Bera Normality
+#> 	Test
 #> 
 #> data:  mcd_logret
-#> JB = 367.24, p-value < 2.2e-16
+#> JB = 367.24, p-value <
+#> 2.2e-16
 #> alternative hypothesis: greater
 ```
 

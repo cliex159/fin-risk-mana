@@ -304,8 +304,8 @@ Box.test(ts.sim, lag = 10, type = "Ljung-Box")
 #> 	Box-Ljung test
 #> 
 #> data:  ts.sim
-#> X-squared = 101.62, df =
-#> 10, p-value < 2.2e-16
+#> X-squared = 79.385, df =
+#> 10, p-value = 6.627e-13
 ```
 
 If $|\phi_1| \geq 1$ then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.

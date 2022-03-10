@@ -328,10 +328,10 @@ hist(n)
 
 ```r
 print(c(skewness(n),mean(n),median(n)))
-#> [1] 0.10346641 0.06856612
-#> [3] 0.09525272
+#> [1] -0.12309407 -0.02557729
+#> [3] -0.02123179
 ```
-Since $skewness=0.1$ approximately equal $0$, the distribution is not skew and $mean=0.07$ approximately equal $median=0.1$.
+Since $skewness=-0.12$ approximately equal $0$, the distribution is not skew and $mean=-0.03$ approximately equal $median=-0.02$.
 
 <h4>t distribution</h4>
 
@@ -345,10 +345,10 @@ hist(t)
 
 ```r
 print(c(skewness(t),mean(t),median(t)))
-#> [1]  0.14262467 -0.03395485
-#> [3] -0.03788324
+#> [1] -0.013392214  0.013311838
+#> [3]  0.008536171
 ```
-Since $skewness=0.14$ approximately equal $0$, the distribution is not skew and $mean=-0.03$ approximately equal $median=-0.04$.
+Since $skewness=-0.01$ approximately equal $0$, the distribution is not skew and $mean=0.01$ approximately equal $median=0.01$.
 
 ### Right-skewed
 
@@ -365,10 +365,10 @@ hist(sr)
 
 ```r
 print(c(skewness(sr),mean(sr),median(sr)))
-#> [1]  1.072000921  0.004261602
-#> [3] -0.219772782
+#> [1]  0.949945990  0.003706613
+#> [3] -0.193733876
 ```
-Since $skewness=1.07$ is greater than $0$, the distribution is right-skew and $mean=0$ is greater than $median=-0.22$.
+Since $skewness=0.95$ is greater than $0$, the distribution is right-skew and $mean=0$ is greater than $median=-0.19$.
 
 ### Left-skewed
 
@@ -385,10 +385,10 @@ hist(sl)
 
 ```r
 print(c(skewness(sl),mean(sl),median(sl)))
-#> [1] -0.77418911 -0.02042007
-#> [3]  0.11546792
+#> [1] -0.701196211  0.009574032
+#> [3]  0.128051016
 ```
-Since $skewness=-0.77$ is less than $0$, the distribution is left-skew and $mean=-0.02$ is less than $median=0.12$.
+Since $skewness=-0.7$ is less than $0$, the distribution is left-skew and $mean=0.01$ is less than $median=0.13$.
 
 
 ## Kurtosis
@@ -431,7 +431,7 @@ hist(n)
 
 ```r
 kurtosis(n)
-#> [1] 0.02806957
+#> [1] 0.02972066
 #> attr(,"method")
 #> [1] "excess"
 ```
@@ -453,7 +453,7 @@ hist(t)
 
 ```r
 kurtosis(t)
-#> [1] 49.38617
+#> [1] 31.63644
 #> attr(,"method")
 #> [1] "excess"
 ```

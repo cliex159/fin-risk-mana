@@ -193,17 +193,12 @@ ADF Test is also called Unit Root Test. The test uses the following null and alt
 ```r
 library(tseries)
 adf.test(msft_logret)
-#> Warning in
-#> adf.test(msft_logret): p-value
-#> smaller than printed p-value
+#> Warning in adf.test(msft_logret): p-value smaller than printed p-value
 #> 
-#> 	Augmented Dickey-Fuller
-#> 	Test
+#> 	Augmented Dickey-Fuller Test
 #> 
 #> data:  msft_logret
-#> Dickey-Fuller = -9.7881,
-#> Lag order = 10, p-value =
-#> 0.01
+#> Dickey-Fuller = -9.7881, Lag order = 10, p-value = 0.01
 #> alternative hypothesis: stationary
 ```
 
@@ -226,13 +221,10 @@ Test results for Microsoft data
 library(tseries)
 kpss.test(msft_logret)
 #> 
-#> 	KPSS Test for Level
-#> 	Stationarity
+#> 	KPSS Test for Level Stationarity
 #> 
 #> data:  msft_logret
-#> KPSS Level = 0.20346,
-#> Truncation lag parameter =
-#> 7, p-value = 0.1
+#> KPSS Level = 0.20346, Truncation lag parameter = 7, p-value = 0.1
 ```
 
 ##  Ljung–Box Test
@@ -270,15 +262,10 @@ Note that the magnitude of its ACF decays geometrically to zero, either slowly a
 library(stats)
 ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
-```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672" />
-
-```r
 acf(ts.sim)
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672" />
 
 The null hypothesis of the Ljung–Box test is
 $$H_0 :\rho(1)=\rho(2)=...\rho(m)=0$$
@@ -294,19 +281,15 @@ Consider AR(1) with $\phi_1 = 0.64$ and $\sigma_w^2 = 1$, we have the results of
 library(stats)
 ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
-```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672" />
-
-```r
 Box.test(ts.sim, lag = 10, type = "Ljung-Box")
 #> 
 #> 	Box-Ljung test
 #> 
 #> data:  ts.sim
-#> X-squared = 79.385, df =
-#> 10, p-value = 6.627e-13
+#> X-squared = 79.109, df = 10, p-value = 7.503e-13
 ```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 If $|\phi_1| \geq 1$ then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.
 
@@ -786,11 +769,7 @@ mcd_logret= mcd$Adj.Close %>%
   log() %>% 
   diff()
 head(mcd_logret)
-#> [1] -0.0076229801
-#> [2] -0.0137181518
-#> [3]  0.0073522812
-#> [4] -0.0009395848
-#> [5]  0.0076786593
+#> [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
 #> [6]  0.0053958639
 ```
 
@@ -824,12 +803,10 @@ There are presence of outliers, i.e. the log returns seems not normally distribu
 # Carry out a Jarque-Bera test
 jarque.test(mcd_logret)
 #> 
-#> 	Jarque-Bera Normality
-#> 	Test
+#> 	Jarque-Bera Normality Test
 #> 
 #> data:  mcd_logret
-#> JB = 367.24, p-value <
-#> 2.2e-16
+#> JB = 367.24, p-value < 2.2e-16
 #> alternative hypothesis: greater
 ```
 

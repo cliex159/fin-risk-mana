@@ -322,16 +322,12 @@ $S_k=0$ indicated a symmetric distribution, i.e., normal distribution or t distr
 library(moments)
 n=rnorm(n=1000, mean = 0, sd = 1)
 hist(n)
+print(c(skewness(n),mean(n),median(n)))
+#> [1] -0.071698111 -0.001422871 -0.023070733
 ```
 
 <img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="672" />
-
-```r
-print(c(skewness(n),mean(n),median(n)))
-#> [1] -0.12309407 -0.02557729
-#> [3] -0.02123179
-```
-Since $skewness=-0.12$ approximately equal $0$, the distribution is not skew and $mean=-0.03$ approximately equal $median=-0.02$.
+Since $skewness=-0.07$ approximately equal $0$, the distribution is not skew and $mean=0$ approximately equal $median=-0.02$.
 
 <h4>t distribution</h4>
 
@@ -339,16 +335,12 @@ Since $skewness=-0.12$ approximately equal $0$, the distribution is not skew and
 library(moments)
 t=rt(n=1000,df=10)
 hist(t)
+print(c(skewness(t),mean(t),median(t)))
+#> [1] -0.06792492  0.01644737 -0.01850613
 ```
 
 <img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-
-```r
-print(c(skewness(t),mean(t),median(t)))
-#> [1] -0.013392214  0.013311838
-#> [3]  0.008536171
-```
-Since $skewness=-0.01$ approximately equal $0$, the distribution is not skew and $mean=0.01$ approximately equal $median=0.01$.
+Since $skewness=-0.07$ approximately equal $0$, the distribution is not skew and $mean=0.02$ approximately equal $median=-0.02$.
 
 ### Right-skewed
 
@@ -359,16 +351,12 @@ library(moments)
 library(fGarch)
 sr=rsnorm(n=1000, mean = 0, sd = 1, xi = 5)
 hist(sr)
+print(c(skewness(sr),mean(sr),median(sr)))
+#> [1]  0.97928426  0.03187995 -0.19129275
 ```
 
 <img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-
-```r
-print(c(skewness(sr),mean(sr),median(sr)))
-#> [1]  0.949945990  0.003706613
-#> [3] -0.193733876
-```
-Since $skewness=0.95$ is greater than $0$, the distribution is right-skew and $mean=0$ is greater than $median=-0.19$.
+Since $skewness=0.98$ is greater than $0$, the distribution is right-skew and $mean=0.03$ is greater than $median=-0.19$.
 
 ### Left-skewed
 
@@ -379,16 +367,12 @@ library(moments)
 library(fGarch)
 sl=rsnorm(n=1000, mean = 0, sd = 1, xi = -2)
 hist(sl)
+print(c(skewness(sl),mean(sl),median(sl)))
+#> [1] -0.78925516 -0.02864372  0.10016168
 ```
 
 <img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="672" />
-
-```r
-print(c(skewness(sl),mean(sl),median(sl)))
-#> [1] -0.701196211  0.009574032
-#> [3]  0.128051016
-```
-Since $skewness=-0.7$ is less than $0$, the distribution is left-skew and $mean=0.01$ is less than $median=0.13$.
+Since $skewness=-0.79$ is less than $0$, the distribution is left-skew and $mean=-0.03$ is less than $median=0.1$.
 
 
 ## Kurtosis
@@ -425,16 +409,13 @@ A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Nor
 library(moments)
 n=rnorm(n=10000, mean = 0, sd = 1)
 hist(n)
-```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672" />
-
-```r
 kurtosis(n)
-#> [1] 0.02972066
+#> [1] -0.02280057
 #> attr(,"method")
 #> [1] "excess"
 ```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ### Leptokurtic
 
@@ -447,16 +428,13 @@ In finance, a leptokurtic distribution shows that the investment returns may be 
 library(moments)
 t=rt(n=1000,df=2)
 hist(t)
-```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="672" />
-
-```r
 kurtosis(t)
-#> [1] 31.63644
+#> [1] 48.58015
 #> attr(,"method")
 #> [1] "excess"
 ```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ### Platykurtic
 
@@ -470,14 +448,11 @@ library(moments)
 library(e1071)                    
 duration = faithful$eruptions     
 hist(duration)
-```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="672" />
-
-```r
 kurtosis(duration)
 #> [1] -1.511605
 ```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 ## Financial situation 
 
@@ -852,11 +827,7 @@ head(eurusd)
 #> 6 03/08/2005       1.2308
 eurusd_logret=eurusd[,2] %>% log() %>% diff()
 head(eurusd_logret)
-#> [1]  0.0091324836
-#> [2] -0.0005786798
-#> [3]  0.0103653445
-#> [4] -0.0001636929
-#> [5]  0.0074210330
+#> [1]  0.0091324836 -0.0005786798  0.0103653445 -0.0001636929  0.0074210330
 #> [6]  0.0008933285
 ```
 
@@ -893,32 +864,17 @@ library(moments)
 sp500_url="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv"
 sp500=read.csv(sp500_url)
 head(sp500)
-#>         Date   Open   High
-#> 1 01/03/1985 165.37 166.11
-#> 2 01/04/1985 164.55 164.55
-#> 3 01/07/1985 163.68 164.71
-#> 4 01/08/1985 164.24 164.59
-#> 5 01/09/1985 163.99 165.57
-#> 6  1/10/1985 165.18 168.31
-#>      Low  Close    Volume
-#> 1 164.38 164.57  88880000
-#> 2 163.36 163.68  77480000
-#> 3 163.68 164.24  86190000
-#> 4 163.91 163.99  92110000
-#> 5 163.99 165.18  99230000
-#> 6 164.99 168.31 124700000
-#>   Adj.Close
-#> 1    164.57
-#> 2    163.68
-#> 3    164.24
-#> 4    163.99
-#> 5    165.18
-#> 6    168.31
+#>         Date   Open   High    Low  Close    Volume Adj.Close
+#> 1 01/03/1985 165.37 166.11 164.38 164.57  88880000    164.57
+#> 2 01/04/1985 164.55 164.55 163.36 163.68  77480000    163.68
+#> 3 01/07/1985 163.68 164.71 163.68 164.24  86190000    164.24
+#> 4 01/08/1985 164.24 164.59 163.91 163.99  92110000    163.99
+#> 5 01/09/1985 163.99 165.57 163.99 165.18  99230000    165.18
+#> 6  1/10/1985 165.18 168.31 164.99 168.31 124700000    168.31
 sp500_logret= sp500$Adj.Close %>% log() %>% diff()
 head(sp500_logret)
-#> [1] -0.005422709  0.003415471
-#> [3] -0.001523322  0.007230338
-#> [5]  0.018771729 -0.002379396
+#> [1] -0.005422709  0.003415471 -0.001523322  0.007230338  0.018771729
+#> [6] -0.002379396
 ```
 
 
@@ -979,12 +935,10 @@ $p-value<0.05$ so we can reject the null hypothesis $H_0: Sk=0 \text{ and } Kur=
 library(moments)
 jarque.test(eurusd_logret)
 #> 
-#> 	Jarque-Bera Normality
-#> 	Test
+#> 	Jarque-Bera Normality Test
 #> 
 #> data:  eurusd_logret
-#> JB = 1150.3, p-value <
-#> 2.2e-16
+#> JB = 1150.3, p-value < 2.2e-16
 #> alternative hypothesis: greater
 ```
 
@@ -997,12 +951,10 @@ $p-value<0.05$ so we can reject the null hypothesis $H_0: Sk=0 \text{ and } Kur=
 library(moments)
 jarque.test(sp500_logret)
 #> 
-#> 	Jarque-Bera Normality
-#> 	Test
+#> 	Jarque-Bera Normality Test
 #> 
 #> data:  sp500_logret
-#> JB = 250996, p-value <
-#> 2.2e-16
+#> JB = 250996, p-value < 2.2e-16
 #> alternative hypothesis: greater
 ```
 

@@ -1,8 +1,20 @@
-# example R options set globally
-options(width = 30)
+set.seed(1014)
 
-# example chunk options set globally
 knitr::opts_chunk$set(
   comment = "#>",
-  collapse = TRUE
-  )
+  collapse = TRUE,
+  # cache = TRUE,
+  fig.retina = 2,
+  fig.width = 6,
+  fig.asp = 2/3,
+  fig.show = "hold"
+)
+
+options(dplyr.print_min = 6, dplyr.print_max = 6)
+
+# Activate crayon output
+options(
+  crayon.enabled = TRUE,
+  pillar.bold = TRUE,
+  stringr.html = FALSE
+)

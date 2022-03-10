@@ -103,61 +103,53 @@ Normal distribution
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="va">n</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.12309407 -0.02557729</span>
-<span class="co">#&gt; [3] -0.02123179</span></code></pre></div>
-<p>Since <span class="math inline">\(skewness=-0.12\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=-0.03\)</span> approximately equal <span class="math inline">\(median=-0.02\)</span>.</p>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.071698111 -0.001422871 -0.023070733</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="672">
+Since <span class="math inline">\(skewness=-0.07\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0\)</span> approximately equal <span class="math inline">\(median=-0.02\)</span>.</p>
 <h4>
 t distribution
 <a class="anchor" aria-label="anchor" href="#symmetric-distribution"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="va">t</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>,df<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.013392214  0.013311838</span>
-<span class="co">#&gt; [3]  0.008536171</span></code></pre></div>
-<p>Since <span class="math inline">\(skewness=-0.01\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.01\)</span> approximately equal <span class="math inline">\(median=0.01\)</span>.</p>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.06792492  0.01644737 -0.01850613</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="672">
+Since <span class="math inline">\(skewness=-0.07\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.02\)</span> approximately equal <span class="math inline">\(median=-0.02\)</span>.</p>
 </div>
 <div id="right-skewed" class="section level3" number="4.1.2">
 <h3>
 <span class="header-section-number">4.1.2</span> Right-skewed<a class="anchor" aria-label="anchor" href="#right-skewed"><i class="fas fa-link"></i></a>
 </h3>
 <p><span class="math inline">\(S_k&gt;0\)</span> indicates a relatively long right tail compared to the left tail, i.e., distribution has a heavy tail on the right hand side.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
 <span class="va">sr</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1]  0.949945990  0.003706613</span>
-<span class="co">#&gt; [3] -0.193733876</span></code></pre></div>
-<p>Since <span class="math inline">\(skewness=0.95\)</span> is greater than <span class="math inline">\(0\)</span>, the distribution is right-skew and <span class="math inline">\(mean=0\)</span> is greater than <span class="math inline">\(median=-0.19\)</span>.</p>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1]  0.97928426  0.03187995 -0.19129275</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="672">
+Since <span class="math inline">\(skewness=0.98\)</span> is greater than <span class="math inline">\(0\)</span>, the distribution is right-skew and <span class="math inline">\(mean=0.03\)</span> is greater than <span class="math inline">\(median=-0.19\)</span>.</p>
 </div>
 <div id="left-skewed" class="section level3" number="4.1.3">
 <h3>
 <span class="header-section-number">4.1.3</span> Left-skewed<a class="anchor" aria-label="anchor" href="#left-skewed"><i class="fas fa-link"></i></a>
 </h3>
 <p><span class="math inline">\(S_k&lt;0\)</span> (left-skewed) indicates a relatively long left tail compared to the right tail, i.e., distribution has a heavy tail on the left hand side.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
 <span class="va">sl</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.701196211  0.009574032</span>
-<span class="co">#&gt; [3]  0.128051016</span></code></pre></div>
-<p>Since <span class="math inline">\(skewness=-0.7\)</span> is less than <span class="math inline">\(0\)</span>, the distribution is left-skew and <span class="math inline">\(mean=0.01\)</span> is less than <span class="math inline">\(median=0.13\)</span>.</p>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.78925516 -0.02864372  0.10016168</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="672">
+Since <span class="math inline">\(skewness=-0.79\)</span> is less than <span class="math inline">\(0\)</span>, the distribution is left-skew and <span class="math inline">\(mean=-0.03\)</span> is less than <span class="math inline">\(median=0.1\)</span>.</p>
 </div>
 </div>
 <div id="kurtosis" class="section level2" number="4.2">
@@ -193,16 +185,15 @@ Kurtosis is a statistical measure that defines how heavily the tails of a distri
 </h3>
 A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Normal distribution is a typical example of mesokurtic.
 
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="va">n</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.02972066</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>
+<span class="co">#&gt; [1] -0.02280057</span>
 <span class="co">#&gt; attr(,"method")</span>
 <span class="co">#&gt; [1] "excess"</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672"></div>
 </div>
 <div id="leptokurtic" class="section level3" number="4.2.2">
 <h3>
@@ -210,16 +201,15 @@ A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Nor
 </h3>
 <p>A Leptokurtic distribution shows a positive excess kurtosis <span class="math inline">\((\kappa &gt; 0)\)</span>. The leptokurtic distribution shows heavy tails on either side, indicating large outliers. t distribution with a low degree of freedom is a typical example of mesokurtic.</p>
 <p>In finance, a leptokurtic distribution shows that the investment returns may be prone to extreme values on either side. Therefore, an investment whose returns follow a leptokurtic distribution is considered to be risky. It means that big losses (as well as big gains) can occur.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="va">t</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>,df<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>
-<span class="co">#&gt; [1] 31.63644</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>
+<span class="co">#&gt; [1] 48.58015</span>
 <span class="co">#&gt; attr(,"method")</span>
 <span class="co">#&gt; [1] "excess"</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 </div>
 <div id="platykurtic" class="section level3" number="4.2.3">
 <h3>
@@ -227,15 +217,14 @@ A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Nor
 </h3>
 <p>A platykurtic distribution shows a negative excess kurtosis <span class="math inline">\((\kappa &lt; 0)\)</span>. The kurtosis reveals a distribution with flat tails. The flat tails indicate the small outliers in a distribution.</p>
 <p>In the finance context, the platykurtic distribution of the investment returns is desirable for investors because there is a small probability that the investment would experience extreme returns.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span>                    
 <span class="va">duration</span> <span class="op">=</span> <span class="va">faithful</span><span class="op">$</span><span class="va">eruptions</span>     
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span>
 <span class="co">#&gt; [1] -1.511605</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
 </div>
 </div>
 <div id="financial-situation" class="section level2" number="4.3">

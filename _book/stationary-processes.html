@@ -116,7 +116,7 @@ process (random sample).</li>
 <h3>Example<a class="anchor" aria-label="anchor" href="#example-4"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consider Financial Index SP500. The data consists of excess returns <span class="math inline">\(X_t = \log(S_t) −\log(S_{t−1})\)</span>. From the plot we see the following properties of <span class="math inline">\(X_t\)</span>:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sp500</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">sp500</span><span class="op">$</span><span class="va">Close</span><span class="op">)</span><span class="op">)</span>,type<span class="op">=</span><span class="st">"l"</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="672"></div>
@@ -250,7 +250,7 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 <li>A “band” of size <span class="math inline">\(\frac{2}{\sqrt{n}}\)</span> is added to the correlogram because asymptotically <span class="math inline">\(\hat \rho(h) \sim \mathcal{N} \left(0, \frac{1}{n} \right)\)</span> if the data is close to a white noise process.</li>
 <li>This band is used to detect significant autocorrelations, i.e. autocorelations that are different from zero.</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/tidyquant">tidyquant</a></span><span class="op">)</span>
 <span class="va">msft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
                to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-01-01"</span><span class="op">)</span>,
@@ -274,20 +274,15 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 <li>
 <span class="math inline">\(H_1\)</span> : The time series is stationary.</li>
 </ul>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tseries/man/adf.test.html">adf.test</a></span><span class="op">(</span><span class="va">msft_logret</span><span class="op">)</span>
-<span class="co">#&gt; Warning in</span>
-<span class="co">#&gt; adf.test(msft_logret): p-value</span>
-<span class="co">#&gt; smaller than printed p-value</span>
+<span class="co">#&gt; Warning in adf.test(msft_logret): p-value smaller than printed p-value</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  Augmented Dickey-Fuller</span>
-<span class="co">#&gt;  Test</span>
+<span class="co">#&gt;  Augmented Dickey-Fuller Test</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; data:  msft_logret</span>
-<span class="co">#&gt; Dickey-Fuller = -9.7881,</span>
-<span class="co">#&gt; Lag order = 10, p-value =</span>
-<span class="co">#&gt; 0.01</span>
+<span class="co">#&gt; Dickey-Fuller = -9.7881, Lag order = 10, p-value = 0.01</span>
 <span class="co">#&gt; alternative hypothesis: stationary</span></code></pre></div>
 </div>
 <div id="kpss-test" class="section level2" number="9.6">
@@ -301,17 +296,14 @@ trend</p>
 <p><span class="math display">\[ H_0 : k = 0 \\
 H_1 : k \neq 0 \]</span></p>
 <p>Test results for Microsoft data</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tseries/man/kpss.test.html">kpss.test</a></span><span class="op">(</span><span class="va">msft_logret</span><span class="op">)</span>
 <span class="co">#&gt; </span>
-<span class="co">#&gt;  KPSS Test for Level</span>
-<span class="co">#&gt;  Stationarity</span>
+<span class="co">#&gt;  KPSS Test for Level Stationarity</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; data:  msft_logret</span>
-<span class="co">#&gt; KPSS Level = 0.20346,</span>
-<span class="co">#&gt; Truncation lag parameter =</span>
-<span class="co">#&gt; 7, p-value = 0.1</span></code></pre></div>
+<span class="co">#&gt; KPSS Level = 0.20346, Truncation lag parameter = 7, p-value = 0.1</span></code></pre></div>
 </div>
 <div id="ljungbox-test" class="section level2" number="9.7">
 <h2>
@@ -345,14 +337,12 @@ H_1 : k \neq 0 \]</span></p>
 &amp;\rho(h)=\phi_1^h
 \end{align*}\]</span></p>
 <p>Note that the magnitude of its ACF decays geometrically to zero, either slowly as when <span class="math inline">\(\phi_1 = 0.95\)</span>, moderately slowly as when <span class="math inline">\(\phi_1 = 0.75\)</span>, or rapidly as when <span class="math inline">\(\phi_1 = 0.25\)</span>. We now simulate AR(1) and plot the ACF with <span class="math inline">\(\phi_1 =0.64\)</span> and <span class="math inline">\(\sigma_w^2 =1\)</span>.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
 <span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">ts.sim</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672"></div>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">ts.sim</span><span class="op">)</span></code></pre></div>
+<p><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672"></p>
 <p>The null hypothesis of the Ljung–Box test is
 <span class="math display">\[H_0 :\rho(1)=\rho(2)=...\rho(m)=0\]</span>
 for some m. If the Ljung–Box test rejects, then we conclude that one or more of <span class="math inline">\(\rho(1), \rho(2), ..., \rho(m)\)</span> is nonzero. The Ljung–Box test is sometimes called simply the Box test.
@@ -362,19 +352,17 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <h3>Example<a class="anchor" aria-label="anchor" href="#example-8"><i class="fas fa-link"></i></a>
 </h3>
 <p>Consider AR(1) with <span class="math inline">\(\phi_1 = 0.64\)</span> and <span class="math inline">\(\sigma_w^2 = 1\)</span>, we have the results of Box test in R</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
 <span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/box.test.html">Box.test</a></span><span class="op">(</span><span class="va">ts.sim</span>, lag <span class="op">=</span> <span class="fl">10</span>, type <span class="op">=</span> <span class="st">"Ljung-Box"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/box.test.html">Box.test</a></span><span class="op">(</span><span class="va">ts.sim</span>, lag <span class="op">=</span> <span class="fl">10</span>, type <span class="op">=</span> <span class="st">"Ljung-Box"</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;  Box-Ljung test</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; data:  ts.sim</span>
-<span class="co">#&gt; X-squared = 79.385, df =</span>
-<span class="co">#&gt; 10, p-value = 6.627e-13</span></code></pre></div>
+<span class="co">#&gt; X-squared = 79.109, df = 10, p-value = 7.503e-13</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672"></div>
 <p>If <span class="math inline">\(|\phi_1| \geq 1\)</span> then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.</p>
 </div>
 </div>

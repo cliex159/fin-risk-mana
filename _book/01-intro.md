@@ -253,8 +253,10 @@ on what happened before, denoted by $\sigma_t$.
 * The subscript t means that it is volatility on a particular time period, usually a day.
 * Clear evidence of cyclical patterns in volatility over time, both in the short run and the long run.
 
+
+
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/1112.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/1112.png" width="50%" height="50%">
 </center>
 
 ## Calculations
@@ -297,9 +299,8 @@ Skewness, kurtosis are important descriptive statistics of data distribution tha
 ## Skewness
 
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/13.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/13.png" width="50%" height="50%">
 </center>
-
 ### Definition {.unnumbered}
 
 The skewness of a random variable X is
@@ -309,7 +310,7 @@ Skewness measures the degree of asymmetry.
 ### Types of skewness {.unnumbered}
 
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/14.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/14.png" width="50%" height="50%">
 </center>
 
 ### Symmetric distribution
@@ -413,7 +414,7 @@ Let X follow a t distribution $t(df=\nu)$. Then $$Kur(X)=3+\frac{6}{\nu-4}$$
 Let the excess kurtosis $\kappa(X)=Kur(X)-3$, we have the following definitions:
 
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/15.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/15.png" width="50%" height="50%">
 </center>
 
 ### Mesokurtic
@@ -562,7 +563,7 @@ $$y_p=1+\sqrt{2} \times (-3)=-3.242641$$
 Generate a standard normal distribution from $-10$ to $10$. We compare with $N(0, 1)$, we get
   
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/16.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/16.png" width="50%" height="50%">
 </center>
 
 #### Empirical Q-Q plots
@@ -578,7 +579,7 @@ Denote $F$ the specified CDF (e.g., normal) model. $G$ is the empirical CDF for 
 $F = \mathcal{N}(0, 1)$, a model and $X_1, X_2, ...X_{20} \sim U(0, 1)$ then we get the Q-Q plot of the samples
 
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/17.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/17.png" width="50%" height="50%">
 </center>
 
 # Mixture Distributions 

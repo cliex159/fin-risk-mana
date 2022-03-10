@@ -143,7 +143,7 @@ $$ \rho(t,s)=\sqrt{1-\frac{s}{t}} $$
 which against $\rho$ depending on $t$ as well as on $s$, thus the random walk is not covariance stationary. The following figure shows the relationship among different processes: Stationary processes are the largest set, followed by white noise, martingale difference (MD), and i.i.d. processes.
 
 <center>
-![](/Users/cliex159/Documents/fin-risk-mana/Frisk/21.png)
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/21.png" width="50%" height="50%">
 </center>
 
 ## Estimating Parameters

@@ -298,6 +298,7 @@ Since $skewness=`r round(skewness(n),2)`$ approximately equal $0$, the distribut
 
 <h4>t distribution</h4>
 ```{r,message=FALSE,warning=FALSE}
+library(e1071)
 library(moments)
 t=rt(n=1000,df=10)
 hist(t)
@@ -311,6 +312,7 @@ $S_k>0$ indicates a relatively long right tail compared to the left tail, i.e., 
 ```{r,message=FALSE,warning=FALSE}
 library(moments)
 library(fGarch)
+library(e1071)
 sr=rsnorm(n=1000, mean = 0, sd = 1, xi = 5)
 hist(sr)
 print(c(skewness(sr),mean(sr),median(sr)))
@@ -323,6 +325,7 @@ $S_k<0$ (left-skewed) indicates a relatively long left tail compared to the righ
 ```{r,message=FALSE,warning=FALSE}
 library(moments)
 library(fGarch)
+library(e1071)
 sl=rsnorm(n=1000, mean = 0, sd = 1, xi = -2)
 hist(sl)
 print(c(skewness(sl),mean(sl),median(sl)))

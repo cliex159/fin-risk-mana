@@ -1,20 +1,24 @@
-set.seed(1014)
-
 knitr::opts_chunk$set(
   comment = "#>",
   collapse = TRUE,
-  # cache = TRUE,
-  fig.retina = 2,
-  fig.width = 6,
-  fig.asp = 2/3,
-  fig.show = "hold"
+  cache = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE,
+  dpi = 300,
+  cache.lazy = FALSE,
+  tidy = "styler",
+  out.width = "90%",
+  fig.align = "center",
+  fig.width = 5,
+  fig.height = 7
 )
 
-options(dplyr.print_min = 6, dplyr.print_max = 6)
+options(crayon.enabled = FALSE)
 
-# Activate crayon output
-options(
-  crayon.enabled = TRUE,
-  pillar.bold = TRUE,
-  stringr.html = FALSE
-)
+suppressPackageStartupMessages(library(tidyverse))
+theme_set(theme_light())
+
+library(scales)
+library(methods)
+library(e1071)

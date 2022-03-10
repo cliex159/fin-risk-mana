@@ -116,7 +116,7 @@ plots=simple %>%
       ylab="the accumulated money")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -125,7 +125,7 @@ plots=simple %>%
   map(acf)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;" />
 
 ## Normal random walk
 
@@ -152,7 +152,7 @@ plots=normal %>%
       ylab="the accumulated money")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -161,7 +161,7 @@ plots=normal %>%
   map(acf)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" />
 
 ## Random walk with drift
 
@@ -189,7 +189,7 @@ plots=drift %>%
       ylab="the accumulated money")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -198,7 +198,7 @@ plots=drift %>%
   map(acf)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-8-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" />
 
 ## Geometric random walk
 
@@ -229,7 +229,7 @@ plots=geometric %>%
       ylab="the accumulated money")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-9-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-9-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -238,7 +238,7 @@ plots=geometric %>%
   map(acf)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-10-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-10-1.png" width="90%" style="display: block; margin: auto;" />
  
 **Remark**
 
@@ -286,7 +286,7 @@ mcd_logret=mcd$adjusted %>%
 plot(mcd$date[-1],mcd_logret,type="l",col="blue")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;" />
 
 # Skewness & Kurtosis
 
@@ -322,25 +322,32 @@ $S_k=0$ indicated a symmetric distribution, i.e., normal distribution or t distr
 library(moments)
 n=rnorm(n=1000, mean = 0, sd = 1)
 hist(n)
-print(c(skewness(n),mean(n),median(n)))
-#> [1] -0.071698111 -0.001422871 -0.023070733
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="672" />
-Since $skewness=-0.07$ approximately equal $0$, the distribution is not skew and $mean=0$ approximately equal $median=-0.02$.
+<img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
+print(c(skewness(n),mean(n),median(n)))
+#> [1]  0.06717153 -0.03877921 -0.04684474
+```
+Since $skewness=0.07$ approximately equal $0$, the distribution is not skew and $mean=-0.04$ approximately equal $median=-0.05$.
 
 <h4>t distribution</h4>
 
 ```r
+library(e1071)
 library(moments)
 t=rt(n=1000,df=10)
 hist(t)
-print(c(skewness(t),mean(t),median(t)))
-#> [1] -0.06792492  0.01644737 -0.01850613
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="672" />
-Since $skewness=-0.07$ approximately equal $0$, the distribution is not skew and $mean=0.02$ approximately equal $median=-0.02$.
+<img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
+print(c(skewness(t),mean(t),median(t)))
+#> [1] -0.11977302  0.01333610  0.02033659
+```
+Since $skewness=-0.12$ approximately equal $0$, the distribution is not skew and $mean=0.01$ approximately equal $median=0.02$.
 
 ### Right-skewed
 
@@ -349,14 +356,18 @@ $S_k>0$ indicates a relatively long right tail compared to the left tail, i.e., 
 ```r
 library(moments)
 library(fGarch)
+library(e1071)
 sr=rsnorm(n=1000, mean = 0, sd = 1, xi = 5)
 hist(sr)
-print(c(skewness(sr),mean(sr),median(sr)))
-#> [1]  0.97928426  0.03187995 -0.19129275
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="672" />
-Since $skewness=0.98$ is greater than $0$, the distribution is right-skew and $mean=0.03$ is greater than $median=-0.19$.
+<img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
+print(c(skewness(sr),mean(sr),median(sr)))
+#> [1]  0.87116578  0.02816567 -0.17229356
+```
+Since $skewness=0.87$ is greater than $0$, the distribution is right-skew and $mean=0.03$ is greater than $median=-0.17$.
 
 ### Left-skewed
 
@@ -365,14 +376,18 @@ $S_k<0$ (left-skewed) indicates a relatively long left tail compared to the righ
 ```r
 library(moments)
 library(fGarch)
+library(e1071)
 sl=rsnorm(n=1000, mean = 0, sd = 1, xi = -2)
 hist(sl)
-print(c(skewness(sl),mean(sl),median(sl)))
-#> [1] -0.78925516 -0.02864372  0.10016168
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="672" />
-Since $skewness=-0.79$ is less than $0$, the distribution is left-skew and $mean=-0.03$ is less than $median=0.1$.
+<img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
+print(c(skewness(sl),mean(sl),median(sl)))
+#> [1] -0.74495545 -0.02409193  0.15149058
+```
+Since $skewness=-0.74$ is less than $0$, the distribution is left-skew and $mean=-0.02$ is less than $median=0.15$.
 
 
 ## Kurtosis
@@ -409,13 +424,16 @@ A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Nor
 library(moments)
 n=rnorm(n=10000, mean = 0, sd = 1)
 hist(n)
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
 kurtosis(n)
-#> [1] -0.02280057
+#> [1] -0.07113532
 #> attr(,"method")
 #> [1] "excess"
 ```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="672" />
 
 ### Leptokurtic
 
@@ -428,13 +446,16 @@ In finance, a leptokurtic distribution shows that the investment returns may be 
 library(moments)
 t=rt(n=1000,df=2)
 hist(t)
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
 kurtosis(t)
-#> [1] 48.58015
+#> [1] 26.10011
 #> attr(,"method")
 #> [1] "excess"
 ```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 ### Platykurtic
 
@@ -448,11 +469,14 @@ library(moments)
 library(e1071)                    
 duration = faithful$eruptions     
 hist(duration)
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
 kurtosis(duration)
 #> [1] -1.511605
 ```
-
-<img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="672" />
 
 ## Financial situation 
 
@@ -575,7 +599,7 @@ y=ifelse(u<0.9,x,5*x)
 hist(y,xlim=c(-10,10))
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-19-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-19-1.png" width="90%" style="display: block; margin: auto;" />
 
 Note that this model could be appropriate for a stock that for most of the time shows little variability, but occasionally, e.g., after some earning announcement or other events, make much bigger movements.
 
@@ -593,7 +617,7 @@ legend("bottomright",
        col = c("red","blue"),lwd = 1)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-20-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;" />
 
 Next we use the rule of 3 sigma to find numbers of outlier and the ratio outlier between mixture distribution and $\mathcal{N}(0,3.4)$.
 
@@ -720,7 +744,7 @@ plt.title("Log-Return of Exchange Rate over time'")
 plt.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-23-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-23-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```python
@@ -734,7 +758,7 @@ ax1.set_title("Histogram of Log return")
 plt.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-24-3.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-24-3.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```python
@@ -781,7 +805,7 @@ plt.title("Log-Return of S&P500 over time'")
 plt.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-27-5.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-27-5.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```python
@@ -795,7 +819,7 @@ ax1.set_title("Histogram of Log return")
 plt.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-28-7.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-28-7.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```python
@@ -836,14 +860,14 @@ head(eurusd_logret)
 plot(eurusd_logret,type="l")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-31-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-31-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
 hist(eurusd_logret,breaks=60)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-32-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-32-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -882,14 +906,14 @@ head(sp500_logret)
 plot(sp500_logret,type="l")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-35-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-35-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
 hist(sp500_logret,breaks=60)
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-36-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-36-1.png" width="90%" style="display: block; margin: auto;" />
 
 
 ```r
@@ -974,7 +998,7 @@ sm.qqplot(eurusd_logret, line ='q')
 py.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-42-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-42-1.png" width="90%" style="display: block; margin: auto;" />
 
 2. Q-Q plot of the log return of S&P500
 
@@ -986,7 +1010,7 @@ sm.qqplot(sp500_logret, line ='q')
 py.show()
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-43-3.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-43-3.png" width="90%" style="display: block; margin: auto;" />
 
 ### R {.unnumbered}
 
@@ -998,7 +1022,7 @@ qqnorm(eurusd_logret)
 qqline(eurusd_logret, col = "red")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-44-5.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-44-5.png" width="90%" style="display: block; margin: auto;" />
 
 2. Q-Q plot of the log return of S&P500
 
@@ -1008,7 +1032,7 @@ qqnorm(sp500_logret)
 qqline(sp500_logret, col = "red")
 ```
 
-<img src="01-intro_files/figure-html/unnamed-chunk-45-1.png" width="672" />
+<img src="01-intro_files/figure-html/unnamed-chunk-45-1.png" width="90%" style="display: block; margin: auto;" />
 
 # Homework
 

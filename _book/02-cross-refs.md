@@ -50,7 +50,7 @@ sp500=read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4
 plot(diff(log(sp500$Close)),type="l",col="blue")
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
 
 * The mean level of the process seems constant.
 * There are sections of the data with explosive behavior (high volatility).
@@ -180,7 +180,7 @@ msft_logret=msft$adjusted %>%
 acf(msft_logret,lag.max=10)
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-2-1.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" />
 
 ## The ADF Test
 
@@ -193,7 +193,6 @@ ADF Test is also called Unit Root Test. The test uses the following null and alt
 ```r
 library(tseries)
 adf.test(msft_logret)
-#> Warning in adf.test(msft_logret): p-value smaller than printed p-value
 #> 
 #> 	Augmented Dickey-Fuller Test
 #> 
@@ -262,10 +261,15 @@ Note that the magnitude of its ACF decays geometrically to zero, either slowly a
 library(stats)
 ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
 acf(ts.sim)
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="672" /><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-5-2.png" width="90%" style="display: block; margin: auto;" />
 
 The null hypothesis of the Ljung–Box test is
 $$H_0 :\rho(1)=\rho(2)=...\rho(m)=0$$
@@ -281,15 +285,18 @@ Consider AR(1) with $\phi_1 = 0.64$ and $\sigma_w^2 = 1$, we have the results of
 library(stats)
 ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" />
+
+```r
 Box.test(ts.sim, lag = 10, type = "Ljung-Box")
 #> 
 #> 	Box-Ljung test
 #> 
 #> data:  ts.sim
-#> X-squared = 79.109, df = 10, p-value = 7.503e-13
+#> X-squared = 55.819, df = 10, p-value = 2.22e-08
 ```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="672" />
 
 If $|\phi_1| \geq 1$ then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.
 
@@ -709,7 +716,7 @@ plt.plot(x, fitted_mcd_logret, 'r-')
 plt.show()
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-11-1.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;" />
 
 b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result.
 
@@ -721,7 +728,7 @@ sm.qqplot(mcd_logret, line = 's')
 pylab.show()
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-12-3.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-12-3.png" width="90%" style="display: block; margin: auto;" />
 
 There are presence of outliers, i.e. the log returns seems not normally distributed.
 
@@ -782,7 +789,7 @@ yfit <- dnorm(xfit, mean = mean(mcd_logret), sd = sd(mcd_logret)) * diff(h$mids[
 lines(xfit, yfit, col = "red", lwd = 2)
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-16-1.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;" />
 
 b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.
 
@@ -794,7 +801,7 @@ qqnorm(mcd_logret)
 qqline(mcd_logret, col = "red")
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;" />
 
 There are presence of outliers, i.e. the log returns seems not normally distributed.
 

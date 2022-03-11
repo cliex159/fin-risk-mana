@@ -329,9 +329,12 @@ hist(n)
 
 ```r
 print(c(skewness(n),mean(n),median(n)))
-#> [1]  0.06717153 -0.03877921 -0.04684474
 ```
-Since $skewness=0.07$ approximately equal $0$, the distribution is not skew and $mean=-0.04$ approximately equal $median=-0.05$.
+
+```
+#> [1] 0.047825380 0.029595494 0.009449741
+```
+Since $skewness=0.05$ approximately equal $0$, the distribution is not skew and $mean=0.03$ approximately equal $median=0.01$.
 
 <h4>t distribution</h4>
 
@@ -346,9 +349,12 @@ hist(t)
 
 ```r
 print(c(skewness(t),mean(t),median(t)))
-#> [1] -0.11977302  0.01333610  0.02033659
 ```
-Since $skewness=-0.12$ approximately equal $0$, the distribution is not skew and $mean=0.01$ approximately equal $median=0.02$.
+
+```
+#> [1] -0.01340383  0.04197639  0.03867323
+```
+Since $skewness=-0.01$ approximately equal $0$, the distribution is not skew and $mean=0.04$ approximately equal $median=0.04$.
 
 ### Right-skewed
 
@@ -366,9 +372,12 @@ hist(sr)
 
 ```r
 print(c(skewness(sr),mean(sr),median(sr)))
-#> [1]  0.87116578  0.02816567 -0.17229356
 ```
-Since $skewness=0.87$ is greater than $0$, the distribution is right-skew and $mean=0.03$ is greater than $median=-0.17$.
+
+```
+#> [1]  0.86929586 -0.05052421 -0.24136543
+```
+Since $skewness=0.87$ is greater than $0$, the distribution is right-skew and $mean=-0.05$ is greater than $median=-0.24$.
 
 ### Left-skewed
 
@@ -386,9 +395,12 @@ hist(sl)
 
 ```r
 print(c(skewness(sl),mean(sl),median(sl)))
-#> [1] -0.74495545 -0.02409193  0.15149058
 ```
-Since $skewness=-0.74$ is less than $0$, the distribution is left-skew and $mean=-0.02$ is less than $median=0.15$.
+
+```
+#> [1] -0.88597146  0.01390576  0.19383722
+```
+Since $skewness=-0.89$ is less than $0$, the distribution is left-skew and $mean=0.01$ is less than $median=0.19$.
 
 
 ## Kurtosis
@@ -431,7 +443,10 @@ hist(n)
 
 ```r
 kurtosis(n)
-#> [1] -0.07113532
+```
+
+```
+#> [1] -0.1081596
 #> attr(,"method")
 #> [1] "excess"
 ```
@@ -453,7 +468,10 @@ hist(t)
 
 ```r
 kurtosis(t)
-#> [1] 26.10011
+```
+
+```
+#> [1] 26.44623
 #> attr(,"method")
 #> [1] "excess"
 ```
@@ -476,7 +494,12 @@ hist(duration)
 
 ```r
 kurtosis(duration)
+```
+
+```
 #> [1] -1.511605
+#> attr(,"method")
+#> [1] "excess"
 ```
 
 ## Financial situation 
@@ -629,6 +652,9 @@ gauss=2*pnorm(-3*sdev, 0, sdev)
 mixt=2*0.9*pnorm(-3*sdev,0,1)+2*0.1*pnorm(-3*sdev, 0,5)
 
 mixt/gauss
+```
+
+```
 #> [1] 9.948061
 ```
 
@@ -717,14 +743,23 @@ import pandas as pd
 eurusd_url='https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=0&single=true&output=csv'
 eurusd=pd.read_csv(eurusd_url)
 eurusd.head()
+```
+
+```
 #>          Date  USD per euro
 #> 0  27/07/2005        1.1990
 #> 1  28/07/2005        1.2100
 #> 2  29/07/2005        1.2093
 #> 3  01/08/2005        1.2219
 #> 4  02/08/2005        1.2217
+```
+
+```python
 eurusd_logret = np.log(eurusd['USD per euro']) - np.log(eurusd['USD per euro'].shift(1))
 eurusd_logret[:6]
+```
+
+```
 #> 0         NaN
 #> 1    0.009132
 #> 2   -0.000579
@@ -765,8 +800,17 @@ plt.show()
 ```python
 import pandas as pd
 eurusd_logret.skew()
+```
+
+```
 #> -0.07336059594162114
+```
+
+```python
 eurusd_logret.kurtosis()
+```
+
+```
 #> 4.66844649461392
 ```
 
@@ -779,14 +823,23 @@ import pandas as pd
 sp500_url='https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv'
 sp500=pd.read_csv(sp500_url)
 sp500.head()
+```
+
+```
 #>          Date    Open    High     Low   Close    Volume  Adj Close
 #> 0  01/03/1985  165.37  166.11  164.38  164.57  88880000     164.57
 #> 1  01/04/1985  164.55  164.55  163.36  163.68  77480000     163.68
 #> 2  01/07/1985  163.68  164.71  163.68  164.24  86190000     164.24
 #> 3  01/08/1985  164.24  164.59  163.91  163.99  92110000     163.99
 #> 4  01/09/1985  163.99  165.57  163.99  165.18  99230000     165.18
+```
+
+```python
 sp500_logret = np.log(sp500['Close']) - np.log(sp500['Close'].shift(1))
 sp500_logret[:6]
+```
+
+```
 #> 0         NaN
 #> 1   -0.005423
 #> 2    0.003415
@@ -826,8 +879,17 @@ plt.show()
 ```python
 import pandas as pd
 sp500_logret.skew()
+```
+
+```
 #> -1.2989867430563735
+```
+
+```python
 sp500_logret.kurtosis()
+```
+
+```
 #> 28.28091194470013
 ```
 
@@ -843,6 +905,9 @@ library(moments)
 eurusd_url="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=0&single=true&output=csv"
 eurusd=read.csv(eurusd_url)
 head(eurusd)
+```
+
+```
 #>         Date USD.per.euro
 #> 1 27/07/2005       1.1990
 #> 2 28/07/2005       1.2100
@@ -850,8 +915,14 @@ head(eurusd)
 #> 4 01/08/2005       1.2219
 #> 5 02/08/2005       1.2217
 #> 6 03/08/2005       1.2308
+```
+
+```r
 eurusd_logret=eurusd[,2] %>% log() %>% diff()
 head(eurusd_logret)
+```
+
+```
 #> [1]  0.0091324836 -0.0005786798  0.0103653445 -0.0001636929  0.0074210330
 #> [6]  0.0008933285
 ```
@@ -874,9 +945,22 @@ hist(eurusd_logret,breaks=60)
 ```r
 library(e1071)
 skewness(eurusd_logret)
+```
+
+```
 #> [1] -0.07318848
+#> attr(,"method")
+#> [1] "moment"
+```
+
+```r
 kurtosis(eurusd_logret)
+```
+
+```
 #> [1] 4.633551
+#> attr(,"method")
+#> [1] "excess"
 ```
 
 2. Calculate skewness and kurtosis of the log return of the exchange rate of S&P500.
@@ -889,6 +973,9 @@ library(moments)
 sp500_url="https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv"
 sp500=read.csv(sp500_url)
 head(sp500)
+```
+
+```
 #>         Date   Open   High    Low  Close    Volume Adj.Close
 #> 1 01/03/1985 165.37 166.11 164.38 164.57  88880000    164.57
 #> 2 01/04/1985 164.55 164.55 163.36 163.68  77480000    163.68
@@ -896,8 +983,14 @@ head(sp500)
 #> 4 01/08/1985 164.24 164.59 163.91 163.99  92110000    163.99
 #> 5 01/09/1985 163.99 165.57 163.99 165.18  99230000    165.18
 #> 6  1/10/1985 165.18 168.31 164.99 168.31 124700000    168.31
+```
+
+```r
 sp500_logret= sp500$Adj.Close %>% log() %>% diff()
 head(sp500_logret)
+```
+
+```
 #> [1] -0.005422709  0.003415471 -0.001523322  0.007230338  0.018771729
 #> [6] -0.002379396
 ```
@@ -920,9 +1013,22 @@ hist(sp500_logret,breaks=60)
 ```r
 library(e1071)
 skewness(sp500_logret)
+```
+
+```
 #> [1] -1.298466
+#> attr(,"method")
+#> [1] "moment"
+```
+
+```r
 kurtosis(sp500_logret)
+```
+
+```
 #> [1] 28.25285
+#> attr(,"method")
+#> [1] "excess"
 ```
 
 ## The Jarque-Bera (JB) tests
@@ -935,6 +1041,9 @@ kurtosis(sp500_logret)
 ```python
 import scipy.stats as stats
 print(stats.jarque_bera(eurusd_logret[1:]),stats.kstest(eurusd_logret[1:],'norm'))
+```
+
+```
 #> Jarque_beraResult(statistic=1150.3195976112938, pvalue=0.0) KstestResult(statistic=0.48876441843556134, pvalue=5.961875332718074e-282)
 ```
 
@@ -946,6 +1055,9 @@ $p-value<0.05$ so we can reject the null hypothesis $H_0: Sk=0 \text{ and } Kur=
 ```python
 import scipy.stats as stats
 print(stats.jarque_bera(sp500_logret[1:]),stats.kstest(sp500_logret[1:],'norm'))
+```
+
+```
 #> Jarque_beraResult(statistic=250996.03457721754, pvalue=0.0) KstestResult(statistic=0.4800295652866924, pvalue=0.0)
 ```
 
@@ -959,6 +1071,9 @@ $p-value<0.05$ so we can reject the null hypothesis $H_0: Sk=0 \text{ and } Kur=
 ```r
 library(moments)
 jarque.test(eurusd_logret)
+```
+
+```
 #> 
 #> 	Jarque-Bera Normality Test
 #> 
@@ -975,6 +1090,9 @@ $p-value<0.05$ so we can reject the null hypothesis $H_0: Sk=0 \text{ and } Kur=
 ```r
 library(moments)
 jarque.test(sp500_logret)
+```
+
+```
 #> 
 #> 	Jarque-Bera Normality Test
 #> 

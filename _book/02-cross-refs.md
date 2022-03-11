@@ -193,6 +193,9 @@ ADF Test is also called Unit Root Test. The test uses the following null and alt
 ```r
 library(tseries)
 adf.test(msft_logret)
+```
+
+```
 #> 
 #> 	Augmented Dickey-Fuller Test
 #> 
@@ -219,6 +222,9 @@ Test results for Microsoft data
 ```r
 library(tseries)
 kpss.test(msft_logret)
+```
+
+```
 #> 
 #> 	KPSS Test for Level Stationarity
 #> 
@@ -291,11 +297,14 @@ plot(ts.sim,col="blue")
 
 ```r
 Box.test(ts.sim, lag = 10, type = "Ljung-Box")
+```
+
+```
 #> 
 #> 	Box-Ljung test
 #> 
 #> data:  ts.sim
-#> X-squared = 55.819, df = 10, p-value = 2.22e-08
+#> X-squared = 75.684, df = 10, p-value = 3.5e-12
 ```
 
 If $|\phi_1| \geq 1$ then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.
@@ -680,6 +689,9 @@ import pandas as pd
 mcd_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&single=true&output=csv'
 mcd = pd.read_csv(mcd_url)
 mcd.head()
+```
+
+```
 #>        Date   Open   High    Low  Close    Volume  Adj Close
 #> 0  1/4/2010  62.63  63.07  62.31  62.78   5839300      53.99
 #> 1  1/5/2010  62.66  62.75  62.19  62.30   7099000      53.58
@@ -694,6 +706,9 @@ import numpy as np
 # Calculate Log Returns
 mcd_logret = np.log(list(mcd['Adj Close'])[1:]) - np.log(list(mcd['Adj Close'])[:-1])
 mcd_logret[:6] # first 10 elements
+```
+
+```
 #> array([-0.00762298, -0.01371815,  0.00735228, -0.00093958,  0.00767866,
 #>         0.00539586])
 ```
@@ -708,10 +723,16 @@ mu, var = norm.fit(mcd_logret)
 x = np.linspace(min(mcd_logret), max(mcd_logret), 100)
 fitted_mcd_logret = norm.pdf(x, mu, var)
 plt.hist(mcd_logret, density = True)
+```
+
+```
 #> (array([ 0.18620447,  0.46551117,  2.60686253,  9.4964278 , 37.24089335,
 #>        46.27180998, 10.6136546 ,  2.2344536 ,  0.09310223,  0.2793067 ]), array([-0.04555068, -0.03641728, -0.02728388, -0.01815047, -0.00901707,
 #>         0.00011633,  0.00924973,  0.01838313,  0.02751654,  0.03664994,
 #>         0.04578334]), <BarContainer object of 10 artists>)
+```
+
+```python
 plt.plot(x, fitted_mcd_logret, 'r-')
 plt.show()
 ```
@@ -737,6 +758,9 @@ There are presence of outliers, i.e. the log returns seems not normally distribu
 from scipy.stats import jarque_bera
 # Carry out a Jarque-Bera tests
 jarque_bera(mcd_logret)
+```
+
+```
 #> Jarque_beraResult(statistic=367.2407128291914, pvalue=0.0)
 ```
 
@@ -749,8 +773,17 @@ c. Calculate skewness, kurtosis and give some comments related to risk managemen
 from scipy.stats import skew, kurtosis
 # Skewness and Kurtosis
 print('Skewness:', skew(mcd_logret))
+```
+
+```
 #> Skewness: -0.1604213839619458
+```
+
+```python
 print('Excess Kurtosis:', kurtosis(mcd_logret))
+```
+
+```
 #> Excess Kurtosis: 2.7187806721684025
 ```
 
@@ -776,6 +809,9 @@ mcd_logret= mcd$Adj.Close %>%
   log() %>% 
   diff()
 head(mcd_logret)
+```
+
+```
 #> [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
 #> [6]  0.0053958639
 ```
@@ -809,6 +845,9 @@ There are presence of outliers, i.e. the log returns seems not normally distribu
 ```r
 # Carry out a Jarque-Bera test
 jarque.test(mcd_logret)
+```
+
+```
 #> 
 #> 	Jarque-Bera Normality Test
 #> 
@@ -825,8 +864,17 @@ c. Calculate skewness, kurtosis and give some comments related to risk managemen
 ```r
 library(moments)
 skewness(mcd_logret)
+```
+
+```
 #> [1] -0.1604214
+```
+
+```r
 kurtosis(mcd_logret)-3
+```
+
+```
 #> [1] 2.718781
 ```
 

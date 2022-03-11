@@ -154,61 +154,61 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 <ol style="list-style-type: lower-alpha">
 <li>Plot histogram and display fitted normal.</li>
 </ol>
-<div class="sourceCode" id="cb61"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb61-1"><a href="homework-1.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb61-2"><a href="homework-1.html#cb61-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-3"><a href="homework-1.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from my Google Spreadsheet</span></span>
-<span id="cb61-4"><a href="homework-1.html#cb61-4" aria-hidden="true" tabindex="-1"></a>mcd_url <span class="op">=</span> <span class="st">'https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&amp;single=true&amp;output=csv'</span></span>
-<span id="cb61-5"><a href="homework-1.html#cb61-5" aria-hidden="true" tabindex="-1"></a>mcd <span class="op">=</span> pd.read_csv(mcd_url)</span>
-<span id="cb61-6"><a href="homework-1.html#cb61-6" aria-hidden="true" tabindex="-1"></a>mcd.head()</span>
-<span id="cb61-7"><a href="homework-1.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Date   Open   High    Low  Close    Volume  Adj Close</span></span>
-<span id="cb61-8"><a href="homework-1.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 0  1/4/2010  62.63  63.07  62.31  62.78   5839300      53.99</span></span>
-<span id="cb61-9"><a href="homework-1.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1/5/2010  62.66  62.75  62.19  62.30   7099000      53.58</span></span>
-<span id="cb61-10"><a href="homework-1.html#cb61-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1/6/2010  62.20  62.41  61.06  61.45  10551300      52.85</span></span>
-<span id="cb61-11"><a href="homework-1.html#cb61-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1/7/2010  61.25  62.34  61.11  61.90   7517700      53.24</span></span>
-<span id="cb61-12"><a href="homework-1.html#cb61-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  1/8/2010  62.27  62.41  61.60  61.84   6107300      53.19</span></span></code></pre></div>
-<div class="sourceCode" id="cb62"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb62-1"><a href="homework-1.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb62-2"><a href="homework-1.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Log Returns</span></span>
-<span id="cb62-3"><a href="homework-1.html#cb62-3" aria-hidden="true" tabindex="-1"></a>mcd_logret <span class="op">=</span> np.log(<span class="bu">list</span>(mcd[<span class="st">'Adj Close'</span>])[<span class="dv">1</span>:]) <span class="op">-</span> np.log(<span class="bu">list</span>(mcd[<span class="st">'Adj Close'</span>])[:<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb62-4"><a href="homework-1.html#cb62-4" aria-hidden="true" tabindex="-1"></a>mcd_logret[:<span class="dv">6</span>] <span class="co"># first 10 elements</span></span>
-<span id="cb62-5"><a href="homework-1.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; array([-0.00762298, -0.01371815,  0.00735228, -0.00093958,  0.00767866,</span></span>
-<span id="cb62-6"><a href="homework-1.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         0.00539586])</span></span></code></pre></div>
-<div class="sourceCode" id="cb63"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb63-1"><a href="homework-1.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats.distributions <span class="im">import</span> norm</span>
-<span id="cb63-2"><a href="homework-1.html#cb63-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb63-3"><a href="homework-1.html#cb63-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram and fitted normal distribution</span></span>
-<span id="cb63-4"><a href="homework-1.html#cb63-4" aria-hidden="true" tabindex="-1"></a>mu, var <span class="op">=</span> norm.fit(mcd_logret)</span>
-<span id="cb63-5"><a href="homework-1.html#cb63-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="bu">min</span>(mcd_logret), <span class="bu">max</span>(mcd_logret), <span class="dv">100</span>)</span>
-<span id="cb63-6"><a href="homework-1.html#cb63-6" aria-hidden="true" tabindex="-1"></a>fitted_mcd_logret <span class="op">=</span> norm.pdf(x, mu, var)</span>
-<span id="cb63-7"><a href="homework-1.html#cb63-7" aria-hidden="true" tabindex="-1"></a>plt.hist(mcd_logret, density <span class="op">=</span> <span class="va">True</span>)</span>
-<span id="cb63-8"><a href="homework-1.html#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; (array([ 0.18620447,  0.46551117,  2.60686253,  9.4964278 , 37.24089335,</span></span>
-<span id="cb63-9"><a href="homework-1.html#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        46.27180998, 10.6136546 ,  2.2344536 ,  0.09310223,  0.2793067 ]), array([-0.04555068, -0.03641728, -0.02728388, -0.01815047, -0.00901707,</span></span>
-<span id="cb63-10"><a href="homework-1.html#cb63-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         0.00011633,  0.00924973,  0.01838313,  0.02751654,  0.03664994,</span></span>
-<span id="cb63-11"><a href="homework-1.html#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         0.04578334]), &lt;BarContainer object of 10 artists&gt;)</span></span>
-<span id="cb63-12"><a href="homework-1.html#cb63-12" aria-hidden="true" tabindex="-1"></a>plt.plot(x, fitted_mcd_logret, <span class="st">'r-'</span>)</span>
-<span id="cb63-13"><a href="homework-1.html#cb63-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb100-1"><a href="homework-1.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb100-2"><a href="homework-1.html#cb100-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb100-3"><a href="homework-1.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Import data from my Google Spreadsheet</span></span>
+<span id="cb100-4"><a href="homework-1.html#cb100-4" aria-hidden="true" tabindex="-1"></a>mcd_url <span class="op">=</span> <span class="st">'https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&amp;single=true&amp;output=csv'</span></span>
+<span id="cb100-5"><a href="homework-1.html#cb100-5" aria-hidden="true" tabindex="-1"></a>mcd <span class="op">=</span> pd.read_csv(mcd_url)</span>
+<span id="cb100-6"><a href="homework-1.html#cb100-6" aria-hidden="true" tabindex="-1"></a>mcd.head()</span></code></pre></div>
+<pre><code>#&gt;        Date   Open   High    Low  Close    Volume  Adj Close
+#&gt; 0  1/4/2010  62.63  63.07  62.31  62.78   5839300      53.99
+#&gt; 1  1/5/2010  62.66  62.75  62.19  62.30   7099000      53.58
+#&gt; 2  1/6/2010  62.20  62.41  61.06  61.45  10551300      52.85
+#&gt; 3  1/7/2010  61.25  62.34  61.11  61.90   7517700      53.24
+#&gt; 4  1/8/2010  62.27  62.41  61.60  61.84   6107300      53.19</code></pre>
+<div class="sourceCode" id="cb102"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb102-1"><a href="homework-1.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb102-2"><a href="homework-1.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate Log Returns</span></span>
+<span id="cb102-3"><a href="homework-1.html#cb102-3" aria-hidden="true" tabindex="-1"></a>mcd_logret <span class="op">=</span> np.log(<span class="bu">list</span>(mcd[<span class="st">'Adj Close'</span>])[<span class="dv">1</span>:]) <span class="op">-</span> np.log(<span class="bu">list</span>(mcd[<span class="st">'Adj Close'</span>])[:<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb102-4"><a href="homework-1.html#cb102-4" aria-hidden="true" tabindex="-1"></a>mcd_logret[:<span class="dv">6</span>] <span class="co"># first 10 elements</span></span></code></pre></div>
+<pre><code>#&gt; array([-0.00762298, -0.01371815,  0.00735228, -0.00093958,  0.00767866,
+#&gt;         0.00539586])</code></pre>
+<div class="sourceCode" id="cb104"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb104-1"><a href="homework-1.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats.distributions <span class="im">import</span> norm</span>
+<span id="cb104-2"><a href="homework-1.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb104-3"><a href="homework-1.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram and fitted normal distribution</span></span>
+<span id="cb104-4"><a href="homework-1.html#cb104-4" aria-hidden="true" tabindex="-1"></a>mu, var <span class="op">=</span> norm.fit(mcd_logret)</span>
+<span id="cb104-5"><a href="homework-1.html#cb104-5" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="bu">min</span>(mcd_logret), <span class="bu">max</span>(mcd_logret), <span class="dv">100</span>)</span>
+<span id="cb104-6"><a href="homework-1.html#cb104-6" aria-hidden="true" tabindex="-1"></a>fitted_mcd_logret <span class="op">=</span> norm.pdf(x, mu, var)</span>
+<span id="cb104-7"><a href="homework-1.html#cb104-7" aria-hidden="true" tabindex="-1"></a>plt.hist(mcd_logret, density <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div>
+<pre><code>#&gt; (array([ 0.18620447,  0.46551117,  2.60686253,  9.4964278 , 37.24089335,
+#&gt;        46.27180998, 10.6136546 ,  2.2344536 ,  0.09310223,  0.2793067 ]), array([-0.04555068, -0.03641728, -0.02728388, -0.01815047, -0.00901707,
+#&gt;         0.00011633,  0.00924973,  0.01838313,  0.02751654,  0.03664994,
+#&gt;         0.04578334]), &lt;BarContainer object of 10 artists&gt;)</code></pre>
+<div class="sourceCode" id="cb106"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb106-1"><a href="homework-1.html#cb106-1" aria-hidden="true" tabindex="-1"></a>plt.plot(x, fitted_mcd_logret, <span class="st">'r-'</span>)</span>
+<span id="cb106-2"><a href="homework-1.html#cb106-2" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;"></div>
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Use QQ plot and Jaque-Bera test to test for normality and interpret the result.</li>
 </ol>
-<div class="sourceCode" id="cb64"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb64-1"><a href="homework-1.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
-<span id="cb64-2"><a href="homework-1.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pylab</span>
-<span id="cb64-3"><a href="homework-1.html#cb64-3" aria-hidden="true" tabindex="-1"></a>sm.qqplot(mcd_logret, line <span class="op">=</span> <span class="st">'s'</span>)</span>
-<span id="cb64-4"><a href="homework-1.html#cb64-4" aria-hidden="true" tabindex="-1"></a>pylab.show()</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb107-1"><a href="homework-1.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb107-2"><a href="homework-1.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pylab</span>
+<span id="cb107-3"><a href="homework-1.html#cb107-3" aria-hidden="true" tabindex="-1"></a>sm.qqplot(mcd_logret, line <span class="op">=</span> <span class="st">'s'</span>)</span>
+<span id="cb107-4"><a href="homework-1.html#cb107-4" aria-hidden="true" tabindex="-1"></a>pylab.show()</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-12-3.png" width="90%" style="display: block; margin: auto;"></div>
 <p>There are presence of outliers, i.e. the log returns seems not normally distributed.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb65-1"><a href="homework-1.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> jarque_bera</span>
-<span id="cb65-2"><a href="homework-1.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Carry out a Jarque-Bera tests</span></span>
-<span id="cb65-3"><a href="homework-1.html#cb65-3" aria-hidden="true" tabindex="-1"></a>jarque_bera(mcd_logret)</span>
-<span id="cb65-4"><a href="homework-1.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Jarque_beraResult(statistic=367.2407128291914, pvalue=0.0)</span></span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb108-1"><a href="homework-1.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> jarque_bera</span>
+<span id="cb108-2"><a href="homework-1.html#cb108-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Carry out a Jarque-Bera tests</span></span>
+<span id="cb108-3"><a href="homework-1.html#cb108-3" aria-hidden="true" tabindex="-1"></a>jarque_bera(mcd_logret)</span></code></pre></div>
+<pre><code>#&gt; Jarque_beraResult(statistic=367.2407128291914, pvalue=0.0)</code></pre>
 <p><span class="math inline">\(p−value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0\)</span>: <span class="math inline">\(Sk=0\)</span> and <span class="math inline">\(Kur=3\)</span> meaning that the log return of the data do not follow the normal distribution.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Calculate skewness, kurtosis and give some comments related to risk management.</li>
 </ol>
-<div class="sourceCode" id="cb66"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb66-1"><a href="homework-1.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> skew, kurtosis</span>
-<span id="cb66-2"><a href="homework-1.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Skewness and Kurtosis</span></span>
-<span id="cb66-3"><a href="homework-1.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Skewness:'</span>, skew(mcd_logret))</span>
-<span id="cb66-4"><a href="homework-1.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Skewness: -0.1604213839619458</span></span>
-<span id="cb66-5"><a href="homework-1.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Excess Kurtosis:'</span>, kurtosis(mcd_logret))</span>
-<span id="cb66-6"><a href="homework-1.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Excess Kurtosis: 2.7187806721684025</span></span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb110-1"><a href="homework-1.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> skew, kurtosis</span>
+<span id="cb110-2"><a href="homework-1.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Skewness and Kurtosis</span></span>
+<span id="cb110-3"><a href="homework-1.html#cb110-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Skewness:'</span>, skew(mcd_logret))</span></code></pre></div>
+<pre><code>#&gt; Skewness: -0.1604213839619458</code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb112-1"><a href="homework-1.html#cb112-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Excess Kurtosis:'</span>, kurtosis(mcd_logret))</span></code></pre></div>
+<pre><code>#&gt; Excess Kurtosis: 2.7187806721684025</code></pre>
 <p>A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds’ stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.</p>
 <p>A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds’ stock is not desirable for pessimistic investors since chance of experiencing big losses is high.</p>
 </div>
@@ -218,7 +218,7 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 <ol style="list-style-type: lower-alpha">
 <li>Plot histogram and display fitted normal.</li>
 </ol>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 
 <span class="co"># Import data from my Google Spreadsheet</span>
@@ -229,10 +229,10 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 <span class="va">mcd_logret</span><span class="op">=</span> <span class="va">mcd</span><span class="op">$</span><span class="va">Adj.Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593</span>
-<span class="co">#&gt; [6]  0.0053958639</span></code></pre></div>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
+#&gt; [6]  0.0053958639</code></pre>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Histogram and fitted normal distribution</span>
 <span class="va">h</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>
 <span class="va">xfit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>, length <span class="op">=</span> <span class="fl">100</span><span class="op">)</span>
@@ -242,32 +242,33 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 <ol start="2" style="list-style-type: lower-alpha">
 <li>Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.</li>
 </ol>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="co"># Make a Q-Q plot and add a red line</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqnorm</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/qqnorm.html">qqline</a></span><span class="op">(</span><span class="va">mcd_logret</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>There are presence of outliers, i.e. the log returns seems not normally distributed.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Carry out a Jarque-Bera test</span>
-<span class="fu"><a href="https://rdrr.io/pkg/moments/man/jarque.test.html">jarque.test</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt;  Jarque-Bera Normality Test</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; data:  mcd_logret</span>
-<span class="co">#&gt; JB = 367.24, p-value &lt; 2.2e-16</span>
-<span class="co">#&gt; alternative hypothesis: greater</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/jarque.test.html">jarque.test</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt;  Jarque-Bera Normality Test
+#&gt; 
+#&gt; data:  mcd_logret
+#&gt; JB = 367.24, p-value &lt; 2.2e-16
+#&gt; alternative hypothesis: greater</code></pre>
 <p><span class="math inline">\(p−value&lt;0.05\)</span> so we can reject the null hypothesis <span class="math inline">\(H_0\)</span>: <span class="math inline">\(Sk=0\)</span> and <span class="math inline">\(Kur=3\)</span> meaning that the log return of the data do not follow the normal distribution.</p>
 <ol start="3" style="list-style-type: lower-alpha">
 <li>Calculate skewness, kurtosis and give some comments related to risk management.</li>
 </ol>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span>
-<span class="co">#&gt; [1] -0.1604214</span>
-<span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span><span class="op">-</span><span class="fl">3</span>
-<span class="co">#&gt; [1] 2.718781</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] -0.1604214</code></pre>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span><span class="op">-</span><span class="fl">3</span></code></pre></div>
+<pre><code>#&gt; [1] 2.718781</code></pre>
 <p>A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds’ stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.</p>
 <p>A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds’ stock is not desirable for pessimistic investors since chance of experiencing big losses is high.</p>
 </div>
@@ -369,7 +370,7 @@ Corr(aX+b,cY+d)&amp;=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-10.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-11.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

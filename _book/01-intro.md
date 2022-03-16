@@ -253,10 +253,8 @@ on what happened before, denoted by $\sigma_t$.
 * The subscript t means that it is volatility on a particular time period, usually a day.
 * Clear evidence of cyclical patterns in volatility over time, both in the short run and the long run.
 
-
-
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/1112.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/1112.png)
 </center>
 
 ## Calculations
@@ -299,8 +297,9 @@ Skewness, kurtosis are important descriptive statistics of data distribution tha
 ## Skewness
 
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/13.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/13.png)
 </center>
+
 ### Definition {.unnumbered}
 
 The skewness of a random variable X is
@@ -310,7 +309,7 @@ Skewness measures the degree of asymmetry.
 ### Types of skewness {.unnumbered}
 
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/14.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/14.png)
 </center>
 
 ### Symmetric distribution
@@ -339,7 +338,6 @@ Since $skewness=0.05$ approximately equal $0$, the distribution is not skew and 
 <h4>t distribution</h4>
 
 ```r
-library(e1071)
 library(moments)
 t=rt(n=1000,df=10)
 hist(t)
@@ -363,7 +361,6 @@ $S_k>0$ indicates a relatively long right tail compared to the left tail, i.e., 
 ```r
 library(moments)
 library(fGarch)
-library(e1071)
 sr=rsnorm(n=1000, mean = 0, sd = 1, xi = 5)
 hist(sr)
 ```
@@ -386,7 +383,6 @@ $S_k<0$ (left-skewed) indicates a relatively long left tail compared to the righ
 ```r
 library(moments)
 library(fGarch)
-library(e1071)
 sl=rsnorm(n=1000, mean = 0, sd = 1, xi = -2)
 hist(sl)
 ```
@@ -426,7 +422,7 @@ Let X follow a t distribution $t(df=\nu)$. Then $$Kur(X)=3+\frac{6}{\nu-4}$$
 Let the excess kurtosis $\kappa(X)=Kur(X)-3$, we have the following definitions:
 
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/15.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/15.png)
 </center>
 
 ### Mesokurtic
@@ -586,7 +582,7 @@ $$y_p=1+\sqrt{2} \times (-3)=-3.242641$$
 Generate a standard normal distribution from $-10$ to $10$. We compare with $N(0, 1)$, we get
   
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/16.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/16.png)
 </center>
 
 #### Empirical Q-Q plots
@@ -602,7 +598,7 @@ Denote $F$ the specified CDF (e.g., normal) model. $G$ is the empirical CDF for 
 $F = \mathcal{N}(0, 1)$, a model and $X_1, X_2, ...X_{20} \sim U(0, 1)$ then we get the Q-Q plot of the samples
 
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/17.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/17.png)
 </center>
 
 # Mixture Distributions 
@@ -1295,3 +1291,325 @@ i.e. the probability that the price doubles after t days is at least 90%.
 
 >Answer: Minimum value of t such that the probability that the price doubles after t days is 81639.
 
+## Problem 5 
+
+Let $(X_n)_{n \geq 0}$ be a log-normal geometric random walk with parameters $\mu$ and $\sigma$, i.e.
+
+$$ X_k= X_0 e^{\sum_{i=1}^k r_i}, \forall k \in \mathbb{N} $$
+
+where $r_i \sim \mathcal{N}(\mu,\sigma^2)$ are i.i.d and $X_0 \neq 0$ is constant.
+
+a. Determine $P(X_2 > 1.3X_0)$.
+
+>$$\begin{align*}
+r_1+r_2 &\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\ 
+&\sim \mathcal{N}(2\mu,2\sigma^2)
+\end{align*}$$
+
+>$$\begin{align*} 
+\mathbb{P}(X_2>1.3X_0) &= \mathbb{P} \left( \frac{X_2}{X_0}>1.3 \right) \\
+&= \mathbb{P} \left( e^{r_1+r_2}>1.3 \right) \\
+&=\mathbb{P} \left({r_1+r_2}>\ln(1.3) \right) \\
+&=\mathbb{P} \left( \mathcal{Z} > \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right) \\
+&=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
+\end{align*}$$
+
+>Answer: $\mathbb{P}(X_2>1.3X_0)=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)$
+
+b. Find the density $f_{X_1}$ of $X_1$.
+
+>$$\begin{align*} 
+F_{X_1}(x) &=\mathbb{P}(X_1 \leq x) \\
+&=\mathbb(X_0e^{r_1} \leq x) \\
+&=\mathbb{P}(r_1 \leq \ln(x)-\ln(X_0) \\
+&=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right) \\
+&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-t^2}{2}}\,dt \\ \rightarrow f_{X_1}(x) &= \frac{1}{\sqrt{2\pi}} \times \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \times e^{\frac{-\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2}{2}} \\
+&=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}
+\end{align*}$$
+
+>Answer: $f_{X_1}(x)=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}$
+
+c. Find a formula for the $0.9$ quantile of $X_k$ for each $k \in \mathbb{N}$.
+
+>Let $x_k$ be the 0.9 quantile of $X_k$
+$$\begin{align*}
+\sum_{i=1}^{k} r_i &\sim k \times \mathcal{N}(\mu,\sigma^2) \\ 
+&\sim \mathcal{N}(k\mu,k\sigma^2) \\ 
+\end{align*}$$
+
+>$$\begin{align*} 
+\mathbb{P}(X_k \leq x_k) &= \mathbb{P} \left( \frac{X_k}{X_0} \leq \frac{x_k}{X_0} \right) \\
+&= \mathbb{P} \left( e^{\sum_{i=1}^{k} r_i} \leq \frac{x_k}{X_0} \right) \\
+&=\mathbb{P} \left({\sum_{i=1}^{k} r_i} \leq \ln(x_k) -\ln(X_0) \right) \\
+&=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right) \\
+&=\Phi \left( \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right)
+\end{align*}$$
+
+>$$\begin{align*} 
+&\mathbb{P}(X_k \leq x_k) = 0.9 \\
+&\rightarrow \Phi \left( \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right) = 0.9 \\
+&\rightarrow \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}}=\Phi^{-1}(0.9) \\
+&\rightarrow x_k=X_0 e^{\Phi^{-1}(0.9) \sigma \sqrt{k} +k\mu}
+\end{align*}$$
+
+>Answer: The formula for the 0.9 quantile of $X_k$ for each $k \in \mathbb{N}$ is $X_0 e^{\Phi^{-1}(0.9) \sigma \sqrt{k} +k\mu}$.
+
+## Problem 6
+
+Given data of McDonald’s stock returns. Using R or Python:
+
+### Python {.unnumbered}
+
+a. Plot histogram and display fitted normal.
+
+
+```python
+import pandas as pd
+
+# Import data from my Google Spreadsheet
+mcd_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&single=true&output=csv'
+mcd = pd.read_csv(mcd_url)
+mcd.head()
+```
+
+```
+#>        Date   Open   High    Low  Close    Volume  Adj Close
+#> 0  1/4/2010  62.63  63.07  62.31  62.78   5839300      53.99
+#> 1  1/5/2010  62.66  62.75  62.19  62.30   7099000      53.58
+#> 2  1/6/2010  62.20  62.41  61.06  61.45  10551300      52.85
+#> 3  1/7/2010  61.25  62.34  61.11  61.90   7517700      53.24
+#> 4  1/8/2010  62.27  62.41  61.60  61.84   6107300      53.19
+```
+
+
+```python
+import numpy as np
+# Calculate Log Returns
+mcd_logret = np.log(list(mcd['Adj Close'])[1:]) - np.log(list(mcd['Adj Close'])[:-1])
+mcd_logret[:6] # first 10 elements
+```
+
+```
+#> array([-0.00762298, -0.01371815,  0.00735228, -0.00093958,  0.00767866,
+#>         0.00539586])
+```
+
+
+
+```python
+from scipy.stats.distributions import norm
+import matplotlib.pyplot as plt
+# Histogram and fitted normal distribution
+mu, var = norm.fit(mcd_logret)
+x = np.linspace(min(mcd_logret), max(mcd_logret), 100)
+fitted_mcd_logret = norm.pdf(x, mu, var)
+plt.hist(mcd_logret, density = True)
+```
+
+```
+#> (array([ 0.18620447,  0.46551117,  2.60686253,  9.4964278 , 37.24089335,
+#>        46.27180998, 10.6136546 ,  2.2344536 ,  0.09310223,  0.2793067 ]), array([-0.04555068, -0.03641728, -0.02728388, -0.01815047, -0.00901707,
+#>         0.00011633,  0.00924973,  0.01838313,  0.02751654,  0.03664994,
+#>         0.04578334]), <BarContainer object of 10 artists>)
+```
+
+```python
+plt.plot(x, fitted_mcd_logret, 'r-')
+plt.show()
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-49-1.png" width="90%" style="display: block; margin: auto;" />
+
+b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result.
+
+
+```python
+import statsmodels.api as sm
+import pylab
+sm.qqplot(mcd_logret, line = 's')
+pylab.show()
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-50-3.png" width="90%" style="display: block; margin: auto;" />
+
+There are presence of outliers, i.e. the log returns seems not normally distributed.
+
+
+```python
+from scipy.stats import jarque_bera
+# Carry out a Jarque-Bera tests
+jarque_bera(mcd_logret)
+```
+
+```
+#> Jarque_beraResult(statistic=367.2407128291914, pvalue=0.0)
+```
+
+$p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
+
+c. Calculate skewness, kurtosis and give some comments related to risk management.
+
+
+```python
+from scipy.stats import skew, kurtosis
+# Skewness and Kurtosis
+print('Skewness:', skew(mcd_logret))
+```
+
+```
+#> Skewness: -0.1604213839619458
+```
+
+```python
+print('Excess Kurtosis:', kurtosis(mcd_logret))
+```
+
+```
+#> Excess Kurtosis: 2.7187806721684025
+```
+
+A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds' stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.
+
+A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
+
+
+### R {.unnumbered}
+
+a. Plot histogram and display fitted normal.
+
+
+```r
+library(tidyverse)
+
+# Import data from my Google Spreadsheet
+mcd_url="https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&single=true&output=csv"
+mcd=read.csv(mcd_url)
+
+# Calculate log return
+mcd_logret= mcd$Adj.Close %>% 
+  log() %>% 
+  diff()
+head(mcd_logret)
+```
+
+```
+#> [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
+#> [6]  0.0053958639
+```
+
+
+```r
+# Histogram and fitted normal distribution
+h=hist(mcd_logret)
+xfit <- seq(min(mcd_logret), max(mcd_logret), length = 100)
+yfit <- dnorm(xfit, mean = mean(mcd_logret), sd = sd(mcd_logret)) * diff(h$mids[1:2]) * length(mcd_logret)
+lines(xfit, yfit, col = "red", lwd = 2)
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-54-1.png" width="90%" style="display: block; margin: auto;" />
+
+b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.
+
+
+```r
+library(moments)
+# Make a Q-Q plot and add a red line
+qqnorm(mcd_logret)
+qqline(mcd_logret, col = "red")
+```
+
+<img src="01-intro_files/figure-html/unnamed-chunk-55-1.png" width="90%" style="display: block; margin: auto;" />
+
+There are presence of outliers, i.e. the log returns seems not normally distributed.
+
+
+```r
+# Carry out a Jarque-Bera test
+jarque.test(mcd_logret)
+```
+
+```
+#> 
+#> 	Jarque-Bera Normality Test
+#> 
+#> data:  mcd_logret
+#> JB = 367.24, p-value < 2.2e-16
+#> alternative hypothesis: greater
+```
+
+$p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
+
+c. Calculate skewness, kurtosis and give some comments related to risk management.
+
+
+```r
+library(moments)
+skewness(mcd_logret)
+```
+
+```
+#> [1] -0.1602168
+#> attr(,"method")
+#> [1] "moment"
+```
+
+```r
+kurtosis(mcd_logret)-3
+```
+
+```
+#> [1] -0.290941
+#> attr(,"method")
+#> [1] "excess"
+```
+
+A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds' stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.
+
+A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
+
+## Problem 7
+
+Assume a random variable X has the distribution
+$$P(X =−4)= \frac{1}{3}, P(X =1)= \frac{1}{2}, P(X =5)= \frac{1}{6}$$
+
+Check that $X$ has skewness $0$, but is not distributed symmetrically.
+
+>$$\begin{align*}
+E[X^3] &=\mathbb{P}(X=-4) \times (-4)^3+\mathbb{P}(X=1) \times (1)^3+\mathbb{P}(X=5) \times (5)^3 \\
+&=\frac{1}{3} \times (-64) + \frac{1}{2} \times (1)+\frac{1}{6} \times (125) \\
+&=0 
+\end{align*}$$
+
+>Since $\mu = E[X] = 0$ and $\sigma^2 = Var(X) = 10$, the skewness of $X$ is given by
+$$ \tilde \mu_3=\frac{\mathbb{E}(X^3)-3\mu\sigma^2-\mu^3}{\sigma^3}=\frac{0-0-0}{\sqrt{1000}}=0 $$
+
+>Suppose X has a symmetric distribution, there exists $x_0 \in \mathbb{R}$ such that
+$$ \mathbb{P}(X=x_0-\delta)=\mathbb{P}(X=x_0+\delta), \forall \delta >0 $$
+
+>Letting $\delta=x_0-1$ implies
+$$\mathbb{P}(X=1)=\mathbb{P}(X=2x_0-1)=\frac{1}{2}, \forall \delta >0$$
+
+>thus $2x_0-1=1$, i.e. $x_0=1$. Letting $\delta=4$ gives
+$$ 0=\mathbb{P}(X=-3)=\mathbb{P}(X=5)=\frac{1}{6} (!) $$
+
+## Problem 8
+
+a. Show that if X, Y are random variables and cov(X, Y ) = 0, then X, Y may not be independent.
+
+>Let $X$ be the normal distribution and $Y$ be $X^2$ then
+$$ Cov(X,Y)=\mathbb{E}(XY)-E(X)E(Y)=0 $$
+
+>However,
+$$ 0.25=\mathbb{E}(Y|X=0.5) \neq E(Y)=Var(X)=1 $$
+
+>Hence, X and Y are not inidependent.
+
+b. Prove that correlation is invariant under linear transformations.
+
+>Let a, b, c, d be constants with ac > 0, then for any random variables X, Y, we have
+$$\begin{align*}
+Corr(aX+b,cY+d)&=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
+&=\frac{ac \times Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
+&=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}} \\
+&=Corr(X,Y) 
+\end{align*}$$

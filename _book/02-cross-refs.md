@@ -146,7 +146,7 @@ $$ \rho(t,s)=\sqrt{1-\frac{s}{t}} $$
 which against $\rho$ depending on $t$ as well as on $s$, thus the random walk is not covariance stationary. The following figure shows the relationship among different processes: Stationary processes are the largest set, followed by white noise, martingale difference (MD), and i.i.d. processes.
 
 <center>
-<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/21.png" width="50%" height="50%">
+![](/Users/cliex159/Documents/fin-risk-mana/Frisk/21.png)
 </center>
 
 ## Estimating Parameters
@@ -518,9 +518,10 @@ $$ \mathbb{E}(\sigma_{n+t}^2) = \sigma^22 + (\alpha + \beta)^t(\sigma_n^2 − \s
 
 For the S&P data consider earlier, $\alpha + \beta = 0.9935$, the log-run variance rate $\sigma^2 = 0.0002075$ (or $\sigma = 1.44\%$ per day). Suppose that our estimate of the current variance rate per day is $0.0003$ (This corresponds to a volatility of $1.732\%$ per day). In $t = 10$ days, calculate the expected variance rate??  
 
-We have $\sigma_n^2 = 0.0003$
-Hence
-$\mathbb{E}(\sigma_{n+10}^2 ) = 0.0002075 + 0.993510^{10} × (0.0003 − 0.0002075) = 0.0002942$
+We have $\sigma_n^2 = 0.0003$, hence
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+10}^2 ) = 0.0002075 + 0.993510^{10} × (0.0003 − 0.0002075) = 0.0002942
+\end{align*}$$
 or the expected volatility per day is $\sqrt{0.0002942} = 1.72\%$, still above the long-term volatility of $1.44\%$ per day.
 
 ##  Volatility term structures {.unnumbered}
@@ -584,8 +585,6 @@ volatility ($\%$ per annum)
 
 >Answer: The autocovariance function of Brownian motion is $t-\tau$
 
-
-
 2. Let $cov (X_t,X_{t+h})=\gamma(h)$
 
 a. Prove that $\gamma(h)=\gamma(-h)$
@@ -608,323 +607,839 @@ b. Prove that $-1 \leq \rho(h) \le1$
 &\rightarrow -1 \leq \rho(h) \leq 1
 \end{align*}$$
 
-# Homework
+## ADF test
 
-## Problem 5 
-
-Let $(X_n)_{n \geq 0}$ be a log-normal geometric random walk with parameters $\mu$ and $\sigma$, i.e.
-
-$$ X_k= X_0 e^{\sum_{i=1}^k r_i}, \forall k \in \mathbb{N} $$
-
-where $r_i \sim \mathcal{N}(\mu,\sigma^2)$ are i.i.d and $X_0 \neq 0$ is constant.
-
-a. Determine $P(X_2 > 1.3X_0)$.
-
->$$\begin{align*}
-r_1+r_2 &\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\ 
-&\sim \mathcal{N}(2\mu,2\sigma^2)
-\end{align*}$$
-
->$$\begin{align*} 
-\mathbb{P}(X_2>1.3X_0) &= \mathbb{P} \left( \frac{X_2}{X_0}>1.3 \right) \\
-&= \mathbb{P} \left( e^{r_1+r_2}>1.3 \right) \\
-&=\mathbb{P} \left({r_1+r_2}>\ln(1.3) \right) \\
-&=\mathbb{P} \left( \mathcal{Z} > \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right) \\
-&=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
-\end{align*}$$
-
->Answer: $\mathbb{P}(X_2>1.3X_0)=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)$
-
-b. Find the density $f_{X_1}$ of $X_1$.
-
->$$\begin{align*} 
-F_{X_1}(x) &=\mathbb{P}(X_1 \leq x) \\
-&=\mathbb(X_0e^{r_1} \leq x) \\
-&=\mathbb{P}(r_1 \leq \ln(x)-\ln(X_0) \\
-&=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right) \\
-&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-t^2}{2}}\,dt \\ \rightarrow f_{X_1}(x) &= \frac{1}{\sqrt{2\pi}} \times \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \times e^{\frac{-\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2}{2}} \\
-&=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}
-\end{align*}$$
-
->Answer: $f_{X_1}(x)=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}$
-
-c. Find a formula for the $0.9$ quantile of $X_k$ for each $k \in \mathbb{N}$.
-
->Let $x_k$ be the 0.9 quantile of $X_k$
-$$\begin{align*}
-\sum_{i=1}^{k} r_i &\sim k \times \mathcal{N}(\mu,\sigma^2) \\ 
-&\sim \mathcal{N}(k\mu,k\sigma^2) \\ 
-\end{align*}$$
-
->$$\begin{align*} 
-\mathbb{P}(X_k \leq x_k) &= \mathbb{P} \left( \frac{X_k}{X_0} \leq \frac{x_k}{X_0} \right) \\
-&= \mathbb{P} \left( e^{\sum_{i=1}^{k} r_i} \leq \frac{x_k}{X_0} \right) \\
-&=\mathbb{P} \left({\sum_{i=1}^{k} r_i} \leq \ln(x_k) -\ln(X_0) \right) \\
-&=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right) \\
-&=\Phi \left( \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right)
-\end{align*}$$
-
->$$\begin{align*} 
-&\mathbb{P}(X_k \leq x_k) = 0.9 \\
-&\rightarrow \Phi \left( \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}} \right) = 0.9 \\
-&\rightarrow \frac{\ln(x_k) -\ln(X_0)-k\mu}{\sigma \sqrt{k}}=\Phi^{-1}(0.9) \\
-&\rightarrow x_k=X_0 e^{\Phi^{-1}(0.9) \sigma \sqrt{k} +k\mu}
-\end{align*}$$
-
->Answer: The formula for the 0.9 quantile of $X_k$ for each $k \in \mathbb{N}$ is $X_0 e^{\Phi^{-1}(0.9) \sigma \sqrt{k} +k\mu}$.
-
-## Problem 6
-
-Given data of McDonald’s stock returns. Using R or Python:
-
-### Python {.unnumbered}
-
-a. Plot histogram and display fitted normal.
+### Python {.unnumbered} 
 
 
 ```python
-import pandas as pd
-
-# Import data from my Google Spreadsheet
-mcd_url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&single=true&output=csv'
-mcd = pd.read_csv(mcd_url)
-mcd.head()
-```
-
-```
-#>        Date   Open   High    Low  Close    Volume  Adj Close
-#> 0  1/4/2010  62.63  63.07  62.31  62.78   5839300      53.99
-#> 1  1/5/2010  62.66  62.75  62.19  62.30   7099000      53.58
-#> 2  1/6/2010  62.20  62.41  61.06  61.45  10551300      52.85
-#> 3  1/7/2010  61.25  62.34  61.11  61.90   7517700      53.24
-#> 4  1/8/2010  62.27  62.41  61.60  61.84   6107300      53.19
-```
-
-
-```python
+import pandas_datareader as web
 import numpy as np
-# Calculate Log Returns
-mcd_logret = np.log(list(mcd['Adj Close'])[1:]) - np.log(list(mcd['Adj Close'])[:-1])
-mcd_logret[:6] # first 10 elements
-```
-
-```
-#> array([-0.00762298, -0.01371815,  0.00735228, -0.00093958,  0.00767866,
-#>         0.00539586])
-```
-
-
-
-```python
-from scipy.stats.distributions import norm
 import matplotlib.pyplot as plt
-# Histogram and fitted normal distribution
-mu, var = norm.fit(mcd_logret)
-x = np.linspace(min(mcd_logret), max(mcd_logret), 100)
-fitted_mcd_logret = norm.pdf(x, mu, var)
-plt.hist(mcd_logret, density = True)
+
+price = web.get_data_yahoo("^gspc",
+start = "2009-01-01",
+end = "2021-12-31")
+
+# Log-data
+x=np.log(price['Adj Close'])
+plt.plot(x,color="black")
+plt.show()
+
+# First difference of log-data
 ```
 
-```
-#> (array([ 0.18620447,  0.46551117,  2.60686253,  9.4964278 , 37.24089335,
-#>        46.27180998, 10.6136546 ,  2.2344536 ,  0.09310223,  0.2793067 ]), array([-0.04555068, -0.03641728, -0.02728388, -0.01815047, -0.00901707,
-#>         0.00011633,  0.00924973,  0.01838313,  0.02751654,  0.03664994,
-#>         0.04578334]), <BarContainer object of 10 artists>)
-```
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-9-1.png" width="90%" style="display: block; margin: auto;" />
 
 ```python
-plt.plot(x, fitted_mcd_logret, 'r-')
+y=np.diff(np.log(price['Adj Close']))
+plt.plot(y,color="black")
 plt.show()
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-11-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-9-2.png" width="90%" style="display: block; margin: auto;" />
 
-b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result.
+
+```python
+from statsmodels.tsa.stattools import adfuller
+result=adfuller(x)
+print('ADF Statistic: %f' % result[0])
+```
+
+```
+#> ADF Statistic: -0.541575
+```
+
+```python
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.883645
+```
+
+```python
+result=adfuller(y)
+print('ADF Statistic: %f' % result[0])
+```
+
+```
+#> ADF Statistic: -12.311760
+```
+
+```python
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.000000
+```
+
+### R {.unnumbered} 
+
+
+```r
+library(tseries)
+library(zoo)
+price = get.hist.quote(instrument = "^gspc",start = "2009-01-01",
+                       end = ("2021-12-31"),  quote = "AdjClose")
+```
+
+```
+#> time series starts 2009-01-02
+#> time series ends   2021-12-30
+```
+
+```r
+x=coredata(log(price))
+y=coredata(diff(log(price)))
+# Log-data
+ts.plot(x,xlab="time",ylab="returns")
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-11-5.png" width="90%" style="display: block; margin: auto;" />
+
+```r
+# First difference of log-data
+ts.plot(y,xlab="time",ylab="returns")
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-11-6.png" width="90%" style="display: block; margin: auto;" />
+
+
+```r
+library(aTSA)
+adf.test(x)
+```
+
+```
+#> Augmented Dickey-Fuller Test 
+#> alternative: stationary 
+#>  
+#> Type 1: no drift no trend 
+#>       lag  ADF p.value
+#>  [1,]   0 2.47    0.99
+#>  [2,]   1 2.87    0.99
+#>  [3,]   2 2.66    0.99
+#>  [4,]   3 2.73    0.99
+#>  [5,]   4 2.81    0.99
+#>  [6,]   5 2.83    0.99
+#>  [7,]   6 3.09    0.99
+#>  [8,]   7 2.84    0.99
+#>  [9,]   8 3.06    0.99
+#> Type 2: with drift no trend 
+#>       lag    ADF p.value
+#>  [1,]   0 -0.367   0.910
+#>  [2,]   1 -0.216   0.930
+#>  [3,]   2 -0.275   0.922
+#>  [4,]   3 -0.346   0.913
+#>  [5,]   4 -0.317   0.917
+#>  [6,]   5 -0.374   0.909
+#>  [7,]   6 -0.369   0.910
+#>  [8,]   7 -0.461   0.893
+#>  [9,]   8 -0.494   0.881
+#> Type 3: with drift and trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -4.15  0.0100
+#>  [2,]   1 -3.53  0.0391
+#>  [3,]   2 -3.82  0.0174
+#>  [4,]   3 -3.81  0.0180
+#>  [5,]   4 -3.69  0.0241
+#>  [6,]   5 -3.72  0.0223
+#>  [7,]   6 -3.45  0.0471
+#>  [8,]   7 -3.82  0.0177
+#>  [9,]   8 -3.63  0.0293
+#> ---- 
+#> Note: in fact, p.value = 0.01 means p.value <= 0.01
+```
+
+```r
+adf.test(y)
+```
+
+```
+#> Augmented Dickey-Fuller Test 
+#> alternative: stationary 
+#>  
+#> Type 1: no drift no trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -65.9    0.01
+#>  [2,]   1 -40.3    0.01
+#>  [3,]   2 -33.1    0.01
+#>  [4,]   3 -29.5    0.01
+#>  [5,]   4 -26.1    0.01
+#>  [6,]   5 -25.6    0.01
+#>  [7,]   6 -21.3    0.01
+#>  [8,]   7 -21.2    0.01
+#>  [9,]   8 -19.2    0.01
+#> Type 2: with drift no trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -66.1    0.01
+#>  [2,]   1 -40.4    0.01
+#>  [3,]   2 -33.3    0.01
+#>  [4,]   3 -29.6    0.01
+#>  [5,]   4 -26.3    0.01
+#>  [6,]   5 -25.8    0.01
+#>  [7,]   6 -21.5    0.01
+#>  [8,]   7 -21.5    0.01
+#>  [9,]   8 -19.4    0.01
+#> Type 3: with drift and trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -66.1    0.01
+#>  [2,]   1 -40.4    0.01
+#>  [3,]   2 -33.3    0.01
+#>  [4,]   3 -29.6    0.01
+#>  [5,]   4 -26.3    0.01
+#>  [6,]   5 -25.8    0.01
+#>  [7,]   6 -21.5    0.01
+#>  [8,]   7 -21.5    0.01
+#>  [9,]   8 -19.4    0.01
+#> ---- 
+#> Note: in fact, p.value = 0.01 means p.value <= 0.01
+```
+
+## KPSS test
+
+### Python {.unnumbered} 
 
 
 ```python
 import statsmodels.api as sm
-import pylab
-sm.qqplot(mcd_logret, line = 's')
-pylab.show()
-```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-12-3.png" width="90%" style="display: block; margin: auto;" />
-
-There are presence of outliers, i.e. the log returns seems not normally distributed.
-
-
-```python
-from scipy.stats import jarque_bera
-# Carry out a Jarque-Bera tests
-jarque_bera(mcd_logret)
+#perform KPSS test
+result=sm.tsa.stattools.kpss(x)
 ```
 
 ```
-#> Jarque_beraResult(statistic=367.2407128291914, pvalue=0.0)
-```
-
-$p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
-
-c. Calculate skewness, kurtosis and give some comments related to risk management.
-
-
-```python
-from scipy.stats import skew, kurtosis
-# Skewness and Kurtosis
-print('Skewness:', skew(mcd_logret))
-```
-
-```
-#> Skewness: -0.1604213839619458
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2018: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#> look-up table. The actual p-value is smaller than the p-value returned.
+#> 
+#>   warnings.warn(
 ```
 
 ```python
-print('Excess Kurtosis:', kurtosis(mcd_logret))
+print('KPSS Statistic: %f' % result[0])
 ```
 
 ```
-#> Excess Kurtosis: 2.7187806721684025
+#> KPSS Statistic: 8.352647
 ```
 
-A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds' stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.
+```python
+print('p-value: %f' % result[1])
+```
 
-A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
+```
+#> p-value: 0.010000
+```
 
+```python
+result=sm.tsa.stattools.kpss(y)
+```
 
-### R {.unnumbered}
+```
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2022: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#> look-up table. The actual p-value is greater than the p-value returned.
+#> 
+#>   warnings.warn(
+```
 
-a. Plot histogram and display fitted normal.
+```python
+print('KPSS Statistic: %f' % result[0])
+```
+
+```
+#> KPSS Statistic: 0.036716
+```
+
+```python
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.100000
+```
+
+### R {.unnumbered} 
 
 
 ```r
-library(tidyverse)
-
-# Import data from my Google Spreadsheet
-mcd_url="https://docs.google.com/spreadsheets/d/e/2PACX-1vTI1rEZM9rAQqxrz5ogOTzKJZXD99n6vmsRpZXFzILLoyBs-ViFx24WOC5jqf61uaG7M5XDv6h3kG4D/pub?gid=2115254660&single=true&output=csv"
-mcd=read.csv(mcd_url)
-
-# Calculate log return
-mcd_logret= mcd$Adj.Close %>% 
-  log() %>% 
-  diff()
-head(mcd_logret)
+library(tseries)
+kpss.test(x)
 ```
 
 ```
-#> [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
-#> [6]  0.0053958639
+#> KPSS Unit Root Test 
+#> alternative: nonstationary 
+#>  
+#> Type 1: no drift no trend 
+#>  lag   stat p.value
+#>   13 0.0259     0.1
+#> ----- 
+#>  Type 2: with drift no trend 
+#>  lag   stat p.value
+#>   13 0.0781     0.1
+#> ----- 
+#>  Type 1: with drift and trend 
+#>  lag  stat p.value
+#>   13 0.112     0.1
+#> ----------- 
+#> Note: p.value = 0.01 means p.value <= 0.01 
+#>     : p.value = 0.10 means p.value >= 0.10
 ```
+
+```r
+kpss.test(y)
+```
+
+```
+#> KPSS Unit Root Test 
+#> alternative: nonstationary 
+#>  
+#> Type 1: no drift no trend 
+#>  lag stat p.value
+#>   13 2.16  0.0239
+#> ----- 
+#>  Type 2: with drift no trend 
+#>  lag   stat p.value
+#>   13 0.0371     0.1
+#> ----- 
+#>  Type 1: with drift and trend 
+#>  lag   stat p.value
+#>   13 0.0283     0.1
+#> ----------- 
+#> Note: p.value = 0.01 means p.value <= 0.01 
+#>     : p.value = 0.10 means p.value >= 0.10
+```
+
+## Fit ARIMA 
+
+### Python {.unnumbered} 
+
+
+```python
+from statsmodels.tsa.arima.model import ARIMA
+model = ARIMA(x, order=(1,0,0))
+```
+
+```
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+```
+
+```python
+model_fit = model.fit()
+print(model_fit.summary())
+```
+
+```
+#>                                SARIMAX Results                                
+#> ==============================================================================
+#> Dep. Variable:              Adj Close   No. Observations:                 3274
+#> Model:                 ARIMA(1, 0, 0)   Log Likelihood                9977.250
+#> Date:                Wed, 16 Mar 2022   AIC                         -19948.500
+#> Time:                        22:19:50   BIC                         -19930.218
+#> Sample:                             0   HQIC                        -19941.953
+#>                                - 3274                                         
+#> Covariance Type:                  opg                                         
+#> ==============================================================================
+#>                  coef    std err          z      P>|z|      [0.025      0.975]
+#> ------------------------------------------------------------------------------
+#> const          7.5866      0.498     15.229      0.000       6.610       8.563
+#> ar.L1          0.9998      0.000   2474.239      0.000       0.999       1.001
+#> sigma2         0.0001   1.21e-06    108.789      0.000       0.000       0.000
+#> ===================================================================================
+#> Ljung-Box (L1) (Q):                  68.56   Jarque-Bera (JB):             23678.78
+#> Prob(Q):                              0.00   Prob(JB):                         0.00
+#> Heteroskedasticity (H):               1.01   Skew:                            -0.68
+#> Prob(H) (two-sided):                  0.86   Kurtosis:                        16.10
+#> ===================================================================================
+#> 
+#> Warnings:
+#> [1] Covariance matrix calculated using the outer product of gradients (complex-step).
+```
+
+```python
+model = ARIMA(y, order=(1,0,0))
+model_fit = model.fit()
+print(model_fit.summary())
+```
+
+```
+#>                                SARIMAX Results                                
+#> ==============================================================================
+#> Dep. Variable:                      y   No. Observations:                 3273
+#> Model:                 ARIMA(1, 0, 0)   Log Likelihood               10015.913
+#> Date:                Wed, 16 Mar 2022   AIC                         -20025.825
+#> Time:                        22:19:50   BIC                         -20007.545
+#> Sample:                             0   HQIC                        -20019.279
+#>                                - 3273                                         
+#> Covariance Type:                  opg                                         
+#> ==============================================================================
+#>                  coef    std err          z      P>|z|      [0.025      0.975]
+#> ------------------------------------------------------------------------------
+#> const          0.0005      0.000      2.773      0.006       0.000       0.001
+#> ar.L1         -0.1437      0.007    -19.320      0.000      -0.158      -0.129
+#> sigma2         0.0001   1.32e-06     97.279      0.000       0.000       0.000
+#> ===================================================================================
+#> Ljung-Box (L1) (Q):                   0.31   Jarque-Bera (JB):             18498.33
+#> Prob(Q):                              0.58   Prob(JB):                         0.00
+#> Heteroskedasticity (H):               0.97   Skew:                            -0.83
+#> Prob(H) (two-sided):                  0.57   Kurtosis:                        14.53
+#> ===================================================================================
+#> 
+#> Warnings:
+#> [1] Covariance matrix calculated using the outer product of gradients (complex-step).
+```
+
+### R {.unnumbered} 
 
 
 ```r
-# Histogram and fitted normal distribution
-h=hist(mcd_logret)
-xfit <- seq(min(mcd_logret), max(mcd_logret), length = 100)
-yfit <- dnorm(xfit, mean = mean(mcd_logret), sd = sd(mcd_logret)) * diff(h$mids[1:2]) * length(mcd_logret)
-lines(xfit, yfit, col = "red", lwd = 2)
-```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;" />
-
-b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.
-
-
-```r
-library(moments)
-# Make a Q-Q plot and add a red line
-qqnorm(mcd_logret)
-qqline(mcd_logret, col = "red")
-```
-
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;" />
-
-There are presence of outliers, i.e. the log returns seems not normally distributed.
-
-
-```r
-# Carry out a Jarque-Bera test
-jarque.test(mcd_logret)
+fitAR1=arima(x, order = c(1,0,0))
+print(fitAR1)
 ```
 
 ```
 #> 
-#> 	Jarque-Bera Normality Test
+#> Call:
+#> arima(x = x, order = c(1, 0, 0))
 #> 
-#> data:  mcd_logret
-#> JB = 367.24, p-value < 2.2e-16
-#> alternative hypothesis: greater
-```
-
-$p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
-
-c. Calculate skewness, kurtosis and give some comments related to risk management.
-
-
-```r
-library(moments)
-skewness(mcd_logret)
-```
-
-```
-#> [1] -0.1604214
+#> Coefficients:
+#>          ar1  intercept
+#>       0.9998     7.5866
+#> s.e.  0.0002     0.5485
+#> 
+#> sigma^2 estimated as 0.0001315:  log likelihood = 9973.97,  aic = -19941.94
 ```
 
 ```r
-kurtosis(mcd_logret)-3
+fitAR2=arima(y, order = c(1,0,0))
+print(fitAR2)
 ```
 
 ```
-#> [1] 2.718781
+#> 
+#> Call:
+#> arima(x = y, order = c(1, 0, 0))
+#> 
+#> Coefficients:
+#>           ar1  intercept
+#>       -0.1437      5e-04
+#> s.e.   0.0173      2e-04
+#> 
+#> sigma^2 estimated as 0.0001285:  log likelihood = 10012.31,  aic = -20018.63
 ```
 
-A negative skewness indicates a left-skewed distribution, i.e. investors can expect recurrent small gains and few huge losses from investing in McDonalds' stock. Hence the stock is not potential for investors since it is expected that huge losses may overwhelm the frequent (but small) gains.
+## What happens with price
 
-A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
+### Python {.unnumbered} 
 
-## Problem 7
 
-Assume a random variable X has the distribution
-$$P(X =−4)= \frac{1}{3}, P(X =1)= \frac{1}{2}, P(X =5)= \frac{1}{6}$$
+```python
+from statsmodels.tsa.arima.model import ARIMA
+from statsmodels.tsa.stattools import adfuller
+import statsmodels.api as sm
+#what happens if we fit AR for price, not that price is non-stationary
+fitAR=ARIMA(price['Adj Close'], order=(1,0,0))
+```
 
-Check that $X$ has skewness $0$, but is not distributed symmetrically.
+```
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+```
+
+```python
+print(fitAR)
+```
+
+```
+#> <statsmodels.tsa.arima.model.ARIMA object at 0x7fa897f964c0>
+```
+
+```python
+result=adfuller(price['Adj Close'])
+print('ADF Statistic: %f' % result[0])
+```
+
+```
+#> ADF Statistic: 1.855653
+```
+
+```python
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.998453
+```
+
+```python
+result=sm.tsa.stattools.kpss(price['Adj Close'])
+```
+
+```
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2018: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#> look-up table. The actual p-value is smaller than the p-value returned.
+#> 
+#>   warnings.warn(
+```
+
+```python
+print('KPSS Statistic: %f' % result[0])
+```
+
+```
+#> KPSS Statistic: 7.902349
+```
+
+```python
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.010000
+```
+
+### R {.unnumbered} 
+
+
+```r
+library(tseries)
+library(zoo)
+#what happens if we fit AR for price, not that price is non-stationary
+fitAR=arima(price$Adjusted, order = c(1,0,0))
+print(fitAR)
+```
+
+```
+#> 
+#> Call:
+#> arima(x = price$Adjusted, order = c(1, 0, 0))
+#> 
+#> Coefficients:
+#>       ar1  intercept
+#>         1   2159.379
+#> s.e.    0        NaN
+#> 
+#> sigma^2 estimated as 513.1:  log likelihood = -15248,  aic = 30501.99
+```
+
+```r
+adf.test(coredata(price))
+```
+
+```
+#> Augmented Dickey-Fuller Test 
+#> alternative: stationary 
+#>  
+#> Type 1: no drift no trend 
+#>       lag  ADF p.value
+#>  [1,]   0 2.96    0.99
+#>  [2,]   1 3.59    0.99
+#>  [3,]   2 3.25    0.99
+#>  [4,]   3 3.19    0.99
+#>  [5,]   4 3.46    0.99
+#>  [6,]   5 3.42    0.99
+#>  [7,]   6 3.77    0.99
+#>  [8,]   7 3.28    0.99
+#>  [9,]   8 3.62    0.99
+#> Type 2: with drift no trend 
+#>       lag  ADF p.value
+#>  [1,]   0 1.25    0.99
+#>  [2,]   1 1.73    0.99
+#>  [3,]   2 1.48    0.99
+#>  [4,]   3 1.41    0.99
+#>  [5,]   4 1.62    0.99
+#>  [6,]   5 1.57    0.99
+#>  [7,]   6 1.80    0.99
+#>  [8,]   7 1.46    0.99
+#>  [9,]   8 1.67    0.99
+#> Type 3: with drift and trend 
+#>       lag    ADF p.value
+#>  [1,]   0 -1.238   0.900
+#>  [2,]   1 -0.564   0.979
+#>  [3,]   2 -0.906   0.952
+#>  [4,]   3 -0.951   0.947
+#>  [5,]   4 -0.667   0.974
+#>  [6,]   5 -0.691   0.971
+#>  [7,]   6 -0.351   0.989
+#>  [8,]   7 -0.794   0.962
+#>  [9,]   8 -0.452   0.984
+#> ---- 
+#> Note: in fact, p.value = 0.01 means p.value <= 0.01
+```
+
+```r
+kpss.test(coredata(price))
+```
+
+```
+#> KPSS Unit Root Test 
+#> alternative: nonstationary 
+#>  
+#> Type 1: no drift no trend 
+#>  lag   stat p.value
+#>   13 0.0872     0.1
+#> ----- 
+#>  Type 2: with drift no trend 
+#>  lag  stat p.value
+#>   13 0.066     0.1
+#> ----- 
+#>  Type 1: with drift and trend 
+#>  lag  stat p.value
+#>   13 0.151  0.0458
+#> ----------- 
+#> Note: p.value = 0.01 means p.value <= 0.01 
+#>     : p.value = 0.10 means p.value >= 0.10
+```
+
+# Homework
+
+## Problem 1
+
+Give the data
+
+
+| Time  | Data  | Time  | Data  | Time | Data |
+|------:|:-----:|------:|------:|-----:|-----:|
+| 1 | 10.31778 | 7 | 10.36644 | 13 | 10.34145 |
+| 2 | 10.29235 | 8 | 10.36744 | 14 | 10.40247 |
+| 3 | 10.30075 | 9 | 10.39553 | 15 | 10.39158 |
+| 4 | 10.29208 | 10 | 10.48562 | 16 | 10.35517 |
+| 5 | 10.31304 | 11 | 10.47619 | 17 | 10.35166 |
+| 6 | 10.32042 | 12 | 10.46396 | 18 | 10.36395 |
+
+Calculate the ACF with lags from 0 to 15 and lower, upper bounds with significant α = 5%
+
+### Python {.unnumbered} 
+
+
+```python
+import numpy as np
+import warnings
+warnings.filterwarnings("ignore")
+
+# Import Data
+data = [10.31778, 10.29235, 10.30075, 10.29208, 10.31304, 10.32042,
+        10.36644, 10.36744, 10.39553, 10.48562, 10.47619, 10.46396,
+        10.34145, 10.40247, 10.39158, 10.35517, 10.35166, 10.36395]
+```
+
+
+```python
+import pandas as pd
+df = pd.DataFrame(data, columns = ['data'])
+df.head(5)
+```
+
+```
+#>        data
+#> 0  10.31778
+#> 1  10.29235
+#> 2  10.30075
+#> 3  10.29208
+#> 4  10.31304
+```
+
+
+```python
+from statsmodels.tsa.stattools import acf
+# Calculate ACF
+print('Calculated ACF by lags 0 - 15:\n')
+```
+
+```
+#> Calculated ACF by lags 0 - 15:
+```
+
+```python
+acf(df['data'], nlags = 15)
+```
+
+```
+#> array([ 1.        ,  0.71637405,  0.48086057,  0.24512236,  0.07189534,
+#>        -0.16133272, -0.38073392, -0.39587896, -0.41465118, -0.34811093,
+#>        -0.23179094, -0.09359336, -0.02129721, -0.02593246,  0.0128132 ,
+#>         0.02943992])
+```
+
+
+```python
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+# Plot ACF
+y = 1.96 / np.sqrt(len(data))
+plot_acf(df['data'], lags = 15, alpha = 0.05, use_vlines = True)
+plt.plot(range(0, 16), [y] * 16, 'b--', linewidth = 0.75)
+plt.plot(range(0, 16), [-y] * 16, 'b--', linewidth = 0.75)
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-23-1.png" width="90%" style="display: block; margin: auto;" />
+
+### R {.unnumbered} 
+
+
+```r
+# Import Data
+data = c(10.31778, 10.29235, 10.30075, 10.29208, 10.31304, 10.32042,
+        10.36644, 10.36744, 10.39553, 10.48562, 10.47619, 10.46396,
+        10.34145, 10.40247, 10.39158, 10.35517, 10.35166, 10.36395)
+```
+
+
+```r
+head(data)
+```
+
+```
+#> [1] 10.31778 10.29235 10.30075 10.29208 10.31304 10.32042
+```
+
+
+```r
+# Calculate ACF
+acf(data,lag.max = 15,plot=F)
+```
+
+```
+#> 
+#> Autocorrelations of series 'data', by lag
+#> 
+#>      0      1      2      3      4      5      6      7      8      9     10 
+#>  1.000  0.716  0.481  0.245  0.072 -0.161 -0.381 -0.396 -0.415 -0.348 -0.232 
+#>     11     12     13     14     15 
+#> -0.094 -0.021 -0.026  0.013  0.029
+```
+
+
+```r
+# Plot ACF
+acf(data,lag.max = 15)
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-27-1.png" width="90%" style="display: block; margin: auto;" />
+
+## Problem 2
+
+Consider the $MA(q)$. 
+
+a. Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
 
 >$$\begin{align*}
-E[X^3] &=\mathbb{P}(X=-4) \times (-4)^3+\mathbb{P}(X=1) \times (1)^3+\mathbb{P}(X=5) \times (5)^3 \\
-&=\frac{1}{3} \times (-64) + \frac{1}{2} \times (1)+\frac{1}{6} \times (125) \\
-&=0 
+\gamma(0)&=Var(X_t) \\
+&=Var(\omega_t)+\sum_{j=1}^{q} \theta_j^2 \times Var(\omega_{t-j}) \\
+&=\sigma^2 \left(1+ \sum_{j=1}^q \theta_j^2 \right)
 \end{align*}$$
 
->Since $\mu = E[X] = 0$ and $\sigma^2 = Var(X) = 10$, the skewness of $X$ is given by
-$$ \tilde \mu_3=\frac{\mathbb{E}(X^3)-3\mu\sigma^2-\mu^3}{\sigma^3}=\frac{0-0-0}{\sqrt{1000}}=0 $$
+>$$\begin{align*}
+\gamma(h)&=Cov(X_t,X_{t-h}) \\
+&=Cov \left(\omega_t+\sum_{j=1}^{q} \theta_j \omega_{t-j},\omega_{t-h}+\sum_{j=1}^{q} \theta_j \omega_{t-h-j} \right) \\
+&=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)
+\end{align*}$$
 
->Suppose X has a symmetric distribution, there exists $x_0 \in \mathbb{R}$ such that
-$$ \mathbb{P}(X=x_0-\delta)=\mathbb{P}(X=x_0+\delta), \forall \delta >0 $$
+>$$ \rho(h)=\frac{\gamma(h)}{\gamma(0)}=\begin{cases}
+    1 & h=0\\
+    \frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)} & 1 \leq h \leq q\\
+    0 & h>q
+  \end{cases} $$
 
->Letting $\delta=x_0-1$ implies
-$$\mathbb{P}(X=1)=\mathbb{P}(X=2x_0-1)=\frac{1}{2}, \forall \delta >0$$
+>Answer: $$\begin{align*}
+\gamma(h) &=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right) \\
+\rho(h) &=\begin{cases}
+    1, & h=0.\\
+    \frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)}, & 1 \leq h \leq q.\\
+    0, & h>q.
+  \end{cases}
+  \end{align*}$$
 
->thus $2x_0-1=1$, i.e. $x_0=1$. Letting $\delta=4$ gives
-$$ 0=\mathbb{P}(X=-3)=\mathbb{P}(X=5)=\frac{1}{6} (!) $$
-
-## Problem 8
-
-a. Show that if X, Y are random variables and cov(X, Y ) = 0, then X, Y may not be independent.
-
->Let $X$ be the normal distribution and $Y$ be $X^2$ then
-$$ Cov(X,Y)=\mathbb{E}(XY)-E(X)E(Y)=0 $$
-
->However,
-$$ 0.25=\mathbb{E}(Y|X=0.5) \neq E(Y)=Var(X)=1 $$
-
->Hence, X and Y are not inidependent.
-
-b. Prove that correlation is invariant under linear transformations.
-
->Let a, b, c, d be constants with ac > 0, then for any random variables X, Y, we have
+b. Show that the MA(1) processes $X_t$ and $Y_t$
 $$\begin{align*}
-Corr(aX+b,cY+d)&=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
-&=\frac{ac \times Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
-&=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}} \\
-&=Corr(X,Y) 
+X_t = \beta \epsilon_{t−1} + \epsilon_t \\ 
+Y_t = \frac{1}{\beta} \epsilon_{t−1} + \epsilon_t \\ 
 \end{align*}$$
+have the same ACF.
+
+>Consider the $MA(1)$ model $X_t=\beta \epsilon_{t-1}+\epsilon_t$. The coefficient $\theta_1=\beta$. The ACF is given by
+$$ \rho_1=\frac{\beta}{1+\beta^2}, (1) $$
+and $\rho_h=0, \forall h \geq 2$ 
+
+>Consider the $MA(1)$ model $Y_t=\frac{1}{\beta} \epsilon_{t-1}+\epsilon_t$. The coefficient $\theta_1=\frac{1}{\beta}$. The ACF is given by
+$$\begin{align*} \rho_1&=\frac{\frac{1}{\beta}}{1+\left(\frac{1}{\beta}\right)^2} \\
+&=\frac{1}{\beta} \times \frac{\beta^2}{1+\beta^2} \\
+&=\frac{\beta}{1+\beta^2}, (2) 
+\end{align*}$$
+and $\rho_h=0, \forall h \geq 2$ 
+
+>(1),(2) imply two $MA(1)$ processes above have the same ACF.
+
+>Answer: $X_t$ and $Y_t$ have the same ACF.
+
+## Problem 3
+
+Suppose that the stationary process $X_t$ has an autocovariance function given by $\gamma(h)$.
+Consider process $Y_t = X_t − X_{t−1}$.
+
+a) Is the process $Y_t$ stationary
+
+>$$\begin{align*}
+\mathbb{E}(Y_t)&=\mathbb{E}(X_t)-\mathbb{E}(X_{t-1}) \\
+&=0 \\
+Var(Y_t) &=Var(X_t-X_{t=1}) \\
+&=Var(X_t)+Var(x_{t-1})-2Cov(X_t,X_{t-1}) \\
+&=2\sigma_x^2-2\gamma_x(1) < \infty \\
+Cov(Y_t,Y_{t-k})&=Cov(X_t-X_{t-1},X_{t-k}-X_{t-k-1}) \\
+&=Cov(X_t,X_{t-k})-Cov(X_{t-1},X_{t-k})-Cov(X_t,X_{t-k-1})+Cov(X_{t-1},X_{t-k-1}) \\
+&=2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1)) \\
+&=\gamma_y(k)
+\end{align*}$$
+
+>Answer: $\{Yt\}$ is a weakly stationary proces
+
+b) Find the autocorrelation function of $Y_t$
+
+>$$ \rho_y(h)=\frac{\gamma_y(h)}{\gamma_y(0)}=\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)} $$
+
+>Answer: The autocorrelation function of $Y_t$ is $\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)}$
+
+## Problem 4
+
+Find the autocorrelation function of the second order moving average process $MA(2)$
+$$X_t = 0.5 \epsilon_{t−1} − 0.2 \epsilon_{t−2} + \epsilon_t$$
+where $\epsilon_t$ is the white noise.
+
+>$$\begin{align*}
+\gamma(0)&=Var(X_t)=0.5^2 \sigma^2 +0.2^2 \sigma^2+\sigma^2 \\
+&=1.29 \sigma^2 \\
+\gamma(1) &=Cov(X_t,X_{t-1}) \\
+&=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-2} -0.2\epsilon_{t-3}+\epsilon_{t-1}) \\
+&=0.5Var(\epsilon_{t-1})-0.1Var(\epsilon_{t-2}) \\
+&=0.4 \sigma^2 \\
+\gamma(2) &=Cov(X_t,X_{t-2}) \\
+&=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-3} -0.2\epsilon_{t-4}+\epsilon_{t-2}) \\
+&=-0.2Var(\epsilon_{t-2}) \\
+&=-0.2 \sigma^2
+\end{align*}$$
+
+>$$\rho(h)=\begin{cases}
+    1&  h=0.\\
+    0.31&  h=1\\
+    -0.155&  h=2 \\
+    0&  h \geq 3
+  \end{cases}$$
+  
+>Answer: The autocorrelation function of the second order moving average process is
+$$\rho(h)=\begin{cases}
+    1&  h=0.\\
+    0.31&  h=1\\
+    -0.155&  h=2 \\
+    0&  h \geq 3
+  \end{cases}$$

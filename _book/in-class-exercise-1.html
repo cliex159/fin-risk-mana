@@ -7,17 +7,21 @@
 <title>Chapter 14 In-class exercise | FRM2</title>
 <meta name="author" content="Tran Thanh Dat">
 <meta name="description" content="14.1 Autocovariance Find the autocovariance function of Brownian motion? \[\begin{align*} &amp;B_t \sim \mathcal{N}(0,t) \\ &amp;\rightarrow E[B_t^2] =Var(B_t)=t \end{align*}\]  \[\begin{align*}...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
 <meta property="og:title" content="Chapter 14 In-class exercise | FRM2">
 <meta property="og:type" content="book">
 <meta property="og:description" content="14.1 Autocovariance Find the autocovariance function of Brownian motion? \[\begin{align*} &amp;B_t \sim \mathcal{N}(0,t) \\ &amp;\rightarrow E[B_t^2] =Var(B_t)=t \end{align*}\]  \[\begin{align*}...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 In-class exercise | FRM2">
 <meta name="twitter:description" content="14.1 Autocovariance Find the autocovariance function of Brownian motion? \[\begin{align*} &amp;B_t \sim \mathcal{N}(0,t) \\ &amp;\rightarrow E[B_t^2] =Var(B_t)=t \end{align*}\]  \[\begin{align*}...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.12.1/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -131,6 +135,434 @@
 \end{align*}\]</span></p>
 </blockquote>
 </div>
+<div id="adf-test" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> ADF test<a class="anchor" aria-label="anchor" href="#adf-test"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-4" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-4"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb124"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb124-1"><a href="in-class-exercise-1.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas_datareader <span class="im">as</span> web</span>
+<span id="cb124-2"><a href="in-class-exercise-1.html#cb124-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb124-3"><a href="in-class-exercise-1.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb124-4"><a href="in-class-exercise-1.html#cb124-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-5"><a href="in-class-exercise-1.html#cb124-5" aria-hidden="true" tabindex="-1"></a>price <span class="op">=</span> web.get_data_yahoo(<span class="st">"^gspc"</span>,</span>
+<span id="cb124-6"><a href="in-class-exercise-1.html#cb124-6" aria-hidden="true" tabindex="-1"></a>start <span class="op">=</span> <span class="st">"2009-01-01"</span>,</span>
+<span id="cb124-7"><a href="in-class-exercise-1.html#cb124-7" aria-hidden="true" tabindex="-1"></a>end <span class="op">=</span> <span class="st">"2021-12-31"</span>)</span>
+<span id="cb124-8"><a href="in-class-exercise-1.html#cb124-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-9"><a href="in-class-exercise-1.html#cb124-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Log-data</span></span>
+<span id="cb124-10"><a href="in-class-exercise-1.html#cb124-10" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span>np.log(price[<span class="st">'Adj Close'</span>])</span>
+<span id="cb124-11"><a href="in-class-exercise-1.html#cb124-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x,color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb124-12"><a href="in-class-exercise-1.html#cb124-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb124-13"><a href="in-class-exercise-1.html#cb124-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-14"><a href="in-class-exercise-1.html#cb124-14" aria-hidden="true" tabindex="-1"></a><span class="co"># First difference of log-data</span></span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-9-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb125"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb125-1"><a href="in-class-exercise-1.html#cb125-1" aria-hidden="true" tabindex="-1"></a>y<span class="op">=</span>np.diff(np.log(price[<span class="st">'Adj Close'</span>]))</span>
+<span id="cb125-2"><a href="in-class-exercise-1.html#cb125-2" aria-hidden="true" tabindex="-1"></a>plt.plot(y,color<span class="op">=</span><span class="st">"black"</span>)</span>
+<span id="cb125-3"><a href="in-class-exercise-1.html#cb125-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-9-2.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb126"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb126-1"><a href="in-class-exercise-1.html#cb126-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
+<span id="cb126-2"><a href="in-class-exercise-1.html#cb126-2" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>adfuller(x)</span>
+<span id="cb126-3"><a href="in-class-exercise-1.html#cb126-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ADF Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; ADF Statistic: -0.541575</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb128-1"><a href="in-class-exercise-1.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.883645</code></pre>
+<div class="sourceCode" id="cb130"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb130-1"><a href="in-class-exercise-1.html#cb130-1" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>adfuller(y)</span>
+<span id="cb130-2"><a href="in-class-exercise-1.html#cb130-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ADF Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; ADF Statistic: -12.311760</code></pre>
+<div class="sourceCode" id="cb132"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb132-1"><a href="in-class-exercise-1.html#cb132-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.000000</code></pre>
+</div>
+<div id="r-4" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-4"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://zoo.R-Forge.R-project.org/">zoo</a></span><span class="op">)</span>
+<span class="va">price</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/tseries/man/get.hist.quote.html">get.hist.quote</a></span><span class="op">(</span>instrument <span class="op">=</span> <span class="st">"^gspc"</span>,start <span class="op">=</span> <span class="st">"2009-01-01"</span>,
+                       end <span class="op">=</span> <span class="op">(</span><span class="st">"2021-12-31"</span><span class="op">)</span>,  quote <span class="op">=</span> <span class="st">"AdjClose"</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; time series starts 2009-01-02
+#&gt; time series ends   2021-12-30</code></pre>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">x</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/coredata.html">coredata</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span>
+<span class="va">y</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/coredata.html">coredata</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co"># Log-data</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/ts.plot.html">ts.plot</a></span><span class="op">(</span><span class="va">x</span>,xlab<span class="op">=</span><span class="st">"time"</span>,ylab<span class="op">=</span><span class="st">"returns"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-11-5.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># First difference of log-data</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/ts.plot.html">ts.plot</a></span><span class="op">(</span><span class="va">y</span>,xlab<span class="op">=</span><span class="st">"time"</span>,ylab<span class="op">=</span><span class="st">"returns"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-11-6.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">aTSA</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/aTSA/man/adf.test.html">adf.test</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Augmented Dickey-Fuller Test 
+#&gt; alternative: stationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;       lag  ADF p.value
+#&gt;  [1,]   0 2.47    0.99
+#&gt;  [2,]   1 2.87    0.99
+#&gt;  [3,]   2 2.66    0.99
+#&gt;  [4,]   3 2.73    0.99
+#&gt;  [5,]   4 2.81    0.99
+#&gt;  [6,]   5 2.83    0.99
+#&gt;  [7,]   6 3.09    0.99
+#&gt;  [8,]   7 2.84    0.99
+#&gt;  [9,]   8 3.06    0.99
+#&gt; Type 2: with drift no trend 
+#&gt;       lag    ADF p.value
+#&gt;  [1,]   0 -0.367   0.910
+#&gt;  [2,]   1 -0.216   0.930
+#&gt;  [3,]   2 -0.275   0.922
+#&gt;  [4,]   3 -0.346   0.913
+#&gt;  [5,]   4 -0.317   0.917
+#&gt;  [6,]   5 -0.374   0.909
+#&gt;  [7,]   6 -0.369   0.910
+#&gt;  [8,]   7 -0.461   0.893
+#&gt;  [9,]   8 -0.494   0.881
+#&gt; Type 3: with drift and trend 
+#&gt;       lag   ADF p.value
+#&gt;  [1,]   0 -4.15  0.0100
+#&gt;  [2,]   1 -3.53  0.0391
+#&gt;  [3,]   2 -3.82  0.0174
+#&gt;  [4,]   3 -3.81  0.0180
+#&gt;  [5,]   4 -3.69  0.0241
+#&gt;  [6,]   5 -3.72  0.0223
+#&gt;  [7,]   6 -3.45  0.0471
+#&gt;  [8,]   7 -3.82  0.0177
+#&gt;  [9,]   8 -3.63  0.0293
+#&gt; ---- 
+#&gt; Note: in fact, p.value = 0.01 means p.value &lt;= 0.01</code></pre>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/aTSA/man/adf.test.html">adf.test</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Augmented Dickey-Fuller Test 
+#&gt; alternative: stationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;       lag   ADF p.value
+#&gt;  [1,]   0 -65.9    0.01
+#&gt;  [2,]   1 -40.3    0.01
+#&gt;  [3,]   2 -33.1    0.01
+#&gt;  [4,]   3 -29.5    0.01
+#&gt;  [5,]   4 -26.1    0.01
+#&gt;  [6,]   5 -25.6    0.01
+#&gt;  [7,]   6 -21.3    0.01
+#&gt;  [8,]   7 -21.2    0.01
+#&gt;  [9,]   8 -19.2    0.01
+#&gt; Type 2: with drift no trend 
+#&gt;       lag   ADF p.value
+#&gt;  [1,]   0 -66.1    0.01
+#&gt;  [2,]   1 -40.4    0.01
+#&gt;  [3,]   2 -33.3    0.01
+#&gt;  [4,]   3 -29.6    0.01
+#&gt;  [5,]   4 -26.3    0.01
+#&gt;  [6,]   5 -25.8    0.01
+#&gt;  [7,]   6 -21.5    0.01
+#&gt;  [8,]   7 -21.5    0.01
+#&gt;  [9,]   8 -19.4    0.01
+#&gt; Type 3: with drift and trend 
+#&gt;       lag   ADF p.value
+#&gt;  [1,]   0 -66.1    0.01
+#&gt;  [2,]   1 -40.4    0.01
+#&gt;  [3,]   2 -33.3    0.01
+#&gt;  [4,]   3 -29.6    0.01
+#&gt;  [5,]   4 -26.3    0.01
+#&gt;  [6,]   5 -25.8    0.01
+#&gt;  [7,]   6 -21.5    0.01
+#&gt;  [8,]   7 -21.5    0.01
+#&gt;  [9,]   8 -19.4    0.01
+#&gt; ---- 
+#&gt; Note: in fact, p.value = 0.01 means p.value &lt;= 0.01</code></pre>
+</div>
+</div>
+<div id="kpss-test-1" class="section level2" number="14.3">
+<h2>
+<span class="header-section-number">14.3</span> KPSS test<a class="anchor" aria-label="anchor" href="#kpss-test-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-5" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-5"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb142"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb142-1"><a href="in-class-exercise-1.html#cb142-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb142-2"><a href="in-class-exercise-1.html#cb142-2" aria-hidden="true" tabindex="-1"></a><span class="co">#perform KPSS test</span></span>
+<span id="cb142-3"><a href="in-class-exercise-1.html#cb142-3" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>sm.tsa.stattools.kpss(x)</span></code></pre></div>
+<pre><code>#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2018: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#&gt; look-up table. The actual p-value is smaller than the p-value returned.
+#&gt; 
+#&gt;   warnings.warn(</code></pre>
+<div class="sourceCode" id="cb144"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb144-1"><a href="in-class-exercise-1.html#cb144-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'KPSS Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; KPSS Statistic: 8.352647</code></pre>
+<div class="sourceCode" id="cb146"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb146-1"><a href="in-class-exercise-1.html#cb146-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.010000</code></pre>
+<div class="sourceCode" id="cb148"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb148-1"><a href="in-class-exercise-1.html#cb148-1" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>sm.tsa.stattools.kpss(y)</span></code></pre></div>
+<pre><code>#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2022: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#&gt; look-up table. The actual p-value is greater than the p-value returned.
+#&gt; 
+#&gt;   warnings.warn(</code></pre>
+<div class="sourceCode" id="cb150"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb150-1"><a href="in-class-exercise-1.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'KPSS Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; KPSS Statistic: 0.036716</code></pre>
+<div class="sourceCode" id="cb152"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb152-1"><a href="in-class-exercise-1.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.100000</code></pre>
+</div>
+<div id="r-5" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-5"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/tseries/man/kpss.test.html">kpss.test</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; KPSS Unit Root Test 
+#&gt; alternative: nonstationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;  lag   stat p.value
+#&gt;   13 0.0259     0.1
+#&gt; ----- 
+#&gt;  Type 2: with drift no trend 
+#&gt;  lag   stat p.value
+#&gt;   13 0.0781     0.1
+#&gt; ----- 
+#&gt;  Type 1: with drift and trend 
+#&gt;  lag  stat p.value
+#&gt;   13 0.112     0.1
+#&gt; ----------- 
+#&gt; Note: p.value = 0.01 means p.value &lt;= 0.01 
+#&gt;     : p.value = 0.10 means p.value &gt;= 0.10</code></pre>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tseries/man/kpss.test.html">kpss.test</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; KPSS Unit Root Test 
+#&gt; alternative: nonstationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;  lag stat p.value
+#&gt;   13 2.16  0.0239
+#&gt; ----- 
+#&gt;  Type 2: with drift no trend 
+#&gt;  lag   stat p.value
+#&gt;   13 0.0371     0.1
+#&gt; ----- 
+#&gt;  Type 1: with drift and trend 
+#&gt;  lag   stat p.value
+#&gt;   13 0.0283     0.1
+#&gt; ----------- 
+#&gt; Note: p.value = 0.01 means p.value &lt;= 0.01 
+#&gt;     : p.value = 0.10 means p.value &gt;= 0.10</code></pre>
+</div>
+</div>
+<div id="fit-arima" class="section level2" number="14.4">
+<h2>
+<span class="header-section-number">14.4</span> Fit ARIMA<a class="anchor" aria-label="anchor" href="#fit-arima"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-6" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-6"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb158"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb158-1"><a href="in-class-exercise-1.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb158-2"><a href="in-class-exercise-1.html#cb158-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ARIMA(x, order<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div>
+<pre><code>#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)
+#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)
+#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)</code></pre>
+<div class="sourceCode" id="cb160"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb160-1"><a href="in-class-exercise-1.html#cb160-1" aria-hidden="true" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit()</span>
+<span id="cb160-2"><a href="in-class-exercise-1.html#cb160-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_fit.summary())</span></code></pre></div>
+<pre><code>#&gt;                                SARIMAX Results                                
+#&gt; ==============================================================================
+#&gt; Dep. Variable:              Adj Close   No. Observations:                 3274
+#&gt; Model:                 ARIMA(1, 0, 0)   Log Likelihood                9977.250
+#&gt; Date:                Wed, 16 Mar 2022   AIC                         -19948.500
+#&gt; Time:                        22:19:50   BIC                         -19930.218
+#&gt; Sample:                             0   HQIC                        -19941.953
+#&gt;                                - 3274                                         
+#&gt; Covariance Type:                  opg                                         
+#&gt; ==============================================================================
+#&gt;                  coef    std err          z      P&gt;|z|      [0.025      0.975]
+#&gt; ------------------------------------------------------------------------------
+#&gt; const          7.5866      0.498     15.229      0.000       6.610       8.563
+#&gt; ar.L1          0.9998      0.000   2474.239      0.000       0.999       1.001
+#&gt; sigma2         0.0001   1.21e-06    108.789      0.000       0.000       0.000
+#&gt; ===================================================================================
+#&gt; Ljung-Box (L1) (Q):                  68.56   Jarque-Bera (JB):             23678.78
+#&gt; Prob(Q):                              0.00   Prob(JB):                         0.00
+#&gt; Heteroskedasticity (H):               1.01   Skew:                            -0.68
+#&gt; Prob(H) (two-sided):                  0.86   Kurtosis:                        16.10
+#&gt; ===================================================================================
+#&gt; 
+#&gt; Warnings:
+#&gt; [1] Covariance matrix calculated using the outer product of gradients (complex-step).</code></pre>
+<div class="sourceCode" id="cb162"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb162-1"><a href="in-class-exercise-1.html#cb162-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> ARIMA(y, order<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb162-2"><a href="in-class-exercise-1.html#cb162-2" aria-hidden="true" tabindex="-1"></a>model_fit <span class="op">=</span> model.fit()</span>
+<span id="cb162-3"><a href="in-class-exercise-1.html#cb162-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(model_fit.summary())</span></code></pre></div>
+<pre><code>#&gt;                                SARIMAX Results                                
+#&gt; ==============================================================================
+#&gt; Dep. Variable:                      y   No. Observations:                 3273
+#&gt; Model:                 ARIMA(1, 0, 0)   Log Likelihood               10015.913
+#&gt; Date:                Wed, 16 Mar 2022   AIC                         -20025.825
+#&gt; Time:                        22:19:50   BIC                         -20007.545
+#&gt; Sample:                             0   HQIC                        -20019.279
+#&gt;                                - 3273                                         
+#&gt; Covariance Type:                  opg                                         
+#&gt; ==============================================================================
+#&gt;                  coef    std err          z      P&gt;|z|      [0.025      0.975]
+#&gt; ------------------------------------------------------------------------------
+#&gt; const          0.0005      0.000      2.773      0.006       0.000       0.001
+#&gt; ar.L1         -0.1437      0.007    -19.320      0.000      -0.158      -0.129
+#&gt; sigma2         0.0001   1.32e-06     97.279      0.000       0.000       0.000
+#&gt; ===================================================================================
+#&gt; Ljung-Box (L1) (Q):                   0.31   Jarque-Bera (JB):             18498.33
+#&gt; Prob(Q):                              0.58   Prob(JB):                         0.00
+#&gt; Heteroskedasticity (H):               0.97   Skew:                            -0.83
+#&gt; Prob(H) (two-sided):                  0.57   Kurtosis:                        14.53
+#&gt; ===================================================================================
+#&gt; 
+#&gt; Warnings:
+#&gt; [1] Covariance matrix calculated using the outer product of gradients (complex-step).</code></pre>
+</div>
+<div id="r-6" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-6"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fitAR1</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/arima.html">arima</a></span><span class="op">(</span><span class="va">x</span>, order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="va">fitAR1</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; arima(x = x, order = c(1, 0, 0))
+#&gt; 
+#&gt; Coefficients:
+#&gt;          ar1  intercept
+#&gt;       0.9998     7.5866
+#&gt; s.e.  0.0002     0.5485
+#&gt; 
+#&gt; sigma^2 estimated as 0.0001315:  log likelihood = 9973.97,  aic = -19941.94</code></pre>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fitAR2</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/arima.html">arima</a></span><span class="op">(</span><span class="va">y</span>, order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="va">fitAR2</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; arima(x = y, order = c(1, 0, 0))
+#&gt; 
+#&gt; Coefficients:
+#&gt;           ar1  intercept
+#&gt;       -0.1437      5e-04
+#&gt; s.e.   0.0173      2e-04
+#&gt; 
+#&gt; sigma^2 estimated as 0.0001285:  log likelihood = 10012.31,  aic = -20018.63</code></pre>
+</div>
+</div>
+<div id="what-happens-with-price" class="section level2" number="14.5">
+<h2>
+<span class="header-section-number">14.5</span> What happens with price<a class="anchor" aria-label="anchor" href="#what-happens-with-price"><i class="fas fa-link"></i></a>
+</h2>
+<div id="python-7" class="section level3 unnumbered">
+<h3>Python<a class="anchor" aria-label="anchor" href="#python-7"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb168"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb168-1"><a href="in-class-exercise-1.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.arima.model <span class="im">import</span> ARIMA</span>
+<span id="cb168-2"><a href="in-class-exercise-1.html#cb168-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> statsmodels.tsa.stattools <span class="im">import</span> adfuller</span>
+<span id="cb168-3"><a href="in-class-exercise-1.html#cb168-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span>
+<span id="cb168-4"><a href="in-class-exercise-1.html#cb168-4" aria-hidden="true" tabindex="-1"></a><span class="co">#what happens if we fit AR for price, not that price is non-stationary</span></span>
+<span id="cb168-5"><a href="in-class-exercise-1.html#cb168-5" aria-hidden="true" tabindex="-1"></a>fitAR<span class="op">=</span>ARIMA(price[<span class="st">'Adj Close'</span>], order<span class="op">=</span>(<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span></code></pre></div>
+<pre><code>#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)
+#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)
+#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#&gt;   self._init_dates(dates, freq)</code></pre>
+<div class="sourceCode" id="cb170"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb170-1"><a href="in-class-exercise-1.html#cb170-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fitAR)</span></code></pre></div>
+<pre><code>#&gt; &lt;statsmodels.tsa.arima.model.ARIMA object at 0x7fa897f964c0&gt;</code></pre>
+<div class="sourceCode" id="cb172"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb172-1"><a href="in-class-exercise-1.html#cb172-1" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>adfuller(price[<span class="st">'Adj Close'</span>])</span>
+<span id="cb172-2"><a href="in-class-exercise-1.html#cb172-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ADF Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; ADF Statistic: 1.855653</code></pre>
+<div class="sourceCode" id="cb174"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb174-1"><a href="in-class-exercise-1.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.998453</code></pre>
+<div class="sourceCode" id="cb176"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb176-1"><a href="in-class-exercise-1.html#cb176-1" aria-hidden="true" tabindex="-1"></a>result<span class="op">=</span>sm.tsa.stattools.kpss(price[<span class="st">'Adj Close'</span>])</span></code></pre></div>
+<pre><code>#&gt; /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/stattools.py:2018: InterpolationWarning: The test statistic is outside of the range of p-values available in the
+#&gt; look-up table. The actual p-value is smaller than the p-value returned.
+#&gt; 
+#&gt;   warnings.warn(</code></pre>
+<div class="sourceCode" id="cb178"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb178-1"><a href="in-class-exercise-1.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'KPSS Statistic: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">0</span>])</span></code></pre></div>
+<pre><code>#&gt; KPSS Statistic: 7.902349</code></pre>
+<div class="sourceCode" id="cb180"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb180-1"><a href="in-class-exercise-1.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'p-value: </span><span class="sc">%f</span><span class="st">'</span> <span class="op">%</span> result[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>#&gt; p-value: 0.010000</code></pre>
+</div>
+<div id="r-7" class="section level3 unnumbered">
+<h3>R<a class="anchor" aria-label="anchor" href="#r-7"><i class="fas fa-link"></i></a>
+</h3>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">tseries</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://zoo.R-Forge.R-project.org/">zoo</a></span><span class="op">)</span>
+<span class="co">#what happens if we fit AR for price, not that price is non-stationary</span>
+<span class="va">fitAR</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/arima.html">arima</a></span><span class="op">(</span><span class="va">price</span><span class="op">$</span><span class="va">Adjusted</span>, order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="va">fitAR</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; 
+#&gt; Call:
+#&gt; arima(x = price$Adjusted, order = c(1, 0, 0))
+#&gt; 
+#&gt; Coefficients:
+#&gt;       ar1  intercept
+#&gt;         1   2159.379
+#&gt; s.e.    0        NaN
+#&gt; 
+#&gt; sigma^2 estimated as 513.1:  log likelihood = -15248,  aic = 30501.99</code></pre>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tseries/man/adf.test.html">adf.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/coredata.html">coredata</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; Augmented Dickey-Fuller Test 
+#&gt; alternative: stationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;       lag  ADF p.value
+#&gt;  [1,]   0 2.96    0.99
+#&gt;  [2,]   1 3.59    0.99
+#&gt;  [3,]   2 3.25    0.99
+#&gt;  [4,]   3 3.19    0.99
+#&gt;  [5,]   4 3.46    0.99
+#&gt;  [6,]   5 3.42    0.99
+#&gt;  [7,]   6 3.77    0.99
+#&gt;  [8,]   7 3.28    0.99
+#&gt;  [9,]   8 3.62    0.99
+#&gt; Type 2: with drift no trend 
+#&gt;       lag  ADF p.value
+#&gt;  [1,]   0 1.25    0.99
+#&gt;  [2,]   1 1.73    0.99
+#&gt;  [3,]   2 1.48    0.99
+#&gt;  [4,]   3 1.41    0.99
+#&gt;  [5,]   4 1.62    0.99
+#&gt;  [6,]   5 1.57    0.99
+#&gt;  [7,]   6 1.80    0.99
+#&gt;  [8,]   7 1.46    0.99
+#&gt;  [9,]   8 1.67    0.99
+#&gt; Type 3: with drift and trend 
+#&gt;       lag    ADF p.value
+#&gt;  [1,]   0 -1.238   0.900
+#&gt;  [2,]   1 -0.564   0.979
+#&gt;  [3,]   2 -0.906   0.952
+#&gt;  [4,]   3 -0.951   0.947
+#&gt;  [5,]   4 -0.667   0.974
+#&gt;  [6,]   5 -0.691   0.971
+#&gt;  [7,]   6 -0.351   0.989
+#&gt;  [8,]   7 -0.794   0.962
+#&gt;  [9,]   8 -0.452   0.984
+#&gt; ---- 
+#&gt; Note: in fact, p.value = 0.01 means p.value &lt;= 0.01</code></pre>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tseries/man/kpss.test.html">kpss.test</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/coredata.html">coredata</a></span><span class="op">(</span><span class="va">price</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; KPSS Unit Root Test 
+#&gt; alternative: nonstationary 
+#&gt;  
+#&gt; Type 1: no drift no trend 
+#&gt;  lag   stat p.value
+#&gt;   13 0.0872     0.1
+#&gt; ----- 
+#&gt;  Type 2: with drift no trend 
+#&gt;  lag  stat p.value
+#&gt;   13 0.066     0.1
+#&gt; ----- 
+#&gt;  Type 1: with drift and trend 
+#&gt;  lag  stat p.value
+#&gt;   13 0.151  0.0458
+#&gt; ----------- 
+#&gt; Note: p.value = 0.01 means p.value &lt;= 0.01 
+#&gt;     : p.value = 0.10 means p.value &gt;= 0.10</code></pre>
+</div>
+</div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></div>
@@ -140,6 +572,30 @@
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#in-class-exercise-1"><span class="header-section-number">14</span> In-class exercise</a></li>
 <li><a class="nav-link" href="#autocovariance-1"><span class="header-section-number">14.1</span> Autocovariance</a></li>
+<li>
+<a class="nav-link" href="#adf-test"><span class="header-section-number">14.2</span> ADF test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-4">Python</a></li>
+<li><a class="nav-link" href="#r-4">R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#kpss-test-1"><span class="header-section-number">14.3</span> KPSS test</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-5">Python</a></li>
+<li><a class="nav-link" href="#r-5">R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#fit-arima"><span class="header-section-number">14.4</span> Fit ARIMA</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-6">Python</a></li>
+<li><a class="nav-link" href="#r-6">R</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#what-happens-with-price"><span class="header-section-number">14.5</span> What happens with price</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#python-7">Python</a></li>
+<li><a class="nav-link" href="#r-7">R</a></li>
+</ul>
+</li>
 </ul>
 
       <div class="book-extra">
@@ -157,7 +613,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-11.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

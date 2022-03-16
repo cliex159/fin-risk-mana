@@ -234,7 +234,7 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 <p><span class="math display">\[ \rho(t,s)=\sqrt{1-\frac{s}{t}} \]</span></p>
 <p>which against <span class="math inline">\(\rho\)</span> depending on <span class="math inline">\(t\)</span> as well as on <span class="math inline">\(s\)</span>, thus the random walk is not covariance stationary. The following figure shows the relationship among different processes: Stationary processes are the largest set, followed by white noise, martingale difference (MD), and i.i.d. processes.</p>
 <center>
-<img src="Frisk/21.png">
+<img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/21.png" alt="" width="50%" height="50%">
 </center>
 </div>
 </div>
@@ -256,8 +256,8 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 </ul>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/tidyquant">tidyquant</a></span><span class="op">)</span>
-<span class="va">msft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
-               to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-01-01"</span><span class="op">)</span>,
+<span class="va">msft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/yearmon.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
+               to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/zoo/man/yearmon.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-01-01"</span><span class="op">)</span>,
                get <span class="op">=</span> <span class="st">"stock.prices"</span><span class="op">)</span>
 
 <span class="va">msft_logret</span><span class="op">=</span><span class="va">msft</span><span class="op">$</span><span class="va">adjusted</span> <span class="op"><a href="https://rdrr.io/pkg/tidyquant/man/pipe.html">%&gt;%</a></span> 

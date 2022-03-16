@@ -27,7 +27,7 @@ models, copula theory and Extreme Value Theory.
 ## Dr. Ta Quoc Bao {.unnumbered}
 
 <center>
-<img height="250" width="250" alt="May be an image of 1 person and text" class="i09qtzwb n7fi1qx3 datstx6m pmk7jnqg j9ispegn kr520xx4 k4urcfbm bixrwtb6" referrerpolicy="origin-when-cross-origin" src="https://scontent.fsgn2-5.fna.fbcdn.net/v/t39.30808-6/262514193_6574508332622705_1931316700181913638_n.jpg?stp=dst-jpg_s1080x2048&amp;_nc_cat=102&amp;ccb=1-5&amp;_nc_sid=730e14&amp;_nc_ohc=h5xDt6KP8YsAX9B8ybG&amp;tn=ygydJ9OTixIIhFzF&amp;_nc_ht=scontent.fsgn2-5.fna&amp;oh=00_AT9iwkgtS1hBzMcdlHseqXG0luEtBFp9ruKNZbvswIcmUw&amp;oe=622BE8A4">
+<img height="250" width="250" alt="May be an image of 1 person and text" class="i09qtzwb n7fi1qx3 datstx6m pmk7jnqg j9ispegn kr520xx4 k4urcfbm bixrwtb6" referrerpolicy="origin-when-cross-origin" src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/ttqb.png">
 </center>
 
 

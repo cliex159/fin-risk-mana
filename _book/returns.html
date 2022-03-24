@@ -90,12 +90,12 @@
 <span class="header-section-number">1.2</span> Logarithm return<a class="anchor" aria-label="anchor" href="#logarithm-return"><i class="fas fa-link"></i></a>
 </h2>
 <p>The logarithm of gross return is called continuously compounded return</p>
-<p><span class="math display">\[ Y_t(1)=\log(1+R_t)=\log \left( \frac{P_t}{P_{t-1}} \right)=\log(P_t)-\log(P_{t-1}) \]</span></p>
+<p><span class="math display">\[ Y_t(1)=\ln(1+R_t)=\ln \left( \frac{P_t}{P_{t-1}} \right)=\ln(P_t)-\ln(P_{t-1}) \]</span></p>
 <p>An <span class="math inline">\(n-period\)</span> return is given by
 <span class="math display">\[\begin{align*}
-Y_t(n)&amp;=\log(1+R_t(n)) \\
-&amp;=\log((1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})) \\
-&amp;=\log(1+R_t)+\log(1+R_{t-1})+\log(1+R_{t-2})...+\log(1+R_{t-n+1})) \\
+Y_t(n)&amp;=\ln(1+R_t(n)) \\
+&amp;=\ln((1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})) \\
+&amp;=\ln(1+R_t)+\ln(1+R_{t-1})+\ln(1+R_{t-2})...+\ln(1+R_{t-n+1})) \\
 &amp;=Y_t+Y_{t-1}+Y_{t-2}+...+Y_{t-n+1}
 \end{align*}\]</span></p>
 </div>
@@ -108,10 +108,10 @@ Y_t(n)&amp;=\log(1+R_t(n)) \\
 <span class="header-section-number">1.3.1</span> Approximation<a class="anchor" aria-label="anchor" href="#approximation"><i class="fas fa-link"></i></a>
 </h3>
 <p>For small price changes the difference of simple return and log return is small (negligible). Indeed, from Taylor approximation we have
-<span class="math display">\[ \log(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+... \approx x \]</span></p>
+<span class="math display">\[ \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+... \approx x \]</span></p>
 <p>Simple or log-return is approximately equal with returns under 10% since there is not large difference between <span class="math inline">\(R_t\)</span> and <span class="math inline">\(Y_t\)</span> as the time between observations goes to zero <span class="math inline">\(\lim_{\Delta t \to 0} Y_t = R_t\)</span>.</p>
-<p><span class="math display">\[\log(1000) − \log(995) = 0.005012 \approx \frac{1000}{995} − 1 = 0.005025 \\
-\log(1000) − \log(885) = 0.12216 \neq \frac{1000}{885} − 1 = 0.12994\]</span></p>
+<p><span class="math display">\[\ln(1000) − \ln(995) = 0.005012 \approx \frac{1000}{995} − 1 = 0.005025 \\
+\ln(1000) − \ln(885) = 0.12216 \neq \frac{1000}{885} − 1 = 0.12994\]</span></p>
 </div>
 <div id="symmetry-property" class="section level3" number="1.3.2">
 <h3>
@@ -119,7 +119,7 @@ Y_t(n)&amp;=\log(1+R_t(n)) \\
 </h3>
 <p>Continuous compounded return is symmetry, but Simple return is not. For example</p>
 <p><span class="math display">\[\begin{align*}
-\log \left( \frac{1000}{500} \right) &amp;=-\log \left( \frac{500}{1000} \right) \\
+\ln \left( \frac{1000}{500} \right) &amp;=-\ln \left( \frac{500}{1000} \right) \\
 \frac{1000}{500}-1 &amp;\neq - \left( \frac{500}{1000}-1 \right)
 \end{align*}\]</span></p>
 </div>
@@ -136,7 +136,7 @@ Y_t(n)&amp;=\log(1+R_t(n)) \\
 <li>For continuously compounded returns we do not have equality</li>
 </ol>
 <p><span class="math display">\[
-Y_{t,p}= \log \left( \frac{P_{t,p}}{P_{t-1,p}} \right) \neq \sum_{i=1}^{n} \omega_i \left( \frac{P_{t,i}}{P_{t-1,i}} \right) =\sum_{i=1}^{n} \omega_i Y_{t,i}
+Y_{t,p}= \ln \left( \frac{P_{t,p}}{P_{t-1,p}} \right) \neq \sum_{i=1}^{n} \omega_i \left( \frac{P_{t,i}}{P_{t-1,i}} \right) =\sum_{i=1}^{n} \omega_i Y_{t,i}
 \]</span></p>
 <p>However, the difference between compounded and simple returns may not be very significant for small returns, e.g., daily return
 <span class="math display">\[Y_p=\sum_{i=1}^N \omega_i R_i \]</span>
@@ -201,7 +201,7 @@ Used in derivatives pricing, e.g. the Black–Scholes model.
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

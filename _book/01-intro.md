@@ -19,13 +19,13 @@ $$\begin{align*} R_t(n)&=\frac{P_t}{P_{t-n}}-1\\
 
 The logarithm of gross return is called continuously compounded return
 
-$$ Y_t(1)=\log(1+R_t)=\log \left( \frac{P_t}{P_{t-1}} \right)=\log(P_t)-\log(P_{t-1}) $$
+$$ Y_t(1)=\ln(1+R_t)=\ln \left( \frac{P_t}{P_{t-1}} \right)=\ln(P_t)-\ln(P_{t-1}) $$
 
 An $n-period$ return is given by
 $$\begin{align*} 
-Y_t(n)&=\log(1+R_t(n)) \\
-&=\log((1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})) \\
-&=\log(1+R_t)+\log(1+R_{t-1})+\log(1+R_{t-2})...+\log(1+R_{t-n+1})) \\
+Y_t(n)&=\ln(1+R_t(n)) \\
+&=\ln((1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})) \\
+&=\ln(1+R_t)+\ln(1+R_{t-1})+\ln(1+R_{t-2})...+\ln(1+R_{t-n+1})) \\
 &=Y_t+Y_{t-1}+Y_{t-2}+...+Y_{t-n+1} 
 \end{align*}$$
 
@@ -34,19 +34,19 @@ Y_t(n)&=\log(1+R_t(n)) \\
 ### Approximation
 
 For small price changes the difference of simple return and log return is small (negligible). Indeed, from Taylor approximation we have
-$$ \log(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+... \approx x $$
+$$ \ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}+... \approx x $$
 
 Simple or log-return is approximately equal with returns under 10% since there is not large difference between $R_t$ and $Y_t$ as the time between observations goes to zero $\lim_{\Delta t \to 0} Y_t = R_t$.
   
-$$\log(1000) − \log(995) = 0.005012 \approx \frac{1000}{995} − 1 = 0.005025 \\
-\log(1000) − \log(885) = 0.12216 \neq \frac{1000}{885} − 1 = 0.12994$$
+$$\ln(1000) − \ln(995) = 0.005012 \approx \frac{1000}{995} − 1 = 0.005025 \\
+\ln(1000) − \ln(885) = 0.12216 \neq \frac{1000}{885} − 1 = 0.12994$$
 
 ### Symmetry property
 
 Continuous compounded return is symmetry, but Simple return is not. For example
 
 $$\begin{align*}
-\log \left( \frac{1000}{500} \right) &=-\log \left( \frac{500}{1000} \right) \\
+\ln \left( \frac{1000}{500} \right) &=-\ln \left( \frac{500}{1000} \right) \\
 \frac{1000}{500}-1 &\neq - \left( \frac{500}{1000}-1 \right)
 \end{align*}$$
 
@@ -61,7 +61,7 @@ $$ R_{i,p}=\sum_{i=1}^{N} \omega_i R_{t,i} $$
 2. For continuously compounded returns we do not have equality
 
 $$ 
-Y_{t,p}= \log \left( \frac{P_{t,p}}{P_{t-1,p}} \right) \neq \sum_{i=1}^{n} \omega_i \left( \frac{P_{t,i}}{P_{t-1,i}} \right) =\sum_{i=1}^{n} \omega_i Y_{t,i} 
+Y_{t,p}= \ln \left( \frac{P_{t,p}}{P_{t-1,p}} \right) \neq \sum_{i=1}^{n} \omega_i \left( \frac{P_{t,i}}{P_{t-1,i}} \right) =\sum_{i=1}^{n} \omega_i Y_{t,i} 
 $$
 
 However, the difference between compounded and simple returns may not be very significant for small returns, e.g., daily return
@@ -205,7 +205,7 @@ plots=drift %>%
 Let series $(Y_t(t))_{t \geq 0}$ be a random walk
 $$\begin{align*}
 Y_t(t)&=Y_1+Y_2+...+Y_t \\
-\log \left( \frac{P_t}{P_0}\right)&=Y_1+Y_2+...+Y_t \\
+\ln \left( \frac{P_t}{P_0}\right)&=Y_1+Y_2+...+Y_t \\
 P_t&=P_0e^{Y_1+Y_2+...+Y_t}
 \end{align*}$$
 $(P_t)_{t \geq0}$ is called geometric random walks or exponential random walk. If $Y_1,Y_2,...,Y_t$ are i.i.d and $Y \sim \mathcal{N}(\mu,\sigma^2)$, then $P_t$ is a lognormal random walk. 
@@ -274,7 +274,7 @@ The volatility over a decade, year and month, we see that it comes in many cycle
 
 ```r
 library(tidyquant)
-mcd <- tq_get('MCD', 
+mcd = tq_get('MCD', 
                from=as.Date("2010-01-01"),
                to=as.Date("2014-01-01"),
                get = "stock.prices")
@@ -666,12 +666,12 @@ a. What is the prbability that after one trading day your investment is worth le
 
 >Let $\mathcal{P}_1$ be the probability that after one trading day the investment is worth and $X$ be standard normal random variable.
 
->The daily log-return on a stock are independent and normally distributed with mean $0.001$ and standard deviation $0.015$: $r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001,0.015)$.
+>The daily log-return on a stock are independent and normally distributed with mean $0.001$ and standard deviation $0.015$: $r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001,0.015)$.
 
 >$$\begin{align*}
 \mathcal{P}_1&=\mathcal{P}(1000P_t \leq 990 P_{t-1}) \\
-&=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
-&=\mathcal{P} \left(\frac{r_t-0.001}{0.015}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001}{0.015} \right) \\
+&=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
+&=\mathcal{P} \left(\frac{r_t-0.001}{0.015}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001}{0.015} \right) \\
 &=\mathcal{P} \left(X  \leq -0.7366 \right) \\
 &=0.23066
 \end{align*}$$
@@ -682,12 +682,12 @@ b. What is the probability that after five trading days your investment is worth
 
 >Let $\mathcal{P}_5$ be the probability that after five trading day the investment is worth.
 
->The five day log-return on a stock are independent and normally distributed with mean $0.001 \times 5$ and standard deviation $0.015 \times \sqrt{5}$: $r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})$.
+>The five day log-return on a stock are independent and normally distributed with mean $0.001 \times 5$ and standard deviation $0.015 \times \sqrt{5}$: $r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})$.
 
 >$$\begin{align*}
 \mathcal{P}_5&=\mathcal{P}(1000P_t \leq 990 P_{t-5}) \\
-&=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
-&=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
+&=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
+&=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
 &=\mathcal{P} \left(X  \leq -0.4487 \right) \\
 &=0.32682
 \end{align*}$$
@@ -1151,7 +1151,7 @@ qqline(sp500_logret, col = "red")
 
 # Homework
 
-## Problem 1 
+## Problem 1 {.unnumbered}
 
 The prices and dividends of a stock are given as follows.
 
@@ -1163,7 +1163,9 @@ The prices and dividends of a stock are given as follows.
 | 3 | 53 | 0.2 |
 | 4 | 59 | 0.25 |
 
-a. Determine $R_2$ and $R_4(3)$.
+### Question a {.unnumbered}
+
+Determine $R_2$ and $R_4(3)$.
 
 >$$\begin{align*}
 R_2&=\frac{P_2-P_1+d_2}{P_1}=0.042 \\
@@ -1179,7 +1181,9 @@ R_4(3)&=(1+0.118)(1+-0.015)(1+0.042)-1 \\
 
 >Answer: $R_2 \approx 0.042$ and $R_4(3) \approx 0.148$.
 
-b. Determine $r_3$.
+### Question b {.unnumbered}
+
+Determine $r_3$.
 
 >$$\begin{align*}
 r_3&=\ln(1+R_3) \\
@@ -1189,11 +1193,13 @@ r_3&=\ln(1+R_3) \\
 
 >Answer: $r_3 \approx -0.015$
 
-## Problem 2 
+## Problem 2 {.unnumbered}
 
 Assume that the log returns $r_t \sim \mathcal{N}(0.06, 0.47)$ are i.i.d. 
 
-a. Determine the distribution of $r_t(4)$.
+### Question a {.unnumbered}
+
+Determine the distribution of $r_t(4)$.
 
 >$$\begin{align*}
 r_t(4)&=r_t+r_{t-1}+r_{t-2}+r_{t-3} \\ 
@@ -1204,7 +1210,9 @@ r_t(4)&=r_t+r_{t-1}+r_{t-2}+r_{t-3} \\
 
 >Answer: The distribution of $r_t(4)$ is $\mathcal{N}(0.24,1.88)$.
 
-b. Find $cov(r_2(1), r_2(2))$.
+### Question b {.unnumbered}
+
+Find $cov(r_2(1), r_2(2))$.
 
 >$$\begin{align*}
 cov(r_2(1),r_2(2))&=cov(r_2,r_2+r_1) \\
@@ -1215,7 +1223,9 @@ cov(r_2(1),r_2(2))&=cov(r_2,r_2+r_1) \\
 
 >Answer: $cov(r_2(1),r_2(2))=0.47$
 
-c. Determine the distribution of $r_t(3)$ if $r_{t−2} = 0.6$.
+### Question c {.unnumbered}
+
+Determine the distribution of $r_t(3)$ if $r_{t−2} = 0.6$.
 
 >$$\begin{align*}
 [r_t(3)|r_{t-2}=0.6]&=[r_t+r_{t-1}+r_{t-2}|r_{t-2}=0.6] \\
@@ -1226,7 +1236,7 @@ c. Determine the distribution of $r_t(3)$ if $r_{t−2} = 0.6$.
 
 >Answer: If $r_{t-2}=0.6$, the distribution of $r_t(3)$ is $\mathcal{N}(0.72,0.94)$.
 
-## Problem 3 
+## Problem 3 {.unnumbered}
 
 Assume a stock of current price \$97 with i.i.d. log returns 
 
@@ -1256,7 +1266,7 @@ What is the probability that its price exceeds $\$100$ after 20 trading days?
 
 >Answer: The probability that its price exceeds $\$100$ after 20 trading days is 42.3\%.
 
-## Problem 4
+## Problem 4 {.unnumbered}
 
 Assume that the log returns $r_t \sim \mathcal{N}(5 \times 10^{−4}, 0.012)$ are i.i.d. Minimize t such that 
 
@@ -1291,7 +1301,7 @@ i.e. the probability that the price doubles after t days is at least 90%.
 
 >Answer: Minimum value of t such that the probability that the price doubles after t days is 81639.
 
-## Problem 5 
+## Problem 5 {.unnumbered}
 
 Let $(X_n)_{n \geq 0}$ be a log-normal geometric random walk with parameters $\mu$ and $\sigma$, i.e.
 
@@ -1299,7 +1309,9 @@ $$ X_k= X_0 e^{\sum_{i=1}^k r_i}, \forall k \in \mathbb{N} $$
 
 where $r_i \sim \mathcal{N}(\mu,\sigma^2)$ are i.i.d and $X_0 \neq 0$ is constant.
 
-a. Determine $P(X_2 > 1.3X_0)$.
+### Question a {.unnumbered}
+
+Determine $P(X_2 > 1.3X_0)$.
 
 >$$\begin{align*}
 r_1+r_2 &\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\ 
@@ -1316,7 +1328,9 @@ r_1+r_2 &\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\
 
 >Answer: $\mathbb{P}(X_2>1.3X_0)=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)$
 
-b. Find the density $f_{X_1}$ of $X_1$.
+### Question b {.unnumbered}
+
+Find the density $f_{X_1}$ of $X_1$.
 
 >$$\begin{align*} 
 F_{X_1}(x) &=\mathbb{P}(X_1 \leq x) \\
@@ -1329,7 +1343,9 @@ F_{X_1}(x) &=\mathbb{P}(X_1 \leq x) \\
 
 >Answer: $f_{X_1}(x)=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}$
 
-c. Find a formula for the $0.9$ quantile of $X_k$ for each $k \in \mathbb{N}$.
+### Question c {.unnumbered}
+
+Find a formula for the $0.9$ quantile of $X_k$ for each $k \in \mathbb{N}$.
 
 >Let $x_k$ be the 0.9 quantile of $X_k$
 $$\begin{align*}
@@ -1354,13 +1370,15 @@ $$\begin{align*}
 
 >Answer: The formula for the 0.9 quantile of $X_k$ for each $k \in \mathbb{N}$ is $X_0 e^{\Phi^{-1}(0.9) \sigma \sqrt{k} +k\mu}$.
 
-## Problem 6
+## Problem 6 {.unnumbered}
 
 Given data of McDonald’s stock returns. Using R or Python:
 
 ### Python {.unnumbered}
 
-a. Plot histogram and display fitted normal.
+### Question a {.unnumbered}
+
+Plot histogram and display fitted normal.
 
 
 ```python
@@ -1420,7 +1438,9 @@ plt.show()
 
 <img src="01-intro_files/figure-html/unnamed-chunk-49-1.png" width="90%" style="display: block; margin: auto;" />
 
-b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result.
+### Question b {.unnumbered}
+
+Use QQ plot and Jaque-Bera test to test for normality and interpret the result.
 
 
 ```python
@@ -1447,7 +1467,9 @@ jarque_bera(mcd_logret)
 
 $p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
 
-c. Calculate skewness, kurtosis and give some comments related to risk management.
+### Question c {.unnumbered}
+
+Calculate skewness, kurtosis and give some comments related to risk management.
 
 
 ```python
@@ -1475,7 +1497,9 @@ A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has lar
 
 ### R {.unnumbered}
 
-a. Plot histogram and display fitted normal.
+### Question a {.unnumbered}
+
+Plot histogram and display fitted normal.
 
 
 ```r
@@ -1501,14 +1525,16 @@ head(mcd_logret)
 ```r
 # Histogram and fitted normal distribution
 h=hist(mcd_logret)
-xfit <- seq(min(mcd_logret), max(mcd_logret), length = 100)
-yfit <- dnorm(xfit, mean = mean(mcd_logret), sd = sd(mcd_logret)) * diff(h$mids[1:2]) * length(mcd_logret)
+xfit = seq(min(mcd_logret), max(mcd_logret), length = 100)
+yfit = dnorm(xfit, mean = mean(mcd_logret), sd = sd(mcd_logret)) * diff(h$mids[1:2]) * length(mcd_logret)
 lines(xfit, yfit, col = "red", lwd = 2)
 ```
 
 <img src="01-intro_files/figure-html/unnamed-chunk-54-1.png" width="90%" style="display: block; margin: auto;" />
 
-b. Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.
+### Question b {.unnumbered}
+
+Use QQ plot and Jaque-Bera test to test for normality and interpret the result. (c) Calculate skewness, kurtosis and give some comments related to risk management.
 
 
 ```r
@@ -1539,7 +1565,9 @@ jarque.test(mcd_logret)
 
 $p−value<0.05$ so we can reject the null hypothesis $H_0$: $Sk=0$ and $Kur=3$ meaning that the log return of the data do not follow the normal distribution.
 
-c. Calculate skewness, kurtosis and give some comments related to risk management.
+### Question c {.unnumbered}
+
+Calculate skewness, kurtosis and give some comments related to risk management.
 
 
 ```r
@@ -1567,11 +1595,10 @@ A negative skewness indicates a left-skewed distribution, i.e. investors can exp
 
 A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
 
-## Problem 7
+## Problem 7 {.unnumbered}
 
 Assume a random variable X has the distribution
 $$P(X =−4)= \frac{1}{3}, P(X =1)= \frac{1}{2}, P(X =5)= \frac{1}{6}$$
-
 Check that $X$ has skewness $0$, but is not distributed symmetrically.
 
 >$$\begin{align*}
@@ -1592,9 +1619,11 @@ $$\mathbb{P}(X=1)=\mathbb{P}(X=2x_0-1)=\frac{1}{2}, \forall \delta >0$$
 >thus $2x_0-1=1$, i.e. $x_0=1$. Letting $\delta=4$ gives
 $$ 0=\mathbb{P}(X=-3)=\mathbb{P}(X=5)=\frac{1}{6} (!) $$
 
-## Problem 8
+## Problem 8 {.unnumbered}
 
-a. Show that if X, Y are random variables and cov(X, Y ) = 0, then X, Y may not be independent.
+### Question a {.unnumbered}
+
+Show that if X, Y are random variables and cov(X, Y ) = 0, then X, Y may not be independent.
 
 >Let $X$ be the normal distribution and $Y$ be $X^2$ then
 $$ Cov(X,Y)=\mathbb{E}(XY)-E(X)E(Y)=0 $$
@@ -1604,7 +1633,9 @@ $$ 0.25=\mathbb{E}(Y|X=0.5) \neq E(Y)=Var(X)=1 $$
 
 >Hence, X and Y are not inidependent.
 
-b. Prove that correlation is invariant under linear transformations.
+### Question b {.unnumbered}
+
+Prove that correlation is invariant under linear transformations.
 
 >Let a, b, c, d be constants with ac > 0, then for any random variables X, Y, we have
 $$\begin{align*}

@@ -42,12 +42,17 @@ process (random sample).
 
 ### Example {.unnumbered}
 
-Consider Financial Index SP500. The data consists of excess returns $X_t = \log(S_t) −\log(S_{t−1})$. From the plot we see the following properties of $X_t$:
+Consider Financial Index SP500. The data consists of excess returns $X_t = \ln(S_t) −\ln(S_{t−1})$. From the plot we see the following properties of $X_t$:
 
 
 ```r
-sp500=read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv")
-plot(diff(log(sp500$Close)),type="l",col="blue")
+library(tidyverse)
+sp500 = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv")
+
+sp500$Close %>% 
+  log %>% 
+  diff %>% 
+  plot(type = "l",col = "blue")
 ```
 
 <img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;" />
@@ -169,7 +174,7 @@ $$\hat \rho(h) =\frac{\hat \gamma(h)}{\hat \gamma(h)}$$
 
 ```r
 library(tidyquant)
-msft <- tq_get('MSFT',from=as.Date("2010-01-01"),
+msft = tq_get('MSFT',from=as.Date("2010-01-01"),
                to=as.Date("2014-01-01"),
                get = "stock.prices")
 
@@ -265,7 +270,7 @@ Note that the magnitude of its ACF decays geometrically to zero, either slowly a
 
 ```r
 library(stats)
-ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
+ts.sim = arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
 ```
 
@@ -289,7 +294,7 @@ Consider AR(1) with $\phi_1 = 0.64$ and $\sigma_w^2 = 1$, we have the results of
 
 ```r
 library(stats)
-ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
+ts.sim = arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
 ```
 
@@ -462,7 +467,7 @@ is viewed as the function of $\theta$ with $Y$ fixed at the observed data is cal
 the likelihood function.
 
 * The maximum likelihood estimator (MLE) is the value of $\theta$ that maximizes the likelihood function. We denote the MLE by $\hat \theta_{ML}$.
-* It is mathematically easier to maximize $\log L(\theta)$, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.
+* It is mathematically easier to maximize $\ln L(\theta)$, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.
 
 ## Application to ARCH(1)
 
@@ -475,7 +480,7 @@ $$ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2)}} e^{-\frac{1}{2} \frac{y
 Hence, the joint density
 $$ \prod_{t=2}^T f(y_t|y_{t-1})=\prod_{t=2}^T \frac{1}{\sqrt{2\pi(\omega+\alpha y_{t-1}^2)}} e^{-\frac{1}{2} \frac{y_t^2}{2\omega+\alpha y_{t-1}^2}} $$
 and, the log likelihood
-$$ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) $$
+$$ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) $$
 
 ##  Application to GARCH(1,1)
 
@@ -483,7 +488,7 @@ $$ \sigma_t^2=\omega+\alpha y_{t-1}^2 +\beta \sigma_{t-1}^2$$
 Hence, the joint density
 $$ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2+\beta \hat \sigma_1^2)}} e^{-\frac{1}{2} \frac{y_2^2}{\omega +\alpha y_1^2+\beta \hat \sigma_1^2}} $$
 and, the log likelihood
-$$ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) $$
+$$ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) $$
 
 ### The importance of σ1
 
@@ -529,7 +534,7 @@ or the expected volatility per day is $\sqrt{0.0002942} = 1.72\%$, still above t
 Suppose it is day $n$. We define
 $$V(t) = \mathbb{E}(\sigma_{n+1}^2 )$$
 and
-$$ a:= \log \left( \frac{1}{\alpha+\beta} \right) $$
+$$ a:= \ln \left( \frac{1}{\alpha+\beta} \right) $$
 From $\mathbb{E}(\sigma_{n+t}^2) = \sigma^22 + (\alpha + \beta)^t(\sigma_n^2 − \sigma^2)$ we have
 
 $$V(t) = \sigma^2 + e^{−at}(V(0) − \sigma^2)$$
@@ -548,7 +553,7 @@ For S&P data, using GARCH(1,1) model we obtain the coefficients $\omega = 0.0000
 $$ \sigma^2(T)=252 \left( \sigma^2+\frac{1-e^{-aT}}{aT} [V(0)-\sigma^2] \right) $$
 assume that $V(0) = 0.0003$ we have
 $$ \sigma^2=\frac{0.0000013465}{1 − 0.083394 − 0.910116}=0.0002073 $$
-and $a = \log \left( \frac{1}{0.99351} \right) = 0.00651$. Hence,
+and $a = \ln \left( \frac{1}{0.99351} \right) = 0.00651$. Hence,
 $$ \sigma^2(T)=252 \left( 0.0002073+\frac{1-e^{-0.00651 \times T}}{0.00651 \times T}[0.0003-0.0002073] \right) $$
 
 For the option life (days) T = 10, 30, 50, 100, 500, we obtain the option
@@ -587,7 +592,9 @@ volatility ($\%$ per annum)
 
 2. Let $cov (X_t,X_{t+h})=\gamma(h)$
 
-a. Prove that $\gamma(h)=\gamma(-h)$
+### Question a
+
+Prove that $\gamma(h)=\gamma(-h)$
 
 >$$\begin{align*}
 \gamma(h)=cov(X_t,X_{t+h}) \\
@@ -597,7 +604,9 @@ a. Prove that $\gamma(h)=\gamma(-h)$
 >Let $s=t-h$ then $t=s+h$
 $$\gamma(-h)=cov(X_{s+h},X_{s})=\gamma(h) $$
 
-b. Prove that $-1 \leq \rho(h) \le1$
+### Question b
+
+Prove that $-1 \leq \rho(h) \le1$
 
 >$$\begin{align*}
 &\mathbb{E}[(X_{t+h} \pm X_{t})^2] \ge 0 \\ 
@@ -1203,7 +1212,7 @@ kpss.test(coredata(price))
 
 # Homework
 
-## Problem 1
+## Problem 1 {.unnumbered} 
 
 Give the data
 
@@ -1219,7 +1228,7 @@ Give the data
 
 Calculate the ACF with lags from 0 to 15 and lower, upper bounds with significant α = 5%
 
-### Python {.unnumbered} 
+### Python {.unnumbered}  
 
 
 ```python
@@ -1231,10 +1240,7 @@ warnings.filterwarnings("ignore")
 data = [10.31778, 10.29235, 10.30075, 10.29208, 10.31304, 10.32042,
         10.36644, 10.36744, 10.39553, 10.48562, 10.47619, 10.46396,
         10.34145, 10.40247, 10.39158, 10.35517, 10.35166, 10.36395]
-```
 
-
-```python
 import pandas as pd
 df = pd.DataFrame(data, columns = ['data'])
 df.head(5)
@@ -1248,7 +1254,6 @@ df.head(5)
 #> 3  10.29208
 #> 4  10.31304
 ```
-
 
 ```python
 from statsmodels.tsa.stattools import acf
@@ -1271,21 +1276,16 @@ acf(df['data'], nlags = 15)
 #>         0.02943992])
 ```
 
-
 ```python
 import matplotlib.pyplot as plt
 from statsmodels.graphics.tsaplots import plot_acf
-# Plot ACF
-y = 1.96 / np.sqrt(len(data))
-plot_acf(df['data'], lags = 15, alpha = 0.05, use_vlines = True)
-plt.plot(range(0, 16), [y] * 16, 'b--', linewidth = 0.75)
-plt.plot(range(0, 16), [-y] * 16, 'b--', linewidth = 0.75)
+plot_acf(df['data'], lags = 15)
 plt.show()
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-23-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;" />
 
-### R {.unnumbered} 
+### R {.unnumbered}  
 
 
 ```r
@@ -1326,13 +1326,15 @@ acf(data,lag.max = 15,plot=F)
 acf(data,lag.max = 15)
 ```
 
-<img src="02-cross-refs_files/figure-html/unnamed-chunk-27-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-24-1.png" width="90%" style="display: block; margin: auto;" />
 
-## Problem 2
+## Problem 2 {.unnumbered} 
 
 Consider the $MA(q)$. 
 
-a. Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
+### Question a {.unnumbered} 
+
+Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
 
 >$$\begin{align*}
 \gamma(0)&=Var(X_t) \\
@@ -1361,7 +1363,9 @@ a. Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
   \end{cases}
   \end{align*}$$
 
-b. Show that the MA(1) processes $X_t$ and $Y_t$
+### Question b {.unnumbered} 
+  
+  Show that the MA(1) processes $X_t$ and $Y_t$
 $$\begin{align*}
 X_t = \beta \epsilon_{t−1} + \epsilon_t \\ 
 Y_t = \frac{1}{\beta} \epsilon_{t−1} + \epsilon_t \\ 
@@ -1383,7 +1387,7 @@ and $\rho_h=0, \forall h \geq 2$
 
 >Answer: $X_t$ and $Y_t$ have the same ACF.
 
-## Problem 3
+## Problem 3 {.unnumbered} 
 
 Suppose that the stationary process $X_t$ has an autocovariance function given by $\gamma(h)$.
 Consider process $Y_t = X_t − X_{t−1}$.
@@ -1410,7 +1414,7 @@ b) Find the autocorrelation function of $Y_t$
 
 >Answer: The autocorrelation function of $Y_t$ is $\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)}$
 
-## Problem 4
+## Problem 4 {.unnumbered} 
 
 Find the autocorrelation function of the second order moving average process $MA(2)$
 $$X_t = 0.5 \epsilon_{t−1} − 0.2 \epsilon_{t−2} + \epsilon_t$$
@@ -1443,3 +1447,1365 @@ $$\rho(h)=\begin{cases}
     -0.155&  h=2 \\
     0&  h \geq 3
   \end{cases}$$
+  
+## Problem 5 {.unnumbered} 
+
+Assume that the price of an asset at close of trading yesterday was \$300 and its volatility was estimated as 1.3\% per day. The price at the close of trading today is \$298. Update the volatility estimate by using the following methods:
+
+### Question a {.unnumbered} 
+
+EWMA with $\lambda=0.94$.
+
+>$$\begin{align*}
+\widehat{\sigma}_t^2 &=\lambda\cdot\widehat{\sigma}_{t-1}^2+(1-\lambda)\cdot y_{t-1}^2 \\
+&=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{300}{298}\right)^2 \\
+&\approx1.6153\cdot10^{-4} \\
+\rightarrow \widehat{\sigma}_t &\approx0.0127
+\end{align*}$$
+
+>Answer: The volatility estimate by using the EWMA with $\lambda=0.94$ is $1.27\%$.
+
+### Question b {.unnumbered} 
+
+The GARCH$(1,1)$ model with $\omega=2\cdot10^{-6},\alpha=0.04,\beta=0.94$.
+
+>$$\begin{align*}
+\widehat{\sigma}_t^2 &=\omega+\alpha\cdot y_{t-1}^2+\beta\cdot\widehat{\sigma}_{t-1}^2 \\
+&=2\cdot10^{-6}+0.04\cdot\left( \ln \frac{300}{298}\right)^2+0.94\cdot0.013^2 \\
+&\approx1.6265\cdot10^{-4} \\
+\rightarrow \widehat{\sigma}_t &\approx0.0128
+\end{align*}$$
+    
+>Answer: The volatility estimate by using the GARCH$(1,1)$ model with the given parameters is $1.28\%$.
+
+## Problem 6 {.unnumbered} 
+
+Suppose that the parameters in a GARCH$(1,1)$ model are $\alpha=0.03,\beta=0.95,\omega=2\cdot10^{-6}.$
+
+### Question a {.unnumbered} 
+
+What is the long-run average volatility?
+
+>The long-run average volatility is
+>$$\begin{align*}
+\sigma &=\sqrt{\frac{\omega}{1-\alpha-\beta}} \\
+&=\sqrt{\frac{2\cdot10^{-6}}{1-0.03-0.95}} \\
+&=0.01
+\end{align*}$$
+
+>Answer: The long-run average volatility is $1\%$.
+    
+### Question b {.unnumbered} 
+
+If the current volatility is $1.5\%$ per day, what is the estimate of the volatility in $20$, $40$, and $60$ days?
+
+>The estimate of the volatility in $20$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+20}^2) &=\sigma^2+(\alpha+\beta)^{20}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{20}\cdot(0.015^2-0.01^2) \\
+&\approx1.8345\cdot10^{-4} \\
+\rightarrow \sigma_{n+20}&\approx0.0135 \\
+\end{align*}$$
+
+>The estimate of the volatility in $40$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+40}^2) &=\sigma^2+(\alpha+\beta)^{40}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{40}\cdot(0.015^2-0.01^2) \\
+&\approx1.5571\cdot10^{-4} \\
+\rightarrow \sigma_{n+40}&\approx0.0125 \\
+\end{align*}$$
+
+>The estimate of the volatility in $60$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+60}^2) &=\sigma^2+(\alpha+\beta)^{60}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{60}\cdot(0.015^2-0.01^2) \\
+&\approx1.3719\cdot10^{-4} \\
+\rightarrow \sigma_{n+60}&\approx0.0117 \\
+\end{align*}$$
+
+>Answer: If the current volatility is $1.5\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $1.35\%$, $1.25\%$ and $1.17\%$, respectively.
+    
+### Question c {.unnumbered} 
+
+What volatility should be used to price $20$, $40$, and $60$-day  options?
+
+With the current volatility being $1.5\%$ per day, we have
+
+>$$\begin{align*}
+a &=\ln\frac{1}{\alpha+\beta} \\
+&=\ln\frac{1}{0.03+0.95} \\
+&\approx0.0202
+\end{align*}$$
+
+>The volatility should be used to price $20$-day  options:
+$$\begin{align*}
+\sigma^2(20) &=252\cdot\left(\sigma^2+\frac{1-e^{-20a}}{20a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-20\cdot0.0202}}{20\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0511 \\
+\rightarrow\sigma(20) &\approx0.2261
+\end{align*}$$
+
+>The volatility should be used to price $40$-day  options:
+$$\begin{align*}
+\sigma^2(40) &=252\cdot\left(\sigma^2+\frac{1-e^{-40a}}{40a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-40\cdot0.0202}}{40\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0468 \\
+\rightarrow\sigma(40) &\approx0.2164
+\end{align*}$$
+
+>The volatility should be used to price $60$-day  options:
+$$\begin{align*}
+\sigma^2(60) &=252\cdot\left(\sigma^2+\frac{1-e^{-60a}}{60a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-60\cdot0.0202}}{60\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0435 \\
+\rightarrow\sigma(60) &\approx0.2085
+\end{align*}$$
+
+>Answer: The volatility should be used to price $20$, $40$ and $60$-day options are $22.61\%$, $21.64\%$ and $20.85\%$, respectively.
+
+### Question d {.unnumbered} 
+
+Suppose that there is an event that increases the volatility from $1.5%$ per day to $2%$ per day. Estimate the effect on the volatility in $20$, $40$, and $60$ days.
+
+>The estimate of the volatility in $20$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+20}^2) &=\sigma^2+(\alpha+\beta)^{20}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{20}\cdot(0.02^2-0.01^2) \\
+&\approx3.0028\cdot10^{-4} \\
+\rightarrow \sigma_{n+20}&\approx 0.0173 \\
+\end{align*}$$
+
+>The estimate of the volatility in $40$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+40}^2) &=\sigma^2+(\alpha+\beta)^{40}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{40}\cdot(0.02^2-0.01^2) \\
+&\approx2.3371\cdot10^{-4} \\
+\rightarrow \sigma_{n+40}&\approx 0.0153\\
+\end{align*}$$
+
+>The estimate of the volatility in $60$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+60}^2) &=\sigma^2+(\alpha+\beta)^{60}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{60}\cdot(0.02^2-0.01^2) \\
+&\approx1.8927\cdot10^{-4} \\
+\rightarrow \sigma_{n+60}&\approx 0.0138\\
+\end{align*}$$
+
+><ul>If the current volatility is $1.5\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $0.0135$, $0.0125$ and $0.0117$, respectively.</ul>
+<ul>If the current volatility is $2\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $0.0173$, $0.0153$ and $0.0138$, respectively.</ul>
+Therefore, the volatility in $20$, $40$ and $60$ days increases respectively by 
+$$\frac{0.0173}{0.0135}-1\approx0.2814 \\
+\frac{0.0153}{0.0125}-1\approx0.2240 \\
+\frac{0.0138}{0.0117}-1\approx0.1795$$
+
+>Answer: If there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatility in $20$, $40$ and $60$ days increases by $28.14\%$, $22.4\%$ and $17.95\%$, respectively.
+    
+### Question e {.unnumbered} 
+
+Estimate by how much the event increases the volatilities used to price $20$, $40$, and $60$-day  options.
+
+With the current volatility being $2\%$ per day, we have
+
+>$$\begin{align*}
+a &=\ln\frac{1}{\alpha+\beta} \\
+&=\ln\frac{1}{0.03+0.95} \\
+&\approx0.0202
+\end{align*}$$
+
+>The volatility should be used to price $20$-day  options:
+$$\begin{align*}
+\sigma^2(20) &=252\cdot\left(\sigma^2+\frac{1-e^{-20a}}{20a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-20\cdot0.0202}}{20\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0874 \\
+\rightarrow\sigma(20) &\approx0.2956
+\end{align*}$$
+
+>The volatility should be used to price $40$-day  options:
+$$\begin{align*}
+\sigma^2(40) &=252\cdot\left(\sigma^2+\frac{1-e^{-40a}}{40a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-40\cdot0.0202}}{40\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0771 \\
+\rightarrow\sigma(40) &\approx0.2776
+\end{align*}$$
+
+>The volatility should be used to price $60$-day  options:
+$$\begin{align*}
+\sigma^2(60) &=252\cdot\left(\sigma^2+\frac{1-e^{-60a}}{60a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-60\cdot0.0202}}{60\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0690 \\
+\rightarrow\sigma(60) &\approx0.2627
+\end{align*}$$
+
+><ul>If the current volatility is $1.5\%$ per day, the volatility should be used to price $20$, $40$ and $60$-day options are $0.2261$, $0.2164$ and $0.2085$, respectively.</ul>
+<ul>If the current volatility is $2\%$ per day, the volatility should be used to price $20$, $40$ and $60$-day options are $0.2956$, $0.2776$ and $0.2627$, respectively.</ul>
+Therefore, if there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatilities used to price increase by
+$$\frac{0.2956}{0.2261}-1\approx0.3074 \\
+\frac{0.2776}{0.2164}-1\approx0.2828 \\
+\frac{0.2627}{0.2085}-1\approx0.2600$$
+
+>Answer: If there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatilities used to price increase by $30.74\%$, $28.28\%$ and $26\%$, respectively.
+
+## Problem 7 {.unnumbered} 
+
+Consider ARCH$(1)$ process, show that
+$$\mathbb{E}(\sigma_{t+s}^2|\mathcal{F}_t)=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\cdot\sigma_t^2,\forall s\geq1$$
+
+>Consider the following ARCH$(1)$ process:
+$$\sigma_{t+1}^2=\omega+\alpha \sigma_t^2\epsilon_t^2$$
+We will prove the assertion
+$$\mathbb{E}(\sigma_{t+s}^2|\mathcal{F}_t)=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_t^2,\forall s\geq1$$ 
+by induction on $s$. 
+
+>For $s=1$:
+$$\begin{align*}
+\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) &=\mathbb{E}(\omega+\alpha \sigma_t^2\epsilon_t^2|\mathcal{F}_t) \\
+&=\mathbb{E}(\omega+\alpha \sigma_t^2\epsilon_t^2) \\
+&=\mathbb{E}(\omega)+\mathbb{E}(\alpha \sigma_t^2\epsilon_t^2) \\
+&=\omega+\alpha \sigma_t^2\mathbb{E}(\epsilon_t^2) \\
+&=\frac{1-\alpha^1}{1-\alpha}\cdot\omega+\alpha \sigma_t^2
+\end{align*}$$
+    
+>Assume the assertion holds for some $k\in\mathbb{N}$. That is:
+$$\begin{align*}
+    \mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_t) &= \mathbb{E}(\mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_{t+1})|\mathcal{F}_t) \\
+    &=\mathbb{E}\left(\left.\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
+    &= \frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
+    &=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s(\omega+\alpha \sigma_t^2)\\
+    &= \left(\frac{1-\alpha^s}{1-\alpha}+\alpha^s\right)\cdot\omega+\alpha^{s+1}\sigma_t^2 \\
+    &=\frac{1-\alpha^{s+1}}{1-\alpha}\cdot\omega+\alpha^{s+1}\sigma_t^2
+\end{align*}$$
+    
+>Therefore, the assertion holds $\forall s\geq1$. 
+
+## Problem 8 {.unnumbered} 
+
+### Python {.unnumbered}
+
+We can download the SP500 data from internet by using Python.
+
+
+```python
+import pandas_datareader as web
+price = web.get_data_yahoo("^GSPC",
+                           start = "2009-01-01",
+                           end ="2021-12-31")
+```
+
+### Question a {.unnumbered} 
+
+Denote $y$ the returns of SP500. Plot the returns and calculate statistical characterizations of returns (e.g., min, max, sd, skewness, kurtosis, acf), use Jarque Berra test, Box test.
+
+
+```python
+# Calculate returns y
+import numpy as np
+y = np.diff(np.log(price['Adj Close']))
+```
+
+
+```python
+# Plot the returns
+import matplotlib.pyplot as plt
+plt.plot(y)
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-27-1.png" width="90%" style="display: block; margin: auto;" />
+
+
+```python
+# Statistical characterizations of returns
+from scipy.stats import describe
+describe(y)
+```
+
+```
+#> DescribeResult(nobs=3273, minmax=(-0.12765219747281709, 0.08968323251796306), mean=0.0005081885399690335, variance=0.0001314375361112753, skewness=-0.6777972104478536, kurtosis=13.133833345827092)
+```
+
+
+```python
+# Autocorrelation function
+from statsmodels.tsa.stattools import acf
+acf(y)
+```
+
+```
+#> array([ 1.        , -0.1437426 ,  0.0873594 , -0.03140535, -0.019112  ,
+#>         0.00508723, -0.0803378 ,  0.10808321, -0.094185  ,  0.07152584,
+#>        -0.00891499, -0.00466423,  0.01929302, -0.04416083,  0.01990267,
+#>        -0.07326844,  0.05878776, -0.00504835, -0.02597924, -0.01826176,
+#>        -0.01700834,  0.03833622, -0.06437332,  0.03621343, -0.01485914,
+#>        -0.03767194, -0.02067457,  0.02913685, -0.01740174,  0.00977897,
+#>         0.00331506,  0.00575203, -0.03713924,  0.01212813, -0.01917425,
+#>         0.00639421])
+```
+
+
+```python
+# Plot ACF of the returns
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(y)
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-30-3.png" width="90%" style="display: block; margin: auto;" />
+
+
+```python
+# Jarque Berra test
+import scipy.stats as stats
+stats.jarque_bera(y)
+```
+
+```
+#> Jarque_beraResult(statistic=23774.964889700783, pvalue=0.0)
+```
+
+
+```python
+# Box test
+from statsmodels.stats.diagnostic import acorr_ljungbox
+acorr_ljungbox(y)
+```
+
+```
+#>        lb_stat     lb_pvalue
+#> 1    67.688520  1.914751e-16
+#> 2    92.697505  7.430063e-21
+#> 3    95.930588  1.164970e-20
+#> 4    97.128307  4.018129e-20
+#> 5    97.213193  2.042500e-19
+#> 6   118.389393  3.550392e-23
+#> 7   156.729878  1.563740e-30
+#> 8   185.852981  6.065963e-36
+#> 9   202.653903  9.199582e-39
+#> 10  202.914988  3.979104e-38
+```
+    
+### Question b {.unnumbered} 
+
+Use ADF test for the prices and returns to see which series is stationary.
+
+
+```python
+# Plot price
+import matplotlib.pyplot as plt
+plt.plot(price['Adj Close'])
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-33-5.png" width="90%" style="display: block; margin: auto;" />
+
+
+```python
+# ADF test for prices
+from statsmodels.tsa.stattools import adfuller
+result = adfuller(price['Adj Close'])
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.998453
+```
+
+
+```python
+# Plot the returns
+import matplotlib.pyplot as plt
+plt.plot(y)
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-35-7.png" width="90%" style="display: block; margin: auto;" />
+
+
+```python
+# ADF test for returns
+from statsmodels.tsa.stattools import adfuller
+result = adfuller(y)
+print('p-value: %f' % result[1])
+```
+
+```
+#> p-value: 0.000000
+```
+
+### Question c {.unnumbered} 
+
+Using AR$(1)$ to fit the price and returns y and find the coefficients of these fitted AR$(1)$ model. 
+
+
+```python
+# Using AR(1) to fit the price
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+ar1_price = ARIMA(price['Adj Close'], 
+                  order = (1, 0, 0)).fit()
+```
+
+```
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+#> /Users/cliex159/Library/r-miniconda/envs/r-reticulate/lib/python3.8/site-packages/statsmodels/tsa/base/tsa_model.py:471: ValueWarning: A date index has been provided, but it has no associated frequency information and so will be ignored when e.g. forecasting.
+#>   self._init_dates(dates, freq)
+```
+
+```python
+print(ar1_price.summary())
+```
+
+```
+#>                                SARIMAX Results                                
+#> ==============================================================================
+#> Dep. Variable:              Adj Close   No. Observations:                 3274
+#> Model:                 ARIMA(1, 0, 0)   Log Likelihood              -15203.588
+#> Date:                Thu, 24 Mar 2022   AIC                          30413.175
+#> Time:                        16:39:12   BIC                          30431.456
+#> Sample:                             0   HQIC                         30419.722
+#>                                - 3274                                         
+#> Covariance Type:                  opg                                         
+#> ==============================================================================
+#>                  coef    std err          z      P>|z|      [0.025      0.975]
+#> ------------------------------------------------------------------------------
+#> const       2159.2460   1157.018      1.866      0.062    -108.467    4426.959
+#> ar.L1          0.9998      0.000   2301.214      0.000       0.999       1.001
+#> sigma2       630.8779      4.496    140.320      0.000     622.066     639.690
+#> ===================================================================================
+#> Ljung-Box (L1) (Q):                  87.33   Jarque-Bera (JB):             74201.03
+#> Prob(Q):                              0.00   Prob(JB):                         0.00
+#> Heteroskedasticity (H):               7.34   Skew:                            -1.12
+#> Prob(H) (two-sided):                  0.00   Kurtosis:                        26.21
+#> ===================================================================================
+#> 
+#> Warnings:
+#> [1] Covariance matrix calculated using the outer product of gradients (complex-step).
+```
+
+
+```python
+# Find the coefficients of the fitted AR(1) model
+ar1_price.params[0:2]
+```
+
+```
+#> const    2159.246035
+#> ar.L1       0.999802
+#> dtype: float64
+```
+
+
+```python
+# Using AR(1) to fit the returns
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+ar1_y = ARIMA(y, 
+              order = (1, 0, 0)).fit()
+print(ar1_y.summary())
+```
+
+```
+#>                                SARIMAX Results                                
+#> ==============================================================================
+#> Dep. Variable:                      y   No. Observations:                 3273
+#> Model:                 ARIMA(1, 0, 0)   Log Likelihood               10015.913
+#> Date:                Thu, 24 Mar 2022   AIC                         -20025.825
+#> Time:                        16:39:13   BIC                         -20007.545
+#> Sample:                             0   HQIC                        -20019.279
+#>                                - 3273                                         
+#> Covariance Type:                  opg                                         
+#> ==============================================================================
+#>                  coef    std err          z      P>|z|      [0.025      0.975]
+#> ------------------------------------------------------------------------------
+#> const          0.0005      0.000      2.773      0.006       0.000       0.001
+#> ar.L1         -0.1437      0.007    -19.320      0.000      -0.158      -0.129
+#> sigma2         0.0001   1.32e-06     97.279      0.000       0.000       0.000
+#> ===================================================================================
+#> Ljung-Box (L1) (Q):                   0.31   Jarque-Bera (JB):             18498.33
+#> Prob(Q):                              0.58   Prob(JB):                         0.00
+#> Heteroskedasticity (H):               0.97   Skew:                            -0.83
+#> Prob(H) (two-sided):                  0.57   Kurtosis:                        14.53
+#> ===================================================================================
+#> 
+#> Warnings:
+#> [1] Covariance matrix calculated using the outer product of gradients (complex-step).
+```
+
+
+```python
+# Find the coefficients of the fitted AR(1) model
+ar1_y.params[0:2]
+```
+
+```
+#> array([ 0.00050302, -0.14374591])
+```
+
+Note that If the residuals have a mean other than zero, then the forecasts are biased. Now using this fact you can check the mean of residuals of AR$(1)$ for price and return to see that you can not apply AR$(1)$ directly for price. 
+
+
+```python
+# Check the mean of residuals
+ar1_price.resid[1:].mean()
+```
+
+```
+#> 1.1800462919613017
+```
+
+
+```python
+# Check the mean of residuals
+ar1_y.resid[1:].mean()
+```
+
+```
+#> -3.311666982146061e-06
+```
+
+Check independence of residuals fitted AR$(1)$, are they independence or not?
+
+
+```python
+# Plot ACF of residuals
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(ar1_y.resid)
+plt.show()
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-43-9.png" width="90%" style="display: block; margin: auto;" />
+
+ACF are significant in many lags so the residuals of AR$(1)$ of the returns is correlated and thus is not independence.
+
+### Question d {.unnumbered} 
+
+Fit the returns by ARMA$(3,3)$, compare with AR$(1)$ above, can you conclude that
+ARMA$(3,3)$ is better than AR$(1)$?
+
+
+```python
+# Fit the returns by ARMA(3,3)
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+arma33_y = ARIMA(y, 
+                 order = (3, 0, 3)).fit()
+print(arma33_y.summary())
+```
+
+```
+#>                                SARIMAX Results                                
+#> ==============================================================================
+#> Dep. Variable:                      y   No. Observations:                 3273
+#> Model:                 ARIMA(3, 0, 3)   Log Likelihood               10024.145
+#> Date:                Thu, 24 Mar 2022   AIC                         -20032.290
+#> Time:                        16:39:19   BIC                         -19983.542
+#> Sample:                             0   HQIC                        -20014.833
+#>                                - 3273                                         
+#> Covariance Type:                  opg                                         
+#> ==============================================================================
+#>                  coef    std err          z      P>|z|      [0.025      0.975]
+#> ------------------------------------------------------------------------------
+#> const          0.0005      0.000      2.464      0.014       0.000       0.001
+#> ar.L1         -0.0633      2.201     -0.029      0.977      -4.377       4.250
+#> ar.L2          0.0372      1.404      0.027      0.979      -2.715       2.789
+#> ar.L3         -0.0115      0.374     -0.031      0.976      -0.744       0.721
+#> ma.L1         -0.0700      2.201     -0.032      0.975      -4.384       4.244
+#> ma.L2          0.0399      1.125      0.035      0.972      -2.166       2.246
+#> ma.L3         -0.0131      0.349     -0.038      0.970      -0.697       0.670
+#> sigma2         0.0001   1.46e-06     87.390      0.000       0.000       0.000
+#> ===================================================================================
+#> Ljung-Box (L1) (Q):                   0.00   Jarque-Bera (JB):             17882.67
+#> Prob(Q):                              0.99   Prob(JB):                         0.00
+#> Heteroskedasticity (H):               0.95   Skew:                            -0.75
+#> Prob(H) (two-sided):                  0.45   Kurtosis:                        14.35
+#> ===================================================================================
+#> 
+#> Warnings:
+#> [1] Covariance matrix calculated using the outer product of gradients (complex-step).
+```
+
+AIC from ARMA$(3,3)$ is less than AIC from AR$(1)$ so we can conclude that ARMA$(3,3)$ is better than AR$(1)$.
+
+### Question e {.unnumbered} 
+
+Use ARCH$(1)$, GARCH$(1,1)$ and t-GARCH$(1,1)$ to fit the
+volatility of the returns and then give your conclusions.
+
+
+```python
+# ARCH(1)
+import arch
+from arch import arch_model
+arch_fit = arch_model(y, mean = 'Zero', 
+                         vol = 'ARCH', 
+                         q = 1).fit()
+```
+
+```
+#> Iteration:      1,   Func. Count:      4,   Neg. LLF: -7592.8746576983285
+#> Iteration:      2,   Func. Count:     10,   Neg. LLF: -9873.7669996417
+#> Iteration:      3,   Func. Count:     15,   Neg. LLF: 4730401.0010247845
+#> Iteration:      4,   Func. Count:     21,   Neg. LLF: -10296.047927667008
+#> Iteration:      5,   Func. Count:     23,   Neg. LLF: -10296.047927666674
+#> Optimization terminated successfully    (Exit mode 0)
+#>             Current function value: -10296.047927667008
+#>             Iterations: 5
+#>             Function evaluations: 23
+#>             Gradient evaluations: 5
+```
+
+```python
+print(arch_fit.summary())
+```
+
+```
+#>                         Zero Mean - ARCH Model Results                        
+#> ==============================================================================
+#> Dep. Variable:                      y   R-squared:                       0.000
+#> Mean Model:                 Zero Mean   Adj. R-squared:                  0.000
+#> Vol Model:                       ARCH   Log-Likelihood:                10296.0
+#> Distribution:                  Normal   AIC:                          -20588.1
+#> Method:            Maximum Likelihood   BIC:                          -20575.9
+#>                                         No. Observations:                 3273
+#> Date:                Thu, Mar 24 2022   Df Residuals:                     3273
+#> Time:                        16:39:20   Df Model:                            0
+#>                               Volatility Model                              
+#> ============================================================================
+#>                  coef    std err          t      P>|t|      95.0% Conf. Int.
+#> ----------------------------------------------------------------------------
+#> omega      7.9907e-05  4.727e-06     16.905  4.106e-64 [7.064e-05,8.917e-05]
+#> alpha[1]       0.3975  6.722e-02      5.914  3.348e-09     [  0.266,  0.529]
+#> ============================================================================
+#> 
+#> Covariance estimator: robust
+```
+
+
+```python
+# GARCH(1,1)
+import arch
+from arch import arch_model
+garch_fit = arch_model(y, 
+                       mean = 'Zero', 
+                       vol = 'GARCH',
+                       p = 1, 
+                       q = 1).fit()
+```
+
+```
+#> Iteration:      1,   Func. Count:      5,   Neg. LLF: 3967.6568400522383
+#> Iteration:      2,   Func. Count:     14,   Neg. LLF: -10811.544183900245
+#> Optimization terminated successfully    (Exit mode 0)
+#>             Current function value: -10811.544186499636
+#>             Iterations: 6
+#>             Function evaluations: 14
+#>             Gradient evaluations: 2
+```
+
+```python
+print(garch_fit.summary())
+```
+
+```
+#>                        Zero Mean - GARCH Model Results                        
+#> ==============================================================================
+#> Dep. Variable:                      y   R-squared:                       0.000
+#> Mean Model:                 Zero Mean   Adj. R-squared:                  0.000
+#> Vol Model:                      GARCH   Log-Likelihood:                10811.5
+#> Distribution:                  Normal   AIC:                          -21617.1
+#> Method:            Maximum Likelihood   BIC:                          -21598.8
+#>                                         No. Observations:                 3273
+#> Date:                Thu, Mar 24 2022   Df Residuals:                     3273
+#> Time:                        16:39:21   Df Model:                            0
+#>                               Volatility Model                              
+#> ============================================================================
+#>                  coef    std err          t      P>|t|      95.0% Conf. Int.
+#> ----------------------------------------------------------------------------
+#> omega      4.0254e-06  2.451e-10  1.642e+04      0.000 [4.025e-06,4.026e-06]
+#> alpha[1]       0.2008  4.872e-03     41.225      0.000     [  0.191,  0.210]
+#> beta[1]        0.7802  9.059e-03     86.132      0.000     [  0.762,  0.798]
+#> ============================================================================
+#> 
+#> Covariance estimator: robust
+```
+
+
+```python
+# t-GARCH(1,1)
+import arch
+from arch import arch_model
+tgarch_fit = arch_model(y, 
+                        mean = 'Zero', 
+                        vol = 'GARCH',
+                        p = 1, 
+                        q = 1, 
+                        dist = 'StudentsT').fit()
+```
+
+```
+#> Iteration:      1,   Func. Count:      5,   Neg. LLF: -10902.36462172786
+#> Optimization terminated successfully    (Exit mode 0)
+#>             Current function value: -10902.36462175196
+#>             Iterations: 5
+#>             Function evaluations: 5
+#>             Gradient evaluations: 1
+```
+
+```python
+print(tgarch_fit.summary())
+```
+
+```
+#>                           Zero Mean - GARCH Model Results                           
+#> ====================================================================================
+#> Dep. Variable:                            y   R-squared:                       0.000
+#> Mean Model:                       Zero Mean   Adj. R-squared:                  0.000
+#> Vol Model:                            GARCH   Log-Likelihood:                10902.4
+#> Distribution:      Standardized Student's t   AIC:                          -21796.7
+#> Method:                  Maximum Likelihood   BIC:                          -21772.4
+#>                                               No. Observations:                 3273
+#> Date:                      Thu, Mar 24 2022   Df Residuals:                     3273
+#> Time:                              16:39:22   Df Model:                            0
+#>                               Volatility Model                              
+#> ============================================================================
+#>                  coef    std err          t      P>|t|      95.0% Conf. Int.
+#> ----------------------------------------------------------------------------
+#> omega      2.6331e-06  6.349e-09    414.698      0.000 [2.621e-06,2.646e-06]
+#> alpha[1]       0.2000  1.803e-02     11.094  1.346e-28     [  0.165,  0.235]
+#> beta[1]        0.7800  1.543e-02     50.537      0.000     [  0.750,  0.810]
+#>                               Distribution                              
+#> ========================================================================
+#>                  coef    std err          t      P>|t|  95.0% Conf. Int.
+#> ------------------------------------------------------------------------
+#> nu             6.5511      0.173     37.951      0.000 [  6.213,  6.889]
+#> ========================================================================
+#> 
+#> Covariance estimator: robust
+```
+
+AIC from t-GARCH$(1,1)$ is the smallest so we can conclude that t-GARCH$(1,1)$ is the best model.
+
+### R {.unnumbered}
+
+We can download the SP500 data from internet by using R.
+
+
+```r
+library(tseries)
+library(zoo)
+price = get.hist.quote(instrument = "^gspc",
+                       start = "2009-01-01",
+                       end = ("2021-12-31"),  
+                       quote = "AdjClose")
+```
+
+```
+#> time series starts 2009-01-02
+#> time series ends   2021-12-30
+```
+
+### Question a {.unnumbered} 
+
+Denote $y$ the returns of SP500. Plot the returns and calculate statistical characterizations of returns (e.g., min, max, sd, skewness, kurtosis, acf), use Jarque Berra test, Box test.
+
+
+```r
+# Calculate returns y
+library(tidyverse)
+y = price %>% 
+  log %>% 
+  diff
+```
+
+
+```r
+# Plot the returns
+y %>% 
+  plot
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-50-1.png" width="90%" style="display: block; margin: auto;" />
+
+
+```r
+# Statistical characterizations of returns
+library(psych)
+y %>% 
+  describe %>% 
+  select(min,
+         max,
+         sd,
+         skew,
+         kurtosis)
+```
+
+```
+#>      min  max   sd  skew kurtosis
+#> X1 -0.13 0.09 0.01 -0.68    13.17
+```
+
+
+```r
+# Plot ACF of the returns
+y %>% 
+  coredata %>% 
+  acf
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-52-1.png" width="90%" style="display: block; margin: auto;" />
+
+
+```r
+# Jarque Berra test
+library(moments)
+y %>% 
+  coredata %>% 
+  c %>% 
+  jarque.test
+```
+
+```
+#> 
+#> 	Jarque-Bera Normality Test
+#> 
+#> data:  .
+#> JB = 23922, p-value < 2.2e-16
+#> alternative hypothesis: greater
+```
+
+
+```r
+# Box test
+library(stats)
+y %>% 
+  Box.test(lag = 10, 
+           type = "Ljung-Box")
+```
+
+```
+#> 
+#> 	Box-Ljung test
+#> 
+#> data:  .
+#> X-squared = 180.1, df = 10, p-value < 2.2e-16
+```
+    
+### Question b {.unnumbered} 
+
+Use ADF test for the prices and returns to see which series is stationary.
+
+
+```r
+# Plot price
+price %>% 
+  plot
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-55-1.png" width="90%" style="display: block; margin: auto;" />
+
+
+```r
+# ADF test for prices
+library(tseries)
+price %>% 
+  coredata %>%
+  adf.test
+```
+
+```
+#> Augmented Dickey-Fuller Test 
+#> alternative: stationary 
+#>  
+#> Type 1: no drift no trend 
+#>       lag  ADF p.value
+#>  [1,]   0 2.96    0.99
+#>  [2,]   1 3.59    0.99
+#>  [3,]   2 3.25    0.99
+#>  [4,]   3 3.19    0.99
+#>  [5,]   4 3.46    0.99
+#>  [6,]   5 3.42    0.99
+#>  [7,]   6 3.77    0.99
+#>  [8,]   7 3.28    0.99
+#>  [9,]   8 3.62    0.99
+#> Type 2: with drift no trend 
+#>       lag  ADF p.value
+#>  [1,]   0 1.25    0.99
+#>  [2,]   1 1.73    0.99
+#>  [3,]   2 1.48    0.99
+#>  [4,]   3 1.41    0.99
+#>  [5,]   4 1.62    0.99
+#>  [6,]   5 1.57    0.99
+#>  [7,]   6 1.80    0.99
+#>  [8,]   7 1.46    0.99
+#>  [9,]   8 1.67    0.99
+#> Type 3: with drift and trend 
+#>       lag    ADF p.value
+#>  [1,]   0 -1.238   0.900
+#>  [2,]   1 -0.564   0.979
+#>  [3,]   2 -0.906   0.952
+#>  [4,]   3 -0.951   0.947
+#>  [5,]   4 -0.667   0.974
+#>  [6,]   5 -0.691   0.971
+#>  [7,]   6 -0.351   0.989
+#>  [8,]   7 -0.794   0.962
+#>  [9,]   8 -0.452   0.984
+#> ---- 
+#> Note: in fact, p.value = 0.01 means p.value <= 0.01
+```
+
+
+```r
+# Plot the returns
+y %>% 
+  plot
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-57-1.png" width="90%" style="display: block; margin: auto;" />
+
+
+```r
+# ADF test for returns
+library(tseries)
+y %>% 
+  coredata %>%
+  adf.test
+```
+
+```
+#> Augmented Dickey-Fuller Test 
+#> alternative: stationary 
+#>  
+#> Type 1: no drift no trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -65.9    0.01
+#>  [2,]   1 -40.3    0.01
+#>  [3,]   2 -33.1    0.01
+#>  [4,]   3 -29.5    0.01
+#>  [5,]   4 -26.1    0.01
+#>  [6,]   5 -25.6    0.01
+#>  [7,]   6 -21.3    0.01
+#>  [8,]   7 -21.2    0.01
+#>  [9,]   8 -19.2    0.01
+#> Type 2: with drift no trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -66.1    0.01
+#>  [2,]   1 -40.4    0.01
+#>  [3,]   2 -33.3    0.01
+#>  [4,]   3 -29.6    0.01
+#>  [5,]   4 -26.3    0.01
+#>  [6,]   5 -25.8    0.01
+#>  [7,]   6 -21.5    0.01
+#>  [8,]   7 -21.5    0.01
+#>  [9,]   8 -19.4    0.01
+#> Type 3: with drift and trend 
+#>       lag   ADF p.value
+#>  [1,]   0 -66.1    0.01
+#>  [2,]   1 -40.4    0.01
+#>  [3,]   2 -33.3    0.01
+#>  [4,]   3 -29.6    0.01
+#>  [5,]   4 -26.3    0.01
+#>  [6,]   5 -25.8    0.01
+#>  [7,]   6 -21.5    0.01
+#>  [8,]   7 -21.5    0.01
+#>  [9,]   8 -19.4    0.01
+#> ---- 
+#> Note: in fact, p.value = 0.01 means p.value <= 0.01
+```
+
+### Question c {.unnumbered} 
+
+Using AR$(1)$ to fit the price and returns y and find the coefficients of these fitted AR$(1)$ model. 
+
+
+```r
+# Using AR(1) to fit the price
+library(stats)
+ar1_price = price %>%
+  arima(c(1,0,0))
+```
+
+
+```r
+# Find the coefficients of the fitted AR(1) model
+ar1_price %>%
+  coefficients
+```
+
+```
+#>          ar1    intercept 
+#>    0.9999917 2159.3788250
+```
+
+
+```r
+# Using AR(1) to fit the returns
+library(stats)
+ar1_y = y %>% 
+  arima(c(1,0,0))
+```
+
+
+```r
+# Find the coefficients of the fitted AR(1) model
+ar1_y %>% 
+  coefficients
+```
+
+```
+#>           ar1     intercept 
+#> -0.1576312868  0.0005086707
+```
+
+Note that If the residuals have a mean other than zero, then the forecasts are biased. Now using this fact you can check the mean of residuals of AR$(1)$ for price and return to see that you can not apply AR$(1)$ directly for price. 
+
+
+```r
+# Check the mean of residuals
+ar1_price %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  mean
+```
+
+```
+#> [1] 1.131751
+```
+
+
+```r
+# Check the mean of residuals
+ar1_y %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  mean
+```
+
+```
+#> [1] -3.824746e-06
+```
+
+Check independence of residuals fitted AR$(1)$, are they independence or not?
+
+
+```r
+# Plot ACF of the residuals
+library(stats)
+ar1_y %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  acf
+```
+
+<img src="02-cross-refs_files/figure-html/unnamed-chunk-65-1.png" width="90%" style="display: block; margin: auto;" />
+
+ACF are significant in many lags so the residuals of AR$(1)$ of the returns is correlated and thus is not independence.
+
+### Question d {.unnumbered} 
+
+Fit the returns by ARMA$(3,3)$, compare with AR$(1)$ above, can you conclude that
+ARMA$(3,3)$ is better than AR$(1)$?
+
+
+```r
+# Fit the returns by ARMA(3,3)
+library(stats)
+arma33_y = y %>%
+  arima(c(3,0,3))
+arma33_y$aic < ar1_y$aic
+```
+
+```
+#> [1] TRUE
+```
+
+AIC from ARMA$(3,3)$ is less than AIC from AR$(1)$ so we can conclude that ARMA$(3,3)$ is better than AR$(1)$.
+
+### Question e {.unnumbered} 
+
+Use ARCH$(1)$, GARCH$(1,1)$ and t-GARCH$(1,1)$ (using package rugarch) to fit the
+volatility of the returns and then give your conclusions.
+
+
+```r
+# ARCH(1)
+library(fGarch)
+arch.fit = garchFit(~garch(1,0), data = y, trace = F)
+summary(arch.fit)
+```
+
+```
+#> 
+#> Title:
+#>  GARCH Modelling 
+#> 
+#> Call:
+#>  garchFit(formula = ~garch(1, 0), data = y, trace = F) 
+#> 
+#> Mean and Variance Equation:
+#>  data ~ garch(1, 0)
+#> <environment: 0x7fc59153aae8>
+#>  [data = y]
+#> 
+#> Conditional Distribution:
+#>  norm 
+#> 
+#> Coefficient(s):
+#>         mu       omega      alpha1  
+#> 8.6504e-04  7.8455e-05  4.1419e-01  
+#> 
+#> Std. Errors:
+#>  based on Hessian 
+#> 
+#> Error Analysis:
+#>         Estimate  Std. Error  t value Pr(>|t|)    
+#> mu     8.650e-04   1.640e-04    5.276 1.32e-07 ***
+#> omega  7.845e-05   2.664e-06   29.452  < 2e-16 ***
+#> alpha1 4.142e-01   3.821e-02   10.839  < 2e-16 ***
+#> ---
+#> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+#> 
+#> Log Likelihood:
+#>  10305.09    normalized:  3.15044 
+#> 
+#> Description:
+#>  Thu Mar 24 16:39:26 2022 by user:  
+#> 
+#> 
+#> Standardised Residuals Tests:
+#>                                 Statistic p-Value    
+#>  Jarque-Bera Test   R    Chi^2  4427.257  0          
+#>  Shapiro-Wilk Test  R    W      0.9298395 0          
+#>  Ljung-Box Test     R    Q(10)  22.19605  0.01413642 
+#>  Ljung-Box Test     R    Q(15)  31.72511  0.007016061
+#>  Ljung-Box Test     R    Q(20)  39.5145   0.005750492
+#>  Ljung-Box Test     R^2  Q(10)  663.3026  0          
+#>  Ljung-Box Test     R^2  Q(15)  880.8894  0          
+#>  Ljung-Box Test     R^2  Q(20)  1068.422  0          
+#>  LM Arch Test       R    TR^2   427.7749  0          
+#> 
+#> Information Criterion Statistics:
+#>       AIC       BIC       SIC      HQIC 
+#> -6.299046 -6.293458 -6.299048 -6.297045
+```
+
+
+```r
+# GARCH(1,1)
+library(rugarch)
+garch_spec = ugarchspec(variance.model = list(model = "sGARCH",
+                                           garchOrder = c(1,1)),
+                       mean.model = list(armaOrder = c(0,0),
+                                       include.mean = T,
+                                       distribution.model = "norm"))
+garch_fit = ugarchfit(garch_spec,y %>% coredata %>% c)
+garch_fit
+```
+
+```
+#> 
+#> *---------------------------------*
+#> *          GARCH Model Fit        *
+#> *---------------------------------*
+#> 
+#> Conditional Variance Dynamics 	
+#> -----------------------------------
+#> GARCH Model	: sGARCH(1,1)
+#> Mean Model	: ARFIMA(0,0,0)
+#> Distribution	: norm 
+#> 
+#> Optimal Parameters
+#> ------------------------------------
+#>         Estimate  Std. Error  t value Pr(>|t|)
+#> mu      0.000805    0.000129   6.2607 0.000000
+#> omega   0.000003    0.000001   2.6538 0.007958
+#> alpha1  0.170394    0.014539  11.7194 0.000000
+#> beta1   0.802782    0.015565  51.5761 0.000000
+#> 
+#> Robust Standard Errors:
+#>         Estimate  Std. Error  t value Pr(>|t|)
+#> mu      0.000805    0.000185   4.3598 0.000013
+#> omega   0.000003    0.000008   0.4560 0.648389
+#> alpha1  0.170394    0.025679   6.6356 0.000000
+#> beta1   0.802782    0.058438  13.7374 0.000000
+#> 
+#> LogLikelihood : 10826.74 
+#> 
+#> Information Criteria
+#> ------------------------------------
+#>                     
+#> Akaike       -6.6174
+#> Bayes        -6.6099
+#> Shibata      -6.6174
+#> Hannan-Quinn -6.6147
+#> 
+#> Weighted Ljung-Box Test on Standardized Residuals
+#> ------------------------------------
+#>                         statistic p-value
+#> Lag[1]                      4.129 0.04216
+#> Lag[2*(p+q)+(p+q)-1][2]     4.271 0.06377
+#> Lag[4*(p+q)+(p+q)-1][5]     5.361 0.12664
+#> d.o.f=0
+#> H0 : No serial correlation
+#> 
+#> Weighted Ljung-Box Test on Standardized Squared Residuals
+#> ------------------------------------
+#>                         statistic p-value
+#> Lag[1]                     0.3257  0.5682
+#> Lag[2*(p+q)+(p+q)-1][5]    2.0941  0.5964
+#> Lag[4*(p+q)+(p+q)-1][9]    2.8388  0.7853
+#> d.o.f=2
+#> 
+#> Weighted ARCH LM Tests
+#> ------------------------------------
+#>             Statistic Shape Scale P-Value
+#> ARCH Lag[3]  0.009343 0.500 2.000  0.9230
+#> ARCH Lag[5]  0.933101 1.440 1.667  0.7529
+#> ARCH Lag[7]  1.242758 2.315 1.543  0.8712
+#> 
+#> Nyblom stability test
+#> ------------------------------------
+#> Joint Statistic:  3.0795
+#> Individual Statistics:              
+#> mu     0.06252
+#> omega  0.06964
+#> alpha1 0.34031
+#> beta1  0.80804
+#> 
+#> Asymptotic Critical Values (10% 5% 1%)
+#> Joint Statistic:     	 1.07 1.24 1.6
+#> Individual Statistic:	 0.35 0.47 0.75
+#> 
+#> Sign Bias Test
+#> ------------------------------------
+#>                    t-value      prob sig
+#> Sign Bias           3.0094 2.637e-03 ***
+#> Negative Sign Bias  0.6287 5.296e-01    
+#> Positive Sign Bias  1.6317 1.028e-01    
+#> Joint Effect       24.5022 1.962e-05 ***
+#> 
+#> 
+#> Adjusted Pearson Goodness-of-Fit Test:
+#> ------------------------------------
+#>   group statistic p-value(g-1)
+#> 1    20     151.8    9.633e-23
+#> 2    30     174.9    8.735e-23
+#> 3    40     195.7    9.306e-23
+#> 4    50     222.6    5.796e-24
+#> 
+#> 
+#> Elapsed time : 0.2256851
+```
+
+
+```r
+# TGARCH(1,1)
+library(rugarch)
+tgarch_spec = ugarchspec(variance.model = list(model = "sGARCH",
+                                           garchOrder = c(1,1)),
+                       mean.model = list(armaOrder = c(0,0),
+                                       include.mean = T,
+                                       distribution.model = "std"))
+tgarch_fit = ugarchfit(tgarch_spec,y %>% coredata %>% c)
+tgarch_fit
+```
+
+```
+#> 
+#> *---------------------------------*
+#> *          GARCH Model Fit        *
+#> *---------------------------------*
+#> 
+#> Conditional Variance Dynamics 	
+#> -----------------------------------
+#> GARCH Model	: sGARCH(1,1)
+#> Mean Model	: ARFIMA(0,0,0)
+#> Distribution	: norm 
+#> 
+#> Optimal Parameters
+#> ------------------------------------
+#>         Estimate  Std. Error  t value Pr(>|t|)
+#> mu      0.000805    0.000129   6.2607 0.000000
+#> omega   0.000003    0.000001   2.6538 0.007958
+#> alpha1  0.170394    0.014539  11.7194 0.000000
+#> beta1   0.802782    0.015565  51.5761 0.000000
+#> 
+#> Robust Standard Errors:
+#>         Estimate  Std. Error  t value Pr(>|t|)
+#> mu      0.000805    0.000185   4.3598 0.000013
+#> omega   0.000003    0.000008   0.4560 0.648389
+#> alpha1  0.170394    0.025679   6.6356 0.000000
+#> beta1   0.802782    0.058438  13.7374 0.000000
+#> 
+#> LogLikelihood : 10826.74 
+#> 
+#> Information Criteria
+#> ------------------------------------
+#>                     
+#> Akaike       -6.6174
+#> Bayes        -6.6099
+#> Shibata      -6.6174
+#> Hannan-Quinn -6.6147
+#> 
+#> Weighted Ljung-Box Test on Standardized Residuals
+#> ------------------------------------
+#>                         statistic p-value
+#> Lag[1]                      4.129 0.04216
+#> Lag[2*(p+q)+(p+q)-1][2]     4.271 0.06377
+#> Lag[4*(p+q)+(p+q)-1][5]     5.361 0.12664
+#> d.o.f=0
+#> H0 : No serial correlation
+#> 
+#> Weighted Ljung-Box Test on Standardized Squared Residuals
+#> ------------------------------------
+#>                         statistic p-value
+#> Lag[1]                     0.3257  0.5682
+#> Lag[2*(p+q)+(p+q)-1][5]    2.0941  0.5964
+#> Lag[4*(p+q)+(p+q)-1][9]    2.8388  0.7853
+#> d.o.f=2
+#> 
+#> Weighted ARCH LM Tests
+#> ------------------------------------
+#>             Statistic Shape Scale P-Value
+#> ARCH Lag[3]  0.009343 0.500 2.000  0.9230
+#> ARCH Lag[5]  0.933101 1.440 1.667  0.7529
+#> ARCH Lag[7]  1.242758 2.315 1.543  0.8712
+#> 
+#> Nyblom stability test
+#> ------------------------------------
+#> Joint Statistic:  3.0795
+#> Individual Statistics:              
+#> mu     0.06252
+#> omega  0.06964
+#> alpha1 0.34031
+#> beta1  0.80804
+#> 
+#> Asymptotic Critical Values (10% 5% 1%)
+#> Joint Statistic:     	 1.07 1.24 1.6
+#> Individual Statistic:	 0.35 0.47 0.75
+#> 
+#> Sign Bias Test
+#> ------------------------------------
+#>                    t-value      prob sig
+#> Sign Bias           3.0094 2.637e-03 ***
+#> Negative Sign Bias  0.6287 5.296e-01    
+#> Positive Sign Bias  1.6317 1.028e-01    
+#> Joint Effect       24.5022 1.962e-05 ***
+#> 
+#> 
+#> Adjusted Pearson Goodness-of-Fit Test:
+#> ------------------------------------
+#>   group statistic p-value(g-1)
+#> 1    20     151.8    9.633e-23
+#> 2    30     174.9    8.735e-23
+#> 3    40     195.7    9.306e-23
+#> 4    50     222.6    5.796e-24
+#> 
+#> 
+#> Elapsed time : 0.155931
+```
+
+AIC from t-GARCH$(1,1)$ is the smallest so we can conclude that t-GARCH$(1,1)$ is the best model.

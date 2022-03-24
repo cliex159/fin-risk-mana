@@ -84,13 +84,13 @@
 <p>Let <span class="math inline">\(\mathcal{P}_1\)</span> be the probability that after one trading day the investment is worth and <span class="math inline">\(X\)</span> be standard normal random variable.</p>
 </blockquote>
 <blockquote>
-<p>The daily log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001\)</span> and standard deviation <span class="math inline">\(0.015\)</span>: <span class="math inline">\(r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001,0.015)\)</span>.</p>
+<p>The daily log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001\)</span> and standard deviation <span class="math inline">\(0.015\)</span>: <span class="math inline">\(r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001,0.015)\)</span>.</p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P}_1&amp;=\mathcal{P}(1000P_t \leq 990 P_{t-1}) \\
-&amp;=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
-&amp;=\mathcal{P} \left(\frac{r_t-0.001}{0.015}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001}{0.015} \right) \\
+&amp;=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
+&amp;=\mathcal{P} \left(\frac{r_t-0.001}{0.015}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001}{0.015} \right) \\
 &amp;=\mathcal{P} \left(X  \leq -0.7366 \right) \\
 &amp;=0.23066
 \end{align*}\]</span></p>
@@ -105,13 +105,13 @@
 <p>Let <span class="math inline">\(\mathcal{P}_5\)</span> be the probability that after five trading day the investment is worth.</p>
 </blockquote>
 <blockquote>
-<p>The five day log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001 \times 5\)</span> and standard deviation <span class="math inline">\(0.015 \times \sqrt{5}\)</span>: <span class="math inline">\(r_t=\log \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})\)</span>.</p>
+<p>The five day log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001 \times 5\)</span> and standard deviation <span class="math inline">\(0.015 \times \sqrt{5}\)</span>: <span class="math inline">\(r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})\)</span>.</p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P}_5&amp;=\mathcal{P}(1000P_t \leq 990 P_{t-5}) \\
-&amp;=\mathcal{P} \left(r_t \leq \log \left( \frac{990}{1000} \right) \right) \\
-&amp;=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\log\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
+&amp;=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
+&amp;=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
 &amp;=\mathcal{P} \left(X  \leq -0.4487 \right) \\
 &amp;=0.32682
 \end{align*}\]</span></p>
@@ -475,7 +475,7 @@ Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

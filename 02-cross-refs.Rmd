@@ -42,11 +42,16 @@ process (random sample).
 
 ### Example {.unnumbered}
 
-Consider Financial Index SP500. The data consists of excess returns $X_t = \log(S_t) −\log(S_{t−1})$. From the plot we see the following properties of $X_t$:
+Consider Financial Index SP500. The data consists of excess returns $X_t = \ln(S_t) −\ln(S_{t−1})$. From the plot we see the following properties of $X_t$:
 
 ```{r,message=FALSE,warning=FALSE}
-sp500=read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv")
-plot(diff(log(sp500$Close)),type="l",col="blue")
+library(tidyverse)
+sp500 = read.csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&single=true&output=csv")
+
+sp500$Close %>% 
+  log %>% 
+  diff %>% 
+  plot(type = "l",col = "blue")
 ```
 
 * The mean level of the process seems constant.
@@ -165,7 +170,7 @@ $$\hat \rho(h) =\frac{\hat \gamma(h)}{\hat \gamma(h)}$$
 
 ```{r,message=FALSE,warning=FALSE}
 library(tidyquant)
-msft <- tq_get('MSFT',from=as.Date("2010-01-01"),
+msft = tq_get('MSFT',from=as.Date("2010-01-01"),
                to=as.Date("2014-01-01"),
                get = "stock.prices")
 
@@ -239,7 +244,7 @@ Note that the magnitude of its ACF decays geometrically to zero, either slowly a
 
 ```{r,message=FALSE,warning=FALSE}
 library(stats)
-ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
+ts.sim = arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
 acf(ts.sim)
 ```
@@ -255,7 +260,7 @@ Consider AR(1) with $\phi_1 = 0.64$ and $\sigma_w^2 = 1$, we have the results of
 
 ```{r,message=FALSE,warning=FALSE}
 library(stats)
-ts.sim <- arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
+ts.sim = arima.sim(list(order = c(1,0,0), ar = 0.64), n = 100,sd=1)
 plot(ts.sim,col="blue")
 Box.test(ts.sim, lag = 10, type = "Ljung-Box")
 ```
@@ -403,7 +408,7 @@ Maximum likelihood is the most important and widespread method of estimation. Wh
 Ask the question which parameters most likely generated the data we have. Suppose we have a sample of $\{−0.2, 3, 4, −1, 0.5\}$. In the following three possibilities, which is most likely for parameters?
 
 ```{r, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
-tabl <- "
+tabl = "
 | case | $μ$ | $σ$ |
 |------|:-----:|---------:|
 | 1 | 1 | 5 |
@@ -419,7 +424,7 @@ is viewed as the function of $\theta$ with $Y$ fixed at the observed data is cal
 the likelihood function.
 
 * The maximum likelihood estimator (MLE) is the value of $\theta$ that maximizes the likelihood function. We denote the MLE by $\hat \theta_{ML}$.
-* It is mathematically easier to maximize $\log L(\theta)$, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.
+* It is mathematically easier to maximize $\ln L(\theta)$, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.
 
 ## Application to ARCH(1)
 
@@ -432,7 +437,7 @@ $$ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2)}} e^{-\frac{1}{2} \frac{y
 Hence, the joint density
 $$ \prod_{t=2}^T f(y_t|y_{t-1})=\prod_{t=2}^T \frac{1}{\sqrt{2\pi(\omega+\alpha y_{t-1}^2)}} e^{-\frac{1}{2} \frac{y_t^2}{2\omega+\alpha y_{t-1}^2}} $$
 and, the log likelihood
-$$ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) $$
+$$ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) $$
 
 ##  Application to GARCH(1,1)
 
@@ -440,7 +445,7 @@ $$ \sigma_t^2=\omega+\alpha y_{t-1}^2 +\beta \sigma_{t-1}^2$$
 Hence, the joint density
 $$ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2+\beta \hat \sigma_1^2)}} e^{-\frac{1}{2} \frac{y_2^2}{\omega +\alpha y_1^2+\beta \hat \sigma_1^2}} $$
 and, the log likelihood
-$$ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) $$
+$$ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) $$
 
 ### The importance of σ1
 
@@ -486,7 +491,7 @@ or the expected volatility per day is $\sqrt{0.0002942} = 1.72\%$, still above t
 Suppose it is day $n$. We define
 $$V(t) = \mathbb{E}(\sigma_{n+1}^2 )$$
 and
-$$ a:= \log \left( \frac{1}{\alpha+\beta} \right) $$
+$$ a:= \ln \left( \frac{1}{\alpha+\beta} \right) $$
 From $\mathbb{E}(\sigma_{n+t}^2) = \sigma^22 + (\alpha + \beta)^t(\sigma_n^2 − \sigma^2)$ we have
 
 $$V(t) = \sigma^2 + e^{−at}(V(0) − \sigma^2)$$
@@ -505,14 +510,14 @@ For S&P data, using GARCH(1,1) model we obtain the coefficients $\omega = 0.0000
 $$ \sigma^2(T)=252 \left( \sigma^2+\frac{1-e^{-aT}}{aT} [V(0)-\sigma^2] \right) $$
 assume that $V(0) = 0.0003$ we have
 $$ \sigma^2=\frac{0.0000013465}{1 − 0.083394 − 0.910116}=0.0002073 $$
-and $a = \log \left( \frac{1}{0.99351} \right) = 0.00651$. Hence,
+and $a = \ln \left( \frac{1}{0.99351} \right) = 0.00651$. Hence,
 $$ \sigma^2(T)=252 \left( 0.0002073+\frac{1-e^{-0.00651 \times T}}{0.00651 \times T}[0.0003-0.0002073] \right) $$
 
 For the option life (days) T = 10, 30, 50, 100, 500, we obtain the option
 volatility ($\%$ per annum)
 
 ```{r, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
-tabl <- "
+tabl = "
 | Option life (days) | 10 | 30 | 50 | 100 | 500 |
 |------|:-----:|------:|------:|------:|------:|
 | Option volatility | 27.36 | 27.10 | 26.87 | 26.35 | 24.32 |
@@ -548,7 +553,9 @@ cat(tabl)
 
 2. Let $cov (X_t,X_{t+h})=\gamma(h)$
 
-a. Prove that $\gamma(h)=\gamma(-h)$
+### Question a
+
+Prove that $\gamma(h)=\gamma(-h)$
 
 >$$\begin{align*}
 \gamma(h)=cov(X_t,X_{t+h}) \\
@@ -558,7 +565,9 @@ a. Prove that $\gamma(h)=\gamma(-h)$
 >Let $s=t-h$ then $t=s+h$
 $$\gamma(-h)=cov(X_{s+h},X_{s})=\gamma(h) $$
 
-b. Prove that $-1 \leq \rho(h) \le1$
+### Question b
+
+Prove that $-1 \leq \rho(h) \le1$
 
 >$$\begin{align*}
 &\mathbb{E}[(X_{t+h} \pm X_{t})^2] \ge 0 \\ 
@@ -702,12 +711,12 @@ kpss.test(coredata(price))
 
 # Homework
 
-## Problem 1
+## Problem 1 {.unnumbered} 
 
 Give the data
 
 ```{r, echo=FALSE, message=FALSE, warnings=FALSE, results='asis'}
-tabl <- "
+tabl = "
 | Time  | Data  | Time  | Data  | Time | Data |
 |------:|:-----:|------:|------:|-----:|-----:|
 | 1 | 10.31778 | 7 | 10.36644 | 13 | 10.34145 |
@@ -722,7 +731,7 @@ cat(tabl)
 
 Calculate the ACF with lags from 0 to 15 and lower, upper bounds with significant α = 5%
 
-### Python {.unnumbered} 
+### Python {.unnumbered}  
 
 ```{python,warning=FALSE,message=FALSE}
 import numpy as np
@@ -733,33 +742,23 @@ warnings.filterwarnings("ignore")
 data = [10.31778, 10.29235, 10.30075, 10.29208, 10.31304, 10.32042,
         10.36644, 10.36744, 10.39553, 10.48562, 10.47619, 10.46396,
         10.34145, 10.40247, 10.39158, 10.35517, 10.35166, 10.36395]
-```
 
-```{python,warning=FALSE,message=FALSE}
 import pandas as pd
 df = pd.DataFrame(data, columns = ['data'])
 df.head(5)
-```
 
-```{python,warning=FALSE,message=FALSE}
 from statsmodels.tsa.stattools import acf
 # Calculate ACF
 print('Calculated ACF by lags 0 - 15:\n')
 acf(df['data'], nlags = 15)
-```
 
-```{python,warning=FALSE,message=FALSE}
 import matplotlib.pyplot as plt
 from statsmodels.graphics.tsaplots import plot_acf
-# Plot ACF
-y = 1.96 / np.sqrt(len(data))
-plot_acf(df['data'], lags = 15, alpha = 0.05, use_vlines = True)
-plt.plot(range(0, 16), [y] * 16, 'b--', linewidth = 0.75)
-plt.plot(range(0, 16), [-y] * 16, 'b--', linewidth = 0.75)
+plot_acf(df['data'], lags = 15)
 plt.show()
 ```
 
-### R {.unnumbered} 
+### R {.unnumbered}  
 
 ```{r,warning=FALSE,message=FALSE}
 # Import Data
@@ -782,11 +781,13 @@ acf(data,lag.max = 15,plot=F)
 acf(data,lag.max = 15)
 ```
 
-## Problem 2
+## Problem 2 {.unnumbered} 
 
 Consider the $MA(q)$. 
 
-a. Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
+### Question a {.unnumbered} 
+
+Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
 
 >$$\begin{align*}
 \gamma(0)&=Var(X_t) \\
@@ -815,7 +816,9 @@ a. Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
   \end{cases}
   \end{align*}$$
 
-b. Show that the MA(1) processes $X_t$ and $Y_t$
+### Question b {.unnumbered} 
+  
+  Show that the MA(1) processes $X_t$ and $Y_t$
 $$\begin{align*}
 X_t = \beta \epsilon_{t−1} + \epsilon_t \\ 
 Y_t = \frac{1}{\beta} \epsilon_{t−1} + \epsilon_t \\ 
@@ -837,7 +840,7 @@ and $\rho_h=0, \forall h \geq 2$
 
 >Answer: $X_t$ and $Y_t$ have the same ACF.
 
-## Problem 3
+## Problem 3 {.unnumbered} 
 
 Suppose that the stationary process $X_t$ has an autocovariance function given by $\gamma(h)$.
 Consider process $Y_t = X_t − X_{t−1}$.
@@ -864,7 +867,7 @@ b) Find the autocorrelation function of $Y_t$
 
 >Answer: The autocorrelation function of $Y_t$ is $\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)}$
 
-## Problem 4
+## Problem 4 {.unnumbered} 
 
 Find the autocorrelation function of the second order moving average process $MA(2)$
 $$X_t = 0.5 \epsilon_{t−1} − 0.2 \epsilon_{t−2} + \epsilon_t$$
@@ -897,3 +900,653 @@ $$\rho(h)=\begin{cases}
     -0.155&  h=2 \\
     0&  h \geq 3
   \end{cases}$$
+  
+## Problem 5 {.unnumbered} 
+
+Assume that the price of an asset at close of trading yesterday was \$300 and its volatility was estimated as 1.3\% per day. The price at the close of trading today is \$298. Update the volatility estimate by using the following methods:
+
+### Question a {.unnumbered} 
+
+EWMA with $\lambda=0.94$.
+
+>$$\begin{align*}
+\widehat{\sigma}_t^2 &=\lambda\cdot\widehat{\sigma}_{t-1}^2+(1-\lambda)\cdot y_{t-1}^2 \\
+&=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{300}{298}\right)^2 \\
+&\approx1.6153\cdot10^{-4} \\
+\rightarrow \widehat{\sigma}_t &\approx0.0127
+\end{align*}$$
+
+>Answer: The volatility estimate by using the EWMA with $\lambda=0.94$ is $1.27\%$.
+
+### Question b {.unnumbered} 
+
+The GARCH$(1,1)$ model with $\omega=2\cdot10^{-6},\alpha=0.04,\beta=0.94$.
+
+>$$\begin{align*}
+\widehat{\sigma}_t^2 &=\omega+\alpha\cdot y_{t-1}^2+\beta\cdot\widehat{\sigma}_{t-1}^2 \\
+&=2\cdot10^{-6}+0.04\cdot\left( \ln \frac{300}{298}\right)^2+0.94\cdot0.013^2 \\
+&\approx1.6265\cdot10^{-4} \\
+\rightarrow \widehat{\sigma}_t &\approx0.0128
+\end{align*}$$
+    
+>Answer: The volatility estimate by using the GARCH$(1,1)$ model with the given parameters is $1.28\%$.
+
+## Problem 6 {.unnumbered} 
+
+Suppose that the parameters in a GARCH$(1,1)$ model are $\alpha=0.03,\beta=0.95,\omega=2\cdot10^{-6}.$
+
+### Question a {.unnumbered} 
+
+What is the long-run average volatility?
+
+>The long-run average volatility is
+>$$\begin{align*}
+\sigma &=\sqrt{\frac{\omega}{1-\alpha-\beta}} \\
+&=\sqrt{\frac{2\cdot10^{-6}}{1-0.03-0.95}} \\
+&=0.01
+\end{align*}$$
+
+>Answer: The long-run average volatility is $1\%$.
+    
+### Question b {.unnumbered} 
+
+If the current volatility is $1.5\%$ per day, what is the estimate of the volatility in $20$, $40$, and $60$ days?
+
+>The estimate of the volatility in $20$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+20}^2) &=\sigma^2+(\alpha+\beta)^{20}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{20}\cdot(0.015^2-0.01^2) \\
+&\approx1.8345\cdot10^{-4} \\
+\rightarrow \sigma_{n+20}&\approx0.0135 \\
+\end{align*}$$
+
+>The estimate of the volatility in $40$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+40}^2) &=\sigma^2+(\alpha+\beta)^{40}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{40}\cdot(0.015^2-0.01^2) \\
+&\approx1.5571\cdot10^{-4} \\
+\rightarrow \sigma_{n+40}&\approx0.0125 \\
+\end{align*}$$
+
+>The estimate of the volatility in $60$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+60}^2) &=\sigma^2+(\alpha+\beta)^{60}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{60}\cdot(0.015^2-0.01^2) \\
+&\approx1.3719\cdot10^{-4} \\
+\rightarrow \sigma_{n+60}&\approx0.0117 \\
+\end{align*}$$
+
+>Answer: If the current volatility is $1.5\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $1.35\%$, $1.25\%$ and $1.17\%$, respectively.
+    
+### Question c {.unnumbered} 
+
+What volatility should be used to price $20$, $40$, and $60$-day  options?
+
+With the current volatility being $1.5\%$ per day, we have
+
+>$$\begin{align*}
+a &=\ln\frac{1}{\alpha+\beta} \\
+&=\ln\frac{1}{0.03+0.95} \\
+&\approx0.0202
+\end{align*}$$
+
+>The volatility should be used to price $20$-day  options:
+$$\begin{align*}
+\sigma^2(20) &=252\cdot\left(\sigma^2+\frac{1-e^{-20a}}{20a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-20\cdot0.0202}}{20\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0511 \\
+\rightarrow\sigma(20) &\approx0.2261
+\end{align*}$$
+
+>The volatility should be used to price $40$-day  options:
+$$\begin{align*}
+\sigma^2(40) &=252\cdot\left(\sigma^2+\frac{1-e^{-40a}}{40a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-40\cdot0.0202}}{40\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0468 \\
+\rightarrow\sigma(40) &\approx0.2164
+\end{align*}$$
+
+>The volatility should be used to price $60$-day  options:
+$$\begin{align*}
+\sigma^2(60) &=252\cdot\left(\sigma^2+\frac{1-e^{-60a}}{60a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-60\cdot0.0202}}{60\cdot0.0202}\cdot(0.015^2-0.01^2)\right)\\
+&\approx0.0435 \\
+\rightarrow\sigma(60) &\approx0.2085
+\end{align*}$$
+
+>Answer: The volatility should be used to price $20$, $40$ and $60$-day options are $22.61\%$, $21.64\%$ and $20.85\%$, respectively.
+
+### Question d {.unnumbered} 
+
+Suppose that there is an event that increases the volatility from $1.5%$ per day to $2%$ per day. Estimate the effect on the volatility in $20$, $40$, and $60$ days.
+
+>The estimate of the volatility in $20$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+20}^2) &=\sigma^2+(\alpha+\beta)^{20}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{20}\cdot(0.02^2-0.01^2) \\
+&\approx3.0028\cdot10^{-4} \\
+\rightarrow \sigma_{n+20}&\approx 0.0173 \\
+\end{align*}$$
+
+>The estimate of the volatility in $40$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+40}^2) &=\sigma^2+(\alpha+\beta)^{40}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{40}\cdot(0.02^2-0.01^2) \\
+&\approx2.3371\cdot10^{-4} \\
+\rightarrow \sigma_{n+40}&\approx 0.0153\\
+\end{align*}$$
+
+>The estimate of the volatility in $60$ days is:
+$$\begin{align*}
+\mathbb{E}(\sigma_{n+60}^2) &=\sigma^2+(\alpha+\beta)^{60}\cdot(\sigma_n^2-\sigma^2) \\
+&=0.01^2+(0.03+0.95)^{60}\cdot(0.02^2-0.01^2) \\
+&\approx1.8927\cdot10^{-4} \\
+\rightarrow \sigma_{n+60}&\approx 0.0138\\
+\end{align*}$$
+
+><ul>If the current volatility is $1.5\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $0.0135$, $0.0125$ and $0.0117$, respectively.</ul>
+<ul>If the current volatility is $2\%$ per day, the estimates of the volatility in $20$, $40$, and $60$ days are $0.0173$, $0.0153$ and $0.0138$, respectively.</ul>
+Therefore, the volatility in $20$, $40$ and $60$ days increases respectively by 
+$$\frac{0.0173}{0.0135}-1\approx0.2814 \\
+\frac{0.0153}{0.0125}-1\approx0.2240 \\
+\frac{0.0138}{0.0117}-1\approx0.1795$$
+
+>Answer: If there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatility in $20$, $40$ and $60$ days increases by $28.14\%$, $22.4\%$ and $17.95\%$, respectively.
+    
+### Question e {.unnumbered} 
+
+Estimate by how much the event increases the volatilities used to price $20$, $40$, and $60$-day  options.
+
+With the current volatility being $2\%$ per day, we have
+
+>$$\begin{align*}
+a &=\ln\frac{1}{\alpha+\beta} \\
+&=\ln\frac{1}{0.03+0.95} \\
+&\approx0.0202
+\end{align*}$$
+
+>The volatility should be used to price $20$-day  options:
+$$\begin{align*}
+\sigma^2(20) &=252\cdot\left(\sigma^2+\frac{1-e^{-20a}}{20a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-20\cdot0.0202}}{20\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0874 \\
+\rightarrow\sigma(20) &\approx0.2956
+\end{align*}$$
+
+>The volatility should be used to price $40$-day  options:
+$$\begin{align*}
+\sigma^2(40) &=252\cdot\left(\sigma^2+\frac{1-e^{-40a}}{40a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-40\cdot0.0202}}{40\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0771 \\
+\rightarrow\sigma(40) &\approx0.2776
+\end{align*}$$
+
+>The volatility should be used to price $60$-day  options:
+$$\begin{align*}
+\sigma^2(60) &=252\cdot\left(\sigma^2+\frac{1-e^{-60a}}{60a}\cdot(\sigma_{n}^2-\sigma^2)\right) \\
+&= 252\cdot\left(0.01^2+\frac{1-e^{-60\cdot0.0202}}{60\cdot0.0202}\cdot(0.02^2-0.01^2)\right)\\
+&\approx0.0690 \\
+\rightarrow\sigma(60) &\approx0.2627
+\end{align*}$$
+
+><ul>If the current volatility is $1.5\%$ per day, the volatility should be used to price $20$, $40$ and $60$-day options are $0.2261$, $0.2164$ and $0.2085$, respectively.</ul>
+<ul>If the current volatility is $2\%$ per day, the volatility should be used to price $20$, $40$ and $60$-day options are $0.2956$, $0.2776$ and $0.2627$, respectively.</ul>
+Therefore, if there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatilities used to price increase by
+$$\frac{0.2956}{0.2261}-1\approx0.3074 \\
+\frac{0.2776}{0.2164}-1\approx0.2828 \\
+\frac{0.2627}{0.2085}-1\approx0.2600$$
+
+>Answer: If there is an event that increases the volatility from $1.5%$ per day to $2%$ per day, the volatilities used to price increase by $30.74\%$, $28.28\%$ and $26\%$, respectively.
+
+## Problem 7 {.unnumbered} 
+
+Consider ARCH$(1)$ process, show that
+$$\mathbb{E}(\sigma_{t+s}^2|\mathcal{F}_t)=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\cdot\sigma_t^2,\forall s\geq1$$
+
+>Consider the following ARCH$(1)$ process:
+$$\sigma_{t+1}^2=\omega+\alpha \sigma_t^2\epsilon_t^2$$
+We will prove the assertion
+$$\mathbb{E}(\sigma_{t+s}^2|\mathcal{F}_t)=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_t^2,\forall s\geq1$$ 
+by induction on $s$. 
+
+>For $s=1$:
+$$\begin{align*}
+\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) &=\mathbb{E}(\omega+\alpha \sigma_t^2\epsilon_t^2|\mathcal{F}_t) \\
+&=\mathbb{E}(\omega+\alpha \sigma_t^2\epsilon_t^2) \\
+&=\mathbb{E}(\omega)+\mathbb{E}(\alpha \sigma_t^2\epsilon_t^2) \\
+&=\omega+\alpha \sigma_t^2\mathbb{E}(\epsilon_t^2) \\
+&=\frac{1-\alpha^1}{1-\alpha}\cdot\omega+\alpha \sigma_t^2
+\end{align*}$$
+    
+>Assume the assertion holds for some $k\in\mathbb{N}$. That is:
+$$\begin{align*}
+    \mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_t) &= \mathbb{E}(\mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_{t+1})|\mathcal{F}_t) \\
+    &=\mathbb{E}\left(\left.\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
+    &= \frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
+    &=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s(\omega+\alpha \sigma_t^2)\\
+    &= \left(\frac{1-\alpha^s}{1-\alpha}+\alpha^s\right)\cdot\omega+\alpha^{s+1}\sigma_t^2 \\
+    &=\frac{1-\alpha^{s+1}}{1-\alpha}\cdot\omega+\alpha^{s+1}\sigma_t^2
+\end{align*}$$
+    
+>Therefore, the assertion holds $\forall s\geq1$. 
+
+## Problem 8 {.unnumbered} 
+
+### Python {.unnumbered}
+
+We can download the SP500 data from internet by using Python.
+
+```{python,warning=F,message=F}
+import pandas_datareader as web
+price = web.get_data_yahoo("^GSPC",
+                           start = "2009-01-01",
+                           end ="2021-12-31")
+```
+
+### Question a {.unnumbered} 
+
+Denote $y$ the returns of SP500. Plot the returns and calculate statistical characterizations of returns (e.g., min, max, sd, skewness, kurtosis, acf), use Jarque Berra test, Box test.
+
+```{python,warning=F,message=F}
+# Calculate returns y
+import numpy as np
+y = np.diff(np.log(price['Adj Close']))
+```
+
+```{python,warning=F,message=F}
+# Plot the returns
+import matplotlib.pyplot as plt
+plt.plot(y)
+plt.show()
+```
+
+```{python,warning=F,message=F}
+# Statistical characterizations of returns
+from scipy.stats import describe
+describe(y)
+```
+
+```{python,warning=F,message=F}
+# Autocorrelation function
+from statsmodels.tsa.stattools import acf
+acf(y)
+```
+
+```{python,warning=F,message=F}
+# Plot ACF of the returns
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(y)
+plt.show()
+```
+
+```{python,warning=F,message=F}
+# Jarque Berra test
+import scipy.stats as stats
+stats.jarque_bera(y)
+```
+
+```{python,warning=F,message=F}
+# Box test
+from statsmodels.stats.diagnostic import acorr_ljungbox
+acorr_ljungbox(y)
+```
+    
+### Question b {.unnumbered} 
+
+Use ADF test for the prices and returns to see which series is stationary.
+
+```{python,warning=F,message=F}
+# Plot price
+import matplotlib.pyplot as plt
+plt.plot(price['Adj Close'])
+plt.show()
+```
+
+```{python,warning=F,message=F}
+# ADF test for prices
+from statsmodels.tsa.stattools import adfuller
+result = adfuller(price['Adj Close'])
+print('p-value: %f' % result[1])
+```
+
+```{python,warning=F,message=F}
+# Plot the returns
+import matplotlib.pyplot as plt
+plt.plot(y)
+plt.show()
+```
+
+```{python,warning=F,message=F}
+# ADF test for returns
+from statsmodels.tsa.stattools import adfuller
+result = adfuller(y)
+print('p-value: %f' % result[1])
+```
+
+### Question c {.unnumbered} 
+
+Using AR$(1)$ to fit the price and returns y and find the coefficients of these fitted AR$(1)$ model. 
+
+```{python,warning=F,message=F}
+# Using AR(1) to fit the price
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+ar1_price = ARIMA(price['Adj Close'], 
+                  order = (1, 0, 0)).fit()
+print(ar1_price.summary())
+```
+
+```{python,warning=F,message=F}
+# Find the coefficients of the fitted AR(1) model
+ar1_price.params[0:2]
+```
+
+```{python,warning=F,message=F}
+# Using AR(1) to fit the returns
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+ar1_y = ARIMA(y, 
+              order = (1, 0, 0)).fit()
+print(ar1_y.summary())
+```
+
+```{python,warning=F,message=F}
+# Find the coefficients of the fitted AR(1) model
+ar1_y.params[0:2]
+```
+
+Note that If the residuals have a mean other than zero, then the forecasts are biased. Now using this fact you can check the mean of residuals of AR$(1)$ for price and return to see that you can not apply AR$(1)$ directly for price. 
+
+```{python,warning=F,message=F}
+# Check the mean of residuals
+ar1_price.resid[1:].mean()
+```
+
+```{python,warning=F,message=F}
+# Check the mean of residuals
+ar1_y.resid[1:].mean()
+```
+
+Check independence of residuals fitted AR$(1)$, are they independence or not?
+
+```{python,warning=F,message=F}
+# Plot ACF of residuals
+import matplotlib.pyplot as plt
+from statsmodels.graphics.tsaplots import plot_acf
+plot_acf(ar1_y.resid)
+plt.show()
+```
+
+ACF are significant in many lags so the residuals of AR$(1)$ of the returns is correlated and thus is not independence.
+
+### Question d {.unnumbered} 
+
+Fit the returns by ARMA$(3,3)$, compare with AR$(1)$ above, can you conclude that
+ARMA$(3,3)$ is better than AR$(1)$?
+
+```{python,warning=F,message=F}
+# Fit the returns by ARMA(3,3)
+import statsmodels
+from statsmodels.tsa.arima.model import ARIMA
+arma33_y = ARIMA(y, 
+                 order = (3, 0, 3)).fit()
+print(arma33_y.summary())
+```
+
+AIC from ARMA$(3,3)$ is less than AIC from AR$(1)$ so we can conclude that ARMA$(3,3)$ is better than AR$(1)$.
+
+### Question e {.unnumbered} 
+
+Use ARCH$(1)$, GARCH$(1,1)$ and t-GARCH$(1,1)$ to fit the
+volatility of the returns and then give your conclusions.
+
+```{python,warning=F,message=F}
+# ARCH(1)
+import arch
+from arch import arch_model
+arch_fit = arch_model(y, mean = 'Zero', 
+                         vol = 'ARCH', 
+                         q = 1).fit()
+print(arch_fit.summary())
+```
+
+```{python,warning=F,message=F}
+# GARCH(1,1)
+import arch
+from arch import arch_model
+garch_fit = arch_model(y, 
+                       mean = 'Zero', 
+                       vol = 'GARCH',
+                       p = 1, 
+                       q = 1).fit()
+print(garch_fit.summary())
+```
+
+```{python,warning=F,message=F}
+# t-GARCH(1,1)
+import arch
+from arch import arch_model
+tgarch_fit = arch_model(y, 
+                        mean = 'Zero', 
+                        vol = 'GARCH',
+                        p = 1, 
+                        q = 1, 
+                        dist = 'StudentsT').fit()
+print(tgarch_fit.summary())
+```
+
+AIC from t-GARCH$(1,1)$ is the smallest so we can conclude that t-GARCH$(1,1)$ is the best model.
+
+### R {.unnumbered}
+
+We can download the SP500 data from internet by using R.
+
+```{r,warning=F,message=F}
+library(tseries)
+library(zoo)
+price = get.hist.quote(instrument = "^gspc",
+                       start = "2009-01-01",
+                       end = ("2021-12-31"),  
+                       quote = "AdjClose")
+```
+
+### Question a {.unnumbered} 
+
+Denote $y$ the returns of SP500. Plot the returns and calculate statistical characterizations of returns (e.g., min, max, sd, skewness, kurtosis, acf), use Jarque Berra test, Box test.
+
+```{r,warning=F,message=F}
+# Calculate returns y
+library(tidyverse)
+y = price %>% 
+  log %>% 
+  diff
+```
+
+```{r,warning=F,message=F}
+# Plot the returns
+y %>% 
+  plot
+```
+
+```{r,warning=F,message=F}
+# Statistical characterizations of returns
+library(psych)
+y %>% 
+  describe %>% 
+  select(min,
+         max,
+         sd,
+         skew,
+         kurtosis)
+```
+
+```{r,warning=F,message=F}
+# Plot ACF of the returns
+y %>% 
+  coredata %>% 
+  acf
+```
+
+```{r,warning=F,message=F}
+# Jarque Berra test
+library(moments)
+y %>% 
+  coredata %>% 
+  c %>% 
+  jarque.test
+```
+
+```{r,warning=F,message=F}
+# Box test
+library(stats)
+y %>% 
+  Box.test(lag = 10, 
+           type = "Ljung-Box")
+```
+    
+### Question b {.unnumbered} 
+
+Use ADF test for the prices and returns to see which series is stationary.
+
+```{r,warning=F,message=F}
+# Plot price
+price %>% 
+  plot
+```
+
+```{r,warning=F,message=F}
+# ADF test for prices
+library(tseries)
+price %>% 
+  coredata %>%
+  adf.test
+```
+
+```{r,warning=F,message=F}
+# Plot the returns
+y %>% 
+  plot
+```
+
+```{r,warning=F,message=F}
+# ADF test for returns
+library(tseries)
+y %>% 
+  coredata %>%
+  adf.test
+```
+
+### Question c {.unnumbered} 
+
+Using AR$(1)$ to fit the price and returns y and find the coefficients of these fitted AR$(1)$ model. 
+
+```{r,warning=F,message=F}
+# Using AR(1) to fit the price
+library(stats)
+ar1_price = price %>%
+  arima(c(1,0,0))
+```
+
+```{r,warning=F,message=F}
+# Find the coefficients of the fitted AR(1) model
+ar1_price %>%
+  coefficients
+```
+
+```{r,warning=F,message=F}
+# Using AR(1) to fit the returns
+library(stats)
+ar1_y = y %>% 
+  arima(c(1,0,0))
+```
+
+```{r,warning=F,message=F}
+# Find the coefficients of the fitted AR(1) model
+ar1_y %>% 
+  coefficients
+```
+
+Note that If the residuals have a mean other than zero, then the forecasts are biased. Now using this fact you can check the mean of residuals of AR$(1)$ for price and return to see that you can not apply AR$(1)$ directly for price. 
+
+```{r,warning=F,message=F}
+# Check the mean of residuals
+ar1_price %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  mean
+```
+
+```{r,warning=F,message=F}
+# Check the mean of residuals
+ar1_y %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  mean
+```
+
+Check independence of residuals fitted AR$(1)$, are they independence or not?
+
+```{r,warning=F,message=F}
+# Plot ACF of the residuals
+library(stats)
+ar1_y %>% residuals %>% 
+  coredata %>% 
+  na.omit %>% 
+  acf
+```
+
+ACF are significant in many lags so the residuals of AR$(1)$ of the returns is correlated and thus is not independence.
+
+### Question d {.unnumbered} 
+
+Fit the returns by ARMA$(3,3)$, compare with AR$(1)$ above, can you conclude that
+ARMA$(3,3)$ is better than AR$(1)$?
+
+```{r,warning=F,message=F}
+# Fit the returns by ARMA(3,3)
+library(stats)
+arma33_y = y %>%
+  arima(c(3,0,3))
+arma33_y$aic < ar1_y$aic
+```
+
+AIC from ARMA$(3,3)$ is less than AIC from AR$(1)$ so we can conclude that ARMA$(3,3)$ is better than AR$(1)$.
+
+### Question e {.unnumbered} 
+
+Use ARCH$(1)$, GARCH$(1,1)$ and t-GARCH$(1,1)$ (using package rugarch) to fit the
+volatility of the returns and then give your conclusions.
+
+```{r,warning=F,message=F}
+# ARCH(1)
+library(fGarch)
+arch.fit = garchFit(~garch(1,0), data = y, trace = F)
+summary(arch.fit)
+```
+
+```{r,warning=F,message=F}
+# GARCH(1,1)
+library(rugarch)
+garch_spec = ugarchspec(variance.model = list(model = "sGARCH",
+                                           garchOrder = c(1,1)),
+                       mean.model = list(armaOrder = c(0,0),
+                                       include.mean = T,
+                                       distribution.model = "norm"))
+garch_fit = ugarchfit(garch_spec,y %>% coredata %>% c)
+garch_fit
+```
+
+```{r,warning=F,message=F}
+# TGARCH(1,1)
+library(rugarch)
+tgarch_spec = ugarchspec(variance.model = list(model = "sGARCH",
+                                           garchOrder = c(1,1)),
+                       mean.model = list(armaOrder = c(0,0),
+                                       include.mean = T,
+                                       distribution.model = "std"))
+tgarch_fit = ugarchfit(tgarch_spec,y %>% coredata %>% c)
+tgarch_fit
+```
+
+AIC from t-GARCH$(1,1)$ is the smallest so we can conclude that t-GARCH$(1,1)$ is the best model.

@@ -98,7 +98,7 @@ or the expected volatility per day is <span class="math inline">\(\sqrt{0.000294
 <p>Suppose it is day <span class="math inline">\(n\)</span>. We define
 <span class="math display">\[V(t) = \mathbb{E}(\sigma_{n+1}^2 )\]</span>
 and
-<span class="math display">\[ a:= \log \left( \frac{1}{\alpha+\beta} \right) \]</span>
+<span class="math display">\[ a:= \ln \left( \frac{1}{\alpha+\beta} \right) \]</span>
 From <span class="math inline">\(\mathbb{E}(\sigma_{n+t}^2) = \sigma^22 + (\alpha + \beta)^t(\sigma_n^2 − \sigma^2)\)</span> we have</p>
 <p><span class="math display">\[V(t) = \sigma^2 + e^{−at}(V(0) − \sigma^2)\]</span>
 Then we have the average variance rate per day between today and time T.</p>
@@ -113,7 +113,7 @@ This relationship between the volatility of options and their maturities is refe
 <span class="math display">\[ \sigma^2(T)=252 \left( \sigma^2+\frac{1-e^{-aT}}{aT} [V(0)-\sigma^2] \right) \]</span>
 assume that <span class="math inline">\(V(0) = 0.0003\)</span> we have
 <span class="math display">\[ \sigma^2=\frac{0.0000013465}{1 − 0.083394 − 0.910116}=0.0002073 \]</span>
-and <span class="math inline">\(a = \log \left( \frac{1}{0.99351} \right) = 0.00651\)</span>. Hence,
+and <span class="math inline">\(a = \ln \left( \frac{1}{0.99351} \right) = 0.00651\)</span>. Hence,
 <span class="math display">\[ \sigma^2(T)=252 \left( 0.0002073+\frac{1-e^{-0.00651 \times T}}{0.00651 \times T}[0.0003-0.0002073] \right) \]</span></p>
 <p>For the option life (days) T = 10, 30, 50, 100, 500, we obtain the option
 volatility (<span class="math inline">\(\%\)</span> per annum)</p>
@@ -166,7 +166,7 @@ volatility (<span class="math inline">\(\%\)</span> per annum)</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

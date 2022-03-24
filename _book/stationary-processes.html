@@ -119,10 +119,15 @@ process (random sample).</li>
 <div id="example-4" class="section level3 unnumbered">
 <h3>Example<a class="anchor" aria-label="anchor" href="#example-4"><i class="fas fa-link"></i></a>
 </h3>
-<p>Consider Financial Index SP500. The data consists of excess returns <span class="math inline">\(X_t = \log(S_t) −\log(S_{t−1})\)</span>. From the plot we see the following properties of <span class="math inline">\(X_t\)</span>:</p>
+<p>Consider Financial Index SP500. The data consists of excess returns <span class="math inline">\(X_t = \ln(S_t) −\ln(S_{t−1})\)</span>. From the plot we see the following properties of <span class="math inline">\(X_t\)</span>:</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sp500</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">sp500</span><span class="op">$</span><span class="va">Close</span><span class="op">)</span><span class="op">)</span>,type<span class="op">=</span><span class="st">"l"</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">sp500</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"https://docs.google.com/spreadsheets/d/e/2PACX-1vT4WqdVoUIiaMcd4jQj5by3Oauc6G4EFq9VDDrpzG2oBn6TFzyNE1yPV2fKRal5F7DmRzCtVa4nSQIw/pub?gid=279168786&amp;single=true&amp;output=csv"</span><span class="op">)</span>
+
+<span class="va">sp500</span><span class="op">$</span><span class="va">Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">diff</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;"></div>
 <ul>
 <li>The mean level of the process seems constant.</li>
@@ -256,7 +261,7 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 </ul>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/business-science/tidyquant">tidyquant</a></span><span class="op">)</span>
-<span class="va">msft</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
+<span class="va">msft</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyquant/man/tq_get.html">tq_get</a></span><span class="op">(</span><span class="st">'MSFT'</span>,from<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2010-01-01"</span><span class="op">)</span>,
                to<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2014-01-01"</span><span class="op">)</span>,
                get <span class="op">=</span> <span class="st">"stock.prices"</span><span class="op">)</span>
 
@@ -342,7 +347,7 @@ H_1 : k \neq 0 \]</span></p>
 <p>Note that the magnitude of its ACF decays geometrically to zero, either slowly as when <span class="math inline">\(\phi_1 = 0.95\)</span>, moderately slowly as when <span class="math inline">\(\phi_1 = 0.75\)</span>, or rapidly as when <span class="math inline">\(\phi_1 = 0.25\)</span>. We now simulate AR(1) and plot the ACF with <span class="math inline">\(\phi_1 =0.64\)</span> and <span class="math inline">\(\sigma_w^2 =1\)</span>.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
-<span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
@@ -359,7 +364,7 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <p>Consider AR(1) with <span class="math inline">\(\phi_1 = 0.64\)</span> and <span class="math inline">\(\sigma_w^2 = 1\)</span>, we have the results of Box test in R</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
-<span class="va">ts.sim</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
@@ -457,7 +462,7 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

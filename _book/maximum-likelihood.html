@@ -104,7 +104,7 @@ is viewed as the function of <span class="math inline">\(\theta\)</span> with <s
 the likelihood function.</p>
 <ul>
 <li>The maximum likelihood estimator (MLE) is the value of <span class="math inline">\(\theta\)</span> that maximizes the likelihood function. We denote the MLE by <span class="math inline">\(\hat \theta_{ML}\)</span>.</li>
-<li>It is mathematically easier to maximize <span class="math inline">\(\log L(\theta)\)</span>, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.</li>
+<li>It is mathematically easier to maximize <span class="math inline">\(\ln L(\theta)\)</span>, which is called the log-likelihood. If the data are independent, then the likelihood is the product of the marginal densities.</li>
 </ul>
 <div id="application-to-arch1" class="section level2" number="12.1">
 <h2>
@@ -117,7 +117,7 @@ For <span class="math inline">\(t = 2\)</span> we have the density??</p>
 Hence, the joint density
 <span class="math display">\[ \prod_{t=2}^T f(y_t|y_{t-1})=\prod_{t=2}^T \frac{1}{\sqrt{2\pi(\omega+\alpha y_{t-1}^2)}} e^{-\frac{1}{2} \frac{y_t^2}{2\omega+\alpha y_{t-1}^2}} \]</span>
 and, the log likelihood
-<span class="math display">\[ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) \]</span></p>
+<span class="math display">\[ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2} \right) \]</span></p>
 </div>
 <div id="application-to-garch11" class="section level2" number="12.2">
 <h2>
@@ -127,7 +127,7 @@ and, the log likelihood
 Hence, the joint density
 <span class="math display">\[ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2+\beta \hat \sigma_1^2)}} e^{-\frac{1}{2} \frac{y_2^2}{\omega +\alpha y_1^2+\beta \hat \sigma_1^2}} \]</span>
 and, the log likelihood
-<span class="math display">\[ \log(L(\omega, \alpha)) =-\frac{T-1}{2} \log(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \log(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) \]</span></p>
+<span class="math display">\[ \ln(L(\omega, \alpha)) =-\frac{T-1}{2} \ln(2\pi)-\frac{1}{2} \sum_{t=2}^T \left( \ln(\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2) + \frac{y_t^2}{\omega+\alpha y_{t-1}^2+\beta \hat \sigma_{t-1}^2} \right) \]</span></p>
 <div id="the-importance-of-σ1" class="section level3" number="12.2.1">
 <h3>
 <span class="header-section-number">12.2.1</span> The importance of σ1<a class="anchor" aria-label="anchor" href="#the-importance-of-%CF%831"><i class="fas fa-link"></i></a>
@@ -184,7 +184,7 @@ where <span class="math inline">\(\hat \sigma^2\)</span> is is the sample varian
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-16.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

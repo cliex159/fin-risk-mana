@@ -19,3 +19,9 @@ tidyquant
 tseries
 moments
 aTSA
+psych
+timeDate
+timeSeries
+fBasics
+fGarch
+rugarch

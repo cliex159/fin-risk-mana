@@ -430,7 +430,8 @@ the likelihood function.
 
 Consider ARCH(1) model:
 
-$$  εt ∼N(0,1) $$
+$$\epsilon_t ∼ N(0,1)$$
+
 For $t = 2$ we have the density??
 
 $$ f(y_2|y_1)=\frac{1}{\sqrt{2\pi(\omega+\alpha y_1^2)}} e^{-\frac{1}{2} \frac{y_2^2}{2\omega+\alpha y_1^2}} $$
@@ -474,7 +475,7 @@ $$ \sigma_{n+t}^2 - \sigma^2=\alpha (y_{n+t-1}^2-\sigma^2)+\beta(\sigma_{n+t-1}^
 Hence,
 $$ \mathbb{E}[\sigma_{n+t}^2 - \sigma^2]=(\alpha+\beta)\mathbb{E}[\sigma_{n+t-1}^2 - \sigma^2] $$
 By induction we obtain
-$$ \mathbb{E}(\sigma_{n+t}^2) = \sigma^22 + (\alpha + \beta)^t(\sigma_n^2 − \sigma^2) $$
+$$ \mathbb{E}(\sigma_{n+t}^2) = \sigma^2 + (\alpha + \beta)^t(\sigma_n^2 − \sigma^2) $$
 
 ## Example {.unnumbered}
 
@@ -911,7 +912,7 @@ EWMA with $\lambda=0.94$.
 
 >$$\begin{align*}
 \widehat{\sigma}_t^2 &=\lambda\cdot\widehat{\sigma}_{t-1}^2+(1-\lambda)\cdot y_{t-1}^2 \\
-&=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{300}{298}\right)^2 \\
+&=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{298}{300}\right)^2 \\
 &\approx1.6153\cdot10^{-4} \\
 \rightarrow \widehat{\sigma}_t &\approx0.0127
 \end{align*}$$
@@ -1121,13 +1122,13 @@ $$\begin{align*}
 >Assume the assertion holds for some $k\in\mathbb{N}$. That is:
 $$\begin{align*}
     \mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_t) &= \mathbb{E}(\mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_{t+1})|\mathcal{F}_t) \\
-    &=\mathbb{E}\left(\left.\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
-    &= \frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
-    &=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s(\omega+\alpha \sigma_t^2)\\
-    &= \left(\frac{1-\alpha^s}{1-\alpha}+\alpha^s\right)\cdot\omega+\alpha^{s+1}\sigma_t^2 \\
-    &=\frac{1-\alpha^{s+1}}{1-\alpha}\cdot\omega+\alpha^{s+1}\sigma_t^2
+    &=\mathbb{E}\left(\left.\frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
+    &= \frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
+    &=\frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k(\omega+\alpha \sigma_t^2)\\
+    &= \left(\frac{1-\alpha^k}{1-\alpha}+\alpha^k\right)\cdot\omega+\alpha^{k+1}\sigma_t^2 \\
+    &=\frac{1-\alpha^{k+1}}{1-\alpha}\cdot\omega+\alpha^{k+1}\sigma_t^2
 \end{align*}$$
-    
+
 >Therefore, the assertion holds $\forall s\geq1$. 
 
 ## Problem 8 {.unnumbered} 

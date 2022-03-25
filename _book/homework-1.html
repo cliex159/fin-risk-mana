@@ -354,7 +354,7 @@ where <span class="math inline">\(\epsilon_t\)</span> is the white noise.</p>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \widehat{\sigma}_t^2 &amp;=\lambda\cdot\widehat{\sigma}_{t-1}^2+(1-\lambda)\cdot y_{t-1}^2 \\
-&amp;=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{300}{298}\right)^2 \\
+&amp;=0.94\cdot0.013^2+0.06\cdot\left( \ln \frac{298}{300}\right)^2 \\
 &amp;\approx1.6153\cdot10^{-4} \\
 \rightarrow \widehat{\sigma}_t &amp;\approx0.0127
 \end{align*}\]</span></p>
@@ -607,11 +607,11 @@ by induction on <span class="math inline">\(s\)</span>.</p>
 <p>Assume the assertion holds for some <span class="math inline">\(k\in\mathbb{N}\)</span>. That is:
 <span class="math display">\[\begin{align*}
 \mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_t) &amp;= \mathbb{E}(\mathbb{E}(\sigma_{t+k+1}^2|\mathcal{F}_{t+1})|\mathcal{F}_t) \\
-&amp;=\mathbb{E}\left(\left.\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
-&amp;= \frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
-&amp;=\frac{1-\alpha^s}{1-\alpha}\cdot\omega+\alpha^s(\omega+\alpha \sigma_t^2)\\
-&amp;= \left(\frac{1-\alpha^s}{1-\alpha}+\alpha^s\right)\cdot\omega+\alpha^{s+1}\sigma_t^2 \\
-&amp;=\frac{1-\alpha^{s+1}}{1-\alpha}\cdot\omega+\alpha^{s+1}\sigma_t^2
+&amp;=\mathbb{E}\left(\left.\frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k\sigma_{t+1}^2\right|\mathcal{F}_t\right)\\
+&amp;= \frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k\mathbb{E}(\sigma_{t+1}^2|\mathcal{F}_t) \\
+&amp;=\frac{1-\alpha^k}{1-\alpha}\cdot\omega+\alpha^k(\omega+\alpha \sigma_t^2)\\
+&amp;= \left(\frac{1-\alpha^k}{1-\alpha}+\alpha^k\right)\cdot\omega+\alpha^{k+1}\sigma_t^2 \\
+&amp;=\frac{1-\alpha^{k+1}}{1-\alpha}\cdot\omega+\alpha^{k+1}\sigma_t^2
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
@@ -1545,7 +1545,7 @@ volatility of the returns and then give your conclusions.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-24.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-25.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

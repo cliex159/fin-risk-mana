@@ -111,9 +111,15 @@
 <p>Determine <span class="math inline">\(R_2\)</span> and <span class="math inline">\(R_4(3)\)</span>.</p>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
-R_2&amp;=\frac{P_2-P_1+d_2}{P_1}=0.042 \\
-R_3&amp;=\frac{P_3-P_2+d_3}{P_2}=-0.015 \\
-R_4&amp;=\frac{P_4-P_3+d_4}{P_3}=0.118 \\
+R_2&amp;=\frac{P_2-P_1+d_2}{P_1} \\
+&amp;=\frac{54-52+0.2}{52} \\
+&amp;=0.042 \\
+R_3&amp;=\frac{P_3-P_2+d_3}{P_2} \\
+&amp;=\frac{53-54+0.2}{54} \\
+&amp;=-0.015 \\
+R_4&amp;=\frac{P_4-P_3+d_4}{P_3} \\
+&amp;=\frac{59-53+0.25}{53} \\
+&amp;=0.118 \\
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
@@ -154,13 +160,13 @@ r_3&amp;=\ln(1+R_3) \\
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 r_t(4)&amp;=r_t+r_{t-1}+r_{t-2}+r_{t-3} \\
-&amp;\sim 4 \times \mathcal{N}(0.06,0.47) \\
-&amp;\sim  \mathcal{N}(4 \times 0.06,4 \times 0.47) \\
-&amp;\sim \mathcal{N}(0.24,1.88)
+&amp;\sim 4 \cdot \mathcal{N}(0.06,0.47) \\
+&amp;\sim  \mathcal{N}(4 \cdot 0.06,4 \cdot 0.47) \\
+&amp;\sim \mathcal{N}(0.24,1.18)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
-<p>Answer: The distribution of <span class="math inline">\(r_t(4)\)</span> is <span class="math inline">\(\mathcal{N}(0.24,1.88)\)</span>.</p>
+<p>Answer: The distribution of <span class="math inline">\(r_t(4)\)</span> is <span class="math inline">\(\mathcal{N}(0.24,1.18)\)</span>.</p>
 </blockquote>
 </div>
 <div id="question-b-1" class="section level3 unnumbered">
@@ -188,7 +194,8 @@ cov(r_2(1),r_2(2))&amp;=cov(r_2,r_2+r_1) \\
 [r_t(3)|r_{t-2}=0.6]&amp;=[r_t+r_{t-1}+r_{t-2}|r_{t-2}=0.6] \\
 &amp;=r_t+r_{t-1}+0.6 \\
 &amp;\sim \mathcal{N}(0.06,0.47)+\mathcal{N}(0.06,0.47)+0.6 \\
-&amp;\sim \mathcal{N}(0.72,0.94)
+&amp;\sim \mathcal{N}(2 \cdot 0.06+0.6, 2 \cdot 0.47) \\
+&amp;\sim \mathcal{N}(0.72, 0.94)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
@@ -200,67 +207,67 @@ cov(r_2(1),r_2(2))&amp;=cov(r_2,r_2+r_1) \\
 <h2>Problem 3<a class="anchor" aria-label="anchor" href="#problem-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>Assume a stock of current price $97 with i.i.d. log returns</p>
-<p><span class="math display">\[r_t \sim \mathcal{N}(2 \times 10^{−4}, 9 \times 10^{−4})\]</span>
+<p><span class="math display">\[r_t \sim \mathcal{N}(2 \cdot 10^{−4}, 9 \cdot 10^{−4})\]</span>
 What is the probability that its price exceeds <span class="math inline">\(\$100\)</span> after 20 trading days?</p>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \ln \left( \frac{P_{20}}{P_0} \right) &amp;= r_{20}(20) \\
-&amp;= \sum_{t=1}^{20}r_t \\
-&amp;\sim 20 \times \mathcal{N}(2 \times 10^{−4}, 9 \times 10^{−4}) \\
-&amp;\sim  \mathcal{N}(20 \times 2 \times 10^{−4}, 20 \times 9 \times 10^{−4}) \\
-&amp;\sim \mathcal{N}(0.004, 0.018)  \\
-\\
+\ln  P_{20} - \ln P_0 &amp;= \sum_{t=1}^{20}r_t \\
+&amp;\sim 20 \cdot \mathcal{N}(2 \cdot 10^{−4}, 9 \cdot 10^{−4}) \\
+&amp;\sim  \mathcal{N}(20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
 \rightarrow \ln(P_{20})&amp;=\ln(P_{0})+r_{20}(20) \\
-&amp;\sim \ln(97)+\mathcal{N}(0.004, 0.018) \\
-&amp;\sim \mathcal{N}(4.579, 0.018)
+&amp;\sim \ln(97)+\mathcal{N}(20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
+&amp;\sim \mathcal{N}(\ln(97)+20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P}(P_{20}&gt;100)&amp;=\mathcal{P}(\ln(P_{20})&gt;\ln(100)) \\
-&amp;=\mathcal{P} \left(\frac{\ln(P_{20})-4.579}{\sqrt{0.018}} &gt; \frac{\ln(100)-4.579}{\sqrt{0.018}} \right) \\
-&amp;=\mathcal{P} \left(\mathcal{Z} &gt; \frac{\ln(100)-4.579}{\sqrt{0.018}} \right) \\
-&amp;=\mathcal{P} \left(\mathcal{Z} &gt; 0.195 \right) \\
-&amp;=\mathcal{P} \left(\mathcal{Z} &lt; -0.195 \right) \\
-&amp;=0.423
+&amp;=\mathcal{P} \left(\frac{\ln(P_{20})-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} &gt; \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&amp;=\mathcal{P} \left(\mathcal{Z} &gt; \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&amp;=\mathcal{P} \left(\mathcal{Z} &lt; -\frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&amp;=0.57817
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
-<p>Answer: The probability that its price exceeds <span class="math inline">\(\$100\)</span> after 20 trading days is 42.3%.</p>
+<p>Answer: The probability that its price exceeds <span class="math inline">\(\$100\)</span> after 20 trading days is 57.817%.</p>
 </blockquote>
 </div>
 <div id="problem-4" class="section level2 unnumbered">
 <h2>Problem 4<a class="anchor" aria-label="anchor" href="#problem-4"><i class="fas fa-link"></i></a>
 </h2>
-<p>Assume that the log returns <span class="math inline">\(r_t \sim \mathcal{N}(5 \times 10^{−4}, 0.012)\)</span> are i.i.d. Minimize t such that</p>
+<p>Assume that the log returns <span class="math inline">\(r_t \sim \mathcal{N}(5 \cdot 10^{−4}, 0.012)\)</span> are i.i.d. Minimize t such that</p>
 <p><span class="math display">\[\mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) \geq 0.9\]</span>
 i.e. the probability that the price doubles after t days is at least 90%.</p>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \ln\left( \frac{P_t}{P_0} \right) &amp;=r_t(t) \\
 &amp;=\sum_{i=1}^{t}r_i \\
-&amp;\sim t \times \mathcal{N}(5 \times 10^{−4}, 0.012) \\
-&amp;\sim  \mathcal{N}(t \times 5 \times 10^{−4},t \times 0.012)
+&amp;\sim t \cdot \mathcal{N}(5 \cdot 10^{−4}, 0.012) \\
+&amp;\sim  \mathcal{N}(t \cdot 5 \cdot 10^{−4},t \cdot 0.012)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) &amp;= \mathcal{P} \left( \ln \left( \frac{P_t}{P_0} \right)  \geq \ln(2) \right) \\
-&amp;=\mathcal{P} \left(\frac{\ln \left( \frac{P_t}{P_0} \right)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \geq
-\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \\
+&amp;=\mathcal{P} \left(\frac{\ln \left( \frac{P_t}{P_0} \right)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \geq
+\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \\
 &amp;=\mathcal{P} \left(\mathcal{Z} \geq
-\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \\
+\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \\
 &amp;=\mathcal{P} \left(\mathcal{Z} \leq
--\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right)
+-\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 &amp;\mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) \geq 0.9 \\
 &amp;\rightarrow \mathcal{P} \left(\mathcal{Z} \leq
--\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \geq 0.9 \\
-&amp;\rightarrow -\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}}\geq\Phi^{-1}(0.9) \\
-&amp;\rightarrow -\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}}\geq 1.282 \\
+-\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \geq 0.9 \\
+&amp;\rightarrow -\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}}\geq\Phi^{-1}(0.9) \\
 &amp;\rightarrow t \geq 81638.20
 \end{align*}\]</span></p>
 </blockquote>
@@ -290,11 +297,11 @@ r_1+r_2 &amp;\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\
 &amp;= \mathbb{P} \left( e^{r_1+r_2}&gt;1.3 \right) \\
 &amp;=\mathbb{P} \left({r_1+r_2}&gt;\ln(1.3) \right) \\
 &amp;=\mathbb{P} \left( \mathcal{Z} &gt; \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right) \\
-&amp;=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
+&amp;=\Phi \left( -\frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
-<p>Answer: <span class="math inline">\(\mathbb{P}(X_2&gt;1.3X_0)=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)\)</span></p>
+<p>Answer: <span class="math inline">\(\mathbb{P}(X_2&gt;1.3X_0)=\Phi \left( -\frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)\)</span></p>
 </blockquote>
 </div>
 <div id="question-b-2" class="section level3 unnumbered">
@@ -307,8 +314,8 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 &amp;=\mathbb(X_0e^{r_1} \leq x) \\
 &amp;=\mathbb{P}(r_1 \leq \ln(x)-\ln(X_0) \\
 &amp;=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right) \\
-&amp;=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-t^2}{2}}\,dt \\ \rightarrow f_{X_1}(x) &amp;= \frac{1}{\sqrt{2\pi}} \times \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \times e^{\frac{-\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2}{2}} \\
-&amp;=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}
+&amp;=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-1}{2}t^2}\,dt \\ \rightarrow f_{X_1}(x) &amp;= \frac{1}{\sqrt{2\pi}} \cdot \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \cdot e^{-\frac{1}{2}\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2} \\
+&amp;=\frac{e^{-\frac{1}{2}\frac{(\ln(x)-\ln(X_0)-\mu)^2}{\sigma^2}}}{\sigma x \sqrt{2\pi}}
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
@@ -322,7 +329,7 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 <blockquote>
 <p>Let <span class="math inline">\(x_k\)</span> be the 0.9 quantile of <span class="math inline">\(X_k\)</span>
 <span class="math display">\[\begin{align*}
-\sum_{i=1}^{k} r_i &amp;\sim k \times \mathcal{N}(\mu,\sigma^2) \\
+\sum_{i=1}^{k} r_i &amp;\sim k \cdot \mathcal{N}(\mu,\sigma^2) \\
 &amp;\sim \mathcal{N}(k\mu,k\sigma^2) \\
 \end{align*}\]</span></p>
 </blockquote>
@@ -501,8 +508,28 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 Check that <span class="math inline">\(X\)</span> has skewness <span class="math inline">\(0\)</span>, but is not distributed symmetrically.</p>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
-E[X^3] &amp;=\mathbb{P}(X=-4) \times (-4)^3+\mathbb{P}(X=1) \times (1)^3+\mathbb{P}(X=5) \times (5)^3 \\
-&amp;=\frac{1}{3} \times (-64) + \frac{1}{2} \times (1)+\frac{1}{6} \times (125) \\
+E[X] &amp;=\mathbb{P}(X=-4) \cdot (-4)+\mathbb{P}(X=1) \cdot (1)+\mathbb{P}(X=5) \cdot (5) \\
+&amp;=0
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+E[X^2] &amp;=\mathbb{P}(X=-4) \cdot (-4)^2+\mathbb{P}(X=1) \cdot (1)^2+\mathbb{P}(X=5) \cdot (5)^2 \\
+&amp;=\frac{1}{3} \cdot (16) + \frac{1}{2} \cdot (1)+\frac{1}{6} \cdot (25) \\
+&amp;=10
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+Var(x) &amp;= E[X^2] - E[X]^2 \\
+&amp;=10-0 \\
+&amp;=10
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+E[X^3] &amp;=\mathbb{P}(X=-4) \cdot (-4)^3+\mathbb{P}(X=1) \cdot (1)^3+\mathbb{P}(X=5) \cdot (5)^3 \\
+&amp;=\frac{1}{3} \cdot (-64) + \frac{1}{2} \cdot (1)+\frac{1}{6} \cdot (125) \\
 &amp;=0
 \end{align*}\]</span></p>
 </blockquote>
@@ -550,7 +577,7 @@ E[X^3] &amp;=\mathbb{P}(X=-4) \times (-4)^3+\mathbb{P}(X=1) \times (1)^3+\mathbb
 <p>Let a, b, c, d be constants with ac &gt; 0, then for any random variables X, Y, we have
 <span class="math display">\[\begin{align*}
 Corr(aX+b,cY+d)&amp;=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
-&amp;=\frac{ac \times Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
+&amp;=\frac{ac \cdot Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
 &amp;=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}} \\
 &amp;=Corr(X,Y)
 \end{align*}\]</span></p>
@@ -627,7 +654,7 @@ Corr(aX+b,cY+d)&amp;=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-25.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

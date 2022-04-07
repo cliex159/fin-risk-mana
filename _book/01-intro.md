@@ -11,7 +11,7 @@ $$ R_t=\frac{P_t-P_{t-1}}{P_{t-1}}=\frac{\Delta P_t}{P_{t-1}} $$
 
 A n-period return is given by
 $$\begin{align*} R_t(n)&=\frac{P_t}{P_{t-n}}-1\\
-&=\frac{P_t}{P_{t-1}} \times \frac{P_{t-1}}{P_{t-2}} \times ... \times \frac{P_{t-n+1}}{P_{t-n+2}}-1\\
+&=\frac{P_t}{P_{t-1}} \cdot \frac{P_{t-1}}{P_{t-2}} \cdot ... \cdot \frac{P_{t-n+1}}{P_{t-n+2}}-1\\
 &=(1+R_t)(1+R_{t-1})(1+R_{t-2})...(1+R_{t-n+1})-1 
 \end{align*}$$
 
@@ -577,7 +577,7 @@ $$y_p = \mu + \sigma x_p$$
 ##### Example {.unnumbered}
 
 Let $F \sim \mathcal{N}(0,1)$ then $G(x) = F\left(\frac{x−1}{\sqrt{2}} \right) ∼ N(1,2)$. Now if we choose $x_p = −3$ which corresponds to $p = 0.001349898$. With this probability we obtain the quantile of distribution $G$ is $y_p = −3.242641$. Now from the property of Q-Q plots we have
-$$y_p=1+\sqrt{2} \times (-3)=-3.242641$$
+$$y_p=1+\sqrt{2} \cdot (-3)=-3.242641$$
 
 Generate a standard normal distribution from $-10$ to $10$. We compare with $N(0, 1)$, we get
   
@@ -682,12 +682,12 @@ b. What is the probability that after five trading days your investment is worth
 
 >Let $\mathcal{P}_5$ be the probability that after five trading day the investment is worth.
 
->The five day log-return on a stock are independent and normally distributed with mean $0.001 \times 5$ and standard deviation $0.015 \times \sqrt{5}$: $r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})$.
+>The five day log-return on a stock are independent and normally distributed with mean $0.001 \cdot 5$ and standard deviation $0.015 \cdot \sqrt{5}$: $r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \cdot 5,0.015 \cdot \sqrt{5})$.
 
 >$$\begin{align*}
 \mathcal{P}_5&=\mathcal{P}(1000P_t \leq 990 P_{t-5}) \\
 &=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
-&=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
+&=\mathcal{P} \left(\frac{r_t-0.001 \cdot 5}{0.015 \cdot \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \cdot 5}{0.015 \cdot \sqrt{5}} \right) \\
 &=\mathcal{P} \left(X  \leq -0.4487 \right) \\
 &=0.32682
 \end{align*}$$
@@ -705,23 +705,23 @@ Calculate skewness and kurtosis of the following density function
     
 >$$\begin{align*} 
 \mu_1&=\mathbb{E}[X] \\
-&=\int_{0}^{2}x \times \frac{3}{8}x^2\,dx \\
+&=\int_{0}^{2}x \cdot \frac{3}{8}x^2\,dx \\
 &=\frac{3}{2} \\
 \\
 \mu_2&=\mathbb{E}[X^2] \\ 
-&=\int_{0}^{2}x^2 \times \frac{3}{8}x^2\,dx \\
+&=\int_{0}^{2}x^2 \cdot \frac{3}{8}x^2\,dx \\
 &=\frac{12}{5} 
 \end{align*}$$
 
 >$$\begin{align*}
 Sk&=\frac{\mathbb{E}[(X-\mu_1)^3]}{\sigma^3} \\
-&=\frac{\int_{0}^{2}(x-\mu_1)^3 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{3/2}} \\
-&=\frac{\int_{0}^{2}(x-\frac{3}{2})^3 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{3/2}} \\
+&=\frac{\int_{0}^{2}(x-\mu_1)^3 \cdot \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{3/2}} \\
+&=\frac{\int_{0}^{2}(x-\frac{3}{2})^3 \cdot \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{3/2}} \\
 &=-0.86 \\
 \\
 Kur&=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
-&=\frac{\int_{0}^{2}(x-\mu_1)^4 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{4/2}} \\
-&=\frac{\int_{0}^{2}(x-\frac{3}{2})^4 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{4/2}} \\
+&=\frac{\int_{0}^{2}(x-\mu_1)^4 \cdot \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{4/2}} \\
+&=\frac{\int_{0}^{2}(x-\frac{3}{2})^4 \cdot \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{4/2}} \\
 &=3.10
 \end{align*}$$
 
@@ -1167,13 +1167,21 @@ The prices and dividends of a stock are given as follows.
 
 Determine $R_2$ and $R_4(3)$.
 
->$$\begin{align*}
-R_2&=\frac{P_2-P_1+d_2}{P_1}=0.042 \\
-R_3&=\frac{P_3-P_2+d_3}{P_2}=-0.015 \\
-R_4&=\frac{P_4-P_3+d_4}{P_3}=0.118 \\
+>
+$$\begin{align*}
+R_2&=\frac{P_2-P_1+d_2}{P_1} \\
+&=\frac{54-52+0.2}{52} \\
+&=0.042 \\
+R_3&=\frac{P_3-P_2+d_3}{P_2} \\
+&=\frac{53-54+0.2}{54} \\
+&=-0.015 \\
+R_4&=\frac{P_4-P_3+d_4}{P_3} \\
+&=\frac{59-53+0.25}{53} \\
+&=0.118 \\
 \end{align*}$$
 
->$$\begin{align*}
+>
+$$\begin{align*}
 R_4(3)&=(1+R_4)(1+R_3)(1+R_2)-1 \\
 R_4(3)&=(1+0.118)(1+-0.015)(1+0.042)-1 \\
 &\approx 0.148
@@ -1203,12 +1211,12 @@ Determine the distribution of $r_t(4)$.
 
 >$$\begin{align*}
 r_t(4)&=r_t+r_{t-1}+r_{t-2}+r_{t-3} \\ 
-&\sim 4 \times \mathcal{N}(0.06,0.47) \\
-&\sim  \mathcal{N}(4 \times 0.06,4 \times 0.47) \\
-&\sim \mathcal{N}(0.24,1.88)
+&\sim 4 \cdot \mathcal{N}(0.06,0.47) \\
+&\sim  \mathcal{N}(4 \cdot 0.06,4 \cdot 0.47) \\
+&\sim \mathcal{N}(0.24,1.18)
 \end{align*}$$
 
->Answer: The distribution of $r_t(4)$ is $\mathcal{N}(0.24,1.88)$.
+>Answer: The distribution of $r_t(4)$ is $\mathcal{N}(0.24,1.18)$.
 
 ### Question b {.unnumbered}
 
@@ -1231,7 +1239,8 @@ Determine the distribution of $r_t(3)$ if $r_{t−2} = 0.6$.
 [r_t(3)|r_{t-2}=0.6]&=[r_t+r_{t-1}+r_{t-2}|r_{t-2}=0.6] \\
 &=r_t+r_{t-1}+0.6 \\
 &\sim \mathcal{N}(0.06,0.47)+\mathcal{N}(0.06,0.47)+0.6 \\
-&\sim \mathcal{N}(0.72,0.94)
+&\sim \mathcal{N}(2 \cdot 0.06+0.6, 2 \cdot 0.47) \\
+&\sim \mathcal{N}(0.72, 0.94)
 \end{align*}$$
 
 >Answer: If $r_{t-2}=0.6$, the distribution of $r_t(3)$ is $\mathcal{N}(0.72,0.94)$.
@@ -1240,35 +1249,38 @@ Determine the distribution of $r_t(3)$ if $r_{t−2} = 0.6$.
 
 Assume a stock of current price \$97 with i.i.d. log returns 
 
-$$r_t \sim \mathcal{N}(2 \times 10^{−4}, 9 \times 10^{−4})$$ 
+$$r_t \sim \mathcal{N}(2 \cdot 10^{−4}, 9 \cdot 10^{−4})$$ 
 What is the probability that its price exceeds $\$100$ after 20 trading days?
 
->$$\begin{align*}
+>
+$$\begin{align*}
 \ln \left( \frac{P_{20}}{P_0} \right) &= r_{20}(20) \\
-&= \sum_{t=1}^{20}r_t \\
-&\sim 20 \times \mathcal{N}(2 \times 10^{−4}, 9 \times 10^{−4}) \\
-&\sim  \mathcal{N}(20 \times 2 \times 10^{−4}, 20 \times 9 \times 10^{−4}) \\
-&\sim \mathcal{N}(0.004, 0.018)  \\
-\\
+\ln  P_{20} - \ln P_0 &= \sum_{t=1}^{20}r_t \\
+&\sim 20 \cdot \mathcal{N}(2 \cdot 10^{−4}, 9 \cdot 10^{−4}) \\
+&\sim  \mathcal{N}(20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
+\end{align*}$$
+
+>
+$$\begin{align*}
 \rightarrow \ln(P_{20})&=\ln(P_{0})+r_{20}(20) \\
-&\sim \ln(97)+\mathcal{N}(0.004, 0.018) \\
-&\sim \mathcal{N}(4.579, 0.018)
+&\sim \ln(97)+\mathcal{N}(20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
+&\sim \mathcal{N}(\ln(97)+20 \cdot 2 \cdot 10^{−4}, 20 \cdot 9 \cdot 10^{−4}) \\
 \end{align*}$$
 
->$$\begin{align*}
+>
+$$\begin{align*}
 \mathcal{P}(P_{20}>100)&=\mathcal{P}(\ln(P_{20})>\ln(100)) \\
-&=\mathcal{P} \left(\frac{\ln(P_{20})-4.579}{\sqrt{0.018}} > \frac{\ln(100)-4.579}{\sqrt{0.018}} \right) \\
-&=\mathcal{P} \left(\mathcal{Z} > \frac{\ln(100)-4.579}{\sqrt{0.018}} \right) \\
-&=\mathcal{P} \left(\mathcal{Z} > 0.195 \right) \\
-&=\mathcal{P} \left(\mathcal{Z} < -0.195 \right) \\
-&=0.423
+&=\mathcal{P} \left(\frac{\ln(P_{20})-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} > \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&=\mathcal{P} \left(\mathcal{Z} > \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&=\mathcal{P} \left(\mathcal{Z} < -\frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
+&=0.57817
 \end{align*}$$
 
->Answer: The probability that its price exceeds $\$100$ after 20 trading days is 42.3\%.
+>Answer: The probability that its price exceeds $\$100$ after 20 trading days is 57.817\%.
 
 ## Problem 4 {.unnumbered}
 
-Assume that the log returns $r_t \sim \mathcal{N}(5 \times 10^{−4}, 0.012)$ are i.i.d. Minimize t such that 
+Assume that the log returns $r_t \sim \mathcal{N}(5 \cdot 10^{−4}, 0.012)$ are i.i.d. Minimize t such that 
 
 $$\mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) \geq 0.9$$
 i.e. the probability that the price doubles after t days is at least 90%.
@@ -1276,26 +1288,25 @@ i.e. the probability that the price doubles after t days is at least 90%.
 >$$\begin{align*}
 \ln\left( \frac{P_t}{P_0} \right) &=r_t(t) \\
 &=\sum_{i=1}^{t}r_i \\
-&\sim t \times \mathcal{N}(5 \times 10^{−4}, 0.012) \\
-&\sim  \mathcal{N}(t \times 5 \times 10^{−4},t \times 0.012)
+&\sim t \cdot \mathcal{N}(5 \cdot 10^{−4}, 0.012) \\
+&\sim  \mathcal{N}(t \cdot 5 \cdot 10^{−4},t \cdot 0.012)
 \end{align*}$$
 
 >$$\begin{align*}
 \mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) &= \mathcal{P} \left( \ln \left( \frac{P_t}{P_0} \right)  \geq \ln(2) \right) \\
-&=\mathcal{P} \left(\frac{\ln \left( \frac{P_t}{P_0} \right)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \geq 
-\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \\
+&=\mathcal{P} \left(\frac{\ln \left( \frac{P_t}{P_0} \right)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \geq 
+\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \\
 &=\mathcal{P} \left(\mathcal{Z} \geq 
-\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \\
+\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \\
 &=\mathcal{P} \left(\mathcal{Z} \leq 
--\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right)
+-\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right)
 \end{align*}$$
 
 >$$\begin{align*}
 &\mathcal{P} \left( \frac{P_t}{P_0}  \geq 2\right) \geq 0.9 \\
 &\rightarrow \mathcal{P} \left(\mathcal{Z} \leq 
--\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}} \right) \geq 0.9 \\
-&\rightarrow -\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}}\geq\Phi^{-1}(0.9) \\
-&\rightarrow -\frac{\ln(2)-t \times 5 \times 10^{−4}}{\sqrt{t \times 0.012}}\geq 1.282 \\
+-\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}} \right) \geq 0.9 \\
+&\rightarrow -\frac{\ln(2)-t \cdot 5 \cdot 10^{−4}}{\sqrt{t \cdot 0.012}}\geq\Phi^{-1}(0.9) \\
 &\rightarrow t \geq 81638.20
 \end{align*}$$
 
@@ -1318,27 +1329,29 @@ r_1+r_2 &\sim \mathcal{N}(\mu,\sigma^2)+\mathcal{N}(\mu,\sigma^2) \\
 &\sim \mathcal{N}(2\mu,2\sigma^2)
 \end{align*}$$
 
->$$\begin{align*} 
+>
+$$\begin{align*} 
 \mathbb{P}(X_2>1.3X_0) &= \mathbb{P} \left( \frac{X_2}{X_0}>1.3 \right) \\
 &= \mathbb{P} \left( e^{r_1+r_2}>1.3 \right) \\
 &=\mathbb{P} \left({r_1+r_2}>\ln(1.3) \right) \\
 &=\mathbb{P} \left( \mathcal{Z} > \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right) \\
-&=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
+&=\Phi \left( -\frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)
 \end{align*}$$
 
->Answer: $\mathbb{P}(X_2>1.3X_0)=1-\Phi \left( \frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)$
+>Answer: $\mathbb{P}(X_2>1.3X_0)=\Phi \left( -\frac{\ln(1.3)-2\mu}{\sigma \sqrt{2}} \right)$
 
 ### Question b {.unnumbered}
 
 Find the density $f_{X_1}$ of $X_1$.
 
->$$\begin{align*} 
+>
+$$\begin{align*} 
 F_{X_1}(x) &=\mathbb{P}(X_1 \leq x) \\
 &=\mathbb(X_0e^{r_1} \leq x) \\
 &=\mathbb{P}(r_1 \leq \ln(x)-\ln(X_0) \\
 &=\mathbb{P} \left( \mathcal{Z} \leq \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right) \\
-&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-t^2}{2}}\,dt \\ \rightarrow f_{X_1}(x) &= \frac{1}{\sqrt{2\pi}} \times \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \times e^{\frac{-\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2}{2}} \\
-&=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}
+&=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{\frac{\ln(x)-\ln(X_0)-\mu}{\sigma}} e^{\frac{-1}{2}t^2}\,dt \\ \rightarrow f_{X_1}(x) &= \frac{1}{\sqrt{2\pi}} \cdot \left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)' \cdot e^{-\frac{1}{2}\left( \frac{\ln(x)-\ln(X_0)-\mu}{\sigma} \right)^2} \\
+&=\frac{e^{-\frac{1}{2}\frac{(\ln(x)-\ln(X_0)-\mu)^2}{\sigma^2}}}{\sigma x \sqrt{2\pi}}
 \end{align*}$$
 
 >Answer: $f_{X_1}(x)=\frac{e^{-\frac{(\ln(x)-\ln(X_0)-\mu)^2}{2\sigma^2}}}{\sigma x \sqrt{2\pi}}$
@@ -1349,7 +1362,7 @@ Find a formula for the $0.9$ quantile of $X_k$ for each $k \in \mathbb{N}$.
 
 >Let $x_k$ be the 0.9 quantile of $X_k$
 $$\begin{align*}
-\sum_{i=1}^{k} r_i &\sim k \times \mathcal{N}(\mu,\sigma^2) \\ 
+\sum_{i=1}^{k} r_i &\sim k \cdot \mathcal{N}(\mu,\sigma^2) \\ 
 &\sim \mathcal{N}(k\mu,k\sigma^2) \\ 
 \end{align*}$$
 
@@ -1494,7 +1507,6 @@ A negative skewness indicates a left-skewed distribution, i.e. investors can exp
 
 A positive excess kurtosis indicates a leptokurtic distribution, i.e. it has large outliers. Hence the McDonalds' stock is not desirable for pessimistic investors since chance of experiencing big losses is high.
 
-
 ### R {.unnumbered}
 
 ### Question a {.unnumbered}
@@ -1602,8 +1614,26 @@ $$P(X =−4)= \frac{1}{3}, P(X =1)= \frac{1}{2}, P(X =5)= \frac{1}{6}$$
 Check that $X$ has skewness $0$, but is not distributed symmetrically.
 
 >$$\begin{align*}
-E[X^3] &=\mathbb{P}(X=-4) \times (-4)^3+\mathbb{P}(X=1) \times (1)^3+\mathbb{P}(X=5) \times (5)^3 \\
-&=\frac{1}{3} \times (-64) + \frac{1}{2} \times (1)+\frac{1}{6} \times (125) \\
+E[X] &=\mathbb{P}(X=-4) \cdot (-4)+\mathbb{P}(X=1) \cdot (1)+\mathbb{P}(X=5) \cdot (5) \\
+&=0 
+\end{align*}$$
+
+>$$\begin{align*}
+E[X^2] &=\mathbb{P}(X=-4) \cdot (-4)^2+\mathbb{P}(X=1) \cdot (1)^2+\mathbb{P}(X=5) \cdot (5)^2 \\
+&=\frac{1}{3} \cdot (16) + \frac{1}{2} \cdot (1)+\frac{1}{6} \cdot (25) \\
+&=10 
+\end{align*}$$
+
+>
+$$\begin{align*}
+Var(x) &= E[X^2] - E[X]^2 \\
+&=10-0 \\
+&=10 
+\end{align*}$$
+
+>$$\begin{align*}
+E[X^3] &=\mathbb{P}(X=-4) \cdot (-4)^3+\mathbb{P}(X=1) \cdot (1)^3+\mathbb{P}(X=5) \cdot (5)^3 \\
+&=\frac{1}{3} \cdot (-64) + \frac{1}{2} \cdot (1)+\frac{1}{6} \cdot (125) \\
 &=0 
 \end{align*}$$
 
@@ -1640,7 +1670,7 @@ Prove that correlation is invariant under linear transformations.
 >Let a, b, c, d be constants with ac > 0, then for any random variables X, Y, we have
 $$\begin{align*}
 Corr(aX+b,cY+d)&=\frac{Cov(aX+b,cY++d)}{\sqrt{Var(aX+b)Var(cY+d)}} \\
-&=\frac{ac \times Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
+&=\frac{ac \cdot Cov(X,Y)}{\sqrt{a^2c^2Var(X)Var(Y)}} \\
 &=\frac{Cov(X,Y)}{\sqrt{Var(X)Var(Y)}} \\
 &=Corr(X,Y) 
 \end{align*}$$

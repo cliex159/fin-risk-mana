@@ -105,13 +105,13 @@
 <p>Let <span class="math inline">\(\mathcal{P}_5\)</span> be the probability that after five trading day the investment is worth.</p>
 </blockquote>
 <blockquote>
-<p>The five day log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001 \times 5\)</span> and standard deviation <span class="math inline">\(0.015 \times \sqrt{5}\)</span>: <span class="math inline">\(r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \times 5,0.015 \times \sqrt{5})\)</span>.</p>
+<p>The five day log-return on a stock are independent and normally distributed with mean <span class="math inline">\(0.001 \cdot 5\)</span> and standard deviation <span class="math inline">\(0.015 \cdot \sqrt{5}\)</span>: <span class="math inline">\(r_t=\ln \left( \frac{P_t}{P_{t-1}} \right) \sim \mathcal{N}(0.001 \cdot 5,0.015 \cdot \sqrt{5})\)</span>.</p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mathcal{P}_5&amp;=\mathcal{P}(1000P_t \leq 990 P_{t-5}) \\
 &amp;=\mathcal{P} \left(r_t \leq \ln \left( \frac{990}{1000} \right) \right) \\
-&amp;=\mathcal{P} \left(\frac{r_t-0.001 \times 5}{0.015 \times \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \times 5}{0.015 \times \sqrt{5}} \right) \\
+&amp;=\mathcal{P} \left(\frac{r_t-0.001 \cdot 5}{0.015 \cdot \sqrt{5}}  \leq \frac{\ln\left(  \frac{990}{1000} \right)-0.001 \cdot 5}{0.015 \cdot \sqrt{5}} \right) \\
 &amp;=\mathcal{P} \left(X  \leq -0.4487 \right) \\
 &amp;=0.32682
 \end{align*}\]</span></p>
@@ -134,24 +134,24 @@
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 \mu_1&amp;=\mathbb{E}[X] \\
-&amp;=\int_{0}^{2}x \times \frac{3}{8}x^2\,dx \\
+&amp;=\int_{0}^{2}x \cdot \frac{3}{8}x^2\,dx \\
 &amp;=\frac{3}{2} \\
 \\
 \mu_2&amp;=\mathbb{E}[X^2] \\
-&amp;=\int_{0}^{2}x^2 \times \frac{3}{8}x^2\,dx \\
+&amp;=\int_{0}^{2}x^2 \cdot \frac{3}{8}x^2\,dx \\
 &amp;=\frac{12}{5}
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
 Sk&amp;=\frac{\mathbb{E}[(X-\mu_1)^3]}{\sigma^3} \\
-&amp;=\frac{\int_{0}^{2}(x-\mu_1)^3 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{3/2}} \\
-&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^3 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{3/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\mu_1)^3 \cdot \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{3/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^3 \cdot \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{3/2}} \\
 &amp;=-0.86 \\
 \\
 Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
-&amp;=\frac{\int_{0}^{2}(x-\mu_1)^4 \times \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{4/2}} \\
-&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^4 \times \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{4/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\mu_1)^4 \cdot \frac{3}{8}x^2\,dx}{(\mu_2-\mu_1^2)^{4/2}} \\
+&amp;=\frac{\int_{0}^{2}(x-\frac{3}{2})^4 \cdot \frac{3}{8}x^2\,dx}{\left[ \frac{12}{5}-\left( \frac{3}{2} \right)^2 \right]^{4/2}} \\
 &amp;=3.10
 \end{align*}\]</span></p>
 </blockquote>
@@ -475,7 +475,7 @@ Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-25.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

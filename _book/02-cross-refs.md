@@ -260,7 +260,7 @@ $$\begin{align*}
 \\
 &Var(X_t)=\frac{\sigma_w^2}{1-\phi_1^2} \\
 \\
-&Cov(X_t,X_{t+h})=\gamma(h)=\phi_1^h \times \frac{\sigma_w^2}{1-\phi_1^2} \\
+&Cov(X_t,X_{t+h})=\gamma(h)=\phi_1^h \cdot \frac{\sigma_w^2}{1-\phi_1^2} \\
 \\
 &\rho(h)=\phi_1^h
 \end{align*}$$
@@ -364,7 +364,7 @@ $$ \hat \sigma_t^2=\lambda \hat \sigma_{t-1}^2+(1-\lambda)y_{t-1}^2 $$
 Suppose that $\lambda = 0.9$, the volatility estimated for a market variable for
 day $n − 1$ is $1\%$ per day, and during day $n − 1$ the market variable
 increased by $2\%$. This means that $\sigma_{n-1}^2=0.01^2=0.0001$ and $y_{n-1}^2=0.02^2=0.0004$. From equation (1) we get
-$$\sigma_n^2=0.9 \times 0.0001 + 0.1 \times 0.0004=0.00013 $$
+$$\sigma_n^2=0.9 \cdot 0.0001 + 0.1 \cdot 0.0004=0.00013 $$
 The estimate of the volatility for day $n$ is $\sigma_n = \sqrt{0.00013} = 1.4\%$ per
    day. Note that the expected value of $y_{n-1}^2$ is $\sigma_{n-1}^2= 0.0001$. Hence, realized value of $y_{n−1}^2 = 0.0002$ is greater that expected value, and as a
 result our volatility estimate increase. If the realized value of $y_{n−1}^2$ has been less than its expected valued, our estimate of the volatility would have decreased.
@@ -555,7 +555,7 @@ $$ \sigma^2(T)=252 \left( \sigma^2+\frac{1-e^{-aT}}{aT} [V(0)-\sigma^2] \right) 
 assume that $V(0) = 0.0003$ we have
 $$ \sigma^2=\frac{0.0000013465}{1 − 0.083394 − 0.910116}=0.0002073 $$
 and $a = \ln \left( \frac{1}{0.99351} \right) = 0.00651$. Hence,
-$$ \sigma^2(T)=252 \left( 0.0002073+\frac{1-e^{-0.00651 \times T}}{0.00651 \times T}[0.0003-0.0002073] \right) $$
+$$ \sigma^2(T)=252 \left( 0.0002073+\frac{1-e^{-0.00651 \cdot T}}{0.00651 \cdot T}[0.0003-0.0002073] \right) $$
 
 For the option life (days) T = 10, 30, 50, 100, 500, we obtain the option
 volatility ($\%$ per annum)
@@ -1337,36 +1337,24 @@ Consider the $MA(q)$.
 
 Calculate autocovariance $\gamma(h)$ and ACF $\rho(h)$.
 
->$$\begin{align*}
-\gamma(0)&=Var(X_t) \\
-&=Var(\omega_t)+\sum_{j=1}^{q} \theta_j^2 \times Var(\omega_{t-j}) \\
-&=\sigma^2 \left(1+ \sum_{j=1}^q \theta_j^2 \right)
-\end{align*}$$
+>Note that MA(q) is stationary since it is a linear combination of stationary
+processes. Note that, white noise has
+$$\gamma(0)=Cov(\epsilon_t,\epsilon_{t})=\sigma^2 $$ 
+and $ \gamma(h)=0 $ if $h \neq 0$. For more simple we assume that $E[X_t] = 0$. So we have the
+autocovariance is
 
 >$$\begin{align*}
-\gamma(h)&=Cov(X_t,X_{t-h}) \\
-&=Cov \left(\omega_t+\sum_{j=1}^{q} \theta_j \omega_{t-j},\omega_{t-h}+\sum_{j=1}^{q} \theta_j \omega_{t-h-j} \right) \\
-&=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)
+\gamma(h) &= Cov(X_t,X_{t+h}) \\
+&=Cov(\sum_{i=1}^q \theta_i \epsilon_{t-i},\sum_{j=1}^q \theta_j \epsilon_{t+h-j}) \\
+&= \sum_{i=1}^q \sum_{j=1}^q \theta_i \theta_j Cov(\epsilon_{t-i},\epsilon_{t+h-j}) \\
+&= \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}\sigma^2, |h| \leq q
 \end{align*}$$
-
->$$ \rho(h)=\frac{\gamma(h)}{\gamma(0)}=\begin{cases}
-    1 & h=0\\
-    \frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)} & 1 \leq h \leq q\\
-    0 & h>q
-  \end{cases} $$
-
->Answer: $$\begin{align*}
-\gamma(h) &=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right) \\
-\rho(h) &=\begin{cases}
-    1, & h=0.\\
-    \frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)}, & 1 \leq h \leq q.\\
-    0, & h>q.
-  \end{cases}
-  \end{align*}$$
+Hence,
+$$ \rho(h) = \frac{\sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}\sigma^2}{\sum_{i=0}^{q}\theta_i^2} $$ and $\rho(h)=0$ for $|h| > q$
 
 ### Question b {.unnumbered} 
   
-  Show that the MA(1) processes $X_t$ and $Y_t$
+Show that the MA(1) processes $X_t$ and $Y_t$
 $$\begin{align*}
 X_t = \beta \epsilon_{t−1} + \epsilon_t \\ 
 Y_t = \frac{1}{\beta} \epsilon_{t−1} + \epsilon_t \\ 
@@ -1379,7 +1367,7 @@ and $\rho_h=0, \forall h \geq 2$
 
 >Consider the $MA(1)$ model $Y_t=\frac{1}{\beta} \epsilon_{t-1}+\epsilon_t$. The coefficient $\theta_1=\frac{1}{\beta}$. The ACF is given by
 $$\begin{align*} \rho_1&=\frac{\frac{1}{\beta}}{1+\left(\frac{1}{\beta}\right)^2} \\
-&=\frac{1}{\beta} \times \frac{\beta^2}{1+\beta^2} \\
+&=\frac{1}{\beta} \cdot \frac{\beta^2}{1+\beta^2} \\
 &=\frac{\beta}{1+\beta^2}, (2) 
 \end{align*}$$
 and $\rho_h=0, \forall h \geq 2$ 
@@ -1395,25 +1383,34 @@ Consider process $Y_t = X_t − X_{t−1}$.
 
 a) Is the process $Y_t$ stationary
 
->$$\begin{align*}
+>
+$$\begin{align*}
 \mathbb{E}(Y_t)&=\mathbb{E}(X_t)-\mathbb{E}(X_{t-1}) \\
 &=0 \\
 Var(Y_t) &=Var(X_t-X_{t=1}) \\
-&=Var(X_t)+Var(x_{t-1})-2Cov(X_t,X_{t-1}) \\
+&=Var(X_t)+Var(X_{t-1})-2Cov(X_t,X_{t-1}) \\
 &=2\sigma_x^2-2\gamma_x(1) < \infty \\
-Cov(Y_t,Y_{t-k})&=Cov(X_t-X_{t-1},X_{t-k}-X_{t-k-1}) \\
-&=Cov(X_t,X_{t-k})-Cov(X_{t-1},X_{t-k})-Cov(X_t,X_{t-k-1})+Cov(X_{t-1},X_{t-k-1}) \\
-&=2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1)) \\
-&=\gamma_y(k)
+Cov(Y_t,Y_{t+h})&=Cov(X_t-X_{t-1},X_{t+h}-X_{t+h-1}) \\
+&=Cov(X_t,X_{t+h}) 
+-Cov(X_t,X_{t+h-1}) 
+-Cov(X_{t-1},X_{t+h})
++Cov(X_{t-1},X_{t+h-1}) \\
+&=\gamma(h)-\gamma(h-1)-\gamma(h+1)+\gamma(h) \\
+&=2\gamma(h)-\gamma(h-1)-\gamma(h+1)
 \end{align*}$$
 
 >Answer: $\{Yt\}$ is a weakly stationary proces
 
 b) Find the autocorrelation function of $Y_t$
 
->$$ \rho_y(h)=\frac{\gamma_y(h)}{\gamma_y(0)}=\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)} $$
+>
+$$\begin{align*}
+\rho(h)&=\rho_h(Y_t) \\
+&=\frac{\gamma(h)}{\gamma(0)} \\
+&=\frac{2\gamma(h)-\gamma(h-1)-\gamma(h+1)}{2 (\gamma(0)-\gamma(1))} 
+\end{align*}$$
 
->Answer: The autocorrelation function of $Y_t$ is $\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)}$
+>Answer: The autocorrelation function of $Y_t$ is $\frac{2\gamma(h)-\gamma(h-1)-\gamma(h+1)}{2 (\gamma(0)-\gamma(1))}$
 
 ## Problem 4 {.unnumbered} 
 
@@ -1421,16 +1418,34 @@ Find the autocorrelation function of the second order moving average process $MA
 $$X_t = 0.5 \epsilon_{t−1} − 0.2 \epsilon_{t−2} + \epsilon_t$$
 where $\epsilon_t$ is the white noise.
 
->$$\begin{align*}
-\gamma(0)&=Var(X_t)=0.5^2 \sigma^2 +0.2^2 \sigma^2+\sigma^2 \\
+>Apply problem $2$ with $q=2$, we have
+$$ \gamma(h)=\sum_{i=0}^{2-|h|}\theta_i \theta_{i+|h|}\sigma^2, |h| \leq 2 $$
+Hence,
+$$\begin{align*}
+\gamma(0) &= (\theta_0^2 + \theta_1^2 + \theta_2^2) \sigma^2 \\
+&=(0.5^2 + 0.2^2 +1)\sigma^2 \\
+&=1.29 \sigma^2 \\
+\gamma(1) &= (\theta_0 \theta_1 + \theta_1 \theta_2) \sigma^2 \\
+&=(1 \cdot 0.5   - 0.5 \cdot 0.2 )\sigma^2 \\
+&=0.4 \sigma^2 \\
+\gamma(2) &= \theta_0 \theta_2 \sigma^2 \\
+&=-0.2 \sigma^2 \\
+\end{align*}$$
+
+>
+$$\begin{align*}
+\gamma(0)&=Var(X_t) \\
+&=0.5^2 \sigma^2 +0.2^2 \sigma^2+\sigma^2 \\
+&=(0.5^2 + 0.2^2 +1)\sigma^2 \\
 &=1.29 \sigma^2 \\
 \gamma(1) &=Cov(X_t,X_{t-1}) \\
 &=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-2} -0.2\epsilon_{t-3}+\epsilon_{t-1}) \\
-&=0.5Var(\epsilon_{t-1})-0.1Var(\epsilon_{t-2}) \\
+&=0.5 \cdot 1 Var(\epsilon_{t-1})-0.2 \cdot 0.5 Var(\epsilon_{t-2}) \\
+&=(0.5 \cdot 1 -0.2 \cdot 0.5)\sigma^2 \\
 &=0.4 \sigma^2 \\
 \gamma(2) &=Cov(X_t,X_{t-2}) \\
 &=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-3} -0.2\epsilon_{t-4}+\epsilon_{t-2}) \\
-&=-0.2Var(\epsilon_{t-2}) \\
+&=-0.2\cdot 1Var(\epsilon_{t-2}) \\
 &=-0.2 \sigma^2
 \end{align*}$$
 

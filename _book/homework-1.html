@@ -209,35 +209,21 @@
 </h3>
 <p>Calculate autocovariance <span class="math inline">\(\gamma(h)\)</span> and ACF <span class="math inline">\(\rho(h)\)</span>.</p>
 <blockquote>
-<p><span class="math display">\[\begin{align*}
-\gamma(0)&amp;=Var(X_t) \\
-&amp;=Var(\omega_t)+\sum_{j=1}^{q} \theta_j^2 \times Var(\omega_{t-j}) \\
-&amp;=\sigma^2 \left(1+ \sum_{j=1}^q \theta_j^2 \right)
-\end{align*}\]</span></p>
+<p>Note that MA(q) is stationary since it is a linear combination of stationary
+processes. Note that, white noise has
+<span class="math display">\[\gamma(0)=Cov(\epsilon_t,\epsilon_{t})=\sigma^2 \]</span>
+and $ (h)=0 $ if <span class="math inline">\(h \neq 0\)</span>. For more simple we assume that <span class="math inline">\(E[X_t] = 0\)</span>. So we have the
+autocovariance is</p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
-\gamma(h)&amp;=Cov(X_t,X_{t-h}) \\
-&amp;=Cov \left(\omega_t+\sum_{j=1}^{q} \theta_j \omega_{t-j},\omega_{t-h}+\sum_{j=1}^{q} \theta_j \omega_{t-h-j} \right) \\
-&amp;=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)
-\end{align*}\]</span></p>
-</blockquote>
-<blockquote>
-<p><span class="math display">\[ \rho(h)=\frac{\gamma(h)}{\gamma(0)}=\begin{cases}
-1 &amp; h=0\\
-\frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)} &amp; 1 \leq h \leq q\\
-0 &amp; h&gt;q
-\end{cases} \]</span></p>
-</blockquote>
-<blockquote>
-<p>Answer: <span class="math display">\[\begin{align*}
-\gamma(h) &amp;=\sigma^2 \left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right) \\
-\rho(h) &amp;=\begin{cases}
-1, &amp; h=0.\\
-\frac{\left(\theta_h+ \sum_{i=1}^{q-h} \theta_i \theta_{h+i} \right)}{\left(1+ \sum_{j=1}^q \theta_j^2 \right)}, &amp; 1 \leq h \leq q.\\
-0, &amp; h&gt;q.
-\end{cases}
-\end{align*}\]</span></p>
+\gamma(h) &amp;= Cov(X_t,X_{t+h}) \\
+&amp;=Cov(\sum_{i=1}^q \theta_i \epsilon_{t-i},\sum_{j=1}^q \theta_j \epsilon_{t+h-j}) \\
+&amp;= \sum_{i=1}^q \sum_{j=1}^q \theta_i \theta_j Cov(\epsilon_{t-i},\epsilon_{t+h-j}) \\
+&amp;= \sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}\sigma^2, |h| \leq q
+\end{align*}\]</span>
+Hence,
+<span class="math display">\[ \rho(h) = \frac{\sum_{i=0}^{q-|h|} \theta_i \theta_{i+|h|}\sigma^2}{\sum_{i=0}^{q}\theta_i^2} \]</span> and <span class="math inline">\(\rho(h)=0\)</span> for <span class="math inline">\(|h| &gt; q\)</span></p>
 </blockquote>
 </div>
 <div id="question-b-7" class="section level3 unnumbered">
@@ -257,7 +243,7 @@ and <span class="math inline">\(\rho_h=0, \forall h \geq 2\)</span></p>
 <blockquote>
 <p>Consider the <span class="math inline">\(MA(1)\)</span> model <span class="math inline">\(Y_t=\frac{1}{\beta} \epsilon_{t-1}+\epsilon_t\)</span>. The coefficient <span class="math inline">\(\theta_1=\frac{1}{\beta}\)</span>. The ACF is given by
 <span class="math display">\[\begin{align*} \rho_1&amp;=\frac{\frac{1}{\beta}}{1+\left(\frac{1}{\beta}\right)^2} \\
-&amp;=\frac{1}{\beta} \times \frac{\beta^2}{1+\beta^2} \\
+&amp;=\frac{1}{\beta} \cdot \frac{\beta^2}{1+\beta^2} \\
 &amp;=\frac{\beta}{1+\beta^2}, (2)
 \end{align*}\]</span>
 and <span class="math inline">\(\rho_h=0, \forall h \geq 2\)</span></p>
@@ -283,12 +269,15 @@ Consider process <span class="math inline">\(Y_t = X_t − X_{t−1}\)</span>.</
 \mathbb{E}(Y_t)&amp;=\mathbb{E}(X_t)-\mathbb{E}(X_{t-1}) \\
 &amp;=0 \\
 Var(Y_t) &amp;=Var(X_t-X_{t=1}) \\
-&amp;=Var(X_t)+Var(x_{t-1})-2Cov(X_t,X_{t-1}) \\
+&amp;=Var(X_t)+Var(X_{t-1})-2Cov(X_t,X_{t-1}) \\
 &amp;=2\sigma_x^2-2\gamma_x(1) &lt; \infty \\
-Cov(Y_t,Y_{t-k})&amp;=Cov(X_t-X_{t-1},X_{t-k}-X_{t-k-1}) \\
-&amp;=Cov(X_t,X_{t-k})-Cov(X_{t-1},X_{t-k})-Cov(X_t,X_{t-k-1})+Cov(X_{t-1},X_{t-k-1}) \\
-&amp;=2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1)) \\
-&amp;=\gamma_y(k)
+Cov(Y_t,Y_{t+h})&amp;=Cov(X_t-X_{t-1},X_{t+h}-X_{t+h-1}) \\
+&amp;=Cov(X_t,X_{t+h})
+-Cov(X_t,X_{t+h-1})
+-Cov(X_{t-1},X_{t+h})
++Cov(X_{t-1},X_{t+h-1}) \\
+&amp;=\gamma(h)-\gamma(h-1)-\gamma(h+1)+\gamma(h) \\
+&amp;=2\gamma(h)-\gamma(h-1)-\gamma(h+1)
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
@@ -299,10 +288,14 @@ Cov(Y_t,Y_{t-k})&amp;=Cov(X_t-X_{t-1},X_{t-k}-X_{t-k-1}) \\
 </li>
 </ol>
 <blockquote>
-<p><span class="math display">\[ \rho_y(h)=\frac{\gamma_y(h)}{\gamma_y(0)}=\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)} \]</span></p>
+<p><span class="math display">\[\begin{align*}
+\rho(h)&amp;=\rho_h(Y_t) \\
+&amp;=\frac{\gamma(h)}{\gamma(0)} \\
+&amp;=\frac{2\gamma(h)-\gamma(h-1)-\gamma(h+1)}{2 (\gamma(0)-\gamma(1))}
+\end{align*}\]</span></p>
 </blockquote>
 <blockquote>
-<p>Answer: The autocorrelation function of <span class="math inline">\(Y_t\)</span> is <span class="math inline">\(\frac{2\gamma_x(k)-\gamma_x(k-1-\gamma_x(k+1))}{2 \sigma_x^2-2\gamma_x(1)}\)</span></p>
+<p>Answer: The autocorrelation function of <span class="math inline">\(Y_t\)</span> is <span class="math inline">\(\frac{2\gamma(h)-\gamma(h-1)-\gamma(h+1)}{2 (\gamma(0)-\gamma(1))}\)</span></p>
 </blockquote>
 </div>
 <div id="problem-4-1" class="section level2 unnumbered">
@@ -312,16 +305,34 @@ Cov(Y_t,Y_{t-k})&amp;=Cov(X_t-X_{t-1},X_{t-k}-X_{t-k-1}) \\
 <span class="math display">\[X_t = 0.5 \epsilon_{t−1} − 0.2 \epsilon_{t−2} + \epsilon_t\]</span>
 where <span class="math inline">\(\epsilon_t\)</span> is the white noise.</p>
 <blockquote>
+<p>Apply problem <span class="math inline">\(2\)</span> with <span class="math inline">\(q=2\)</span>, we have
+<span class="math display">\[ \gamma(h)=\sum_{i=0}^{2-|h|}\theta_i \theta_{i+|h|}\sigma^2, |h| \leq 2 \]</span>
+Hence,
+<span class="math display">\[\begin{align*}
+\gamma(0) &amp;= (\theta_0^2 + \theta_1^2 + \theta_2^2) \sigma^2 \\
+&amp;=(0.5^2 + 0.2^2 +1)\sigma^2 \\
+&amp;=1.29 \sigma^2 \\
+\gamma(1) &amp;= (\theta_0 \theta_1 + \theta_1 \theta_2) \sigma^2 \\
+&amp;=(1 \cdot 0.5   - 0.5 \cdot 0.2 )\sigma^2 \\
+&amp;=0.4 \sigma^2 \\
+\gamma(2) &amp;= \theta_0 \theta_2 \sigma^2 \\
+&amp;=-0.2 \sigma^2 \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
 <p><span class="math display">\[\begin{align*}
-\gamma(0)&amp;=Var(X_t)=0.5^2 \sigma^2 +0.2^2 \sigma^2+\sigma^2 \\
+\gamma(0)&amp;=Var(X_t) \\
+&amp;=0.5^2 \sigma^2 +0.2^2 \sigma^2+\sigma^2 \\
+&amp;=(0.5^2 + 0.2^2 +1)\sigma^2 \\
 &amp;=1.29 \sigma^2 \\
 \gamma(1) &amp;=Cov(X_t,X_{t-1}) \\
 &amp;=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-2} -0.2\epsilon_{t-3}+\epsilon_{t-1}) \\
-&amp;=0.5Var(\epsilon_{t-1})-0.1Var(\epsilon_{t-2}) \\
+&amp;=0.5 \cdot 1 Var(\epsilon_{t-1})-0.2 \cdot 0.5 Var(\epsilon_{t-2}) \\
+&amp;=(0.5 \cdot 1 -0.2 \cdot 0.5)\sigma^2 \\
 &amp;=0.4 \sigma^2 \\
 \gamma(2) &amp;=Cov(X_t,X_{t-2}) \\
 &amp;=Cov(0.5 \epsilon_{t-1} - 0.2 \epsilon_{t-2}+\epsilon_t,0.5 \epsilon_{t-3} -0.2\epsilon_{t-4}+\epsilon_{t-2}) \\
-&amp;=-0.2Var(\epsilon_{t-2}) \\
+&amp;=-0.2\cdot 1Var(\epsilon_{t-2}) \\
 &amp;=-0.2 \sigma^2
 \end{align*}\]</span></p>
 </blockquote>
@@ -1545,7 +1556,7 @@ volatility of the returns and then give your conclusions.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-03-25.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

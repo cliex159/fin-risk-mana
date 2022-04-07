@@ -102,7 +102,7 @@ simple=map(1:9,
                  size=250, 
                  replace=T,
                  prob=c(0.5,0.5)) %>% 
-              cumsum())
+              cumsum)
 ```
 
 
@@ -138,7 +138,7 @@ If the steps follow standard normal distribution, i.e. $Z \sim \mathcal{N}(0,1)$
 library(tidyverse)
 normal=map(1:9,
               ~rnorm(250,0,1) %>% 
-              cumsum()) 
+              cumsum) 
 ```
 
 
@@ -178,10 +178,10 @@ If the steps are normally distributed, i.e. $X \sim \mathcal{N}(\mu,\sigma)$, th
 library(tidyverse)
 drift=map(1:9,
               ~rnorm(250,1,5) %>% 
-              cumsum()) 
+              cumsum)
 
 par(mfrow=c(3,3))
-plots=drift %>% 
+plots= drift %>% 
   map(
       plot,         
       type="l", 
@@ -280,8 +280,8 @@ mcd = tq_get('MCD',
                get = "stock.prices")
 
 mcd_logret=mcd$adjusted %>% 
-  log() %>% 
-  diff()
+  log %>% 
+  diff
 
 plot(mcd$date[-1],mcd_logret,type="l",col="blue")
 ```
@@ -914,7 +914,9 @@ head(eurusd)
 ```
 
 ```r
-eurusd_logret=eurusd[,2] %>% log() %>% diff()
+eurusd_logret=eurusd[,2] %>% 
+  log %>% 
+  diff
 head(eurusd_logret)
 ```
 
@@ -982,7 +984,9 @@ head(sp500)
 ```
 
 ```r
-sp500_logret= sp500$Adj.Close %>% log() %>% diff()
+sp500_logret= sp500$Adj.Close %>% 
+  log %>% 
+  diff
 head(sp500_logret)
 ```
 
@@ -1523,8 +1527,8 @@ mcd=read.csv(mcd_url)
 
 # Calculate log return
 mcd_logret= mcd$Adj.Close %>% 
-  log() %>% 
-  diff()
+  log %>% 
+  diff
 head(mcd_logret)
 ```
 

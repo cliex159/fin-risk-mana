@@ -1178,14 +1178,16 @@ volatility of the returns and then give your conclusions.</p>
 <p>Note that If the residuals have a mean other than zero, then the forecasts are biased. Now using this fact you can check the mean of residuals of AR<span class="math inline">\((1)\)</span> for price and return to see that you can not apply AR<span class="math inline">\((1)\)</span> directly for price.</p>
 <div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Check the mean of residuals</span>
-<span class="va">ar1_price</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+<span class="va">ar1_price</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">na.omit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">mean</span></code></pre></div>
 <pre><code>#&gt; [1] 1.131751</code></pre>
 <div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Check the mean of residuals</span>
-<span class="va">ar1_y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+<span class="va">ar1_y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">na.omit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">mean</span></code></pre></div>
@@ -1194,7 +1196,8 @@ volatility of the returns and then give your conclusions.</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Plot ACF of the residuals</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
-<span class="va">ar1_y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+<span class="va">ar1_y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">residuals</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">na.omit</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">acf</span></code></pre></div>
@@ -1285,7 +1288,7 @@ volatility of the returns and then give your conclusions.</p>
                        mean.model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>armaOrder <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>,
                                        include.mean <span class="op">=</span> <span class="cn">T</span>,
                                        distribution.model <span class="op">=</span> <span class="st">"norm"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">garch_fit</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rugarch/man/ugarchfit-methods.html">ugarchfit</a></span><span class="op">(</span><span class="va">garch_spec</span>,<span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">c</span><span class="op">)</span>
+<span class="va">garch_fit</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rugarch/man/ugarchfit-methods.html">ugarchfit</a></span><span class="op">(</span><span class="va">garch_spec</span>, <span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">c</span><span class="op">)</span>
 <span class="va">garch_fit</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; *---------------------------------*
@@ -1378,7 +1381,7 @@ volatility of the returns and then give your conclusions.</p>
 #&gt; 4    50     222.6    5.796e-24
 #&gt; 
 #&gt; 
-#&gt; Elapsed time : 0.2256851</code></pre>
+#&gt; Elapsed time : 0.21032</code></pre>
 <div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># TGARCH(1,1)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.unstarched.net">rugarch</a></span><span class="op">)</span>
@@ -1387,7 +1390,7 @@ volatility of the returns and then give your conclusions.</p>
                        mean.model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>armaOrder <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>,
                                        include.mean <span class="op">=</span> <span class="cn">T</span>,
                                        distribution.model <span class="op">=</span> <span class="st">"std"</span><span class="op">)</span><span class="op">)</span>
-<span class="va">tgarch_fit</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rugarch/man/ugarchfit-methods.html">ugarchfit</a></span><span class="op">(</span><span class="va">tgarch_spec</span>,<span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">c</span><span class="op">)</span>
+<span class="va">tgarch_fit</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/rugarch/man/ugarchfit-methods.html">ugarchfit</a></span><span class="op">(</span><span class="va">tgarch_spec</span>, <span class="va">y</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">coredata</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="va">c</span><span class="op">)</span>
 <span class="va">tgarch_fit</span></code></pre></div>
 <pre><code>#&gt; 
 #&gt; *---------------------------------*
@@ -1480,7 +1483,7 @@ volatility of the returns and then give your conclusions.</p>
 #&gt; 4    50     222.6    5.796e-24
 #&gt; 
 #&gt; 
-#&gt; Elapsed time : 0.155931</code></pre>
+#&gt; Elapsed time : 0.360929</code></pre>
 <p>AIC from t-GARCH<span class="math inline">\((1,1)\)</span> is the smallest so we can conclude that t-GARCH<span class="math inline">\((1,1)\)</span> is the best model.</p>
 
 </div>

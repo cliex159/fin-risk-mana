@@ -273,7 +273,9 @@ Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
 #&gt; 5 02/08/2005       1.2217
 #&gt; 6 03/08/2005       1.2308</code></pre>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">eurusd_logret</span><span class="op">=</span><span class="va">eurusd</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">eurusd_logret</span><span class="op">=</span><span class="va">eurusd</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">diff</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">eurusd_logret</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1]  0.0091324836 -0.0005786798  0.0103653445 -0.0001636929  0.0074210330
 #&gt; [6]  0.0008933285</code></pre>
@@ -312,7 +314,9 @@ Kur&amp;=\frac{\mathbb{E}[(X-\mu_1)^4]}{\sigma^4} \\
 #&gt; 5 01/09/1985 163.99 165.57 163.99 165.18  99230000    165.18
 #&gt; 6  1/10/1985 165.18 168.31 164.99 168.31 124700000    168.31</code></pre>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sp500_logret</span><span class="op">=</span> <span class="va">sp500</span><span class="op">$</span><span class="va">Adj.Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">sp500_logret</span><span class="op">=</span> <span class="va">sp500</span><span class="op">$</span><span class="va">Adj.Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">diff</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">sp500_logret</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1] -0.005422709  0.003415471 -0.001523322  0.007230338  0.018771729
 #&gt; [6] -0.002379396</code></pre>

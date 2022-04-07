@@ -2481,7 +2481,8 @@ Note that If the residuals have a mean other than zero, then the forecasts are b
 
 ```r
 # Check the mean of residuals
-ar1_price %>% residuals %>% 
+ar1_price %>% 
+  residuals %>% 
   coredata %>% 
   na.omit %>% 
   mean
@@ -2494,7 +2495,8 @@ ar1_price %>% residuals %>%
 
 ```r
 # Check the mean of residuals
-ar1_y %>% residuals %>% 
+ar1_y %>% 
+  residuals %>% 
   coredata %>% 
   na.omit %>% 
   mean
@@ -2510,7 +2512,8 @@ Check independence of residuals fitted AR$(1)$, are they independence or not?
 ```r
 # Plot ACF of the residuals
 library(stats)
-ar1_y %>% residuals %>% 
+ar1_y %>% 
+  residuals %>% 
   coredata %>% 
   na.omit %>% 
   acf
@@ -2617,7 +2620,7 @@ garch_spec = ugarchspec(variance.model = list(model = "sGARCH",
                        mean.model = list(armaOrder = c(0,0),
                                        include.mean = T,
                                        distribution.model = "norm"))
-garch_fit = ugarchfit(garch_spec,y %>% coredata %>% c)
+garch_fit = ugarchfit(garch_spec, y %>% coredata %>% c)
 garch_fit
 ```
 
@@ -2713,7 +2716,7 @@ garch_fit
 #> 4    50     222.6    5.796e-24
 #> 
 #> 
-#> Elapsed time : 0.2256851
+#> Elapsed time : 0.21032
 ```
 
 
@@ -2725,7 +2728,7 @@ tgarch_spec = ugarchspec(variance.model = list(model = "sGARCH",
                        mean.model = list(armaOrder = c(0,0),
                                        include.mean = T,
                                        distribution.model = "std"))
-tgarch_fit = ugarchfit(tgarch_spec,y %>% coredata %>% c)
+tgarch_fit = ugarchfit(tgarch_spec, y %>% coredata %>% c)
 tgarch_fit
 ```
 
@@ -2821,7 +2824,7 @@ tgarch_fit
 #> 4    50     222.6    5.796e-24
 #> 
 #> 
-#> Elapsed time : 0.155931
+#> Elapsed time : 0.360929
 ```
 
 AIC from t-GARCH$(1,1)$ is the smallest so we can conclude that t-GARCH$(1,1)$ is the best model.

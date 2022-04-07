@@ -446,8 +446,8 @@ F_{X_1}(x) &amp;=\mathbb{P}(X_1 \leq x) \\
 
 <span class="co"># Calculate log return</span>
 <span class="va">mcd_logret</span><span class="op">=</span> <span class="va">mcd</span><span class="op">$</span><span class="va">Adj.Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="va">log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="va">diff</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">mcd_logret</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1] -0.0076229801 -0.0137181518  0.0073522812 -0.0009395848  0.0076786593
 #&gt; [6]  0.0053958639</code></pre>

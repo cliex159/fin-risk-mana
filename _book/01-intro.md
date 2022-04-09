@@ -1277,10 +1277,10 @@ $$\begin{align*}
 &=\mathcal{P} \left(\frac{\ln(P_{20})-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} > \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
 &=\mathcal{P} \left(\mathcal{Z} > \frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
 &=\mathcal{P} \left(\mathcal{Z} < -\frac{\ln(100)-(\ln(97)+20 \cdot 2 \cdot 10^{−4})}{\sqrt{20 \cdot 9 \cdot 10^{−4})}} \right) \\
-&=0.57817
+&=0.42183
 \end{align*}$$
 
->Answer: The probability that its price exceeds $\$100$ after 20 trading days is 57.817\%.
+>Answer: The probability that its price exceeds $\$100$ after 20 trading days is 42.183\%.
 
 ## Problem 4 {.unnumbered}
 

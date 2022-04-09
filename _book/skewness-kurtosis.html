@@ -1,33 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 4 Skewness &amp; Kurtosis | FRM2</title>
-<meta name="author" content="Tran Thanh Dat">
-<meta name="description" content="Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are...">
-<meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 4 Skewness &amp; Kurtosis | FRM2">
-<meta property="og:type" content="book">
-<meta property="og:description" content="Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 4 Skewness &amp; Kurtosis | FRM2">
-<meta name="twitter:description" content="Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 5 Skewness &amp; Kurtosis | FRM2</title>
+
+    <meta name="author" content="Tran Thanh Dat" />
+  
+   <meta name="description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 5 Skewness &amp; Kurtosis | FRM2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Skewness &amp; Kurtosis | FRM2" />
+  
+  <meta name="twitter:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.3.1/transition.js"></script>
+    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<link rel="stylesheet" href="bs4_style.css">
+      <link rel="stylesheet" href="bs4_style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -39,226 +69,166 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Course Descripition</a></li>
-<li class="book-part">Chapter 1 Price and Risk</li>
-<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
-<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
-<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
-<li><a class="active" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
-<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
-<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
-<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
-<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
-<li class="book-part">Chapter 2 Univariate Volatility</li>
-<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
-<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
-<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
-<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
-<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
-<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
-<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="skewness-kurtosis" class="section level1" number="4">
-<h1>
-<span class="header-section-number">4</span> Skewness &amp; Kurtosis<a class="anchor" aria-label="anchor" href="#skewness-kurtosis"><i class="fas fa-link"></i></a>
-</h1>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="skewness-kurtosis" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Skewness &amp; Kurtosis</h1>
 <p>Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are typically heavy tailed and thus these results are in question.</p>
 <p>Skewness, kurtosis are important descriptive statistics of data distribution that answer that question. While skewness essentially measures the symmetry of the distribution, kurtosis determines the heaviness of the distribution tails.</p>
-<div id="skewness" class="section level2" number="4.1">
-<h2>
-<span class="header-section-number">4.1</span> Skewness<a class="anchor" aria-label="anchor" href="#skewness"><i class="fas fa-link"></i></a>
-</h2>
+<div id="skewness" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Skewness</h2>
 <center>
 <img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/13.png" alt="" width="50%" height="50%">
 </center>
 <div id="definition" class="section level3 unnumbered">
-<h3>Definition<a class="anchor" aria-label="anchor" href="#definition"><i class="fas fa-link"></i></a>
-</h3>
+<h3>Definition</h3>
 <p>The skewness of a random variable X is
 <span class="math display">\[S_k= \mathbb{E}  \left\{ \frac{X-\mathbb{E}[X]}{\sigma} \right\}^3=\frac{\mathbb{E}[(X-\mathbb{E}[X])^3]}{\sigma^3} \]</span>
 Skewness measures the degree of asymmetry.</p>
 </div>
 <div id="types-of-skewness" class="section level3 unnumbered">
-<h3>Types of skewness<a class="anchor" aria-label="anchor" href="#types-of-skewness"><i class="fas fa-link"></i></a>
-</h3>
+<h3>Types of skewness</h3>
 <center>
 <img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/14.png" alt="" width="50%" height="50%">
 </center>
 </div>
-<div id="symmetric-distribution" class="section level3" number="4.1.1">
-<h3>
-<span class="header-section-number">4.1.1</span> Symmetric distribution<a class="anchor" aria-label="anchor" href="#symmetric-distribution"><i class="fas fa-link"></i></a>
-</h3>
+<div id="symmetric-distribution" class="section level3" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> Symmetric distribution</h3>
 <p><span class="math inline">\(S_k=0\)</span> indicated a symmetric distribution, i.e., normal distribution or t distribution.</p>
 <h4>
 Normal distribution
-<a class="anchor" aria-label="anchor" href="#symmetric-distribution"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="va">n</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="skewness-kurtosis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb12-2"><a href="skewness-kurtosis.html#cb12-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb12-3"><a href="skewness-kurtosis.html#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(n)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="skewness-kurtosis.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="fu">skewness</span>(n),<span class="fu">mean</span>(n),<span class="fu">median</span>(n)))</span></code></pre></div>
 <pre><code>#&gt; [1] 0.047825380 0.029595494 0.009449741</code></pre>
 <p>Since <span class="math inline">\(skewness=0.05\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.03\)</span> approximately equal <span class="math inline">\(median=0.01\)</span>.</p>
 <h4>
 t distribution
-<a class="anchor" aria-label="anchor" href="#symmetric-distribution"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="va">t</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>,df<span class="op">=</span><span class="fl">10</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="skewness-kurtosis.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb15-2"><a href="skewness-kurtosis.html#cb15-2" aria-hidden="true" tabindex="-1"></a>t<span class="ot">=</span><span class="fu">rt</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">df=</span><span class="dv">10</span>)</span>
+<span id="cb15-3"><a href="skewness-kurtosis.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(t)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="skewness-kurtosis.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="fu">skewness</span>(t),<span class="fu">mean</span>(t),<span class="fu">median</span>(t)))</span></code></pre></div>
 <pre><code>#&gt; [1] -0.01340383  0.04197639  0.03867323</code></pre>
 <p>Since <span class="math inline">\(skewness=-0.01\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.04\)</span> approximately equal <span class="math inline">\(median=0.04\)</span>.</p>
 </div>
-<div id="right-skewed" class="section level3" number="4.1.2">
-<h3>
-<span class="header-section-number">4.1.2</span> Right-skewed<a class="anchor" aria-label="anchor" href="#right-skewed"><i class="fas fa-link"></i></a>
-</h3>
+<div id="right-skewed" class="section level3" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Right-skewed</h3>
 <p><span class="math inline">\(S_k&gt;0\)</span> indicates a relatively long right tail compared to the left tail, i.e., distribution has a heavy tail on the right hand side.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
-<span class="va">sr</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="skewness-kurtosis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb18-2"><a href="skewness-kurtosis.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fGarch)</span>
+<span id="cb18-3"><a href="skewness-kurtosis.html#cb18-3" aria-hidden="true" tabindex="-1"></a>sr<span class="ot">=</span><span class="fu">rsnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">xi =</span> <span class="dv">5</span>)</span>
+<span id="cb18-4"><a href="skewness-kurtosis.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sr)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="skewness-kurtosis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="fu">skewness</span>(sr),<span class="fu">mean</span>(sr),<span class="fu">median</span>(sr)))</span></code></pre></div>
 <pre><code>#&gt; [1]  0.86929586 -0.05052421 -0.24136543</code></pre>
 <p>Since <span class="math inline">\(skewness=0.87\)</span> is greater than <span class="math inline">\(0\)</span>, the distribution is right-skew and <span class="math inline">\(mean=-0.05\)</span> is greater than <span class="math inline">\(median=-0.24\)</span>.</p>
 </div>
-<div id="left-skewed" class="section level3" number="4.1.3">
-<h3>
-<span class="header-section-number">4.1.3</span> Left-skewed<a class="anchor" aria-label="anchor" href="#left-skewed"><i class="fas fa-link"></i></a>
-</h3>
+<div id="left-skewed" class="section level3" number="5.1.3">
+<h3><span class="header-section-number">5.1.3</span> Left-skewed</h3>
 <p><span class="math inline">\(S_k&lt;0\)</span> (left-skewed) indicates a relatively long left tail compared to the right tail, i.e., distribution has a heavy tail on the left hand side.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
-<span class="va">sl</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="skewness-kurtosis.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb21-2"><a href="skewness-kurtosis.html#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(fGarch)</span>
+<span id="cb21-3"><a href="skewness-kurtosis.html#cb21-3" aria-hidden="true" tabindex="-1"></a>sl<span class="ot">=</span><span class="fu">rsnorm</span>(<span class="at">n=</span><span class="dv">1000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>, <span class="at">xi =</span> <span class="sc">-</span><span class="dv">2</span>)</span>
+<span id="cb21-4"><a href="skewness-kurtosis.html#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(sl)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="skewness-kurtosis.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="fu">skewness</span>(sl),<span class="fu">mean</span>(sl),<span class="fu">median</span>(sl)))</span></code></pre></div>
 <pre><code>#&gt; [1] -0.88597146  0.01390576  0.19383722</code></pre>
 <p>Since <span class="math inline">\(skewness=-0.89\)</span> is less than <span class="math inline">\(0\)</span>, the distribution is left-skew and <span class="math inline">\(mean=0.01\)</span> is less than <span class="math inline">\(median=0.19\)</span>.</p>
 </div>
 </div>
-<div id="kurtosis" class="section level2" number="4.2">
-<h2>
-<span class="header-section-number">4.2</span> Kurtosis<a class="anchor" aria-label="anchor" href="#kurtosis"><i class="fas fa-link"></i></a>
-</h2>
+<div id="kurtosis" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Kurtosis</h2>
 <div id="definition-1" class="section level3 unnumbered">
-<h3>Definition<a class="anchor" aria-label="anchor" href="#definition-1"><i class="fas fa-link"></i></a>
-</h3>
+<h3>Definition</h3>
 <p>The Kurtosis of a random variable X is
 <span class="math display">\[S_k= \mathbb{E}  \left\{ \frac{X-\mathbb{E}[X]}{\sigma} \right\}^4=\frac{\mathbb{E}[(X-\mathbb{E}[X])^4]}{\sigma^4} \]</span>
 Kurtosis is a statistical measure that defines how heavily the tails of a distribution differ from the tails of a normal distribution. In other words, kurtosis identifies whether the tails of a given distribution contain extreme values.</p>
 <p>In finance, kurtosis is used as a measure of financial risk. A large kurtosis is associated with a high level of risk for an investment because it indicates that there are high probabilities of extremely large and extremely small returns. On the other hand, a small kurtosis signals a moderate level of risk because the probabilities of extreme returns are relatively low.</p>
 </div>
 <div id="example" class="section level3 unnumbered">
-<h3>Example<a class="anchor" aria-label="anchor" href="#example"><i class="fas fa-link"></i></a>
-</h3>
+<h3>Example</h3>
 <p>Let X follow a normal distribution <span class="math inline">\(N(0, 1)\)</span>. Then <span class="math display">\[Kur(X)=3\]</span></p>
 <p>Let X follow a binomial distribution <span class="math inline">\(B(p, n)\)</span>. Then <span class="math display">\[Kur(X)=3+\frac{1-6p(1-p)}{np(1-p)}\]</span></p>
 <p>Let X follow a t distribution <span class="math inline">\(t(df=\nu)\)</span>. Then <span class="math display">\[Kur(X)=3+\frac{6}{\nu-4}\]</span></p>
 </div>
 <div id="types-of-kurtosis" class="section level3 unnumbered">
-<h3>Types of Kurtosis<a class="anchor" aria-label="anchor" href="#types-of-kurtosis"><i class="fas fa-link"></i></a>
-</h3>
+<h3>Types of Kurtosis</h3>
 <p>Let the excess kurtosis <span class="math inline">\(\kappa(X)=Kur(X)-3\)</span>, we have the following definitions:</p>
 <center>
 <img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/15.png" alt="" width="50%" height="50%">
 </center>
 </div>
-<div id="mesokurtic" class="section level3" number="4.2.1">
-<h3>
-<span class="header-section-number">4.2.1</span> Mesokurtic<a class="anchor" aria-label="anchor" href="#mesokurtic"><i class="fas fa-link"></i></a>
-</h3>
+<div id="mesokurtic" class="section level3" number="5.2.1">
+<h3><span class="header-section-number">5.2.1</span> Mesokurtic</h3>
 A mesokurtic distribution shows an excess kurtosis of zero or close to zero. Normal distribution is a typical example of mesokurtic.
-
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="va">n</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
+</li>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="skewness-kurtosis.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb24-2"><a href="skewness-kurtosis.html#cb24-2" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="fu">rnorm</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb24-3"><a href="skewness-kurtosis.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(n)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="skewness-kurtosis.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(n)</span></code></pre></div>
 <pre><code>#&gt; [1] -0.1081596
-#&gt; attr(,"method")
-#&gt; [1] "excess"</code></pre>
+#&gt; attr(,&quot;method&quot;)
+#&gt; [1] &quot;excess&quot;</code></pre>
 </div>
-<div id="leptokurtic" class="section level3" number="4.2.2">
-<h3>
-<span class="header-section-number">4.2.2</span> Leptokurtic<a class="anchor" aria-label="anchor" href="#leptokurtic"><i class="fas fa-link"></i></a>
-</h3>
+<div id="leptokurtic" class="section level3" number="5.2.2">
+<h3><span class="header-section-number">5.2.2</span> Leptokurtic</h3>
 <p>A Leptokurtic distribution shows a positive excess kurtosis <span class="math inline">\((\kappa &gt; 0)\)</span>. The leptokurtic distribution shows heavy tails on either side, indicating large outliers. t distribution with a low degree of freedom is a typical example of mesokurtic.</p>
 <p>In finance, a leptokurtic distribution shows that the investment returns may be prone to extreme values on either side. Therefore, an investment whose returns follow a leptokurtic distribution is considered to be risky. It means that big losses (as well as big gains) can occur.</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="va">t</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/TDist.html">rt</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>,df<span class="op">=</span><span class="fl">2</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="skewness-kurtosis.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb27-2"><a href="skewness-kurtosis.html#cb27-2" aria-hidden="true" tabindex="-1"></a>t<span class="ot">=</span><span class="fu">rt</span>(<span class="at">n=</span><span class="dv">1000</span>,<span class="at">df=</span><span class="dv">2</span>)</span>
+<span id="cb27-3"><a href="skewness-kurtosis.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(t)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-17-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="skewness-kurtosis.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(t)</span></code></pre></div>
 <pre><code>#&gt; [1] 26.44623
-#&gt; attr(,"method")
-#&gt; [1] "excess"</code></pre>
+#&gt; attr(,&quot;method&quot;)
+#&gt; [1] &quot;excess&quot;</code></pre>
 </div>
-<div id="platykurtic" class="section level3" number="4.2.3">
-<h3>
-<span class="header-section-number">4.2.3</span> Platykurtic<a class="anchor" aria-label="anchor" href="#platykurtic"><i class="fas fa-link"></i></a>
-</h3>
+<div id="platykurtic" class="section level3" number="5.2.3">
+<h3><span class="header-section-number">5.2.3</span> Platykurtic</h3>
 <p>A platykurtic distribution shows a negative excess kurtosis <span class="math inline">\((\kappa &lt; 0)\)</span>. The kurtosis reveals a distribution with flat tails. The flat tails indicate the small outliers in a distribution.</p>
 <p>In the finance context, the platykurtic distribution of the investment returns is desirable for investors because there is a small probability that the investment would experience extreme returns.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">e1071</span><span class="op">)</span>                    
-<span class="va">duration</span> <span class="op">=</span> <span class="va">faithful</span><span class="op">$</span><span class="va">eruptions</span>     
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/moments/man/kurtosis.html">kurtosis</a></span><span class="op">(</span><span class="va">duration</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="skewness-kurtosis.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(moments)</span>
+<span id="cb30-2"><a href="skewness-kurtosis.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)                    </span>
+<span id="cb30-3"><a href="skewness-kurtosis.html#cb30-3" aria-hidden="true" tabindex="-1"></a>duration <span class="ot">=</span> faithful<span class="sc">$</span>eruptions     </span>
+<span id="cb30-4"><a href="skewness-kurtosis.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(duration)</span></code></pre></div>
+<p><img src="01-intro_files/figure-html/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="skewness-kurtosis.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">kurtosis</span>(duration)</span></code></pre></div>
 <pre><code>#&gt; [1] -1.511605
-#&gt; attr(,"method")
-#&gt; [1] "excess"</code></pre>
+#&gt; attr(,&quot;method&quot;)
+#&gt; [1] &quot;excess&quot;</code></pre>
 </div>
 </div>
-<div id="financial-situation" class="section level2" number="4.3">
-<h2>
-<span class="header-section-number">4.3</span> Financial situation<a class="anchor" aria-label="anchor" href="#financial-situation"><i class="fas fa-link"></i></a>
-</h2>
+<div id="financial-situation" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Financial situation</h2>
 <p>If two investments’ return distributions have identical mean and variance, but different skewness parameters. Which one is to prefer?</p>
 <p>Typically, risk managers are wary of negative skew, in this situation, small gains are the norm, but big losses can occur, carrying risk of going bankruptcy.</p>
 <p>If a return distribution shows a positive skew, investors can expect recurrent small losses and few large returns from investment. Conversely, a negatively skewed distribution implies many small wins and a few large losses on the investment.</p>
 <p>Hence, a positively skewed investment return distribution should be preferred over a negatively skewed return distribution since the huge gains may cover the frequent – but small – losses. However, investors may prefer investments with a negatively skewed return distribution. It may be because they prefer frequent small wins and a few huge losses over frequent small losses and a few large gains.</p>
 </div>
-<div id="moments" class="section level2" number="4.4">
-<h2>
-<span class="header-section-number">4.4</span> Moments<a class="anchor" aria-label="anchor" href="#moments"><i class="fas fa-link"></i></a>
-</h2>
+<div id="moments" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Moments</h2>
 <p>In basic statistic and probability theory, we almost exclusively deal with the first and second center moment of a random variable, namely expectation and variance <span class="math inline">\(\mathbb{E}[X]\)</span> and <span class="math inline">\(\mathbb{E}[(X-\mu)^2]\)</span>. The concept can be generalized to</p>
 <ul>
-<li>k−th moment of X: <span class="math inline">\(m_k :=\mathbb{E}(X_k)\)</span>
-</li>
-<li>k−th center moment of X:<span class="math inline">\(\mu_k :=\mathbb{E}[(X−\mu)^k]\)</span>
-</li>
+<li>k−th moment of X: <span class="math inline">\(m_k :=\mathbb{E}(X_k)\)</span></li>
+<li>k−th center moment of X:<span class="math inline">\(\mu_k :=\mathbb{E}[(X−\mu)^k]\)</span></li>
 </ul>
 <p>Using the notation, the population skewness and kurtosis can be rewritten as:
 <span class="math display">\[\begin{align*}
@@ -272,49 +242,27 @@ and the sample kurtosis denoted by <span class="math inline">\(\widehat {Kur}\)<
 <span class="math display">\[ \widehat {Kur}=\frac{1}{n} \sum_{i=1}^{n} \left( \frac{X_i-\bar{X}}{s} \right)^4 \]</span></p>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="volatility.html"><span class="header-section-number">3</span> Volatility</a></div>
-<div class="next"><a href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#skewness-kurtosis"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
-<li>
-<a class="nav-link" href="#skewness"><span class="header-section-number">4.1</span> Skewness</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#definition">Definition</a></li>
-<li><a class="nav-link" href="#types-of-skewness">Types of skewness</a></li>
-<li><a class="nav-link" href="#symmetric-distribution"><span class="header-section-number">4.1.1</span> Symmetric distribution</a></li>
-<li><a class="nav-link" href="#right-skewed"><span class="header-section-number">4.1.2</span> Right-skewed</a></li>
-<li><a class="nav-link" href="#left-skewed"><span class="header-section-number">4.1.3</span> Left-skewed</a></li>
-</ul>
-</li>
-<li>
-<a class="nav-link" href="#kurtosis"><span class="header-section-number">4.2</span> Kurtosis</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#definition-1">Definition</a></li>
-<li><a class="nav-link" href="#example">Example</a></li>
-<li><a class="nav-link" href="#types-of-kurtosis">Types of Kurtosis</a></li>
-<li><a class="nav-link" href="#mesokurtic"><span class="header-section-number">4.2.1</span> Mesokurtic</a></li>
-<li><a class="nav-link" href="#leptokurtic"><span class="header-section-number">4.2.2</span> Leptokurtic</a></li>
-<li><a class="nav-link" href="#platykurtic"><span class="header-section-number">4.2.3</span> Platykurtic</a></li>
-</ul>
-</li>
-<li><a class="nav-link" href="#financial-situation"><span class="header-section-number">4.3</span> Financial situation</a></li>
-<li><a class="nav-link" href="#moments"><span class="header-section-number">4.4</span> Moments</a></li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
@@ -325,7 +273,11 @@ and the sample kurtosis denoted by <span class="math inline">\(\widehat {Kur}\)<
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -337,7 +289,8 @@ and the sample kurtosis denoted by <span class="math inline">\(\widehat {Kur}\)<
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -355,4 +308,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

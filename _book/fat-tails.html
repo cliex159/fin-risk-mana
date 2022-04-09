@@ -1,33 +1,63 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 5 Fat tails | FRM2</title>
-<meta name="author" content="Tran Thanh Dat">
-<meta name="description" content="5.1 Definition The tails are the extreme left and right parts of a distribution. A random variable is said to have fat tails (also known as heavy tails) if it exposes more extreme outcomes than a...">
-<meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 5 Fat tails | FRM2">
-<meta property="og:type" content="book">
-<meta property="og:description" content="5.1 Definition The tails are the extreme left and right parts of a distribution. A random variable is said to have fat tails (also known as heavy tails) if it exposes more extreme outcomes than a...">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 5 Fat tails | FRM2">
-<meta name="twitter:description" content="5.1 Definition The tails are the extreme left and right parts of a distribution. A random variable is said to have fat tails (also known as heavy tails) if it exposes more extreme outcomes than a...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Chapter 6 Fat tails | FRM2</title>
+
+    <meta name="author" content="Tran Thanh Dat" />
+  
+   <meta name="description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+   <meta name="generator" content="placeholder" />
+  <meta property="og:title" content="Chapter 6 Fat tails | FRM2" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 6 Fat tails | FRM2" />
+  
+  <meta name="twitter:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
+The HTML output format for this example is bookdown::bs4_book,
+set in the _output.yml file.</p>" />
+  
+  <!-- JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
+    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
+    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
+    <script src="libs/bs3compat-0.3.1/transition.js"></script>
+    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
+    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
+    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
+    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
+
+  <!-- CSS -->
+  <style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<link rel="stylesheet" href="bs4_style.css">
+      <link rel="stylesheet" href="bs4_style.css" />
+  
 </head>
+
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
+    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -39,49 +69,29 @@
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-</form>
+      </form>
 
-      <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Course Descripition</a></li>
-<li class="book-part">Chapter 1 Price and Risk</li>
-<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
-<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
-<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
-<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
-<li><a class="active" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
-<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
-<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
-<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
-<li class="book-part">Chapter 2 Univariate Volatility</li>
-<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
-<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
-<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
-<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
-<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
-<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
-<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
-</ul>
+      <nav aria-label="Table of contents">
+        <h2>Table of contents</h2>
+        <div id="book-toc"></div>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
         </div>
       </nav>
-</div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="fat-tails" class="section level1" number="5">
-<h1>
-<span class="header-section-number">5</span> Fat tails<a class="anchor" aria-label="anchor" href="#fat-tails"><i class="fas fa-link"></i></a>
-</h1>
-<div id="definition-2" class="section level2" number="5.1">
-<h2>
-<span class="header-section-number">5.1</span> Definition<a class="anchor" aria-label="anchor" href="#definition-2"><i class="fas fa-link"></i></a>
-</h2>
+    </div>
+  </header>
+
+  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
+<div id="fat-tails" class="section level1" number="6">
+<h1><span class="header-section-number">Chapter 6</span> Fat tails</h1>
+<div id="definition-2" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Definition</h2>
 <p>The tails are the extreme left and right parts of a distribution. A random variable is said to have fat tails (also known as heavy tails) if it exposes more extreme outcomes than a normal distributed random variable with the same mean and variance. In other words, fat tails describe the greater-than-expected probabilities of extreme values.</p>
 <p>Financial advisors have used the mean–variance method to model the distribution of probabilities for the values of a quantity, such as price returns. The mean–variance model assumes normality so fat tails should not present in the data.</p>
 </div>
 <div id="example-1" class="section level2 unnumbered">
-<h2>Example<a class="anchor" aria-label="anchor" href="#example-1"><i class="fas fa-link"></i></a>
-</h2>
+<h2>Example</h2>
 <p>The t-Student distribution is convenient for modeling a fat tailed distribution. Consider the t-distribution X with degrees of freedom <span class="math inline">\(\nu\)</span>. The values of <span class="math inline">\(\nu\)</span> indicate how fat the tails are</p>
 <ul>
 <li>If <span class="math inline">\(\nu=\infty\)</span> then X is the normal random variable.</li>
@@ -89,46 +99,35 @@
 <li>For a typical stock we have <span class="math inline">\(3&lt;\nu&lt;5\)</span>.</li>
 </ul>
 </div>
-<div id="identification-of-fat-tails" class="section level2" number="5.2">
-<h2>
-<span class="header-section-number">5.2</span> Identification of fat tails<a class="anchor" aria-label="anchor" href="#identification-of-fat-tails"><i class="fas fa-link"></i></a>
-</h2>
+<div id="identification-of-fat-tails" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Identification of fat tails</h2>
 <p>Two main approaches for identifying and analyzing tails of financial returns including statistical methods: The Jarque-Bera Test and graphical methods: QQ plots.</p>
-<div id="statistical-methods" class="section level3" number="5.2.1">
-<h3>
-<span class="header-section-number">5.2.1</span> Statistical methods<a class="anchor" aria-label="anchor" href="#statistical-methods"><i class="fas fa-link"></i></a>
-</h3>
+<div id="statistical-methods" class="section level3" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Statistical methods</h3>
 <p>The Jarque-Bera (JB) tests are popular statistical methods to test for fat tails
 <span class="math display">\[ JB=n \left(\frac{\widehat{Sk}}{6}+\frac{(\widehat{Kur}-3)^2}{24} \right) \sim \chi^2 \]</span>
 Under the hypothesis of normality, data should be symmetrical, i.e. skewness should be equal to zero and have skewness chose to three.</p>
 </div>
-<div id="graphical-methods" class="section level3" number="5.2.2">
-<h3>
-<span class="header-section-number">5.2.2</span> Graphical methods<a class="anchor" aria-label="anchor" href="#graphical-methods"><i class="fas fa-link"></i></a>
-</h3>
+<div id="graphical-methods" class="section level3" number="6.2.2">
+<h3><span class="header-section-number">6.2.2</span> Graphical methods</h3>
 <p>In general, a Q-Q plot compares the quantiles of the data with the quantiles of a reference distribution; if the data are from a distribution of the same type, a reasonably straight line should be observed.</p>
 <ul>
 <li>A QQ plot (quantile-quantile plot) compares the quantiles of sample data against quantiles of a reference distribution, like normal.</li>
 <li>Used to assess whether a set of observations has a particular distribution.</li>
 <li>Can also be used to determine whether two datasets have the same distribution.</li>
 </ul>
-<div id="quantile" class="section level4" number="5.2.2.1">
-<h4>
-<span class="header-section-number">5.2.2.1</span> Quantile<a class="anchor" aria-label="anchor" href="#quantile"><i class="fas fa-link"></i></a>
-</h4>
+<div id="quantile" class="section level4" number="6.2.2.1">
+<h4><span class="header-section-number">6.2.2.1</span> Quantile</h4>
 <p>The pth quantile of CDF F of a random variable X is that the value <span class="math inline">\(x_p\)</span> such that</p>
 <p><span class="math display">\[F(x_p) = p \quad \text{or} \quad x_p = F^{−1}(p)\]</span></p>
 </div>
-<div id="q-q-plot" class="section level4" number="5.2.2.2">
-<h4>
-<span class="header-section-number">5.2.2.2</span> Q-Q plot<a class="anchor" aria-label="anchor" href="#q-q-plot"><i class="fas fa-link"></i></a>
-</h4>
+<div id="q-q-plot" class="section level4" number="6.2.2.2">
+<h4><span class="header-section-number">6.2.2.2</span> Q-Q plot</h4>
 <p>The theoretical Q-Q plot is the graph of the quantiles of the CDF <span class="math inline">\(F(x_p)=p\)</span> or <span class="math inline">\(x_p = F^{−1}(p)\)</span>, versus the corresponding quantiles of the CDF, <span class="math inline">\(G(y_p)=p\)</span> or <span class="math inline">\(y_p = G^{−1}(p)\)</span> that is the graph <span class="math inline">\((F^{−1}(p), G^{−1}(p))\)</span> for <span class="math inline">\(p \in (0, 1)\)</span>.</p>
 <p>If <span class="math inline">\(G(x) = F \left(\frac{x−\mu}{\sigma} \right)\)</span> for some constants <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma \neq 0\)</span> then
 <span class="math display">\[y_p = \mu + \sigma x_p\]</span></p>
 <div id="example-2" class="section level5 unnumbered">
-<h5>Example<a class="anchor" aria-label="anchor" href="#example-2"><i class="fas fa-link"></i></a>
-</h5>
+<h5>Example</h5>
 <p>Let <span class="math inline">\(F \sim \mathcal{N}(0,1)\)</span> then <span class="math inline">\(G(x) = F\left(\frac{x−1}{\sqrt{2}} \right) ∼ N(1,2)\)</span>. Now if we choose <span class="math inline">\(x_p = −3\)</span> which corresponds to <span class="math inline">\(p = 0.001349898\)</span>. With this probability we obtain the quantile of distribution <span class="math inline">\(G\)</span> is <span class="math inline">\(y_p = −3.242641\)</span>. Now from the property of Q-Q plots we have
 <span class="math display">\[y_p=1+\sqrt{2} \cdot (-3)=-3.242641\]</span></p>
 <p>Generate a standard normal distribution from <span class="math inline">\(-10\)</span> to <span class="math inline">\(10\)</span>. We compare with <span class="math inline">\(N(0, 1)\)</span>, we get</p>
@@ -137,10 +136,8 @@ Under the hypothesis of normality, data should be symmetrical, i.e. skewness sh
 </center>
 </div>
 </div>
-<div id="empirical-q-q-plots" class="section level4" number="5.2.2.3">
-<h4>
-<span class="header-section-number">5.2.2.3</span> Empirical Q-Q plots<a class="anchor" aria-label="anchor" href="#empirical-q-q-plots"><i class="fas fa-link"></i></a>
-</h4>
+<div id="empirical-q-q-plots" class="section level4" number="6.2.2.3">
+<h4><span class="header-section-number">6.2.2.3</span> Empirical Q-Q plots</h4>
 <p>Denote <span class="math inline">\(F\)</span> the specified CDF (e.g., normal) model. <span class="math inline">\(G\)</span> is the empirical CDF for observations <span class="math inline">\(x_1, x_2, .., x_n\)</span> of random sample <span class="math inline">\(X_1, X_2, ..., X_n\)</span>. To compare the observation <span class="math inline">\(G\)</span> and model <span class="math inline">\(F\)</span></p>
 <ul>
 <li>Plot <span class="math inline">\(F^{−1} \left( \frac{1}{n} \right)\)</span> on the horizonal axis versus.</li>
@@ -148,8 +145,7 @@ Under the hypothesis of normality, data should be symmetrical, i.e. skewness sh
 <li>If <span class="math inline">\(G\)</span> follows model <span class="math inline">\(F\)</span> then the observed data should close the line <span class="math inline">\(y = \mu + \sigma x\)</span>.</li>
 </ul>
 <div id="example-3" class="section level5 unnumbered">
-<h5>Example<a class="anchor" aria-label="anchor" href="#example-3"><i class="fas fa-link"></i></a>
-</h5>
+<h5>Example</h5>
 <p><span class="math inline">\(F = \mathcal{N}(0, 1)\)</span>, a model and <span class="math inline">\(X_1, X_2, ...X_{20} \sim U(0, 1)\)</span> then we get the Q-Q plot of the samples</p>
 <center>
 <img src="https://raw.githubusercontent.com/ThanhDatIU/frisk2/main/17.png" alt="" width="50%" height="50%">
@@ -159,36 +155,27 @@ Under the hypothesis of normality, data should be symmetrical, i.e. skewness sh
 </div>
 </div>
 </div>
-  <div class="chapter-nav">
-<div class="prev"><a href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></div>
-<div class="next"><a href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#fat-tails"><span class="header-section-number">5</span> Fat tails</a></li>
-<li><a class="nav-link" href="#definition-2"><span class="header-section-number">5.1</span> Definition</a></li>
-<li><a class="nav-link" href="#example-1">Example</a></li>
-<li>
-<a class="nav-link" href="#identification-of-fat-tails"><span class="header-section-number">5.2</span> Identification of fat tails</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#statistical-methods"><span class="header-section-number">5.2.1</span> Statistical methods</a></li>
-<li><a class="nav-link" href="#graphical-methods"><span class="header-section-number">5.2.2</span> Graphical methods</a></li>
-</ul>
-</li>
-</ul>
+  </main>
+
+  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-</div>
+      </div>
     </nav>
-</div>
+  </div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5">
+  <div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
     <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
@@ -199,7 +186,11 @@ Under the hypothesis of normality, data should be symmetrical, i.e. skewness sh
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+</footer>
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -211,7 +202,8 @@ Under the hypothesis of normality, data should be symmetrical, i.e. skewness sh
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script>
+<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -229,4 +221,5 @@ for (let popover of popovers) {
 }
 </script>
 </body>
+
 </html>

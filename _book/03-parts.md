@@ -178,7 +178,7 @@ F(x) &=\begin{cases}
 
 ## Problem 6 {.unnumbered} 
  
- You hold a portfolio consisting of a long position of 1 share of stock $S$. The stock price today is $P_0=\$100$. Let $X_t$ denote the log return of day $t$. The daily log returns are assumed to be independent and normally distributed with zero mean and standard deviation $\sigma = 0.1$. Let $L_100$ denote the loss from today until 100 trading days before deciding what to do with the portfolio.
+ You hold a portfolio consisting of a long position of 1 share of stock $S$. The stock price today is $P_0=\$100$. Let $X_t$ denote the log return of day $t$. The daily log returns are assumed to be independent and normally distributed with zero mean and standard deviation $\sigma = 0.1$. Let $L_{100}$ denote the loss from today until 100 trading days before deciding what to do with the portfolio.
  
  a. Prove that $L_{100} = -P_0(e^{\sum_{i=1}^{100}}-1).$
 
@@ -191,7 +191,7 @@ F(x) &=\begin{cases}
 &= L_{100}
 \end{align*}$$
 
-b. From question a) compute $VaR_{0.99}(L_100)$
+b. From question a) compute $VaR_{0.99}(L_{100})$
 
 >
 $$\begin{align*}
@@ -207,14 +207,14 @@ L_{100} &= -P_0(e^{\sum_{i=1}^{100} X_i}-1) \\
 >$$\begin{align*}
 F_{L_{100}}(x) &\geq 0.99 \\
 \rightarrow 100 - 100 \cdot \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &\geq 0.99 \\
-\rightarrow \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &\geq \frac{100-0.99}{100} \\
-\rightarrow \frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} &\geq \Phi^{-1}(0.99) \\
-\rightarrow x &\geq e^{100 \cdot 0 + 100 \cdot 0.1^2 \cdot \Phi^{-1}(0.99)} \\
+\rightarrow \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &\leq \frac{100-0.99}{100} \\
+\rightarrow \frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} &\leq \Phi^{-1}(0.99) \\
+\rightarrow x &\leq e^{100 \cdot 0 + 100 \cdot 0.1^2 \cdot \Phi^{-1}(0.99)} \\
 \end{align*}$$
 
 >$$\begin{align*}
-VaR_{L_{100}} &= \inf \{x:F_{L_{100}}(x) \geq 0.99  \} \\
+VaR_{0.99}(L_{100}) &= \inf \{x:F_{L_{100}}(x) \geq 0.99  \} \\
 &=e^{2.33} 
 \end{align*}$$
 
->Answer: $VaR_{L_{100}}=e^{2.33}$
+>Answer: $VaR_{0.99}(L_{100})=e^{2.33}$

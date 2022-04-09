@@ -327,7 +327,7 @@ F(x) &amp;=\begin{cases}
 <div id="problem-6-2" class="section level2 unnumbered">
 <h2>Problem 6<a class="anchor" aria-label="anchor" href="#problem-6-2"><i class="fas fa-link"></i></a>
 </h2>
-<p>You hold a portfolio consisting of a long position of 1 share of stock <span class="math inline">\(S\)</span>. The stock price today is <span class="math inline">\(P_0=\$100\)</span>. Let <span class="math inline">\(X_t\)</span> denote the log return of day <span class="math inline">\(t\)</span>. The daily log returns are assumed to be independent and normally distributed with zero mean and standard deviation <span class="math inline">\(\sigma = 0.1\)</span>. Let <span class="math inline">\(L_100\)</span> denote the loss from today until 100 trading days before deciding what to do with the portfolio.</p>
+<p>You hold a portfolio consisting of a long position of 1 share of stock <span class="math inline">\(S\)</span>. The stock price today is <span class="math inline">\(P_0=\$100\)</span>. Let <span class="math inline">\(X_t\)</span> denote the log return of day <span class="math inline">\(t\)</span>. The daily log returns are assumed to be independent and normally distributed with zero mean and standard deviation <span class="math inline">\(\sigma = 0.1\)</span>. Let <span class="math inline">\(L_{100}\)</span> denote the loss from today until 100 trading days before deciding what to do with the portfolio.</p>
 <ol style="list-style-type: lower-alpha">
 <li>Prove that <span class="math inline">\(L_{100} = -P_0(e^{\sum_{i=1}^{100}}-1).\)</span>
 </li>
@@ -343,7 +343,7 @@ F(x) &amp;=\begin{cases}
 \end{align*}\]</span></p>
 </blockquote>
 <ol start="2" style="list-style-type: lower-alpha">
-<li>From question a) compute <span class="math inline">\(VaR_{0.99}(L_100)\)</span>
+<li>From question a) compute <span class="math inline">\(VaR_{0.99}(L_{100})\)</span>
 </li>
 </ol>
 <blockquote>
@@ -361,19 +361,19 @@ L_{100} &amp;= -P_0(e^{\sum_{i=1}^{100} X_i}-1) \\
 <p><span class="math display">\[\begin{align*}
 F_{L_{100}}(x) &amp;\geq 0.99 \\
 \rightarrow 100 - 100 \cdot \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &amp;\geq 0.99 \\
-\rightarrow \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &amp;\geq \frac{100-0.99}{100} \\
-\rightarrow \frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} &amp;\geq \Phi^{-1}(0.99) \\
-\rightarrow x &amp;\geq e^{100 \cdot 0 + 100 \cdot 0.1^2 \cdot \Phi^{-1}(0.99)} \\
+\rightarrow \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &amp;\leq \frac{100-0.99}{100} \\
+\rightarrow \frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} &amp;\leq \Phi^{-1}(0.99) \\
+\rightarrow x &amp;\leq e^{100 \cdot 0 + 100 \cdot 0.1^2 \cdot \Phi^{-1}(0.99)} \\
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
 <p><span class="math display">\[\begin{align*}
-VaR_{L_{100}} &amp;= \inf \{x:F_{L_{100}}(x) \geq 0.99  \} \\
+VaR_{0.99}(L_{100}) &amp;= \inf \{x:F_{L_{100}}(x) \geq 0.99  \} \\
 &amp;=e^{2.33}
 \end{align*}\]</span></p>
 </blockquote>
 <blockquote>
-<p>Answer: <span class="math inline">\(VaR_{L_{100}}=e^{2.33}\)</span></p>
+<p>Answer: <span class="math inline">\(VaR_{0.99}(L_{100})=e^{2.33}\)</span></p>
 </blockquote>
 
 </div>

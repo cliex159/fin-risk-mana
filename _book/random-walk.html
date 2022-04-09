@@ -1,63 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 3 Random Walk | FRM2</title>
-
-    <meta name="author" content="Tran Thanh Dat" />
-  
-   <meta name="description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 3 Random Walk | FRM2" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Random Walk | FRM2" />
-  
-  <meta name="twitter:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.3.1/transition.js"></script>
-    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
-    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 2 Random Walk | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="Let sequence \(X_1, X_2, ...,X_t\) be i.i.d random variables and \(S_0\) be an arbitrary starting point and \[S_t=S_0+X_1+X_2+...+X_t \] The series \((S_t)_{t \geq 0}\) is a called random walk and...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 2 Random Walk | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Let sequence \(X_1, X_2, ...,X_t\) be i.i.d random variables and \(S_0\) be an arbitrary starting point and \[S_t=S_0+X_1+X_2+...+X_t \] The series \((S_t)_{t \geq 0}\) is a called random walk and...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 2 Random Walk | FRM2">
+<meta name="twitter:description" content="Let sequence \(X_1, X_2, ...,X_t\) be i.i.d random variables and \(S_0\) be an arbitrary starting point and \[S_t=S_0+X_1+X_2+...+X_t \] The series \((S_t)_{t \geq 0}\) is a called random walk and...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="bs4_style.css" />
-  
+<link rel="stylesheet" href="bs4_style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -69,74 +39,103 @@ set in the _output.yml file.</p>" />
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="active" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="random-walk" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Random Walk</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="random-walk" class="section level1" number="2">
+<h1>
+<span class="header-section-number">2</span> Random Walk<a class="anchor" aria-label="anchor" href="#random-walk"><i class="fas fa-link"></i></a>
+</h1>
 <p>Let sequence <span class="math inline">\(X_1, X_2, ...,X_t\)</span> be i.i.d random variables and <span class="math inline">\(S_0\)</span> be an arbitrary starting point and
 <span class="math display">\[S_t=S_0+X_1+X_2+...+X_t \]</span>
 The series <span class="math inline">\((S_t)_{t \geq 0}\)</span> is a called random walk and <span class="math inline">\(X_1, X_2, ...,X_t\)</span> are its steps.</p>
-<div id="simple-random-walk" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Simple random walk</h2>
+<div id="simple-random-walk" class="section level2" number="2.1">
+<h2>
+<span class="header-section-number">2.1</span> Simple random walk<a class="anchor" aria-label="anchor" href="#simple-random-walk"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let series <span class="math inline">\((S_t)_{t \geq 0}\)</span> be a random walk
 <span class="math display">\[S_t=S_0+X_1+X_2+...+X_t \]</span>
 If the steps are either <span class="math inline">\(1\)</span> or <span class="math inline">\(-1\)</span> with a <span class="math inline">\(50\%\)</span> probability for either value, and set <span class="math inline">\(S_{0}=0\)</span> then the random walk is called a simple random walk.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="random-walk.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="random-walk.html#cb1-2" aria-hidden="true" tabindex="-1"></a>simple<span class="ot">=</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
-<span id="cb1-3"><a href="random-walk.html#cb1-3" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="sc">-</span><span class="dv">1</span>), </span>
-<span id="cb1-4"><a href="random-walk.html#cb1-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">size=</span><span class="dv">250</span>, </span>
-<span id="cb1-5"><a href="random-walk.html#cb1-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">replace=</span>T,</span>
-<span id="cb1-6"><a href="random-walk.html#cb1-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">prob=</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.5</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-7"><a href="random-walk.html#cb1-7" aria-hidden="true" tabindex="-1"></a>              cumsum)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="random-walk.html#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb2-2"><a href="random-walk.html#cb2-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>simple <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="random-walk.html#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(</span>
-<span id="cb2-4"><a href="random-walk.html#cb2-4" aria-hidden="true" tabindex="-1"></a>      plot,         </span>
-<span id="cb2-5"><a href="random-walk.html#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
-<span id="cb2-6"><a href="random-walk.html#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb2-7"><a href="random-walk.html#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span><span class="st">&quot;the accumulated money&quot;</span>)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="random-walk.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb3-2"><a href="random-walk.html#cb3-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>simple <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="random-walk.html#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(acf)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">simple</span><span class="op">=</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,
+              <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="op">-</span><span class="fl">1</span><span class="op">)</span>, 
+                 size<span class="op">=</span><span class="fl">250</span>, 
+                 replace<span class="op">=</span><span class="cn">T</span>,
+                 prob<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.5</span>,<span class="fl">0.5</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+              <span class="va">cumsum</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">simple</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>
+      <span class="va">plot</span>,         
+      type<span class="op">=</span><span class="st">"l"</span>, 
+      col<span class="op">=</span><span class="st">"blue"</span>,
+      ylab<span class="op">=</span><span class="st">"the accumulated money"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">simple</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">acf</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-3-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="normal-random-walk" class="section level2" number="3.2">
-<h2><span class="header-section-number">3.2</span> Normal random walk</h2>
+<div id="normal-random-walk" class="section level2" number="2.2">
+<h2>
+<span class="header-section-number">2.2</span> Normal random walk<a class="anchor" aria-label="anchor" href="#normal-random-walk"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let series <span class="math inline">\((S_t)_{t \geq 0}\)</span> be a random walk
 <span class="math display">\[S_t=S_0+Z_1+Z_2+...+Z_t \]</span>
 If the steps follow standard normal distribution, i.e. <span class="math inline">\(Z \sim \mathcal{N}(0,1)\)</span>, then the random walk is called a normal random walk. We have <span class="math inline">\(E[S_t|S_0]=S_0\)</span> and <span class="math inline">\(\mathbb{Var}(S_t|S_0)=\sigma_t^2=\sigma^2 t\)</span>.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="random-walk.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="random-walk.html#cb4-2" aria-hidden="true" tabindex="-1"></a>normal<span class="ot">=</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
-<span id="cb4-3"><a href="random-walk.html#cb4-3" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span><span class="fu">rnorm</span>(<span class="dv">250</span>,<span class="dv">0</span>,<span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a href="random-walk.html#cb4-4" aria-hidden="true" tabindex="-1"></a>              cumsum) </span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="random-walk.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb5-2"><a href="random-walk.html#cb5-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>normal <span class="sc">%&gt;%</span> </span>
-<span id="cb5-3"><a href="random-walk.html#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(</span>
-<span id="cb5-4"><a href="random-walk.html#cb5-4" aria-hidden="true" tabindex="-1"></a>      plot,         </span>
-<span id="cb5-5"><a href="random-walk.html#cb5-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
-<span id="cb5-6"><a href="random-walk.html#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb5-7"><a href="random-walk.html#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span><span class="st">&quot;the accumulated money&quot;</span>)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="random-walk.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb6-2"><a href="random-walk.html#cb6-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>normal <span class="sc">%&gt;%</span> </span>
-<span id="cb6-3"><a href="random-walk.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(acf)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">normal</span><span class="op">=</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,
+              <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">250</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+              <span class="va">cumsum</span><span class="op">)</span> </code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">normal</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>
+      <span class="va">plot</span>,         
+      type<span class="op">=</span><span class="st">"l"</span>, 
+      col<span class="op">=</span><span class="st">"blue"</span>,
+      ylab<span class="op">=</span><span class="st">"the accumulated money"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">normal</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">acf</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="random-walk-with-drift" class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> Random walk with drift</h2>
+<div id="random-walk-with-drift" class="section level2" number="2.3">
+<h2>
+<span class="header-section-number">2.3</span> Random walk with drift<a class="anchor" aria-label="anchor" href="#random-walk-with-drift"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let series <span class="math inline">\((S_t)_{t \geq 0}\)</span> be a random walk
 <span class="math display">\[\begin{align*}
 S_t&amp;=S_0+X_1+X_2+...+X_t \\
@@ -144,26 +143,30 @@ S_t&amp;=S_0+X_1+X_2+...+X_t \\
 &amp;= \mu + S_{t-1}+ Z_t
 \end{align*}\]</span>
 If the steps are normally distributed, i.e. <span class="math inline">\(X \sim \mathcal{N}(\mu,\sigma)\)</span>, then the random walk is called a random walk with drift. We have <span class="math inline">\(E[S_t|S_0]=S_0+ \mu t\)</span> and <span class="math inline">\(\mathbb{Var}(S_t|S_0)=\sigma_t^2=\sigma^2 t\)</span>.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="random-walk.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb7-2"><a href="random-walk.html#cb7-2" aria-hidden="true" tabindex="-1"></a>drift<span class="ot">=</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
-<span id="cb7-3"><a href="random-walk.html#cb7-3" aria-hidden="true" tabindex="-1"></a>              <span class="sc">~</span><span class="fu">rnorm</span>(<span class="dv">250</span>,<span class="dv">1</span>,<span class="dv">5</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-4"><a href="random-walk.html#cb7-4" aria-hidden="true" tabindex="-1"></a>              cumsum)</span>
-<span id="cb7-5"><a href="random-walk.html#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="random-walk.html#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb7-7"><a href="random-walk.html#cb7-7" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span> drift <span class="sc">%&gt;%</span> </span>
-<span id="cb7-8"><a href="random-walk.html#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(</span>
-<span id="cb7-9"><a href="random-walk.html#cb7-9" aria-hidden="true" tabindex="-1"></a>      plot,         </span>
-<span id="cb7-10"><a href="random-walk.html#cb7-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
-<span id="cb7-11"><a href="random-walk.html#cb7-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb7-12"><a href="random-walk.html#cb7-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span><span class="st">&quot;the accumulated money&quot;</span>)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="random-walk.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb8-2"><a href="random-walk.html#cb8-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>drift <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a href="random-walk.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(acf)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">drift</span><span class="op">=</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,
+              <span class="op">~</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">250</span>,<span class="fl">1</span>,<span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+              <span class="va">cumsum</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span> <span class="va">drift</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>
+      <span class="va">plot</span>,         
+      type<span class="op">=</span><span class="st">"l"</span>, 
+      col<span class="op">=</span><span class="st">"blue"</span>,
+      ylab<span class="op">=</span><span class="st">"the accumulated money"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-7-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">drift</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">acf</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-8-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="geometric-random-walk" class="section level2" number="3.4">
-<h2><span class="header-section-number">3.4</span> Geometric random walk</h2>
+<div id="geometric-random-walk" class="section level2" number="2.4">
+<h2>
+<span class="header-section-number">2.4</span> Geometric random walk<a class="anchor" aria-label="anchor" href="#geometric-random-walk"><i class="fas fa-link"></i></a>
+</h2>
 <p>Let series <span class="math inline">\((Y_t(t))_{t \geq 0}\)</span> be a random walk
 <span class="math display">\[\begin{align*}
 Y_t(t)&amp;=Y_1+Y_2+...+Y_t \\
@@ -171,53 +174,60 @@ Y_t(t)&amp;=Y_1+Y_2+...+Y_t \\
 P_t&amp;=P_0e^{Y_1+Y_2+...+Y_t}
 \end{align*}\]</span>
 <span class="math inline">\((P_t)_{t \geq0}\)</span> is called geometric random walks or exponential random walk. If <span class="math inline">\(Y_1,Y_2,...,Y_t\)</span> are i.i.d and <span class="math inline">\(Y \sim \mathcal{N}(\mu,\sigma^2)\)</span>, then <span class="math inline">\(P_t\)</span> is a lognormal random walk.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="random-walk.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb9-2"><a href="random-walk.html#cb9-2" aria-hidden="true" tabindex="-1"></a>geometric<span class="ot">=</span><span class="fu">map</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">9</span>,</span>
-<span id="cb9-3"><a href="random-walk.html#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="sc">~</span> <span class="fu">exp</span>(<span class="fu">log</span>(<span class="dv">120</span>)<span class="sc">+</span></span>
-<span id="cb9-4"><a href="random-walk.html#cb9-4" aria-hidden="true" tabindex="-1"></a>                <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">250</span>,</span>
-<span id="cb9-5"><a href="random-walk.html#cb9-5" aria-hidden="true" tabindex="-1"></a>                        <span class="dv">0</span><span class="sc">/</span><span class="dv">250</span>,</span>
-<span id="cb9-6"><a href="random-walk.html#cb9-6" aria-hidden="true" tabindex="-1"></a>                        <span class="dv">1</span><span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">250</span>))))) </span>
-<span id="cb9-7"><a href="random-walk.html#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="random-walk.html#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb9-9"><a href="random-walk.html#cb9-9" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>geometric <span class="sc">%&gt;%</span> </span>
-<span id="cb9-10"><a href="random-walk.html#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(</span>
-<span id="cb9-11"><a href="random-walk.html#cb9-11" aria-hidden="true" tabindex="-1"></a>      plot, </span>
-<span id="cb9-12"><a href="random-walk.html#cb9-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">type=</span><span class="st">&quot;l&quot;</span>, </span>
-<span id="cb9-13"><a href="random-walk.html#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">col=</span><span class="st">&quot;blue&quot;</span>,</span>
-<span id="cb9-14"><a href="random-walk.html#cb9-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">ylab=</span><span class="st">&quot;the accumulated money&quot;</span>)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-9-1.png" width="90%" style="display: block; margin: auto;" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="random-walk.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb10-2"><a href="random-walk.html#cb10-2" aria-hidden="true" tabindex="-1"></a>plots<span class="ot">=</span>geometric <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="random-walk.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">map</span>(acf)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-10-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">geometric</span><span class="op">=</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">9</span>,
+          <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">120</span><span class="op">)</span><span class="op">+</span>
+                <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">250</span>,
+                        <span class="fl">0</span><span class="op">/</span><span class="fl">250</span>,
+                        <span class="fl">1</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">250</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> 
+
+<span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">geometric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span>
+      <span class="va">plot</span>, 
+      type<span class="op">=</span><span class="st">"l"</span>, 
+      col<span class="op">=</span><span class="st">"blue"</span>,
+      ylab<span class="op">=</span><span class="st">"the accumulated money"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-9-1.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/graphics/par.html">par</a></span><span class="op">(</span>mfrow<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">3</span>,<span class="fl">3</span><span class="op">)</span><span class="op">)</span>
+<span class="va">plots</span><span class="op">=</span><span class="va">geometric</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">acf</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-10-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p><strong>Remark</strong></p>
 <p>The lognormal geometric random walk needs two assumptions: The log returns are normally distributed and the log returns are mutually independent. In general, prices does not usually follow a lognormal geometric random walk or its continuous-time analog, geometric Brownian. The independence assumption can be also violated since returns exhibit volatility clustering, i.e., if we see high volatility in current returns then we can expect this higher volatility to continue, at least for a while motion.</p>
 </div>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="returns.html"><span class="header-section-number">1</span> Returns</a></div>
+<div class="next"><a href="volatility.html"><span class="header-section-number">3</span> Volatility</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#random-walk"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="nav-link" href="#simple-random-walk"><span class="header-section-number">2.1</span> Simple random walk</a></li>
+<li><a class="nav-link" href="#normal-random-walk"><span class="header-section-number">2.2</span> Normal random walk</a></li>
+<li><a class="nav-link" href="#random-walk-with-drift"><span class="header-section-number">2.3</span> Random walk with drift</a></li>
+<li><a class="nav-link" href="#geometric-random-walk"><span class="header-section-number">2.4</span> Geometric random walk</a></li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -225,11 +235,7 @@ P_t&amp;=P_0e^{Y_1+Y_2+...+Y_t}
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -241,8 +247,7 @@ P_t&amp;=P_0e^{Y_1+Y_2+...+Y_t}
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -260,5 +265,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

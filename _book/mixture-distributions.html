@@ -1,63 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-  <title>Chapter 7 Mixture Distributions | FRM2</title>
-
-    <meta name="author" content="Tran Thanh Dat" />
-  
-   <meta name="description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-   <meta name="generator" content="placeholder" />
-  <meta property="og:title" content="Chapter 7 Mixture Distributions | FRM2" />
-  <meta property="og:type" content="book" />
-  
-  
-  <meta property="og:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 Mixture Distributions | FRM2" />
-  
-  <meta name="twitter:description" content="<p>This is the Python &amp; R fundamental courses on Datacamp, an interactive learning platform.
-The HTML output format for this example is bookdown::bs4_book,
-set in the _output.yml file.</p>" />
-  
-  <!-- JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script>
-  <script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script>
-    <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet" />
-    <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script>
-    <script src="libs/bs3compat-0.3.1/transition.js"></script>
-    <script src="libs/bs3compat-0.3.1/tabs.js"></script>
-    <script src="libs/bs3compat-0.3.1/bs3compat.js"></script>
-    <link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet" />
-    <script src="libs/bs4_book-1.0.0/bs4_book.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script>
-
-  <!-- CSS -->
-  <style type="text/css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 6 Mixture Distributions | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of \(90\%\) \(N(0,1)\) and \(10\%\) \(N(0, 25)\), The density function of such a...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 6 Mixture Distributions | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of \(90\%\) \(N(0,1)\) and \(10\%\) \(N(0, 25)\), The density function of such a...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 6 Mixture Distributions | FRM2">
+<meta name="twitter:description" content="Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of \(90\%\) \(N(0,1)\) and \(10\%\) \(N(0, 25)\), The density function of such a...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-      <link rel="stylesheet" href="bs4_style.css" />
-  
+<link rel="stylesheet" href="bs4_style.css">
 </head>
-
 <body data-spy="scroll" data-target="#toc">
 
 <div class="container-fluid">
 <div class="row">
-  <header class="col-sm-12 col-lg-3 sidebar sidebar-book">
-    <a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
@@ -69,22 +39,39 @@ set in the _output.yml file.</p>" />
     <div id="main-nav" class="collapse-lg">
       <form role="search">
         <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
-      </form>
+</form>
 
-      <nav aria-label="Table of contents">
-        <h2>Table of contents</h2>
-        <div id="book-toc"></div>
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="active" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+</ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="#">View book source <i class="fab fa-github"></i></a></li></p>
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
-    </div>
-  </header>
-
-  <main class="col-sm-12 col-md-9 col-lg-7" id="content">
-<div id="mixture-distributions" class="section level1" number="7">
-<h1><span class="header-section-number">Chapter 7</span> Mixture Distributions</h1>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mixture-distributions" class="section level1" number="6">
+<h1>
+<span class="header-section-number">6</span> Mixture Distributions<a class="anchor" aria-label="anchor" href="#mixture-distributions"><i class="fas fa-link"></i></a>
+</h1>
 <p>Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of <span class="math inline">\(90\%\)</span> <span class="math inline">\(N(0,1)\)</span> and <span class="math inline">\(10\%\)</span> <span class="math inline">\(N(0, 25)\)</span>, The density function of such a construct can be written as
 <span class="math display">\[f_{mix}(x) = 0.9f_{N(0,1)}(x) + 0.1f_{N(0,25)}(x)\]</span></p>
 <p>To generate a random variable Y according to that distribution, we can do that by two-step process:</p>
@@ -92,56 +79,58 @@ set in the _output.yml file.</p>" />
 <li>First, draw from uniform <span class="math inline">\((0.1)\)</span> random variable <span class="math inline">\(U\)</span> and normal random variable <span class="math inline">\(X \sim \mathcal{N}(0, 1)\)</span>.</li>
 <li>Second, if <span class="math inline">\(U&lt;0.9\)</span>, then <span class="math inline">\(Y=X\)</span>. If <span class="math inline">\(U&gt;0.9\)</span> then <span class="math inline">\(Y=5X\)</span>. Note that this model could be appropriate for a stock that for most of the time shows little variability, but occasionally, e.g., after some earning announcement or other events, make much bigger movements.</li>
 </ul>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="mixture-distributions.html#cb33-1" aria-hidden="true" tabindex="-1"></a>u<span class="ot">=</span><span class="fu">runif</span>(<span class="dv">100000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb33-2"><a href="mixture-distributions.html#cb33-2" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">100000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
-<span id="cb33-3"><a href="mixture-distributions.html#cb33-3" aria-hidden="true" tabindex="-1"></a>y<span class="ot">=</span><span class="fu">ifelse</span>(u<span class="sc">&lt;</span><span class="fl">0.9</span>,x,<span class="dv">5</span><span class="sc">*</span>x)</span>
-<span id="cb33-4"><a href="mixture-distributions.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y,<span class="at">xlim=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">10</span>,<span class="dv">10</span>))</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-19-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">u</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100000</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>
+<span class="va">x</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100000</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>
+<span class="va">y</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">u</span><span class="op">&lt;</span><span class="fl">0.9</span>,<span class="va">x</span>,<span class="fl">5</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">y</span>,xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-19-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Note that this model could be appropriate for a stock that for most of the time shows little variability, but occasionally, e.g., after some earning announcement or other events, make much bigger movements.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="mixture-distributions.html#cb34-1" aria-hidden="true" tabindex="-1"></a>xx<span class="ot">=</span><span class="fu">seq</span>(<span class="sc">-</span><span class="dv">9</span>,<span class="dv">9</span>, <span class="at">length=</span><span class="dv">701</span>)</span>
-<span id="cb34-2"><a href="mixture-distributions.html#cb34-2" aria-hidden="true" tabindex="-1"></a>yy<span class="ot">=</span><span class="fu">dnorm</span>(xx, <span class="dv">0</span>, <span class="fu">sqrt</span>(<span class="fl">3.4</span>))</span>
-<span id="cb34-3"><a href="mixture-distributions.html#cb34-3" aria-hidden="true" tabindex="-1"></a>mm<span class="ot">=</span><span class="fl">0.9</span><span class="sc">*</span><span class="fu">dnorm</span>(xx, <span class="dv">0</span>, <span class="dv">1</span>)<span class="sc">+</span><span class="fl">0.1</span><span class="sc">*</span><span class="fu">dnorm</span>(xx, <span class="dv">0</span>,<span class="dv">5</span>)</span>
-<span id="cb34-4"><a href="mixture-distributions.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(xx, yy, <span class="at">type=</span><span class="st">&quot;l&quot;</span>, <span class="at">ylim=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="fl">0.4</span>), <span class="at">ylab=</span><span class="st">&quot;Density&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;x&quot;</span>, <span class="at">col=</span><span class="st">&quot;blue&quot;</span>)</span>
-<span id="cb34-5"><a href="mixture-distributions.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(xx, mm, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">legend=</span>c)</span>
-<span id="cb34-6"><a href="mixture-distributions.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="st">&quot;Gaussian distribution and Normal Mixture&quot;</span>)</span>
-<span id="cb34-7"><a href="mixture-distributions.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="fu">box</span>()</span>
-<span id="cb34-8"><a href="mixture-distributions.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;bottomright&quot;</span>,</span>
-<span id="cb34-9"><a href="mixture-distributions.html#cb34-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">&quot;N(0, 3.4)&quot;</span>, <span class="st">&quot;Mixture&quot;</span>),</span>
-<span id="cb34-10"><a href="mixture-distributions.html#cb34-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>),<span class="at">lwd =</span> <span class="dv">1</span>)</span></code></pre></div>
-<p><img src="01-intro_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">xx</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">9</span>,<span class="fl">9</span>, length<span class="op">=</span><span class="fl">701</span><span class="op">)</span>
+<span class="va">yy</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">3.4</span><span class="op">)</span><span class="op">)</span>
+<span class="va">mm</span><span class="op">=</span><span class="fl">0.9</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>,<span class="fl">5</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">xx</span>, <span class="va">yy</span>, type<span class="op">=</span><span class="st">"l"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.4</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"Density"</span>,xlab<span class="op">=</span><span class="st">"x"</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">xx</span>, <span class="va">mm</span>, col<span class="op">=</span><span class="st">"red"</span>, legend<span class="op">=</span><span class="va">c</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="st">"Gaussian distribution and Normal Mixture"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/box.html">box</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/PerformanceAnalytics/man/legend.html">legend</a></span><span class="op">(</span><span class="st">"bottomright"</span>,
+       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="st">"N(0, 3.4)"</span>, <span class="st">"Mixture"</span><span class="op">)</span>,
+       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>,<span class="st">"blue"</span><span class="op">)</span>,lwd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Next we use the rule of 3 sigma to find numbers of outlier and the ratio outlier between mixture distribution and <span class="math inline">\(\mathcal{N}(0,3.4)\)</span>.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="mixture-distributions.html#cb35-1" aria-hidden="true" tabindex="-1"></a>sdev<span class="ot">=</span><span class="fu">sqrt</span>(<span class="fl">3.4</span>)</span>
-<span id="cb35-2"><a href="mixture-distributions.html#cb35-2" aria-hidden="true" tabindex="-1"></a>gauss<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>sdev, <span class="dv">0</span>, sdev)</span>
-<span id="cb35-3"><a href="mixture-distributions.html#cb35-3" aria-hidden="true" tabindex="-1"></a>mixt<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.9</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>sdev,<span class="dv">0</span>,<span class="dv">1</span>)<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.1</span><span class="sc">*</span><span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span><span class="sc">*</span>sdev, <span class="dv">0</span>,<span class="dv">5</span>)</span>
-<span id="cb35-4"><a href="mixture-distributions.html#cb35-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-5"><a href="mixture-distributions.html#cb35-5" aria-hidden="true" tabindex="-1"></a>mixt<span class="sc">/</span>gauss</span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sdev</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">3.4</span><span class="op">)</span>
+<span class="va">gauss</span><span class="op">=</span><span class="fl">2</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">sdev</span>, <span class="fl">0</span>, <span class="va">sdev</span><span class="op">)</span>
+<span class="va">mixt</span><span class="op">=</span><span class="fl">2</span><span class="op">*</span><span class="fl">0.9</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">sdev</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">2</span><span class="op">*</span><span class="fl">0.1</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span><span class="op">-</span><span class="fl">3</span><span class="op">*</span><span class="va">sdev</span>, <span class="fl">0</span>,<span class="fl">5</span><span class="op">)</span>
+
+<span class="va">mixt</span><span class="op">/</span><span class="va">gauss</span></code></pre></div>
 <pre><code>#&gt; [1] 9.948061</code></pre>
 <p>Result show that mixture distribution produces 10 times more extrem events.</p>
 </div>
-  </main>
-
-  <div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page">
-      <h2>On this page</h2>
-      <div id="book-on-this-page"></div>
+  <div class="chapter-nav">
+<div class="prev"><a href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></div>
+<div class="next"><a href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li><a class="nav-link" href="#mixture-distributions"><span class="header-section-number">6</span> Mixture Distributions</a></li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-          <li><a id="book-source" href="#">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="#">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/01-intro.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/01-intro.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
-      </div>
+</div>
     </nav>
-  </div>
+</div>
 
 </div>
 </div> <!-- .container -->
 
-<footer class="bg-primary text-light mt-5">
-  <div class="container"><div class="row">
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-08.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -149,11 +138,7 @@ set in the _output.yml file.</p>" />
   </div>
 
 </div></div>
-</footer>
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -165,8 +150,7 @@ set in the _output.yml file.</p>" />
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
-</script>
-<script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
 for (let popover of popovers) {
   const div = document.createElement('div');
   div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
@@ -184,5 +168,4 @@ for (let popover of popovers) {
 }
 </script>
 </body>
-
 </html>

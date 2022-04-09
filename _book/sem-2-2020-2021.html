@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 16 Sem 2 2020-2021 | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="Problem 1 The prices and dividends of a stock are given as follows. time \(P_t\) \(D_t\) 1 82 0.1 2 85 0.1 3 83 0.1 4 87 0.125  Question a Determine \(R_2\) and \(R_4(3)\). \[\begin{align*}...">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta property="og:title" content="Chapter 16 Sem 2 2020-2021 | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Problem 1 The prices and dividends of a stock are given as follows. time \(P_t\) \(D_t\) 1 82 0.1 2 85 0.1 3 83 0.1 4 87 0.125  Question a Determine \(R_2\) and \(R_4(3)\). \[\begin{align*}...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 16 Sem 2 2020-2021 | FRM2">
+<meta name="twitter:description" content="Problem 1 The prices and dividends of a stock are given as follows. time \(P_t\) \(D_t\) 1 82 0.1 2 85 0.1 3 83 0.1 4 87 0.125  Question a Determine \(R_2\) and \(R_4(3)\). \[\begin{align*}...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">FRM2</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li class="book-part">Midterm Test</li>
+<li><a class="active" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sem-2-2020-2021" class="section level1" number="16">
+<h1>
+<span class="header-section-number">16</span> Sem 2 2020-2021<a class="anchor" aria-label="anchor" href="#sem-2-2020-2021"><i class="fas fa-link"></i></a>
+</h1>
+<div id="problem-1-2" class="section level2 unnumbered">
+<h2>Problem 1<a class="anchor" aria-label="anchor" href="#problem-1-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>The prices and dividends of a stock are given as follows.</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>time</th>
+<th align="center"><span class="math inline">\(P_t\)</span></th>
+<th align="right"><span class="math inline">\(D_t\)</span></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td align="center">82</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td align="center">85</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td align="center">83</td>
+<td align="right">0.1</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td align="center">87</td>
+<td align="right">0.125</td>
+</tr>
+</tbody>
+</table></div>
+<div id="question-a-12" class="section level3 unnumbered">
+<h3>Question a<a class="anchor" aria-label="anchor" href="#question-a-12"><i class="fas fa-link"></i></a>
+</h3>
+<p>Determine <span class="math inline">\(R_2\)</span> and <span class="math inline">\(R_4(3)\)</span>.</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+R_2&amp;=\frac{P_2-P_1+d_2}{P_1} \\
+&amp;=\frac{85-82+0.1}{82} \\
+&amp;=0.038 \\
+R_3&amp;=\frac{P_3-P_2+d_3}{P_2} \\
+&amp;=\frac{83-85+0.1}{85} \\
+&amp;=-0.022 \\
+R_4&amp;=\frac{P_4-P_3+d_4}{P_3} \\
+&amp;=\frac{87-83+0.125}{83} \\
+&amp;=0.050 \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+R_4(3)&amp;=(1+R_4)(1+R_3)(1+R_2)-1 \\
+R_4(3)&amp;=(1+0.038)(1-0.022)(1+0.050)-1 \\
+&amp;\approx 0.066
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: <span class="math inline">\(R_2 \approx 0.042\)</span> and <span class="math inline">\(R_4(3) \approx 0.148\)</span>.</p>
+</blockquote>
+</div>
+<div id="question-b-12" class="section level3 unnumbered">
+<h3>Question b<a class="anchor" aria-label="anchor" href="#question-b-12"><i class="fas fa-link"></i></a>
+</h3>
+<p>Determine <span class="math inline">\(r_3\)</span>.</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+r_3&amp;=\ln(1+R_3) \\
+&amp;\approx R_3 \\
+&amp;\approx-0.022
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: <span class="math inline">\(r_3 \approx -0.022\)</span></p>
+</blockquote>
+</div>
+</div>
+<div id="problem-2-2" class="section level2 unnumbered">
+<h2>Problem 2<a class="anchor" aria-label="anchor" href="#problem-2-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>The daily log returns on a stock are normally distributed with mean <span class="math inline">\(0.001\)</span> and standard deviation <span class="math inline">\(0.02\)</span>. The stock price now is <span class="math inline">\(\$99\)</span>. What is the probability that it will exceed <span class="math inline">\(\$103\)</span> after <span class="math inline">\(10\)</span> trading days?</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\ln \left( \frac{P_{10}}{P_0} \right) &amp;= r_{10}(10) \\
+\ln  P_{10} - \ln P_0 &amp;= \sum_{t=1}^{10}r_t \\
+&amp;\sim 10 \cdot \mathcal{N}(0.001, 0.02^2) \\
+&amp;\sim  \mathcal{N}(10 \cdot 0.001, 10 \cdot 0.02^2) \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\rightarrow \ln(P_{10})&amp;=\ln(P_{0})+r_{10}(10) \\
+&amp;\sim \ln(99)+\mathcal{N}(10 \cdot 0.001, 10 \cdot 0.02^2) \\
+&amp;\sim \mathcal{N}(\ln(99)+10 \cdot 0.001, 10 \cdot 0.02^2) \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\mathcal{P}(P_{10}&gt;103)&amp;=\mathcal{P}(\ln(P_{10})&gt;\ln(103)) \\
+&amp;=\mathcal{P} \left(\frac{\ln(P_{10})-(\ln(99)+10 \cdot 0.001)}{\sqrt{10 \cdot 0.02^2}} &gt; \frac{\ln(103)-(\ln(99)+10 \cdot 0.001)}{\sqrt{10 \cdot 0.02^2}} \right) \\
+&amp;=\mathcal{P} \left(\mathcal{Z} &gt; \frac{\ln(103)-(\ln(99)+10 \cdot 0.001)}{\sqrt{10 \cdot 0.02^2}} \right) \\
+&amp;=\mathcal{P} \left(\mathcal{Z} &lt; -\frac{\ln(103)-(\ln(99)+10 \cdot 0.001)}{\sqrt{10 \cdot 0.02^2}} \right) \\
+&amp;=0.31983
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The probability that its price exceeds <span class="math inline">\(\$103\)</span> after 10 trading days is 31.983%.</p>
+</blockquote>
+</div>
+<div id="problem-3-2" class="section level2 unnumbered">
+<h2>Problem 3<a class="anchor" aria-label="anchor" href="#problem-3-2"><i class="fas fa-link"></i></a>
+</h2>
+<ol style="list-style-type: lower-alpha">
+<li>Write down the definition of a weakly stationary process.</li>
+</ol>
+<blockquote>
+<p>A process is weakly stationary if its mean, variance, and covariance are unchanged by time shifts. More precisely, <span class="math inline">\(X_1, X_2, ...\)</span> is a weakly stationary process if</p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(\mathbb{E}(X_t)=\mu, \forall t\)</span></li>
+<li>
+<span class="math inline">\(Var(X_t) = \sigma_2\)</span> (a positive finite constant) for all <span class="math inline">\(t\)</span>.</li>
+<li>
+<span class="math inline">\(Cov(X_t, X_s) = \gamma(|t − s|), \forall t, s\)</span> and some function <span class="math inline">\(\gamma\)</span>.</li>
+</ol>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>Write down the first-order Autoregressive model (<span class="math inline">\(AR(1)\)</span>) of the time series <span class="math inline">\(X_t\)</span>. Write down the formulas of mean <span class="math inline">\(\mathbb{E}(X_t)\)</span>, variance <span class="math inline">\(Var(X_t)\)</span> and the correlation function <span class="math inline">\(\rho(h)\)</span> between observations <span class="math inline">\(h\)</span> time periods, and find the condition such that <span class="math inline">\(X_t\)</span> is a weakly stationary.</li>
+</ol>
+<blockquote>
+<p>The time series <span class="math inline">\(X = (X_t)\)</span> is called AR(1) if the value of X at time t is a linear function of the value of <span class="math inline">\(X\)</span> at time <span class="math inline">\(t − 1\)</span> as follows
+<span class="math display">\[X_t=\delta+\phi_1 X_{t-1}+w_t\]</span></p>
+</blockquote>
+<ol style="list-style-type: decimal">
+<li>The errors <span class="math inline">\(w_t \sim \mathcal{N}(0,\sigma_w^2)\)</span> are i.i.d.</li>
+<li>
+<span class="math inline">\(w_t\)</span> is independent of <span class="math inline">\(X_t\)</span>.</li>
+<li>
+<span class="math inline">\(\phi_1&lt;1\)</span>. This condition guarantees that <span class="math inline">\(X_t\)</span> is weakly stationary.</li>
+</ol>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+&amp;\mu=\mathbb{E}(X_t)=\frac{\delta}{1-\phi_1} \\
+\\
+&amp;Var(X_t)=\frac{\sigma_w^2}{1-\phi_1^2} \\
+\\
+&amp;Cov(X_t,X_{t+h})=\gamma(h)=\phi_1^h \cdot \frac{\sigma_w^2}{1-\phi_1^2} \\
+\\
+&amp;\rho(h)=\phi_1^h
+\end{align*}\]</span></p>
+</blockquote>
+</div>
+<div id="problem-4-2" class="section level2 unnumbered">
+<h2>Problem 4<a class="anchor" aria-label="anchor" href="#problem-4-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Assume that the price of an asset at close of trading yesterday was <span class="math inline">\(\$110\)</span> and its volatility was estimated as <span class="math inline">\(1.1\%\)</span> per day. The price at the close of trading today is <span class="math inline">\(\$108.5\)</span>. Update the volatility estimate by using the following methods:</p>
+<div id="question-a-13" class="section level3 unnumbered">
+<h3>Question a<a class="anchor" aria-label="anchor" href="#question-a-13"><i class="fas fa-link"></i></a>
+</h3>
+<p>EWMA with <span class="math inline">\(\lambda=0.9\)</span>.</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\widehat{\sigma}_t^2 &amp;=\lambda\cdot\widehat{\sigma}_{t-1}^2+(1-\lambda)\cdot y_{t-1}^2 \\
+&amp;=0.9\cdot0.011^2+(1-0.9)\cdot\left( \ln \frac{108.5}{110}\right)^2 \\
+\rightarrow \widehat{\sigma}_t &amp;\approx0.0113
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The volatility estimate by using the EWMA with <span class="math inline">\(\lambda=0.9\)</span> is <span class="math inline">\(1.13\%\)</span>.</p>
+</blockquote>
+</div>
+<div id="question-b-13" class="section level3 unnumbered">
+<h3>Question b<a class="anchor" aria-label="anchor" href="#question-b-13"><i class="fas fa-link"></i></a>
+</h3>
+<p>The GARCH<span class="math inline">\((1,1)\)</span> model with <span class="math inline">\(\omega=1\cdot10^{-6},\alpha=0.05,\beta=0.94\)</span>.</p>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+\widehat{\sigma}_t^2 &amp;=\omega+\alpha\cdot y_{t-1}^2+\beta\cdot\widehat{\sigma}_{t-1}^2 \\
+&amp;=1\cdot10^{-6}+0.05\cdot\left( \ln \frac{108.5}{110}\right)^2+0.94\cdot0.011^2 \\
+\rightarrow \widehat{\sigma}_t &amp;\approx0.0111
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: The volatility estimate by using the GARCH<span class="math inline">\((1,1)\)</span> model with the given parameters is <span class="math inline">\(1.11\%\)</span>.</p>
+</blockquote>
+</div>
+</div>
+<div id="problem-5-2" class="section level2 unnumbered">
+<h2>Problem 5<a class="anchor" aria-label="anchor" href="#problem-5-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>The loss <span class="math inline">\(L\)</span> of an investment has probability distribution</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="10%">
+<col width="17%">
+<col width="17%">
+<col width="10%">
+<col width="13%">
+<col width="15%">
+<col width="15%">
+</colgroup>
+<thead><tr class="header">
+<th><span class="math inline">\(L\)</span></th>
+<th><span class="math inline">\(-200\)</span></th>
+<th><span class="math inline">\(-150\)</span></th>
+<th><span class="math inline">\(0\)</span></th>
+<th><span class="math inline">\(50\)</span></th>
+<th><span class="math inline">\(100\)</span></th>
+<th><span class="math inline">\(170\)</span></th>
+</tr></thead>
+<tbody><tr class="odd">
+<td><span class="math inline">\(p\)</span></td>
+<td><span class="math inline">\(0.1681\)</span></td>
+<td><span class="math inline">\(0.3602\)</span></td>
+<td><span class="math inline">\(0.3087\)</span></td>
+<td><span class="math inline">\(0.1323\)</span></td>
+<td><span class="math inline">\(0.0284\)</span></td>
+<td><span class="math inline">\(0.0023\)</span></td>
+</tr></tbody>
+</table></div>
+<p>Compute Value-at-Risk at confidence level <span class="math inline">\(\alpha = 99 \%\)</span></p>
+<blockquote>
+<p>The cumulative distribution function of the loss <span class="math inline">\(L\)</span> is
+<span class="math display">\[\begin{align*}
+F(x) &amp;=\begin{cases}
+0 &amp; x \leq -200 \\
+0.1681 &amp; -200 \leq x \leq -150 \\
+0.1681+0.3602 &amp; -150 \leq x \leq 0 \\
+0.1681+0.3602+0.3087 &amp; 0 \leq x \leq 50 \\
+0.1681+0.3602+0.3087+0.1323 &amp; 50 \leq x \leq 100 \\
+0.1681+0.3602+0.3087+0.1323+0.0284 &amp; 100 \leq x \leq170 \\
+0.1681+0.3602+0.3087+0.1323+0.0284+0.0023 &amp; 170 \leq x \\
+\end{cases} \\
+&amp;=\begin{cases}
+0 &amp; x \leq -200 \\
+0.1681 &amp; -200 \leq x \leq -150 \\
+0.5283 &amp; -150 \leq x \leq 0 \\
+0.837 &amp; 0 \leq x \leq 50 \\
+0.9693 &amp; 50 \leq x \leq 100 \\
+0.9977 &amp; 100 \leq x \leq170 \\
+1 &amp; 170 \leq x \\
+\end{cases}
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[VaR_{0.99}(L_{100}) = \inf \{ x:F_L(x) \geq 0.99 \} = 100 \]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: <span class="math inline">\(VaR_{0.99}(L_{100})=100\)</span></p>
+</blockquote>
+</div>
+<div id="problem-6-2" class="section level2 unnumbered">
+<h2>Problem 6<a class="anchor" aria-label="anchor" href="#problem-6-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>You hold a portfolio consisting of a long position of 1 share of stock <span class="math inline">\(S\)</span>. The stock price today is <span class="math inline">\(P_0=\$100\)</span>. Let <span class="math inline">\(X_t\)</span> denote the log return of day <span class="math inline">\(t\)</span>. The daily log returns are assumed to be independent and normally distributed with zero mean and standard deviation <span class="math inline">\(\sigma = 0.1\)</span>. Let <span class="math inline">\(L_100\)</span> denote the loss from today until 100 trading days before deciding what to do with the portfolio.</p>
+<ol style="list-style-type: lower-alpha">
+<li>Prove that <span class="math inline">\(L_{100} = -P_0(e^{\sum_{i=1}^{100}}-1).\)</span>
+</li>
+</ol>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+-P_0(e^{\sum_{i=1}^{100} X_i}-1) &amp;= P_0 - P_0e^{X_1+X_2+...+X_{100}} \\
+&amp;= P_0 - P_0e^{\sum_{i=1}^{100} \ln \frac{P_1}{P_0} + \ln \frac{P_2}{P_1}+...+\ln \frac{P_{100}}{P_{99}}} \\
+&amp;= P_0 - P_0e^{ \ln \frac{P_{100}}{P_0}} \\
+&amp;= P_0 - P_0 \cdot \frac{P_{100}}{P_0} \\
+&amp;= P_0 - P_{100} \\
+&amp;= L_{100}
+\end{align*}\]</span></p>
+</blockquote>
+<ol start="2" style="list-style-type: lower-alpha">
+<li>From question a) compute <span class="math inline">\(VaR_{0.99}(L_100)\)</span>
+</li>
+</ol>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+L_{100} &amp;= -P_0(e^{\sum_{i=1}^{100} X_i}-1) \\
+\rightarrow \ln \left( 1 - \frac{L_{100}}{P_0} \right) &amp;= \sum_{i=1}^{100} X_i \\
+&amp; \sim 100 \cdot \mathcal{N}(0,0.1^2) \\
+&amp; \sim  \mathcal{N}(100 \cdot 0,100 \cdot 0.1^2) \\
+\rightarrow 1 - \frac{L_{100}}{P_0} &amp;\sim \log \mathcal{N}(100 \cdot 0,100 \cdot 0.1^2) \\
+\rightarrow L_{100} &amp;\sim P_0 - P_0 \cdot \log \mathcal{N}(100 \cdot 0,100 \cdot 0.1^2) \\
+\rightarrow F_{L_{100}}(x) &amp;= 100 - 100 \cdot \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right)
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+F_{L_{100}}(x) &amp;\geq 0.99 \\
+\rightarrow 100 - 100 \cdot \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &amp;\geq 0.99 \\
+\rightarrow \Phi \left(\frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} \right) &amp;\geq \frac{100-0.99}{100} \\
+\rightarrow \frac{\ln x - 100 \cdot 0}{100 \cdot 0.1^2} &amp;\geq \Phi^{-1}(0.99) \\
+\rightarrow x &amp;\geq e^{100 \cdot 0 + 100 \cdot 0.1^2 \cdot \Phi^{-1}(0.99)} \\
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p><span class="math display">\[\begin{align*}
+VaR_{L_{100}} &amp;= \inf \{x:F_{L_{100}}(x) \geq 0.99  \} \\
+&amp;=e^{2.33}
+\end{align*}\]</span></p>
+</blockquote>
+<blockquote>
+<p>Answer: <span class="math inline">\(VaR_{L_{100}}=e^{2.33}\)</span></p>
+</blockquote>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="homework-1.html"><span class="header-section-number">15</span> Homework</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sem-2-2020-2021"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+<li>
+<a class="nav-link" href="#problem-1-2">Problem 1</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#question-a-12">Question a</a></li>
+<li><a class="nav-link" href="#question-b-12">Question b</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#problem-2-2">Problem 2</a></li>
+<li><a class="nav-link" href="#problem-3-2">Problem 3</a></li>
+<li>
+<a class="nav-link" href="#problem-4-2">Problem 4</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#question-a-13">Question a</a></li>
+<li><a class="nav-link" href="#question-b-13">Question b</a></li>
+</ul>
+</li>
+<li><a class="nav-link" href="#problem-5-2">Problem 5</a></li>
+<li><a class="nav-link" href="#problem-6-2">Problem 6</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/03-parts.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/03-parts.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

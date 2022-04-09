@@ -61,6 +61,8 @@
 <li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
 <li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
 <li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li class="book-part">Midterm Test</li>
+<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
 </ul>
 
         <div class="book-extra">
@@ -110,9 +112,9 @@ Normal distribution
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-12-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; [1] 0.047825380 0.029595494 0.009449741</code></pre>
-<p>Since <span class="math inline">\(skewness=0.05\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.03\)</span> approximately equal <span class="math inline">\(median=0.01\)</span>.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1]  0.123033744  0.005668913 -0.030938984</code></pre>
+<p>Since <span class="math inline">\(skewness=0.12\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.01\)</span> approximately equal <span class="math inline">\(median=-0.03\)</span>.</p>
 <h4>
 t distribution
 <a class="anchor" aria-label="anchor" href="#symmetric-distribution"><i class="fas fa-link"></i></a>
@@ -123,9 +125,9 @@ t distribution
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-13-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>#&gt; [1] -0.01340383  0.04197639  0.03867323</code></pre>
-<p>Since <span class="math inline">\(skewness=-0.01\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0.04\)</span> approximately equal <span class="math inline">\(median=0.04\)</span>.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">t</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>#&gt; [1] -0.220824355 -0.002900342  0.014011103</code></pre>
+<p>Since <span class="math inline">\(skewness=-0.22\)</span> approximately equal <span class="math inline">\(0\)</span>, the distribution is not skew and <span class="math inline">\(mean=0\)</span> approximately equal <span class="math inline">\(median=0.01\)</span>.</p>
 </div>
 <div id="right-skewed" class="section level3" number="4.1.2">
 <h3>

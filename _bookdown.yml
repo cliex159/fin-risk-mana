@@ -6,6 +6,8 @@ rmd_files: [
 
   "01-intro.Rmd",
   "02-cross-refs.Rmd",
+  "03-parts.Rmd",
+  
 ]
 
 before_chapter_script: _common.R

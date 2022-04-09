@@ -34,7 +34,7 @@ q-q-plot
 empirical-q-q-plots
 mixture-distributions
 in-class-exercise
-dailly-log-return
+daily-log-return
 skewness-kurtosis-1
 the-jarque-bera-jb-tests
 q-q-plot-1
@@ -72,3 +72,5 @@ kpss-test-1
 fit-arima
 what-happens-with-price
 homework-1
+sem-2-2020-2021
+url-your-book-url-like-httpsbookdown.orgyihuibookdown

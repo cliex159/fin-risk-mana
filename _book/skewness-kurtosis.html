@@ -7,7 +7,7 @@
 <title>Chapter 4 Skewness &amp; Kurtosis | FRM2</title>
 <meta name="author" content="Tran Thanh Dat">
 <meta name="description" content="Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are...">
-<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Skewness &amp; Kurtosis | FRM2">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Note that under the Random Walk model, assuming independent Gaussian single-period returns, the distribution of both multi-period returns and the prices are derived. However, log returns are...">
@@ -52,17 +52,23 @@
 <li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
 <li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
 <li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
-<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li><a class="" href="homework.html">Homework</a></li>
 <li class="book-part">Chapter 2 Univariate Volatility</li>
-<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
-<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
-<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
-<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
-<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
-<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
-<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">8</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">9</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">10</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">11</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">12</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">13</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html">Homework</a></li>
 <li class="book-part">Midterm Test</li>
-<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">14</span> Sem 2 2020-2021</a></li>
+<li class="book-part">Chapter 3 Extreme Value Theory</li>
+<li><a class="" href="type-of-tails.html"><span class="header-section-number">15</span> Type of Tails</a></li>
+<li><a class="" href="gev-distribution.html"><span class="header-section-number">16</span> GEV distribution</a></li>
+<li><a class="" href="asset-returns-and-fat-tails.html"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
+<li><a class="" href="evt-in-practice.html"><span class="header-section-number">18</span> EVT in practice</a></li>
+<li><a class="" href="homework-2.html">Homework</a></li>
 </ul>
 
         <div class="book-extra">
@@ -137,11 +143,11 @@ t distribution
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
-<span class="va">sr</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
+<span class="va">sr</span><span class="op">=</span><span class="fu">rsnorm</span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="fl">5</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sr</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1]  0.86929586 -0.05052421 -0.24136543</code></pre>
 <p>Since <span class="math inline">\(skewness=0.87\)</span> is greater than <span class="math inline">\(0\)</span>, the distribution is right-skew and <span class="math inline">\(mean=-0.05\)</span> is greater than <span class="math inline">\(median=-0.24\)</span>.</p>
 </div>
@@ -153,11 +159,11 @@ t distribution
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.r-project.org">moments</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://www.rmetrics.org">fGarch</a></span><span class="op">)</span>
-<span class="va">sl</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/fGarch/man/dist-snorm.html">rsnorm</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
+<span class="va">sl</span><span class="op">=</span><span class="fu">rsnorm</span><span class="op">(</span>n<span class="op">=</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">0</span>, sd <span class="op">=</span> <span class="fl">1</span>, xi <span class="op">=</span> <span class="op">-</span><span class="fl">2</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/fBasics/man/utils-printControl.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/moments/man/skewness.html">skewness</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span>,<span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">sl</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>#&gt; [1] -0.88597146  0.01390576  0.19383722</code></pre>
 <p>Since <span class="math inline">\(skewness=-0.89\)</span> is less than <span class="math inline">\(0\)</span>, the distribution is left-skew and <span class="math inline">\(mean=0.01\)</span> is less than <span class="math inline">\(median=0.19\)</span>.</p>
 </div>
@@ -319,7 +325,7 @@ and the sample kurtosis denoted by <span class="math inline">\(\widehat {Kur}\)<
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-05-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

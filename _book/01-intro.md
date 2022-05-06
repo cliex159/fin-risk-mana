@@ -1153,7 +1153,7 @@ qqline(sp500_logret, col = "red")
 
 <img src="01-intro_files/figure-html/unnamed-chunk-45-1.png" width="90%" style="display: block; margin: auto;" />
 
-# Homework
+# Homework {.unnumbered}
 
 ## Problem 1 {.unnumbered}
 

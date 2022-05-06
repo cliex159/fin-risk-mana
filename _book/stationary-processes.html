@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 Stationary processes | FRM2</title>
+<title>Chapter 8 Stationary processes | FRM2</title>
 <meta name="author" content="Tran Thanh Dat">
 <meta name="description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
-<meta name="generator" content="bookdown 0.25 with bs4_book()">
-<meta property="og:title" content="Chapter 9 Stationary processes | FRM2">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Stationary processes | FRM2">
 <meta property="og:type" content="book">
 <meta property="og:description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 Stationary processes | FRM2">
+<meta name="twitter:title" content="Chapter 8 Stationary processes | FRM2">
 <meta name="twitter:description" content="The volatility plays a crucial role in financial risk management, it is the main measure of risk. On the other hands, the volatility is the key factor in, e.g., Investment decisions, Portfolio...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -52,17 +52,23 @@
 <li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
 <li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
 <li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
-<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li><a class="" href="homework.html">Homework</a></li>
 <li class="book-part">Chapter 2 Univariate Volatility</li>
-<li><a class="active" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
-<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
-<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
-<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
-<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
-<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
-<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li><a class="active" href="stationary-processes.html"><span class="header-section-number">8</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">9</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">10</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">11</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">12</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">13</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html">Homework</a></li>
 <li class="book-part">Midterm Test</li>
-<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">14</span> Sem 2 2020-2021</a></li>
+<li class="book-part">Chapter 3 Extreme Value Theory</li>
+<li><a class="" href="type-of-tails.html"><span class="header-section-number">15</span> Type of Tails</a></li>
+<li><a class="" href="gev-distribution.html"><span class="header-section-number">16</span> GEV distribution</a></li>
+<li><a class="" href="asset-returns-and-fat-tails.html"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
+<li><a class="" href="evt-in-practice.html"><span class="header-section-number">18</span> EVT in practice</a></li>
+<li><a class="" href="homework-2.html">Homework</a></li>
 </ul>
 
         <div class="book-extra">
@@ -70,9 +76,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stationary-processes" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="stationary-processes" class="section level1" number="8">
 <h1>
-<span class="header-section-number">9</span> Stationary processes<a class="anchor" aria-label="anchor" href="#stationary-processes"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8</span> Stationary processes<a class="anchor" aria-label="anchor" href="#stationary-processes"><i class="fas fa-link"></i></a>
 </h1>
 <p>The volatility plays a crucial role in financial risk management, it is
 the main measure of risk. On the other hands, the volatility is the
@@ -88,9 +94,9 @@ key factor in, e.g., Investment decisions, Portfolio construction
 <li>In this Chapter we focus on the estimation and forecasting of
 volatility for a single asset (univariate).</li>
 </ul>
-<div id="time-series" class="section level2" number="9.1">
+<div id="time-series" class="section level2" number="8.1">
 <h2>
-<span class="header-section-number">9.1</span> Time series<a class="anchor" aria-label="anchor" href="#time-series"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1</span> Time series<a class="anchor" aria-label="anchor" href="#time-series"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>A time series is a sequence of observations in chronological order. For example: daily log returns on a stock or monthly values of the Consumer Price Index (CPI).</li>
@@ -99,9 +105,9 @@ volatility for a single asset (univariate).</li>
 <span class="math inline">\(I = \{t_1, t_2, ..., t_n\}\)</span>, where
 <span class="math inline">\((\Delta = t_{i+1} − t)_i\)</span> with <span class="math inline">\(\Delta\)</span> is a constant.</li>
 </ul>
-<div id="remark-1" class="section level3" number="9.1.1">
+<div id="remark-1" class="section level3" number="8.1.1">
 <h3>
-<span class="header-section-number">9.1.1</span> Remark<a class="anchor" aria-label="anchor" href="#remark-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.1.1</span> Remark<a class="anchor" aria-label="anchor" href="#remark-1"><i class="fas fa-link"></i></a>
 </h3>
 <p><strong>Difference from traditional Statistical Inference</strong></p>
 <ul>
@@ -129,7 +135,7 @@ process (random sample).</li>
 <span class="va">sp500</span><span class="op">$</span><span class="va">Close</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">log</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="va">diff</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span>type <span class="op">=</span> <span class="st">"l"</span>,col <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-1-1.png" width="90%" style="display: block; margin: auto;"></div>
 <ul>
 <li>The mean level of the process seems constant.</li>
@@ -140,13 +146,13 @@ process (random sample).</li>
 </ul>
 </div>
 </div>
-<div id="autocovariance" class="section level2" number="9.2">
+<div id="autocovariance" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">9.2</span> Autocovariance<a class="anchor" aria-label="anchor" href="#autocovariance"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> Autocovariance<a class="anchor" aria-label="anchor" href="#autocovariance"><i class="fas fa-link"></i></a>
 </h2>
-<div id="definition-3" class="section level3" number="9.2.1">
+<div id="definition-3" class="section level3" number="8.2.1">
 <h3>
-<span class="header-section-number">9.2.1</span> Definition<a class="anchor" aria-label="anchor" href="#definition-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2.1</span> Definition<a class="anchor" aria-label="anchor" href="#definition-3"><i class="fas fa-link"></i></a>
 </h3>
 <p>The autocovariance function a stochastic process <span class="math inline">\(X\)</span> is defined as
 <span class="math display">\[\gamma(t,\tau)=\mathbb{E}(X_t −\mu_t)(X_{t−\tau} −\mu_{t−\tau})\]</span>
@@ -186,20 +192,20 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 </blockquote>
 </div>
 </div>
-<div id="stationary" class="section level2" number="9.3">
+<div id="stationary" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">9.3</span> Stationary<a class="anchor" aria-label="anchor" href="#stationary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Stationary<a class="anchor" aria-label="anchor" href="#stationary"><i class="fas fa-link"></i></a>
 </h2>
-<div id="strictly-stationary" class="section level3" number="9.3.1">
+<div id="strictly-stationary" class="section level3" number="8.3.1">
 <h3>
-<span class="header-section-number">9.3.1</span> Strictly Stationary<a class="anchor" aria-label="anchor" href="#strictly-stationary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3.1</span> Strictly Stationary<a class="anchor" aria-label="anchor" href="#strictly-stationary"><i class="fas fa-link"></i></a>
 </h3>
 <p>A process is said to be strictly stationary if all aspects of its behavior are unchanged by shifts in time. Mathematically, stationarity is defined as the requirement that for every <span class="math inline">\(m\)</span> and <span class="math inline">\(n\)</span> the distribution of
 <span class="math inline">\((X_1, X_2, ..., X_n)\)</span> and <span class="math inline">\((X_{1+m}, X_{2+m}, ..., X_{n+m})\)</span> are the same.</p>
 </div>
-<div id="weakly-stationary" class="section level3" number="9.3.2">
+<div id="weakly-stationary" class="section level3" number="8.3.2">
 <h3>
-<span class="header-section-number">9.3.2</span> Weakly Stationary<a class="anchor" aria-label="anchor" href="#weakly-stationary"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3.2</span> Weakly Stationary<a class="anchor" aria-label="anchor" href="#weakly-stationary"><i class="fas fa-link"></i></a>
 </h3>
 <p>A process is weakly stationary if its mean, variance, and covariance are unchanged by time shifts. More precisely, <span class="math inline">\(X_1, X_2, ...\)</span> is a weakly stationary process if</p>
 <ol style="list-style-type: decimal">
@@ -245,9 +251,9 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 </center>
 </div>
 </div>
-<div id="estimating-parameters" class="section level2" number="9.4">
+<div id="estimating-parameters" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">9.4</span> Estimating Parameters<a class="anchor" aria-label="anchor" href="#estimating-parameters"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Estimating Parameters<a class="anchor" aria-label="anchor" href="#estimating-parameters"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let <span class="math inline">\(X_1, X_2, ..., X_n\)</span> be observations from weakly stationary process. To estimate the autocovariance function, we use the sample autocovariance function defined by</p>
 <p><span class="math display">\[ \hat{\gamma}(h)=\frac{1}{n} \sum_{t=1}^{n-h}(X_{t+h}-\bar X)(X-t-\bar X) \]</span></p>
@@ -269,14 +275,14 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 
 <span class="va">msft_logret</span><span class="op">=</span><span class="va">msft</span><span class="op">$</span><span class="va">adjusted</span> <span class="op"><a href="https://rdrr.io/pkg/tidyquant/man/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/tidyquant/man/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">msft_logret</span>,lag.max<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-2-1.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
-<div id="the-adf-test" class="section level2" number="9.5">
+<div id="the-adf-test" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">9.5</span> The ADF Test<a class="anchor" aria-label="anchor" href="#the-adf-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> The ADF Test<a class="anchor" aria-label="anchor" href="#the-adf-test"><i class="fas fa-link"></i></a>
 </h2>
 <p>ADF Test is also called Unit Root Test. The test uses the following null and alternative hypotheses:</p>
 <ul>
@@ -295,9 +301,9 @@ for <span class="math inline">\(\tau \in \mathbb{Z}\)</span>, where <span class=
 #&gt; Dickey-Fuller = -9.7881, Lag order = 10, p-value = 0.01
 #&gt; alternative hypothesis: stationary</code></pre>
 </div>
-<div id="kpss-test" class="section level2" number="9.6">
+<div id="kpss-test" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">9.6</span> KPSS test<a class="anchor" aria-label="anchor" href="#kpss-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> KPSS test<a class="anchor" aria-label="anchor" href="#kpss-test"><i class="fas fa-link"></i></a>
 </h2>
 <p>The ideas of KPSS test comes from the regression model with time
 trend</p>
@@ -315,9 +321,9 @@ H_1 : k \neq 0 \]</span></p>
 #&gt; data:  msft_logret
 #&gt; KPSS Level = 0.20346, Truncation lag parameter = 7, p-value = 0.1</code></pre>
 </div>
-<div id="ljungbox-test" class="section level2" number="9.7">
+<div id="ljungbox-test" class="section level2" number="8.7">
 <h2>
-<span class="header-section-number">9.7</span> Ljung–Box Test<a class="anchor" aria-label="anchor" href="#ljungbox-test"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.7</span> Ljung–Box Test<a class="anchor" aria-label="anchor" href="#ljungbox-test"><i class="fas fa-link"></i></a>
 </h2>
 <p>Sample ACF with test bounds.</p>
 <ul>
@@ -349,8 +355,8 @@ H_1 : k \neq 0 \]</span></p>
 <p>Note that the magnitude of its ACF decays geometrically to zero, either slowly as when <span class="math inline">\(\phi_1 = 0.95\)</span>, moderately slowly as when <span class="math inline">\(\phi_1 = 0.75\)</span>, or rapidly as when <span class="math inline">\(\phi_1 = 0.25\)</span>. We now simulate AR(1) and plot the ACF with <span class="math inline">\(\phi_1 =0.64\)</span> and <span class="math inline">\(\sigma_w^2 =1\)</span>.</p>
 <div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
-<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-5-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/acf.html">acf</a></span><span class="op">(</span><span class="va">ts.sim</span><span class="op">)</span></code></pre></div>
@@ -366,8 +372,8 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <p>Consider AR(1) with <span class="math inline">\(\phi_1 = 0.64\)</span> and <span class="math inline">\(\sigma_w^2 = 1\)</span>, we have the results of Box test in R</p>
 <div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">stats</span><span class="op">)</span>
-<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
+<span class="va">ts.sim</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/arima.sim.html">arima.sim</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">0</span>,<span class="fl">0</span><span class="op">)</span>, ar <span class="op">=</span> <span class="fl">0.64</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">100</span>,sd<span class="op">=</span><span class="fl">1</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">ts.sim</span>,col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="02-cross-refs_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/box.test.html">Box.test</a></span><span class="op">(</span><span class="va">ts.sim</span>, lag <span class="op">=</span> <span class="fl">10</span>, type <span class="op">=</span> <span class="st">"Ljung-Box"</span><span class="op">)</span></code></pre></div>
@@ -379,9 +385,9 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <p>If <span class="math inline">\(|\phi_1| \geq 1\)</span> then AR(1) process is nonstationary, and the mean, variance, covariances and and correlations are not constant.</p>
 </div>
 </div>
-<div id="pacf" class="section level2" number="9.8">
+<div id="pacf" class="section level2" number="8.8">
 <h2>
-<span class="header-section-number">9.8</span> PACF<a class="anchor" aria-label="anchor" href="#pacf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.8</span> PACF<a class="anchor" aria-label="anchor" href="#pacf"><i class="fas fa-link"></i></a>
 </h2>
 <p>A partial correlation is a conditional correlation. It is the correlation between two variables under the assumption that we know and take into account the values of some other set of variables.</p>
 <div id="example-9" class="section level3 unnumbered">
@@ -407,42 +413,42 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="homework.html"><span class="header-section-number">8</span> Homework</a></div>
-<div class="next"><a href="ewma.html"><span class="header-section-number">10</span> EWMA</a></div>
+<div class="prev"><a href="homework.html">Homework</a></div>
+<div class="next"><a href="ewma.html"><span class="header-section-number">9</span> EWMA</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#stationary-processes"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="nav-link" href="#stationary-processes"><span class="header-section-number">8</span> Stationary processes</a></li>
 <li>
-<a class="nav-link" href="#time-series"><span class="header-section-number">9.1</span> Time series</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#remark-1"><span class="header-section-number">9.1.1</span> Remark</a></li>
+<a class="nav-link" href="#time-series"><span class="header-section-number">8.1</span> Time series</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#remark-1"><span class="header-section-number">8.1.1</span> Remark</a></li>
 <li><a class="nav-link" href="#example-4">Example</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#autocovariance"><span class="header-section-number">9.2</span> Autocovariance</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#definition-3"><span class="header-section-number">9.2.1</span> Definition</a></li>
+<a class="nav-link" href="#autocovariance"><span class="header-section-number">8.2</span> Autocovariance</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#definition-3"><span class="header-section-number">8.2.1</span> Definition</a></li>
 <li><a class="nav-link" href="#example-5">Example</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#stationary"><span class="header-section-number">9.3</span> Stationary</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#strictly-stationary"><span class="header-section-number">9.3.1</span> Strictly Stationary</a></li>
-<li><a class="nav-link" href="#weakly-stationary"><span class="header-section-number">9.3.2</span> Weakly Stationary</a></li>
+<a class="nav-link" href="#stationary"><span class="header-section-number">8.3</span> Stationary</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#strictly-stationary"><span class="header-section-number">8.3.1</span> Strictly Stationary</a></li>
+<li><a class="nav-link" href="#weakly-stationary"><span class="header-section-number">8.3.2</span> Weakly Stationary</a></li>
 <li><a class="nav-link" href="#example-6">Example</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#estimating-parameters"><span class="header-section-number">9.4</span> Estimating Parameters</a></li>
-<li><a class="nav-link" href="#the-adf-test"><span class="header-section-number">9.5</span> The ADF Test</a></li>
-<li><a class="nav-link" href="#kpss-test"><span class="header-section-number">9.6</span> KPSS test</a></li>
+<li><a class="nav-link" href="#estimating-parameters"><span class="header-section-number">8.4</span> Estimating Parameters</a></li>
+<li><a class="nav-link" href="#the-adf-test"><span class="header-section-number">8.5</span> The ADF Test</a></li>
+<li><a class="nav-link" href="#kpss-test"><span class="header-section-number">8.6</span> KPSS test</a></li>
 <li>
-<a class="nav-link" href="#ljungbox-test"><span class="header-section-number">9.7</span> Ljung–Box Test</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#ljungbox-test"><span class="header-section-number">8.7</span> Ljung–Box Test</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#example-7">Example</a></li>
 <li><a class="nav-link" href="#example-8">Example</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#pacf"><span class="header-section-number">9.8</span> PACF</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#pacf"><span class="header-section-number">8.8</span> PACF</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#example-9">Example</a></li>
 <li><a class="nav-link" href="#example-10">Example</a></li>
 </ul>
@@ -464,7 +470,7 @@ for some m. If the Ljung–Box test rejects, then we conclude that one or more o
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-05-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

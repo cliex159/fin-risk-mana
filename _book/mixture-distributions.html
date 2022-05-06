@@ -7,7 +7,7 @@
 <title>Chapter 6 Mixture Distributions | FRM2</title>
 <meta name="author" content="Tran Thanh Dat">
 <meta name="description" content="Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of \(90\%\) \(N(0,1)\) and \(10\%\) \(N(0, 25)\), The density function of such a...">
-<meta name="generator" content="bookdown 0.25 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Chapter 6 Mixture Distributions | FRM2">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Another class of heavy-tailed models is the set of mixture distributions. Consider a simple example made up of \(90\%\) \(N(0,1)\) and \(10\%\) \(N(0, 25)\), The density function of such a...">
@@ -52,17 +52,23 @@
 <li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
 <li><a class="active" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
 <li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
-<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li><a class="" href="homework.html">Homework</a></li>
 <li class="book-part">Chapter 2 Univariate Volatility</li>
-<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
-<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
-<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
-<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
-<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
-<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
-<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">8</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">9</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">10</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">11</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">12</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">13</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html">Homework</a></li>
 <li class="book-part">Midterm Test</li>
-<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">14</span> Sem 2 2020-2021</a></li>
+<li class="book-part">Chapter 3 Extreme Value Theory</li>
+<li><a class="" href="type-of-tails.html"><span class="header-section-number">15</span> Type of Tails</a></li>
+<li><a class="" href="gev-distribution.html"><span class="header-section-number">16</span> GEV distribution</a></li>
+<li><a class="" href="asset-returns-and-fat-tails.html"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
+<li><a class="" href="evt-in-practice.html"><span class="header-section-number">18</span> EVT in practice</a></li>
+<li><a class="" href="homework-2.html">Homework</a></li>
 </ul>
 
         <div class="book-extra">
@@ -85,20 +91,20 @@
 <code class="sourceCode R"><span class="va">u</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">100000</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>
 <span class="va">x</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">100000</span>,<span class="fl">0</span>,<span class="fl">1</span><span class="op">)</span>
 <span class="va">y</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">u</span><span class="op">&lt;</span><span class="fl">0.9</span>,<span class="va">x</span>,<span class="fl">5</span><span class="op">*</span><span class="va">x</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">y</span>,xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/graphics/hist.html">hist</a></span><span class="op">(</span><span class="va">y</span>,xlim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="op">-</span><span class="fl">10</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-19-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Note that this model could be appropriate for a stock that for most of the time shows little variability, but occasionally, e.g., after some earning announcement or other events, make much bigger movements.</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">xx</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">9</span>,<span class="fl">9</span>, length<span class="op">=</span><span class="fl">701</span><span class="op">)</span>
 <span class="va">yy</span><span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">3.4</span><span class="op">)</span><span class="op">)</span>
 <span class="va">mm</span><span class="op">=</span><span class="fl">0.9</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span><span class="op">+</span><span class="fl">0.1</span><span class="op">*</span><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">dnorm</a></span><span class="op">(</span><span class="va">xx</span>, <span class="fl">0</span>,<span class="fl">5</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/timeSeries/man/methods-plot.html">plot</a></span><span class="op">(</span><span class="va">xx</span>, <span class="va">yy</span>, type<span class="op">=</span><span class="st">"l"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.4</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"Density"</span>,xlab<span class="op">=</span><span class="st">"x"</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">xx</span>, <span class="va">yy</span>, type<span class="op">=</span><span class="st">"l"</span>, ylim<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">0.4</span><span class="op">)</span>, ylab<span class="op">=</span><span class="st">"Density"</span>,xlab<span class="op">=</span><span class="st">"x"</span>, col<span class="op">=</span><span class="st">"blue"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html">lines</a></span><span class="op">(</span><span class="va">xx</span>, <span class="va">mm</span>, col<span class="op">=</span><span class="st">"red"</span>, legend<span class="op">=</span><span class="va">c</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/title.html">title</a></span><span class="op">(</span><span class="st">"Gaussian distribution and Normal Mixture"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/box.html">box</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/pkg/PerformanceAnalytics/man/legend.html">legend</a></span><span class="op">(</span><span class="st">"bottomright"</span>,
-       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="st">"N(0, 3.4)"</span>, <span class="st">"Mixture"</span><span class="op">)</span>,
-       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/timeDate/man/base-c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>,<span class="st">"blue"</span><span class="op">)</span>,lwd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
+       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"N(0, 3.4)"</span>, <span class="st">"Mixture"</span><span class="op">)</span>,
+       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"red"</span>,<span class="st">"blue"</span><span class="op">)</span>,lwd <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="01-intro_files/figure-html/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;"></div>
 <p>Next we use the rule of 3 sigma to find numbers of outlier and the ratio outlier between mixture distribution and <span class="math inline">\(\mathcal{N}(0,3.4)\)</span>.</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -132,7 +138,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-04-09.</p>
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-05-06.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

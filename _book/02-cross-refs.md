@@ -1211,7 +1211,7 @@ kpss.test(coredata(price))
 #>     : p.value = 0.10 means p.value >= 0.10
 ```
 
-# Homework
+# Homework {.unnumbered}
 
 ## Problem 1 {.unnumbered} 
 

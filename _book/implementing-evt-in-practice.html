@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 20 Implementing EVT in practice | FRM2</title>
+<meta name="author" content="Tran Thanh Dat">
+<meta name="description" content="There are two main approaches Block Maxima Peaks over thresholds (POT)  20.1 Block maxima approach This approach follows directly from the regular variation definition where we estimate the GEV by...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Chapter 20 Implementing EVT in practice | FRM2">
+<meta property="og:type" content="book">
+<meta property="og:description" content="There are two main approaches Block Maxima Peaks over thresholds (POT)  20.1 Block maxima approach This approach follows directly from the regular variation definition where we estimate the GEV by...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 20 Implementing EVT in practice | FRM2">
+<meta name="twitter:description" content="There are two main approaches Block Maxima Peaks over thresholds (POT)  20.1 Block maxima approach This approach follows directly from the regular variation definition where we estimate the GEV by...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">FRM2</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Course Descripition</a></li>
+<li class="book-part">Chapter 1 Price and Risk</li>
+<li><a class="" href="returns.html"><span class="header-section-number">1</span> Returns</a></li>
+<li><a class="" href="random-walk.html"><span class="header-section-number">2</span> Random Walk</a></li>
+<li><a class="" href="volatility.html"><span class="header-section-number">3</span> Volatility</a></li>
+<li><a class="" href="skewness-kurtosis.html"><span class="header-section-number">4</span> Skewness &amp; Kurtosis</a></li>
+<li><a class="" href="fat-tails.html"><span class="header-section-number">5</span> Fat tails</a></li>
+<li><a class="" href="mixture-distributions.html"><span class="header-section-number">6</span> Mixture Distributions</a></li>
+<li><a class="" href="in-class-exercise.html"><span class="header-section-number">7</span> In-class exercise</a></li>
+<li><a class="" href="homework.html"><span class="header-section-number">8</span> Homework</a></li>
+<li class="book-part">Chapter 2 Univariate Volatility</li>
+<li><a class="" href="stationary-processes.html"><span class="header-section-number">9</span> Stationary processes</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">10</span> EWMA</a></li>
+<li><a class="" href="arch-and-garch.html"><span class="header-section-number">11</span> ARCH and GARCH</a></li>
+<li><a class="" href="maximum-likelihood.html"><span class="header-section-number">12</span> Maximum likelihood</a></li>
+<li><a class="" href="future-volatility.html"><span class="header-section-number">13</span> Future volatility</a></li>
+<li><a class="" href="in-class-exercise-1.html"><span class="header-section-number">14</span> In-class exercise</a></li>
+<li><a class="" href="homework-1.html"><span class="header-section-number">15</span> Homework</a></li>
+<li class="book-part">Midterm Test</li>
+<li><a class="" href="sem-2-2020-2021.html"><span class="header-section-number">16</span> Sem 2 2020-2021</a></li>
+<li class="book-part">Chapter 3 Extreme Value Theory</li>
+<li><a class="" href="type-of-tails.html"><span class="header-section-number">17</span> Type of Tails</a></li>
+<li><a class="" href="generalized-extreme-value-gev-distribution.html"><span class="header-section-number">18</span> Generalized extreme value (GEV) distribution</a></li>
+<li><a class="" href="asset-returns-and-fat-tails.html"><span class="header-section-number">19</span> Asset returns and Fat tails</a></li>
+<li><a class="active" href="implementing-evt-in-practice.html"><span class="header-section-number">20</span> Implementing EVT in practice</a></li>
+<li><a class="" href="homework-2.html"><span class="header-section-number">21</span> Homework</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/cliex159/fin-risk-mana">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="implementing-evt-in-practice" class="section level1" number="20">
+<h1>
+<span class="header-section-number">20</span> Implementing EVT in practice<a class="anchor" aria-label="anchor" href="#implementing-evt-in-practice"><i class="fas fa-link"></i></a>
+</h1>
+<p>There are two main approaches</p>
+<ol style="list-style-type: decimal">
+<li>Block Maxima</li>
+<li>Peaks over thresholds (POT)</li>
+</ol>
+<div id="block-maxima-approach" class="section level2" number="20.1">
+<h2>
+<span class="header-section-number">20.1</span> Block maxima approach<a class="anchor" aria-label="anchor" href="#block-maxima-approach"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>This approach follows directly from the regular variation definition
+where we estimate the GEV by dividing the sample into blocks and using the maxima in each block</li>
+<li>The procedure is rather wasteful of data and a relatively large sample is needed for accurate estimate for estimation (only the maxima of large blocks are used).</li>
+</ul>
+</div>
+<div id="peaks-over-thresholds-approach" class="section level2" number="20.2">
+<h2>
+<span class="header-section-number">20.2</span> Peaks over thresholds approach<a class="anchor" aria-label="anchor" href="#peaks-over-thresholds-approach"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>This approach is based on models for all large observations that exceed a high threshold and hence makes better use of data on extreme values.</li>
+<li>There are two common approaches to POT</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Fully parametric models (e.g. the Generalized Pareto distribution or
+GPD)</li>
+<li>Semi-parametric models (e.g. the Hill estimator)</li>
+</ol>
+<div id="generalized-pareto-distribution" class="section level3" number="20.2.1">
+<h3>
+<span class="header-section-number">20.2.1</span> Generalized Pareto distribution<a class="anchor" aria-label="anchor" href="#generalized-pareto-distribution"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Consider a random variable <span class="math inline">\(X\)</span>, fix a threshold <span class="math inline">\(u\)</span> and focus on the positive part of <span class="math inline">\(X − u\)</span>
+</li>
+<li>The distribution <span class="math inline">\(F_u(x)\)</span> ( called excess distribution over u) is defined as follows</li>
+</ul>
+<p><span class="math display">\[F_u(x) := P(X-u \leq |X&gt; u)=\frac{F(x+u)-f(u)}{1-F(u)}\]</span></p>
+<p>Mean excess function.</p>
+<p>If <span class="math inline">\(\mathbb{E}(|X|) &lt; \infty\)</span> the mean excess function is
+defined by
+<span class="math display">\[e(u) := E(X − u | X &gt; u)\]</span></p>
+<ul>
+<li><p>Interpretation: <span class="math inline">\(F_u\)</span> is the distribution of the excess loss <span class="math inline">\(X − u\)</span> over <span class="math inline">\(u\)</span>,
+given that <span class="math inline">\(X &gt; u\)</span>. <span class="math inline">\(e(u)\)</span> is the mean of <span class="math inline">\(F_u\)</span> as a function of <span class="math inline">\(u\)</span>.</p></li>
+<li><p>For continuous <span class="math inline">\(X \sim F\)</span> with <span class="math inline">\(\mathbb{E}(X) &lt; \infty\)</span> the following formula holds:
+<span class="math display">\[ES_{\alpha} = e(VaR_{\alpha}(X)) + VaR_{\alpha}(X)\]</span></p></li>
+<li><p>Note that if <span class="math inline">\(u\)</span> is <span class="math inline">\(VaR\)</span> of <span class="math inline">\(X\)</span> then <span class="math inline">\(F_u(x)\)</span> is the probability that we exceed <span class="math inline">\(VaR\)</span> by a particular amount (a shortfall) given that <span class="math inline">\(VaR\)</span> is violated.</p></li>
+<li><p>The key result is that as <span class="math inline">\(u \rightarrow \infty\)</span>, <span class="math inline">\(F_u(x)\)</span> converges to Generalized Pareto distribution (GPD), say <span class="math inline">\(G_{\xi,\beta}(x)\)</span></p></li>
+<li><p><span class="math display">\[G_{\xi,\beta}(x)=\begin{equation}
+  \begin{cases}
+    1-(1+\xi \frac{x}{\beta})^{\frac{1}{\xi}} &amp; \xi \neq 0 \\
+    1-e^{\frac{x}{\beta}}, &amp; \xi = 0
+  \end{cases}\,
+\end{equation}\]</span>
+where <span class="math inline">\(\beta &gt; 0\)</span> is the scale parameter, <span class="math inline">\(\xi\)</span> is known as shape. <span class="math inline">\(x \geq 0\)</span> when <span class="math inline">\(\xi ≥ 0\)</span> and <span class="math inline">\(0 \leq x \leq −\frac{\beta}{\xi}\)</span> when ξ &lt; 0.</p></li>
+<li><p>Therefore we need to estimate both shape <span class="math inline">\(\xi\)</span> and scale <span class="math inline">\(\beta\)</span>
+parameters when applying GDP</p></li>
+<li><p>Recall, for certain values of <span class="math inline">\(\xi\)</span> the shape parameters, <span class="math inline">\(G_{\xi,\beta}(x)\)</span> becomes one of the three distributions (Frechet (<span class="math inline">\(\xi &gt; 0\)</span>); Weibull (<span class="math inline">\(\xi &lt; 0\)</span>), and Gumbel (<span class="math inline">\(\xi = 0\)</span>)).</p></li>
+<li><p>Assume that <span class="math inline">\(F_u(x) = G_{\xi,\beta}(x), \xi \ 0\)</span>, and some <span class="math inline">\(u\)</span>.</p></li>
+<li><p>We obtain the following GPD-based formula for tail probabilities:</p></li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+\bar F(x) &amp;= \mathbb{P}(X&gt;x) \\
+&amp;= \mathbb{P}(X&gt;u) \mathbb{P}(X&gt;x|X&gt;u) \\
+&amp;= \bar F(u) \bar F_u(x-u) \\
+&amp;= \bar F(u) \bar F_u(x-u) \\
+&amp;= \bar F(u) \left(1+ \xi \frac{x-u}{\beta} \right)^{-\frac{1}{\xi}},x&gt;u
+\end{align*}\]</span></p>
+<ul>
+<li>Assuming we know <span class="math display">\[ \bar F(u)\]</span>, inverting this formula for <span class="math inline">\(\alpha \geq F(u)\)</span> leads to</li>
+</ul>
+<p><span class="math display">\[\begin{align*}
+VaR_{\alpha}(X) &amp;= F^{\leftarrow}(\alpha) \\
+&amp;= u+ \frac{\beta}{\xi} \left[ \frac{(1-\alpha)^{-\xi}}{\bar F(u)} -1 \right]
+\end{align*}\]</span>
+and</p>
+<p><span class="math display">\[\begin{align*}
+ES_{\alpha}(X) = \frac{VaR_{\alpha}(X)}{1-\xi} + \frac{\beta-\xi u}{1-\xi}, \xi&lt;1
+\end{align*}\]</span></p>
+</div>
+<div id="hill-method" class="section level3" number="20.2.2">
+<h3>
+<span class="header-section-number">20.2.2</span> Hill method<a class="anchor" aria-label="anchor" href="#hill-method"><i class="fas fa-link"></i></a>
+</h3>
+<p>We have the approximation
+<span class="math display">\[\begin{align*}
+F(x) = 1 − Ax^{−\tau}
+\end{align*}\]</span>
+The tail index <span class="math inline">\(−\tau\)</span> can be approximated by the Hill method given as
+<span class="math display">\[\begin{align*}
+\hat \xi = \frac{1}{\hat \tau} = \frac{1}{C_T} \sum_{i=1}^{C_T} \log \frac{x_{(i)}}{u}
+\end{align*}\]</span>
+where <span class="math inline">\(C_T\)</span> is the number of observations in the tail, <span class="math inline">\(2 \leq C_T \leq T\)</span>, as <span class="math inline">\(T \rightarrrow \infty\)</span> then <span class="math inline">\(C_T \rightarrow \infty\)</span>, and <span class="math inline">\(\frac{CT}{T} \rightarrow 0\)</span>, the notation <span class="math inline">\(x_(i)\)</span> indicates sorted data, where the maxima is denoted by x(1), and the second-largest observation by <span class="math inline">\(x_(2)\)</span>.</p>
+<h4>
+Which method to choose?
+<a class="anchor" aria-label="anchor" href="#hill-method"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>GPD, as the name suggests, is more general and can be applied
+to all three types of tails</li>
+<li>Hill method on the other hand is in the maximum domain of
+attraction (MDA) of the Frechet distribution</li>
+<li>Hence Hill method is only valid for fat-tailed data</li>
+</ul>
+<h4>
+Hill-based tail and risk measure estimates
+<a class="anchor" aria-label="anchor" href="#hill-method"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li>We have <span class="math inline">\(\bar F(x)=1-F(x) \approx Ax^{-\tau},x \geq u\)</span>. Estimate <span class="math inline">\(\tau\)</span> and <span class="math inline">\(\hat \tau\)</span>, and uu by <span class="math inline">\(x_{(C_T)}\)</span>. (for <span class="math inline">\(C_T\)</span> sufficiently small)</li>
+<li>Note that <span class="math inline">\(A=u \bar F(u)\)</span>, hence
+<span class="math inline">\(\hat A = x_{(C_T)}^{\hat \tau} \hat F(x_{(C_T)}^{\hat \tau}) \approx x_{(C_T)}^{\hat \tau} \frac{C_T}{T}\)</span>. So</li>
+</ul>
+<p><span class="math display">\[\hat F(x) = \frac{C_T}{T}\left( \frac{x}{x_{(C_T)}} \right)^{-\hat \tau}\]</span>
+then
+<span class="math display">\[\widehat {VaR}_{\alpha} = \left( \frac{T}{C_T}(1-\alpha) \right)^{-\frac{1}{\tau}} x_{(C_T)}\]</span>
+and
+<span class="math display">\[\widehat {ES_\alpha} = \frac{\hat \tau}{\hat \tau-1} \widehat{VaR_{\alpha}}\]</span></p>
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="asset-returns-and-fat-tails.html"><span class="header-section-number">19</span> Asset returns and Fat tails</a></div>
+<div class="next"><a href="homework-2.html"><span class="header-section-number">21</span> Homework</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#implementing-evt-in-practice"><span class="header-section-number">20</span> Implementing EVT in practice</a></li>
+<li><a class="nav-link" href="#block-maxima-approach"><span class="header-section-number">20.1</span> Block maxima approach</a></li>
+<li>
+<a class="nav-link" href="#peaks-over-thresholds-approach"><span class="header-section-number">20.2</span> Peaks over thresholds approach</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#generalized-pareto-distribution"><span class="header-section-number">20.2.1</span> Generalized Pareto distribution</a></li>
+<li><a class="nav-link" href="#hill-method"><span class="header-section-number">20.2.2</span> Hill method</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/04-citations.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/04-citations.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>FRM2</strong>" was written by Tran Thanh Dat. It was last built on 2022-05-06.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

@@ -710,7 +710,7 @@ adf.test(coredata(price))
 kpss.test(coredata(price))
 ```
 
-# Homework
+# Homework {.unnumbered}
 
 ## Problem 1 {.unnumbered} 
 

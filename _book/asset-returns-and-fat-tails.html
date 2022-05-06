@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 9 EWMA | FRM2</title>
+<title>Chapter 17 Asset returns and Fat tails | FRM2</title>
 <meta name="author" content="Tran Thanh Dat">
-<meta name="description" content="Denote \(y_t\) the return of stock at time \(t\). Then Volatility a weighted sum of past returns, with weights \(\omega_i\), is defined by \[ \hat...">
+<meta name="description" content="The term “fat tails” can have several meanings, the most common being “extreme outcomes occur more frequently than predicted by normal distribution”. The most frequent definition one may encounter...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Chapter 9 EWMA | FRM2">
+<meta property="og:title" content="Chapter 17 Asset returns and Fat tails | FRM2">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Denote \(y_t\) the return of stock at time \(t\). Then Volatility a weighted sum of past returns, with weights \(\omega_i\), is defined by \[ \hat...">
+<meta property="og:description" content="The term “fat tails” can have several meanings, the most common being “extreme outcomes occur more frequently than predicted by normal distribution”. The most frequent definition one may encounter...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 9 EWMA | FRM2">
-<meta name="twitter:description" content="Denote \(y_t\) the return of stock at time \(t\). Then Volatility a weighted sum of past returns, with weights \(\omega_i\), is defined by \[ \hat...">
+<meta name="twitter:title" content="Chapter 17 Asset returns and Fat tails | FRM2">
+<meta name="twitter:description" content="The term “fat tails” can have several meanings, the most common being “extreme outcomes occur more frequently than predicted by normal distribution”. The most frequent definition one may encounter...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
@@ -55,7 +55,7 @@
 <li><a class="" href="homework.html">Homework</a></li>
 <li class="book-part">Chapter 2 Univariate Volatility</li>
 <li><a class="" href="stationary-processes.html"><span class="header-section-number">8</span> Stationary processes</a></li>
-<li><a class="active" href="ewma.html"><span class="header-section-number">9</span> EWMA</a></li>
+<li><a class="" href="ewma.html"><span class="header-section-number">9</span> EWMA</a></li>
 <li><a class="" href="arch-and-garch.html"><span class="header-section-number">10</span> ARCH and GARCH</a></li>
 <li><a class="" href="maximum-likelihood.html"><span class="header-section-number">11</span> Maximum likelihood</a></li>
 <li><a class="" href="future-volatility.html"><span class="header-section-number">12</span> Future volatility</a></li>
@@ -66,7 +66,7 @@
 <li class="book-part">Chapter 3 Extreme Value Theory</li>
 <li><a class="" href="type-of-tails.html"><span class="header-section-number">15</span> Type of Tails</a></li>
 <li><a class="" href="gev-distribution.html"><span class="header-section-number">16</span> GEV distribution</a></li>
-<li><a class="" href="asset-returns-and-fat-tails.html"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
+<li><a class="active" href="asset-returns-and-fat-tails.html"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
 <li><a class="" href="evt-in-practice.html"><span class="header-section-number">18</span> EVT in practice</a></li>
 <li><a class="" href="homework-2.html">Homework</a></li>
 </ul>
@@ -76,54 +76,72 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="ewma" class="section level1" number="9">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="asset-returns-and-fat-tails" class="section level1" number="17">
 <h1>
-<span class="header-section-number">9</span> EWMA<a class="anchor" aria-label="anchor" href="#ewma"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17</span> Asset returns and Fat tails<a class="anchor" aria-label="anchor" href="#asset-returns-and-fat-tails"><i class="fas fa-link"></i></a>
 </h1>
-<p>Denote <span class="math inline">\(y_t\)</span> the return of stock at time <span class="math inline">\(t\)</span>. Then</p>
 <ul>
-<li>Volatility a weighted sum of past returns, with weights <span class="math inline">\(\omega_i\)</span>, is
-defined by
-<span class="math display">\[ \hat \sigma_t^2=\omega_1y_{t-1}^2+\omega_2y_{t-2}^2+...+\omega_Ly_{t-L}^2 \]</span>
-where L is the length of the estimation window, i.e., the number of observations used in the calculation. This is called MA model.</li>
-<li>An extension of MA model is Exponentially weighted moving average. Let the weights be exponentially declining, and denote them by <span class="math inline">\(\lambda^i\)</span>
-<span class="math display">\[ \hat \sigma_t^2=\lambda y_{t-1}^2+\lambda^2 y_{t-2}^2+...+\lambda^L y_{t-L}^2 \]</span>
-where <span class="math inline">\(0 &lt; \lambda &lt; 1\)</span>. If <span class="math inline">\(L\)</span> is large enough, the term αn are negligible for all <span class="math inline">\(n &gt; L\)</span>. So we set <span class="math inline">\(L = \infty\)</span>.</li>
-<li>Note that the sum of weights is
-<span class="math display">\[\frac{\lambda}{1-\lambda}=\sum_{i=1}^\infty \lambda^i\]</span>
-So the exponentially weighted moving average is defined by
-<span class="math display">\[ \hat \sigma_t^2=\frac{1-\lambda}{\lambda} \sum_{i=1}^{\infty}\lambda^i y_{t-i}^2 \]</span>
-and, hence, we get the EWMA equation (why???)
-<span class="math display">\[ \hat \sigma_t^2=\lambda \hat \sigma_{t-1}^2+(1-\lambda)y_{t-1}^2 \]</span>
-</li>
-<li>Note that JP Morgan set for daily data with <span class="math inline">\(\lambda = 0.94\)</span>.</li>
+<li>The term “fat tails” can have several meanings, the most common being “extreme outcomes occur more frequently than predicted by normal distribution”.</li>
+<li>The most frequent definition one may encounter is Kurtosis, but it is not always accurate at indicating the presence of fat tails <span class="math inline">\((Kur &gt; 3)\)</span>.</li>
+<li>This is because kurtosis is more concerned with the sides of the distribution rather than the heaviness of tails.</li>
 </ul>
-<div id="example-11" class="section level2 unnumbered">
-<h2>Example<a class="anchor" aria-label="anchor" href="#example-11"><i class="fas fa-link"></i></a>
+<div id="a-formal-definition-of-fat-tails" class="section level2 unnumbered">
+<h2>A formal definition of fat tails<a class="anchor" aria-label="anchor" href="#a-formal-definition-of-fat-tails"><i class="fas fa-link"></i></a>
 </h2>
-<p>Suppose that <span class="math inline">\(\lambda = 0.9\)</span>, the volatility estimated for a market variable for
-day <span class="math inline">\(n − 1\)</span> is <span class="math inline">\(1\%\)</span> per day, and during day <span class="math inline">\(n − 1\)</span> the market variable
-increased by <span class="math inline">\(2\%\)</span>. This means that <span class="math inline">\(\sigma_{n-1}^2=0.01^2=0.0001\)</span> and <span class="math inline">\(y_{n-1}^2=0.02^2=0.0004\)</span>. From equation (1) we get
-<span class="math display">\[\sigma_n^2=0.9 \cdot 0.0001 + 0.1 \cdot 0.0004=0.00013 \]</span>
-The estimate of the volatility for day <span class="math inline">\(n\)</span> is <span class="math inline">\(\sigma_n = \sqrt{0.00013} = 1.4\%\)</span> per
-day. Note that the expected value of <span class="math inline">\(y_{n-1}^2\)</span> is <span class="math inline">\(\sigma_{n-1}^2= 0.0001\)</span>. Hence, realized value of <span class="math inline">\(y_{n−1}^2 = 0.0002\)</span> is greater that expected value, and as a
-result our volatility estimate increase. If the realized value of <span class="math inline">\(y_{n−1}^2\)</span> has been less than its expected valued, our estimate of the volatility would have decreased.</p>
+<p>The formal definition of fat tails comes from regular variation
+Regular variation. A random variable, X, with distribution F has fat
+tails if it varies regularly at infinity; that is there exists a positive
+constant &gt; 0 such that:
+<span class="math display">\[\lim_{t \to \infty} \frac{1-F(tx)}{1-F(t)} =x^{-t},x&gt;0\]</span></p>
+</div>
+<div id="tail-distributions" class="section level2 unnumbered">
+<h2>Tail distributions<a class="anchor" aria-label="anchor" href="#tail-distributions"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>In the fat-tailed case, the tail distribution is Frechet:
+<span class="math display">\[H(x) = e^{−x^{−\tau}}\]</span>
+</li>
+</ul>
+<p>Lemma. A random variable X has regular variation at infinity (i.e. has fat tails) if and only if its distribution function F satisfies the following condition:</p>
+<p><span class="math display">\[1 − F(x) = P(X &gt; x) = Ax^{−\tau} + o(x^{−\tau})\]</span>
+for positive constant A, when <span class="math inline">\(x \rightarrow \infty\)</span>.</p>
+<ul>
+<li>The expression <span class="math inline">\(o(x−\tau\)</span>) is the remainder term of the Taylor-expansion of <span class="math inline">\(P(X &gt; x)\)</span>, it consists of terms of the type <span class="math inline">\(Cx^{−\tau}\)</span> for constant C and <span class="math inline">\(j &gt; \tau\)</span>
+</li>
+<li>As <span class="math inline">\(x \rightarrow \infty\)</span> the tails are asymptotically Pareto distributed:
+<span class="math display">\[F(x) \approx 1 - Ax^{-\tau}\]</span>
+</li>
+</ul>
+<p>The followng figure presents normal and fat tail distribution with respect to <span class="math inline">\(\tau =2,4,6\)</span></p>
+</div>
+<div id="normal-and-fat-distributions" class="section level2 unnumbered">
+<h2>Normal and fat distributions<a class="anchor" aria-label="anchor" href="#normal-and-fat-distributions"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>The definition demonstrates that fat tails are defined by how rapidly the tails of the distribution decline as we approach infinity</li>
+<li>As the tails become thicker, we detect increasingly large observations that impact the calculation of moments:
+<span class="math display">\[E(X^m) = \int x^m f(x) \,dx\]</span>
+</li>
+<li>If <span class="math inline">\(E(X^m)\)</span> exists for all positive <span class="math inline">\(m\)</span>, such as for the normal distribution, the definition of regular variation implies that moments <span class="math inline">\(m \geq 1\)</span> are not defined for fat-tailed data.</li>
+</ul>
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="stationary-processes.html"><span class="header-section-number">8</span> Stationary processes</a></div>
-<div class="next"><a href="arch-and-garch.html"><span class="header-section-number">10</span> ARCH and GARCH</a></div>
+<div class="prev"><a href="gev-distribution.html"><span class="header-section-number">16</span> GEV distribution</a></div>
+<div class="next"><a href="evt-in-practice.html"><span class="header-section-number">18</span> EVT in practice</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#ewma"><span class="header-section-number">9</span> EWMA</a></li>
-<li><a class="nav-link" href="#example-11">Example</a></li>
+<li><a class="nav-link" href="#asset-returns-and-fat-tails"><span class="header-section-number">17</span> Asset returns and Fat tails</a></li>
+<li><a class="nav-link" href="#a-formal-definition-of-fat-tails">A formal definition of fat tails</a></li>
+<li><a class="nav-link" href="#tail-distributions">Tail distributions</a></li>
+<li><a class="nav-link" href="#normal-and-fat-distributions">Normal and fat distributions</a></li>
 </ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/02-cross-refs.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/02-cross-refs.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/cliex159/fin-risk-mana/blob/master/04-citations.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/cliex159/fin-risk-mana/edit/master/04-citations.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>

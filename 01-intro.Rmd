@@ -831,7 +831,7 @@ qqnorm(sp500_logret)
 qqline(sp500_logret, col = "red")
 ```
 
-# Homework
+# Homework {.unnumbered}
 
 ## Problem 1 {.unnumbered}
 
